@@ -1,4 +1,6 @@
-\section{AlloPred}
+\chapter{AlloPred}
+
+\section{Materials and Methods}
 
 \subsection{Data selection}
 
@@ -107,3 +109,54 @@ The web server was implemented using the Django extension to Python and a SQLite
 JSmol, a JavaScript implementation of the Jmol package, was used for molecular visualisation.
 Bootstrap was used for page styling.
 The standalone version of the code runs faster and it is recommended that users who intend to use the method extensively or in batch download the code for local use.
+
+
+\section{Results}
+
+AlloPred was tested on a test set of 40 known allosteric proteins (see the Methods section for selection criteria).
+For each protein AlloPred ranked the pockets and the top ranked pocket was examined.
+For 23 of 40 proteins AlloPred ranked top a pocket containing an allosteric binding residue (an \emph{allosteric pocket}), when 18\% of pockets were allosteric pockets.
+For 28 of 40 proteins an allosteric pocket was ranked first or second.
+The results were compared to two existing methods for allosteric site prediction.
+The AlloSite server uses the Fpocket algorithm and a machine learning approach \cite{Huang2013}, whereas the PARS server combines changes in protein flexibility and a structural conservation score \cite{Panjkovich2014}.
+The correct predictions made by each method, and the overlap between the methods, are shown in Figure~\ref{fig:results_venn}.
+AlloSite ranked an allosteric pocket top in 21 of 40 cases and is suitable for direct comparison to AlloPred as both methods rank pockets from Fpocket.
+PARS, however, makes predictions of single points; a point was considered allosteric for our purposes if it was within 10 \AA\ of an allosteric modulator atom in the protein-modulator crystal structure.
+It is important to note the different criteria for a correct prediction when considering the results.
+PARS ranked an allosteric pocket top in 10 of 40 cases.
+Figure~\ref{fig:results_venn} shows that AlloPred compares well to other methods and makes 4 correct predictions that neither of the other methods do.
+This suggests that users of other allosteric prediction methods would benefit from the additional use of AlloPred.
+
+In order to reduce the effects of bias during the split of the dataset into training and test sets, the dataset of 119 proteins was additionally split randomly 20 times into training and tests sets of 79 and 40 proteins respectively.
+The SVM was then trained on the training set, using the previous parameters, and tested on the test set.
+The average number of correct predictions across the 20 runs was 23.6 out of 40.
+This shows that the above results used for comparison to other methods are indicative of the performance of the method.
+
+
+\subsection{Web server}
+
+The AlloPred web server allows users to analyse the prediction results via an intuitive interface.
+Users can either input a PDB ID and chain(s) or upload a PDB file.
+The active site residues of the protein must be given but there is an option to retrieve this data, if it is available, from the Catalytic Site Atlas \cite{Furnham2014}.
+The results page is shown in Figure~\ref{fig:web_results}.
+All pockets are displayed in a table with their AlloPred rankings and Fpocket output.
+The table can be sorted and filtered by any one or more of the 29 AlloPred and Fpocket features.
+The page also allows users to visualise each pocket on the protein in a JSmol window that lets the user to explore the protein and its predicted allosteric sites.
+Features include highlighting the active site residues, selecting one of three visualisation options and a JSmol terminal to insert custom commands.
+The results, including full details of each pocket, can be downloaded for further analysis as a tab-delimited text file.
+The calculation time is fast, with a 400 residue protein ($\sim$15 predicted pockets) analysed within 5 minutes.
+
+
+\section{Discussion}
+
+Over the last few years a renewed interest in allostery, perhaps due to the potential benefits of allosteric drugs, has led to the development of a number of computational approaches to understanding allostery \cite{Collier2013}. Some of these are directly associated with predicting allosteric sites on proteins from structure alone.
+
+The AlloSite server is similar to the method presented here in that it uses the Fpocket algorithm and attempts to elucidate allosteric pockets \cite{Huang2013}. Whereas AlloSite solely uses the Fpocket output, our method uses an approach that combines flexibility with the Fpocket output. A combination of methods may give better predictions than either method individually, as indicated by the unique predictions made by both methods during testing. In fact the AlloSite predictions were found in every case to correspond to the pocket ranked top by Fpocket. The complete ranking of pockets provided by AlloPred may also be useful, as pockets ranked second were often found to be allosteric in the test set.
+
+An approach that combines flexibility analysis using normal modes and structural conservation scores \cite{Panjkovich2012} is also similar to the method presented here and  was recently turned into a web server, PARS \cite{Panjkovich2014}. Although direct comparison is difficult due to the differences in site calculation, definition of allosteric sites and datasets used, the method presented here again may be used well in combination as shown by Figure~\ref{fig:results_venn}.
+
+The lack of input about the shape of the ligand and the large coverage of the protein in terms of pockets (average 18.5 pockets per protein) used by our method mean that it may be able to predict novel or unusual sites that methods which explicitly model the modulator might not. This is important, for example when searching for allosteric sites on proteins believed to be non-allosteric. The lack of conservation-based approaches in our method also facilitates discovery of sites not currently preserved by evolution. This is useful due to the large variety of allosteric modulators \cite{Wang2012} and mechanisms \cite{Motlagh2014}, suggesting potential novel modulators for proteins with known allosteric pathways.
+
+Other promising approaches \cite{Demerdash2009, Kidd2009, Kaya2013} investigate the allosteric pathway and are not directly comparable with this method, which is only concerned with how the pathways transmit the effects of perturbations to the normal modes and does not directly reveal any information about the pathways themselves. Again, a combination of our method with these approaches may be useful, as pockets predicted using our or other methods can be further investigated to reveal information about the underlying allosteric communication.
+
+The main limitation of our method is related to the diversity found in allosteric systems. Rigid-body motions of oligomers, side-chain dynamics, backbone motions and local unfolding are all mechanisms of allostery, with allosteric effects even present in intrinsically-disordered proteins \cite{Motlagh2014}. A method based around the changes in dynamics on ligand binding is likely to miss many allosteric effects, and this can go some way to explaining the predictions of our method that were incorrect. In particular, classic examples of allostery such as haemoglobin that involve oligomeric re-organisation to affect ligand cooperativity are not suitable for use with this method. However, the results shown here and in other studies are encouraging and indicate a future where we can pick modulating sites on proteins with reasonable confidence. Our method, for example, successfully predicts allosteric sites on proteins with a variety of sizes and functions.

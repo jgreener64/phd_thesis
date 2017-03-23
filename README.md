@@ -6,7 +6,8 @@
 - Assemble resources
 - Read PhD theses
 - Plan thesis: chapters and word counts
-- Write thesis
+- Copy over existing bits of text
+- Write new text
 
 
 ## Existing theses
@@ -49,6 +50,42 @@
     - AlloPred and ExProSE papers
 
 
+## Figure list
+
+Introduction:
+- Some simple allostery such as block diagram from slides, PyMol example from slides, MWC/KNF difference
+- Protein ensemble/energy levels diagram
+- Normal modes flowchart: protein -> ENM -> Hessian -> diagonalise -> view on structure
+- Conserved protein kinase structure and known allosteric kinase modulators
+- CDK2 structure, cyclin binding, steps of activation in PyMol
+
+AlloPred:
+- Flexibility (paper Fig 1)
+- Flowchart (paper Fig 2)
+- Venn (paper Fig 3)
+- AlloPred results page (paper Fig 4), possibly with a different protein
+- Example in PyMol
+
+ExProSE:
+-
+
+CDK2:
+- Pocket of interest: surrounding residues, Surfstamp, different structures, example docking poses, PDB ligands, half-open 4EZ3
+- Modelled cyclin structure and PPI
+- Flowchart of virtual screening procedure?
+- Structures of compounds
+- Experimental stuff
+
+Conclusion:
+-
+
+Appendices:
+- Flowchart of type structure in the parser
+- Screenshot of parse and output in Julia REPL
+- Table from pdb-benchmarks README
+- Speed comparison graph from pdb-benchmarks README (change into bar chart?)
+
+
 ## Section plan
 
 ### Introduction
@@ -63,14 +100,26 @@ CDK2
 ### AlloPred
 
 Methods from paper.
+Results from paper.
+One example in more detail?
+Discuss pocket size bias.
 
 
 ### ExProSE
 
 Methods from paper.
+Start with a simple example, like adenylate kinase?
+Calmodulin (huge conformational change)?
+Use above to demonstrate parameters etc.
+Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP.
 
 
 ### CDK2
+
+Computational methods.
+Experimental methods.
+Computational results.
+Experimental results.
 
 
 ### Conclusion
