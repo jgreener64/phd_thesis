@@ -28,6 +28,7 @@
 
 ## Thesis outline
 
+- Abstract
 - Introduction
 - AlloPred:
     - Methods
@@ -111,7 +112,7 @@ Methods from paper.
 Start with a simple example, like adenylate kinase?
 Calmodulin (huge conformational change)?
 Use above to demonstrate parameters etc.
-Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP.
+Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP, don't forget supplementary.
 
 
 ### CDK2

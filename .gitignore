@@ -4,3 +4,4 @@ resources
 *.log
 *.bbl
 *.blg
+*.out
