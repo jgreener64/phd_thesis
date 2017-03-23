@@ -22,6 +22,7 @@
 - ExProSE paper: ~7,000 words
 - ESA: ~3,500 words
 - LSR: ~8,000 words
+- September 2015 report
 
 
 ## Thesis outline
@@ -45,6 +46,7 @@
     - AlloPred technical docs
     - ExProSE technical docs
     - BioJulia PDB parser
+    - AlloPred and ExProSE papers
 
 
 ## Section plan

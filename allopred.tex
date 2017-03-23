@@ -1,0 +1,109 @@
+\section{AlloPred}
+
+\subsection{Data selection}
+
+ASBench \cite{Huang2015}, a benchmarking set for allosteric discovery, was used as a source of known allosteric proteins.
+The `Core-Diversity set' contains 147 structurally-diverse allosteric sites on 127 proteins from a variety of protein classes such as transferases, hydrolases and transcription factors.
+The PDB files, allosteric site data and active site data were obtained for each protein from ASBench.
+UniProt \cite{TheUniProtConsortium2015} and the Catalytic Site Atlas \cite{Furnham2014} were used to find active site data when it was not available from ASBench.
+In each PDB file, only the chain(s) containing the active and allosteric sites, and any chains linking them, were considered.
+This was in order to keep the size of the proteins manageable, as using entire protein assemblies would lead to a large number of pockets.
+It also allowed comparison with existing methods, which use similar criteria.
+In practise the use of larger assemblies was tried during development and did not have a large effect on the results.
+7 proteins were removed from the set as the PDB file did not contain the active site, i.e.\ the PDB file represented the allosteric section of a larger protein.
+1 protein was removed as Fpocket did not run successfully.
+This left 119 proteins in the dataset.
+The dataset was randomly split into a training set of 79 proteins and a test set of 40 proteins.
+
+
+\subsection{Pocket prediction}
+
+Potential binding pockets on the proteins were calculated using the open-source Fpocket v2.0 algorithm, which has been shown to be effective in comparison to other methods \cite{LeGuilloux2009}. The default parameters used in the Fpocket calculation produced pockets that were large enough to place most (average 86\%) allosteric binding residues in pockets but not so large that identifying a pocket as having allosteric effect was of little use. Sometimes multiple allosteric pockets on the same protein represented different and physically-separated allosteric sites, and sometimes adjacent calculated pockets covered a single allosteric binding site. The pockets also covered much of the protein surface, which allowed the method to detect allosteric sites that could be found anywhere on the surface. On average 41\% of residues in each protein appeared in a pocket.
+
+Fpocket output 2,201 pockets for the 119 proteins (average 18.5 per protein), of which 389 (18\% of pockets, average 3.3 per protein) contained at least one residue identified as binding to an allosteric modulator and were hence labelled as \emph{allosteric pockets}.
+Although being defined as an allosteric pocket in this manner does not necessarily mean that binding to that pocket causes the allosteric effect, the average number of allosteric binding residues in an allosteric pocket was 4.3, indicating the utility of locating such pockets. All but 5 proteins in the dataset had at least one allosteric binding residue placed in a pocket.
+We treated pockets without known allosteric binding residues as negative examples during machine learning. It should be noted that these pockets may not correspond directly to the actual pockets on the protein, or may have latent allosteric character yet to be discovered.
+
+
+\subsection{Normal mode analysis}
+
+In NMA the Hessian matrix - the matrix of second derivatives of the potential energy $V$ with respect to the mass-weighted atomic coordinates - is diagonalised to yield the normal modes \cite{Hayward2008}. The potential energy $V$ was described according to the elastic network model \cite{Tirion1996} as a set of harmonic springs of strength $k$ between every pair of C-alpha atoms no further than distance $R_{c}$ apart:
+$$
+V = \sum_{\substack{r_{ij}^{0} < R_{c} \\ i < j}} k (r_{ij} - r_{ij}^{0})^{2}
+$$
+
+where $r_{ij}^{0}$ is the Euclidean distance between atoms $i$ and $j$ in the PDB file. We used values of 1 kcal mol\textsuperscript{-1} \AA\textsuperscript{-2} and 15 \AA\ for $k$ and $R_{c}$ respectively.
+
+The reduction in flexibility of an allosteric pocket on modulator binding is shown in Figure~\ref{fig:ligand_binding}. To model this, the unperturbed normal modes were first calculated for the protein. The calculation was then repeated, each time perturbing one of the pockets in the protein. If either atom $i$ or $j$ was in the pocket to be perturbed then a higher value of 1.5 kcal mol\textsuperscript{-1} \AA\textsuperscript{-2} for $k$ (1.5 times the previous value) was used instead. This higher value was chosen after values from 1.2 to 2.5 kcal mol\textsuperscript{-1} \AA\textsuperscript{-2} were examined. Active site residues were not counted as being in any pocket for this alteration of $k$, in order to avoid direct perturbation of the site at which the effect was measured. This approach assumes nothing about the shape of the modulator other than that it affects the flexibility of the whole pocket to which it binds.
+
+Once the perturbed NMA had been carried out, the degree of change caused by the perturbation needed to be measured. Since changes at the active site will likely determine how strong an effect a modulator has, the effect of the perturbation on the active site should be considered. Within each individual normal mode the effect of the perturbation was measured by averaging across all identified active site residues the magnitude of the difference between the perturbed and the unperturbed displacements from equilibrium. This is given by:
+$$
+v_{i} = \frac{1}{N_{a}} \sum_{j=1}^{N_{a}} \left | \mathbf{p_{j}} - \mathbf{u_{j}} \right |
+$$
+
+where $v_{i}$ is the effect of the perturbation in normal mode $i$, $\mathbf{p_{j}}$ is the displacement of residue $j$ in the perturbed normal mode, $\mathbf{u_{j}}$ is the displacement of residue $j$ in the unperturbed normal mode, and $N_{a}$ is the number of active site residues.
+
+The effects of the perturbation within each normal mode then needed to be averaged across the modes in order to get a single numeric measure for the strength of the effect arising from perturbation at one pocket. The effect within each of the normal modes was weighted by the frequency such that the lowest-frequency mode of the chosen modes had the greatest influence on the results. The equation to determine the effect of a perturbation $C_{m}$ is:
+$$
+C_{m} = \sum_{i=1}^{m} \frac{v_{i}}{\omega_{i}}
+$$
+
+where $v_{i}$ is defined above, $\omega_{i}$ is the frequency of mode $i$ and is hence equal to the square root of the eigenvalue $E_{i}$, and $m$ is the number of normal modes chosen for the calculation. The justification for this method was that lower-frequency modes within the range selected are likely to be more important in allosteric communication because they consist of the long-range motions of many atoms \cite{Rodgers2013}.
+
+It might be expected that larger pockets will have a higher $C_{m}$ value simply by virtue of having more residues perturbed. In order to account for this a second measure, $E_{m}$, was defined as:
+$$
+E_{m} = \frac{C_{m}}{N_{p}}
+$$
+
+where $N_{p}$ is the number of residues in the pocket and $C_{m}$ was defined previously. $E_{m}$ is a measure of the amount of change caused at the active site per residue in the perturbed pocket. A Python script utilising the ProDy package \cite{Bakan2011} was used to perform NMA on the proteins.
+
+
+\subsection{Machine learning}
+
+Values of $C_{m}$ and $E_{m}$ with $m$ equal to 20, 50, 100, 200 and all modes were chosen as features in a SVM. The features from the Fpocket output used in the SVM were:
+\begin{itemize}
+\item Rank
+\item Score
+\item Druggability score
+\item Number of alpha spheres
+\item Total SASA
+\item Polar SASA
+\item Apolar SASA
+\item Volume
+\item Mean local hydrophobic density
+\item Mean alpha sphere radius
+\item Mean alpha sphere solvent accessibility
+\item Apolar alpha sphere proportion
+\item Hydrophobicity score
+\item Volume score
+\item Polarity score
+\item Charge score
+\item Proportion of polar atoms
+\item Alpha sphere density
+\item Centre of mass - alpha sphere max distance
+\item Flexibility
+\end{itemize}
+
+See the Fpocket documentation for more details on each of these measures. Distance to the active site, number of residues in the pocket and number of pockets in the protein were also used as features. The distance to the active site for each pocket was calculated as the distance between the geometric centre of the active site residues and the geometric centre of the residues in the pocket. Each feature (apart from number of pockets) was utilised in two different ways: the feature value normalised across all proteins (\emph{raw}); and the ranking of the feature value within the values for that protein, where the ranks were scaled between 0 and 1 (\emph{ranked}).
+
+The 65 features were ranked in Weka explorer \cite{Frank2004} using the ChiSquared attribute evaluator and the Ranker search method. This evaluates the worth of a feature by computing the value of the chi-squared statistic with respect to the class. The top 7 features only were retained, as features below this added little value. The retained features, in descending order of descriptive power, were:
+\begin{itemize}
+\item Number of alpha spheres (raw)
+\item $E_{200}$ (ranked)
+\item Score (raw)
+\item $E_{all}$ (ranked)
+\item Distance to active site (raw)
+\item Pocket size (raw)
+\item Fpocket rank (raw)
+\end{itemize}
+
+The SVM-Light package \cite{Joachims1998} was used to run the SVM. The Gaussian kernel was selected, containing internal parameters $C$ and $\gamma$. The cost factor by which training errors on positive examples outweigh errors on negative examples was set as the ratio of negative to positive examples in the training set (6.19). A leave-one-out parameterisation procedure was carried out over a grid of parameters with $C$ equal to 0.01, 0.1, 1 or 10 and $\gamma$ equal to $10^{-3}$, $10^{-4}$ or $10^{-5}$. The procedure consisted of training the SVM on pockets from 78 of the 79 proteins in the training set and testing on pockets from the one left out. The process was repeated for each protein in the set. Performance was similar across the parameter range, with the parameters $C=1$ and $\gamma=10^{-4}$ being selected for the final SVM. Due to the low number of allosteric pockets on each protein, only the top prediction was chosen as being allosteric.
+
+
+\subsection{Web server}
+
+A flowchart outlining the process of running a job is shown in Figure~\ref{fig:flowchart}.
+The web server was implemented using the Django extension to Python and a SQLite database.
+JSmol, a JavaScript implementation of the Jmol package, was used for molecular visualisation.
+Bootstrap was used for page styling.
+The standalone version of the code runs faster and it is recommended that users who intend to use the method extensively or in batch download the code for local use.
