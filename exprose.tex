@@ -77,18 +77,70 @@ This value allows flexibility in the ensemble whilst giving good quality structu
 Once the distance constraints have been generated, an iterative process is used to generate structures that satisfy the constraints.
 Stochastic Proximity Embedding (SPE) \cite{Agrafiotis2013} was selected, as it has been shown to converge effectively and scales well with system size.
 This procedure provides better convergence than the CONCOORD procedure of moving atoms to a random distance within the distance constraints.
-The pseudocode for the SPE algorithm, rephrased from an existing review \cite{Agrafiotis2013}, is shown in Algorithm~S1.
+The pseudocode for the SPE algorithm, rephrased from an existing review \cite{Agrafiotis2013}, is shown in Algorithm~\ref{algorithm:spe}.
 The distance constraints do not include favourability for a particular chirality, so coordinates produced from SPE are examined and structures with the incorrect chirality are reversed by mirroring all coordinates in the $xy$ plane.
 
+
+\begin{algorithm}[p]
+\caption{SPE algorithm}
+\label{algorithm:spe}
+\begin{algorithmic}
+
+\State Define lower and upper distance constraints $l_{ij}$ and $u_{ij}$ for atom pairs $i$ and $j$
+\State Define an initial learning rate $\lambda_{d} = 1.0$
+\State Randomise atomic coordinates $x_{i}$ within a cube of 100 \AA
+\For{$C$ cycles}
+    \For{$S$ steps}
+        \State Randomly select a pair of atoms $i$ and $j$ for which a constraint exists
+        \State Compute the distance $d_{ij} = \left\| x_{i} - x_{j} \right\|$
+        \If{$d_{ij} < l_{ij}$ or $d_{ij} > u_{ij}$}
+            \State Update the coordinates $x_{i}$ and $x_{j}$ by
+                $$
+                x_{i} = x_{i} + \frac{\lambda_{d}}{2} \frac{t_{ij} - d_{ij}}{d_{ij}} (x_{i} - x_{j})
+                $$
+                $$
+                x_{j} = x_{j} + \frac{\lambda_{d}}{2} \frac{t_{ij} - d_{ij}}{d_{ij}} (x_{j} - x_{i})
+                $$
+            \State where $t_{ij}$ is the nearest constraint to $d_{ij}$
+        \EndIf
+    \EndFor
+    \State Decrease the learning rate $\lambda_{d}$ by $1 / C$
+\EndFor
+
+\end{algorithmic}
+\end{algorithm}
+
+
 Once a set of coordinates has been generated, an SPE error score can be calculated that measures how well the distance constraints are satisfied \cite{Agrafiotis2013}.
-This score is calculated as shown in Algorithm~S2.
+This score is calculated as shown in Algorithm~\ref{algorithm:scoring}.
 Structures with a high error score tend to have more violations of allowed stereochemistry, which is to be expected as there are more violations of allowed constraints.
 In order to account for this, more structures are generated than required and those with the highest scores are discarded.
 The ratio is set to be 1.5.
 So if the final ensemble had 200 structures, initially 300 are generated and the 100 with the highest error score are discarded.
 This was found during development to generally produce ensembles of structures with acceptable stereochemical quality.
 
-The number of iterations per atom, the product of the number of cycles $C$ and the number of steps $S$ from Algorithm~S1, is taken as 60,000.
+
+\begin{algorithm}[p]
+\caption{Scoring algorithm}
+\label{algorithm:scoring}
+\begin{algorithmic}
+
+\State Set score $s = 0$
+\For{each atom pair $i$, $j$ with a distance constraint}
+    \If{$d_{ij} < l_{ij}$ or $d_{ij} > u_{ij}$}
+        \State Increase $s$ by
+        $$
+        \frac{(d_{ij} - t_{ij})^{2}}{\max \left ( u_{ij} - l_{ij}, 0.001 \right )}
+        $$
+        \State where $t_{ij}$ is the nearest constraint to $d_{ij}$
+    \EndIf
+\EndFor
+
+\end{algorithmic}
+\end{algorithm}
+
+
+The number of iterations per atom, the product of the number of cycles $C$ and the number of steps $S$ from Algorithm~\ref{algorithm:spe}, is taken as 60,000.
 This was chosen as the SPE error score did not generally decrease for iterations beyond this.
 The ratio of $S$ to $C$ is taken as 50:1 as in practice any value of $S > C$ will give similar results \cite{Agrafiotis2013}.
 The reduction in learning rate over the course of the minimisation makes this process similar to simulated annealing.
@@ -193,3 +245,390 @@ ExProSE generates 250 structures in $\sim$20 minutes for T4-lysozyme on a 3.1 GH
 For tCONCOORD the time is $\sim$10 minutes.
 NMSim is run via the NMSim web server and takes $\sim$5 hours.
 MD and targeted MD use considerably more resources, with a 50 ns run taking $\sim$60 hours on 16 cores (2.3 GHz Intel Xeon CPU E5-2698) or $\sim$20 days on the single processor above.
+
+
+\section{Results}
+
+ExProSE is able to (i) generate ensembles of protein structures from two input structures and (ii) predict allosteric pockets on proteins.
+First, it is shown using a dataset of structural pairs that two widely-used methods for generating ensembles cannot span large conformational changes.
+The ability of ExProSE to produce native-like ensembles is exemplified with T4-lysozyme.
+ExProSE ensembles can be perturbed to reveal the location of allosteric sites, as demonstrated on cyclin-dependent kinase 2 (CDK2).
+The performance of ExProSE in predicting allosteric sites is assessed on a dataset of 58 known allosteric proteins.
+Finally, a well-studied example of dynamic allostery is examined.
+
+
+\subsection{Ensemble generation}
+
+\subsubsection{Apo/holo dataset}
+
+In order to examine the ability of existing non-MD methods to generate ensembles that span conformational changes, a dataset of apo (no modulator) and holo (modulator bound) structures was used \cite{Atilgan2010}.
+The proteins have RMSD between apo and holo structures ranging from 2 \AA\ to 19 \AA, and represent a variety of domain, subdomain and subunit motions.
+tCONCOORD \cite{Seeliger2007} and NMSim \cite{Kruger2012} both seek to model conformational changes such as those in the dataset.
+Default parameters were used to produce 250 structures for each protein from tCONCOORD and NMSim.
+The lowest RMSD of the structures in an ensemble to a particular crystal structure was taken as a measure of how close the ensemble came to exploring the conformational space of that crystal structure.
+This can be seen in Table~\ref{tab:ensemble_dataset}.
+
+When the apo structure is used as input, structures similar to the apo structure are generated by both methods.
+The median lowest RMSD to the apo crystal is 1.44 \AA\ for tCONCOORD and 0.71 \AA\ for NMSim.
+However, structures similar to the holo crystal are not sampled.
+The median lowest RMSD to the holo crystal is 4.15 \AA\ for tCONCOORD and 4.68 \AA\ for NMSim.
+In a similar manner, when the holo structure is used as input to tCONCOORD and NMSim the ensembles sample the holo structure but not the apo structure.
+
+ExProSE, as expected because it uses both the apo and holo crystals as input, is able to generate structures close to both crystals - see Table~\ref{tab:ensemble_dataset_ex}.
+For 11 out of the 12 proteins ExProSE can generate a structure closer to the holo crystal than the other methods, where the other methods use the apo structure as input.
+For the opposite case, comparing to the apo crystal, ExProSE also generates a closer structure for 11 out of 12 proteins.
+Hence ExProSE is useful for generating ensembles when two or more structures are available.
+
+PROCHECK checks the stereochemical quality of protein structures \cite{Laskowski1993}.
+The PROCHECK overall G-factor is a log-odds score based on the observed distributions of various stereochemical parameters in reference proteins.
+A lower overall G-factor represents a low-probability conformation, and indicates a less stereochemically-valid structure.
+Ideally, scores should be above -0.5, and values below -1.0 may need investigation \cite{Esposito2006}.
+The median PROCHECK overall G-factor across all generated structures is -0.99 for ExProSE, indicating that PROCHECK produces structures that are generally acceptable.
+The values for NMSim and tCONCOORD are -0.32 and -1.83 respectively, indicating that NMSim produces good quality structures and tCONCOORD produces structures with poor stereochemical quality.
+The stereochemistry of generated structures can be improved by energy minimisation (see below).
+
+
+\begin{table}
+\centering
+
+%\includegraphics[width=\textwidth]{images/ensemble_dataset}
+
+\caption{Comparison of ensemble generation methods.
+The columns Apo PDB and Holo PDB refer to the PDB IDs of the apo and holo structures used.
+RMSD is the all-atom RMSD in \AA\ between the apo and holo structures.
+The rows are ordered by increasing RMSD.
+\textit{N} is the number of residues in common between the apo and holo chains used.
+The values on the right are the lowest RMSD in \AA\ of the structures in an ensemble produced using the method and input indicated, to the crystal structure indicated.
+A low value indicates that the ensemble sampled a structure close to the crystal structure.
+The median of the lowest RMSDs for each method/input combination is also given.}
+
+\label{tab:ensemble_dataset}
+\end{table}
+
+
+
+\begin{table}
+\centering
+
+%\includegraphics[width=0.8\textwidth]{images/ensemble_dataset_ex}
+
+\caption{Ability of ExProSE ensembles to reach apo and holo structures.
+The columns Apo PDB, Holo PDB, RMSD and \textit{N} are the same as in Table~\ref{tab:ensemble_dataset}.
+The values on the right are the lowest RMSD in \AA\ of the structures in an ExProSE ensemble to the crystal structure indicated.
+A low value indicates that the ensemble sampled a structure close to the crystal structure.
+The median of the lowest RMSDs is also given.}
+
+\label{tab:ensemble_dataset_ex}
+\end{table}
+
+
+\subsubsection{T4-lysozyme}
+
+Here, we demonstrate that ExProSE can generate structures close to crystals not used as input.
+Lysozymes damage bacterial cell walls by catalysing the hydrolysis of peptidoglycans.
+Bacteriophage T4-lysozyme is a suitable protein for analysing conformational variability as there are many crystal structures available and MD simulations of the protein have shown that simulations up to 200 ns do not reliably reach both the open and closed conformations \cite{Seeliger2007}.
+The pairwise RMSDs of the crystals range from 0.64 \AA\ to 4.25 \AA.
+
+An ensemble was generated using ExProSE from the open (PDB ID 169L, chain E) and closed (PDB ID 2LZM) conformations.
+Four random structures from this ensemble are shown compared to the open and closed crystal structures in Figure~\ref{fig:t4l}A.
+Principal components analysis (PCA) can be carried out on an ensemble of structures to find the orthogonal motions that describe the variation in the ensemble.
+Figure~\ref{fig:t4l}B shows the projections of the generated ensemble and the 38 crystal structures used in a prior study \cite{DeGroot1998} onto the first and second principal components (PCs), which account for 70\% and 12\% of the motion respectively.
+The dominant first eigenvector corresponds to opening and closing of the structure.
+It can be seen that the method is able to sample conformations corresponding to experimentally-observed structures, as the ensembles largely overlap.
+
+Ensembles produced by tCONCOORD starting from the open and closed structures separately are shown in Figure~\ref{fig:t4l}C.
+As demonstrated previously on other proteins, the ensemble generated from the open structure cannot reach all the way to the closed structure, and vice versa.
+The tCONCOORD ensembles also sample structures not found in the ensemble of crystal structures, particularly when using the open conformation as input.
+This tendency of tCONCOORD to produce ensembles with too much structural variability was also noted by the authors \cite{Seeliger2009}.
+
+Ensembles produced by NMSim starting from the open and closed structures separately are shown in Figure~\ref{fig:t4l}D.
+In this case, the ensemble generated from the open and closed structures can largely span the conformational space.
+Similar to tCONCOORD, regions not explored by the crystals are sampled by NMSim.
+For example, there is one model in the ensemble generated from the open structure that has an RMSD of 7.38 \AA\ to the nearest crystal structure.
+
+Alternative parameters were also used for tCONCOORD and NMSim to see how the ensembles varied - see Figure~S1.
+For tCONCOORD decreasing the upper bound for long range constraints, and/or turning off close pairs as constraints, had little effect on the distribution of the ensembles.
+For NMSim using the parameters for small scale motions led to ensembles that could not span the conformational space.
+In each case the default parameters gave similar or better coverage of the conformational space of the crystals by visual inspection, and were hence used for the analysis below.
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{images/t4l}
+
+\caption{T4-lysozyme ensembles.
+(\textbf{A}) Four structures generated from ExProSE using the open (PDB ID 169L, chain E)  and closed (PDB ID 2LZM) conformations as input are shown in orange.
+The crystal structures of the open and closed conformations are shown in blue and green respectively for reference.
+The arrow shows the opening motion caused by the breaking of a hydrogen bond between ARG137 and GLU22.
+(\textbf{B}) Projections of the 38 crystal structures used in a prior study \cite{DeGroot1998} onto the first (x-axis) and second (y-axis) PCs of the PCA of the crystal structures, which account for 70\% and 12\% of the motion respectively (black dots).
+Projections from the ensembles generated with ExProSE are also shown (red dots).
+(\textbf{C}) Projections of two tCONCOORD ensembles on the same plot as (B).
+An ensemble using the open structure as input (blue dots) and an ensemble using the closed structure as input (yellow dots) are shown.
+(\textbf{D}) Projections of two NMSim ensembles with parameters for large scale motions on the same plot as (B).
+An ensemble using the open structure as input (blue dots) and an ensemble using the closed structure as input (yellow dots) are shown.
+See also Figure~S1 and Table~S1.}
+
+\label{fig:t4l}
+\end{figure}
+
+
+T4-lysozyme was also studied with MD.
+50 ns MD runs starting from the closed conformation were not able to reach the open conformation and vice versa - see Figure~\ref{fig:t4l_md}A and \ref{fig:t4l_md}B.
+Targeted MD runs starting from the closed conformation and targeting the open conformation (and vice versa) were also carried out.
+In targeted MD the atoms are guided to a target structure with the use of a steering force that seeks to minimise the RMSD of the structure to the target structure.
+These ensembles can be seen in Figure~\ref{fig:t4l_md}C and \ref{fig:t4l_md}D, and are generally able to cross conformational space over the course of around 20 ns.
+However beyond this time they show unpredictable behaviour and can deviate from the experimental structures.
+Retaining only the structures up to 20 ns, as in Figure~\ref{fig:t4l_md}C and \ref{fig:t4l_md}D, gives ensembles that largely overlap with the experimental structures.
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{images/t4l_md}
+
+\caption{MD T4-lysozyme ensembles.
+Projections of two repeats of a particular MD run onto the PCA of the crystal structures are shown (blue and yellow dots), with snapshots taken every 100 ps.
+Similar to Figure~\ref{fig:t4l}, in each graph the projections of the crystals are also shown (black dots).
+(\textbf{A}) 50 ns MD runs starting from the closed structure (PDB ID 2LZM).
+(\textbf{B}) 50 ns MD runs starting from the open structure (PDB ID 169L).
+(\textbf{C}) 20 ns targeted MD runs starting from the closed structure and targeting the open structure.
+(\textbf{D}) 20 ns targeted MD runs starting from the open structure and targeting the closed structure.}
+
+\label{fig:t4l_md}
+\end{figure}
+
+
+By combining tCONCOORD, NMSim and targeted MD ensembles generated using the open and closed structures as input, a fair comparison to ExProSE can be made.
+A generated ensemble should ideally contain models close to all the crystal structures.
+The degree to which this occurs for ExProSE ensembles, and combined ensembles for tCONCOORD, NMSim and targeted MD up to 20 ns, is shown in Figure~\ref{fig:t4l_rmsd}A.
+It can be seen that ExProSE is able to generate structures close to all crystals, with all crystals having an RMSD of 1.7 \AA\ or less to a generated structure.
+For 26 out of 38 crystals ExProSE generates a model closer to the crystal than NMSim.
+It generates a closer model than tCONCOORD in all cases.
+For 15 out of 38 crystals ExProSE generates a model closer to the crystal than targeted MD.
+However, this is the case for 14 out of the 27 structures that have an RMSD of more than 1.0 \AA\ to both the open and closed reference structures.
+Of these 27, ExProSE performs better for all of the 4 structures that have an RMSD of more than 1.5 \AA.
+Hence ExProSE is able to generate better models than the other methods for crystals which are far from either input structure, as seen on the right side of Figure~\ref{fig:t4l_rmsd}A.
+The PROCHECK overall G-factor of the closest models for each method is shown in Figure~\ref{fig:t4l_rmsd}B.
+ExProSE is able to produce models of acceptable quality close to all the crystals, even for those further from the input structures.
+
+In order to determine whether the stereochemical quality of generated structures could be improved, energy minimisation was carried out on all structures.
+For all methods, energy minimisation improved median PROCHECK overall G-factors.
+Across the ensembles the median values increased from the range [-2.23, -0.45] to the range [-0.31, -0.17] - see Table~S1.
+This shows that stereochemical problems in generated structures can in general be improved by energy minimisation, important if using generated structures for docking studies.
+
+By using two input structures rather than one, ExProSE is able to produce models of acceptable quality close to other crystal structures.
+It can explore conformational space better than methods that use a single structure as input.
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=0.5\textwidth]{images/t4l_rmsd}
+
+\caption{Closest models from each ensemble to T4-lysozyme crystal structures.
+(\textbf{A}) The RMSD of the closest model from each generated ensemble to the crystal structures.
+The crystal structures are sorted by the lower of the two RMSD values to the open and closed crystals used as input.
+The crystals used as inputs are omitted from the graph.
+(\textbf{B}) PROCHECK overall G-factors of the closest model from each generated ensemble to the crystal structures.
+The crystal structures are sorted as in (A).}
+
+\label{fig:t4l_rmsd}
+\end{figure}
+
+
+\subsection{Ensemble perturbation for CDK2}
+
+Here, we demonstrate that ExProSE ensembles can be perturbed to reveal modulating sites.
+CDK2 is a protein kinase essential for the G1/S phase transition in the cell cycle \cite{Peyressatre2015}.
+It associates with, and is regulated by, cyclins.
+It has been a major target of drug discovery efforts due to its essential role.
+An ExProSE ensemble was generated using the apo native structure (PDB ID 1HCL) and the holo structure bound to two ANS molecules in an allosteric site (PDB ID 3PXF).
+The ANS-bound structure is inactive, as ANS binding causes a conformational shift in the C-helix that prevents cyclin binding \cite{Betzi2011}.
+A further screening study has found potential modulators for the ANS binding site \cite{Rastelli2014}.
+
+Figure~\ref{fig:cdk}A shows the pockets predicted by LIGSITE\textsuperscript{\it cs} \cite{Huang2006} on CDK2 bound to two ANS molecules.
+The ensemble perturbation procedure was carried out at each of the 8 pocket centres as described in the experimental procedures.
+In brief, additional constraints are added representing a modulator bound in the selected pocket.
+Projections of the structures of the unperturbed ensemble and the structures of the ensemble with perturbation at the pocket centre are shown in Figure~\ref{fig:cdk}B, one graph per pocket centre.
+The third PC was chosen for visualisation instead of the second as it represents the inactivating motion of the C-helix, whereas the second PC represents a rotation in the region of the protein considered to be functionally less important, the C-lobe.
+
+Site 1 in Figure~\ref{fig:cdk}A and \ref{fig:cdk}B is the ANS allosteric pocket.
+Simulating a modulator there shifts the ensemble towards the inactive state, agreeing with previous experimental data \cite{Betzi2011}.
+Site 2 is the ATP-binding site and there is no change in the ensemble by simulating a modulator there.
+This is encouraging as ATP binding does not cause structural changes that lead to cyclin dissociation.
+Site 3 is found in a pocket near the activation segment.
+A shift in the ensemble towards the inactive state is seen on perturbation at this site.
+In fact this site is close to a potential allosteric site suggested in another computational study \cite{Pitt2014}, and is part of the region associated with cyclin-binding.
+This indicates that the site could potentially be an allosteric site, though further effort would be required to determine whether it is druggable.
+Simulating modulators at sites 4 to 8 does not shift the ensemble, suggesting that binding at these sites is unable to cause an allosteric effect.
+No allosteric modulators have been reported experimentally for these sites.
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{images/cdk}
+
+\caption{CDK2 pockets and projections of ensembles.
+(\textbf{A}) CDK2 in its holo conformation bound to two ANS molecules in the allosteric site (PDB ID 3PXF).
+CDK2 is shown as a green cartoon with the two bound ANS shown as blue sticks.
+Pocket centres predicted by LIGSITE\textsuperscript{\it cs} are shown as purple spheres.
+The pockets are numbered by descending volume.
+Pocket 1 represents the ANS allosteric pocket.
+Pocket 2 represents the ATP binding pocket.
+(\textbf{B}) Structures generated using ExProSE, with input structures the apo and holo structures (PDB ID 1HCL and 3PXF respectively), are shown as red dots.
+The axes are projections onto the first (x-axis) and third (y-axis) PCs of the ExProSE ensemble, which account for 35\% and 8\% of the motion respectively.
+The blue dots represent the structures in the ensemble with perturbation at pocket centres 1-8 from (A).}
+
+\label{fig:cdk}
+\end{figure}
+
+
+\subsection{Allosteric site prediction}
+
+Systematic methods to predict allosteric sites on proteins are necessary to utilise the potential advantages of allosteric drugs.
+A diverse dataset of 58 apo/holo pairs representing the unbound protein and the protein bound to a known allosteric modulator was assembled from the ASD \cite{Shen2016}.
+This dataset showed a large range in protein size (153 to 955 residues) and included a variety of proteins including transcriptional regulators, transporters and protein kinases.
+
+LIGSITE\textsuperscript{\it cs} was used to predict pockets on the holo crystal structures and ExProSE was used to generate a perturbed ensemble for each pocket centre as described in the experimental procedures.
+These perturbed ensembles were used to rank the pockets in terms of predicted allosteric effect.
+In this study a correct prediction for a protein indicates that an allosteric pocket was ranked first or second.
+This criterion was chosen as a measure of success because typically the top few pockets predicted by a method would be examined and studied further.
+
+The ability of ExProSE to predict allosteric pockets on the dataset is compared to existing allosteric prediction methods, which are run with the holo crystal structures as input.
+This was found to give better results for the existing methods than using the apo crystals.
+PARS \cite{Panjkovich2014} uses NMA with and without a predicted modulator to predict changes in flexibility.
+STRESS \cite{Clarke2016} is an implementation of the earlier binding leverage algorithm \cite{Mitternacht2011}, which models how perturbations due to binding couple to the motions of the protein as expressed by low-frequency normal modes.
+AlloPred \cite{Greener2015} uses perturbation of normal modes and pocket features in a machine learning approach to predict allosteric pockets.
+It should be noted that different criteria are used to define an allosteric pocket for each method, due to the nature of their output - see the experimental procedures.
+For 27 of 58 proteins ExProSE ranked an allosteric pocket first or second, performing better than the other three methods.
+This is shown in Table~\ref{tab:allosteric_methods}.
+Only 7 proteins have an allosteric pocket ranked first or second by all four methods.
+In 3 cases ExProSE makes a correct prediction for a protein while none of the other methods did.
+
+The performance of the allosteric prediction methods is also compared to the pocket prediction methods LIGSITE\textsuperscript{\it cs} and Fpocket \cite{LeGuilloux2009} in Table~\ref{tab:allosteric_methods}.
+LIGSITE\textsuperscript{\it cs} and Fpocket are effective at finding allosteric sites, both ranking an allosteric pocket first or second for 31 out of 58 proteins, even though they are not designed specifically for allosteric site prediction.
+This is not too surprising as the holo structures were used as input, so the modulator had a reasonable chance of being in one of the two largest pockets.
+However ExProSE is still valuable as it finds smaller, less obvious allosteric pockets.
+This could be due to the extra structural information used as input.
+For example, ExProSE in 6 cases finds sites not ranked in the top 2 by LIGSITE\textsuperscript{\it cs} and in 8 cases finds sites not ranked in the top 2 by Fpocket.
+ExProSE shows the best complementarity to the pocket prediction methods along with STRESS, which makes fewer correct predictions.
+ExProSE also gives information on how the ensemble may be affected by the modulators, as demonstrated in Figure~\ref{fig:cdk}, allowing inspection of the predicted structural and dynamic changes arising from perturbation.
+
+The performance on each protein by each method is shown in Table~S2.
+This is to our knowledge the first systematic comparison of multiple allosteric prediction methods.
+49 of 58 proteins had an allosteric pocket ranked first or second by at least one of the 6 methods compared in Table~\ref{tab:allosteric_methods}.
+This complementarity indicates the potential for a meta approach that combines predictions from multiple methods.
+
+
+\begin{table}
+\centering
+
+%\includegraphics[width=0.7\textwidth]{images/allosteric_methods}
+
+\caption{Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins.
+Correct in top 2 is the number of proteins for which the method successfully ranked an allosteric pocket first or second.
+The definition for an allosteric pocket is given in the experimental procedures.
+The number of correct predictions by each method that are unique from the correct predictions of LIGSITE\textsuperscript{\it cs} and Fpocket is also shown.
+STRESS could not run on 4 proteins as they were too small.
+See also Table~S2.}
+
+\label{tab:allosteric_methods}
+\end{table}
+
+
+\subsection{Dynamic allostery in CAP}
+
+Catabolite activator protein (CAP) is a transcriptional activator that exists as a homodimer.
+Each subunit has a ligand-binding domain at the N-terminus and a DNA-binding domain at the C-terminus.
+Two cAMP molecules bind CAP with negative cooperativity and increase the affinity of the protein for DNA.
+The negative cooperativity of cAMP binding is a well-studied example of dynamic, or entropic, allostery \cite{Popovych2006}.
+The binding of one cAMP does not significantly change the structure of the other cAMP-binding site, but changes in the dynamics at the other site make binding entropically unfavourable \cite{Popovych2006, Louet2015}.
+
+ExProSE was used to explore the dynamic allostery in CAP.
+A single structure was used as input (PDB ID 1G6N) and four ensembles were generated with perturbations representing no cAMP bound (Apo-CAP), cAMP bound to chain A, cAMP bound to chain B, and cAMP bound to both chains A and B.
+Note this is the only case in this study where a single structure, rather than two, was used as input.
+The mean square fluctuation across each ensemble was calculated for each residue and gives a measure of the conformational flexibility of the residue across the ensemble.
+By comparing the mean square fluctuation of the ensembles with one or two cAMP bound to the ensemble of Apo-CAP we can see how the binding of cAMP affects the conformational flexibility of the protein.
+Figure~\ref{fig:cap} shows this visually.
+
+On binding cAMP to chain A, the surrounding regions of chain A become more rigid.
+This is to be expected on ligand binding.
+However, significant regions of chain B have the same flexibility (grey regions in Figure~\ref{fig:cap}) or are more flexible (red regions) on ligand binding to chain A.
+The corresponding effect happens on a single cAMP binding to chain B.
+However on cAMP binding to both chains, both binding sites become significantly rigid and nearly all regions of the protein are more constrained than in Apo-CAP.
+The ratio of mean square fluctuations as seen in Figure~\ref{fig:cap} follow the order parameter data and amide exchange rates, which are a measure of flexibility in the protein, from a previous study \cite{Popovych2006}.
+The explanation for the negative cooperativity given in the existing study is that the binding of the second cAMP significantly quenches motions in the protein - this has an associated entropic cost that leads to negative cooperativity between the cAMP sites.
+The data from ExProSE support this conclusion.
+
+The structural changes on cAMP binding were also measured using ExProSE.
+The average structures across the ensembles of Apo-CAP, and CAP with cAMP bound to chain A, were compared.
+The RMSD of chain A (B) between the averages of the ensembles was 0.16 \AA\ (0.08 \AA).
+This indicates minor structural re-arrangement in chain A due to ligand binding, but almost no change in chain B.
+This agrees with chemical shift mapping in the existing study \cite{Popovych2006}.
+These results indicate that ExProSE is able to reproduce dynamic allostery in a model system.
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{images/cap}
+
+\caption{Mean square fluctuations across CAP ensembles compared to Apo-CAP.
+The four ensembles are generated separately.
+Apo-CAP has no cAMP.
+The other ensembles have additional constraints (see the experimental procedures) representing cAMP bound to chain A, cAMP bound to chain B, or cAMP bound to both chains A and B.
+The bound cAMP molecules are shown for reference as green sticks.
+Red regions indicate residues with more flexibility compared to Apo-CAP, and blue regions indicate residues with less flexibility compared to Apo-CAP.}
+
+\label{fig:cap}
+\end{figure}
+
+
+\section{Discussion}
+
+The allosteric prediction methods PARS, STRESS and AlloPred all use NMA to predict allosteric sites.
+NMA is computationally-inexpensive and hence suitable for high-throughput, automated approaches.
+However the assumption of harmonic fluctuations around an energetically-minimum structure often makes prediction of conformational changes difficult, particularly for transitions with a low degree of collectivity \cite{Yang2007}.
+In addition, the choice of which normal modes to use is non-trivial.
+Larger conformational changes are associated with low-frequency normal modes but higher-frequency modes are also required to take into account local effects.
+The focus of NMA on changes in dynamics is also important - whilst NMA-based methods might be expected to reveal perturbations to vibrations in proteins there are a variety of other motions that contribute to allostery, such as local unfolding and rigid body movements \cite{Motlagh2014}.
+By contrast, ExProSE generates native-like protein structures that can span large conformational changes.
+The structure generation process is then perturbed to predict allosteric sites.
+This has the potential to discover effects not revealed by NMA-based methods, whilst retaining the low computational cost and ease of use.
+It also provides an ensemble of structures under the influence of the predicted modulator that can be used, for example, in flexible ligand docking.
+Energy minimisation provides a way to improve the stereochemistry of generated structures for use in such approaches.
+
+ExProSE requires two structures for each protein, whereas other methods only require one.
+It also requires the structures to be different from each other in order to generate structures that span the conformational space.
+This makes the method unsuitable for use on proteins where only one structure, or highly similar structures, are available.
+However, many medically-important proteins have multiple structures available, including the examples used in this study.
+In these cases, it makes sense to use the additional structural information.
+The method also was successful at reproducing the allostery in CAP using only one structure as input.
+For proteins with multiple different conformational states, more than two structures could be used as input to ExProSE to explore further regions of conformational space - the constraint combination procedure can be applied to an arbitrary number of structures.
+
+For many ensemble generation methods, such as MD and tCONCOORD, the choice of parameters has a large effect on the structures produced.
+The parameter in ExProSE with the largest effect is $W_{B}$ (see the experimental procedures), which affects the conformational spread of the ensemble.
+Without any user input, the auto-parameterisation step of ExProSE selects a value that gives an ensemble well-spread over the conformational space between the two input structures.
+Once $W_{B}$ has been selected automatically, an ensemble that spans the correct space is generally produced without any further choice of parameters.
+This makes the method suitable for high-throughput structure generation across multiple proteins as the user does not need to make any parameter choices themselves.
+The auto-parameterisation procedure can be adjusted to obtain the desired level of structural flexibility using the parameter $F$, which is intuitive in terms of the spread of structures over conformational space (see the experimental procedures).
+This provides a way to generate an ensemble with more flexibility if the input structures are similar, as mentioned above.
+
+In this study, LIGSITE\textsuperscript{\it cs} was used to predict pockets for ExProSE.
+However, it is worth noting that any pocket prediction method that outputs pocket points is compatible with ExProSE without modification.
+One of the challenges in allosteric site prediction is discovery of transient pockets - pockets that are only present in some structures of the ensemble.
+There are currently no general methods that use transient pockets for allosteric site prediction \cite{Boehr2009}, though recent studies have used Markov state models on MD simulations to predict cryptic allosteric sites on multiple proteins \cite{Bowman2012, Bowman2015}.
+These studies concluded that cryptic allosteric sites are more ubiquitous than previously thought.
+ExProSE has the potential to identify transient pockets and predict their ability as allosteric sites.
+For example, an ensemble could be clustered into a few representative structures and perturbation at sites on these structures could be used to predict transient allosteric pockets.
+
+ExProSE builds on existing methods by using more structural information as input.
+It is able to generate ensembles of protein structures that span relevant conformational changes in proteins.
+This makes it an effective alternative to similar methods and to MD, which it is often not feasible to run on timescales long enough to explore large motions of interest without specialist approaches.
+The perturbation procedure can be applied systematically to predict allosteric sites.
+In a comparison of multiple allosteric site predictors, ExProSE showed performance similar to and complementary with existing methods.
+Experimental results in the well-studied CAP were also reproduced by ExProSE.
+The ability to generate ensembles of protein structures and investigate the response of an ensemble to perturbations should prove useful for both the exploration of individual proteins and the systematic study of the whole PDB.
+Such methods are required to make sense of the increasing volume of structural data, and to understand the crucial importance of dynamics to protein function.
