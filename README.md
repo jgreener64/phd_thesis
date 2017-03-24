@@ -130,4 +130,4 @@ Experimental results.
 
 AlloPred technical docs from repo README.
 ExProSE technical docs from repo README.
-BioJulia PDB parser: parsing issues (e.g. disorder), speed discussion from pdb-benchmarks README.
+BioJulia PDB parser: parsing issues (e.g. disorder, Biopython discussion, dis res atoms in PDB), speed discussion from pdb-benchmarks README.
