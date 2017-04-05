@@ -72,9 +72,10 @@ ExProSE:
 
 CDK2:
 - Pocket of interest: surrounding residues, Surfstamp, different structures, example docking poses, PDB ligands, half-open 4EZ3
-- Modelled cyclin structure and PPI
+- Modelled cyclin structure and PPI from Phyre and others
 - Flowchart of virtual screening procedure?
 - Structures of compounds
+- Excel details of compounds as table
 - Experimental stuff
 
 Conclusion:
