@@ -113,6 +113,8 @@ Start with a simple example, like adenylate kinase?
 Calmodulin (huge conformational change)?
 Use above to demonstrate parameters etc.
 Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP, don't forget supplementary.
+Beta-lactamase and transient allosteric pocket?
+Run on a huge structure?
 
 
 ### CDK2
@@ -131,3 +133,5 @@ Experimental results.
 AlloPred technical docs from repo README.
 ExProSE technical docs from repo README.
 BioJulia PDB parser: parsing issues (e.g. disorder, Biopython discussion, dis res atoms in PDB), speed discussion from pdb-benchmarks README.
+Keep these up-to-date with GitHub repos and any BioJulia papers.
+Do these need to have references?

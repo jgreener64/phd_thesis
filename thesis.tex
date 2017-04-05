@@ -25,6 +25,16 @@
 % Algorithm formatting
 \usepackage{algpseudocode, algorithm}
 
+% Monospaced code blocks
+\usepackage{listings}
+\usepackage{color}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{lststyle}{
+    basicstyle=\footnotesize,
+    backgroundcolor=\color{backcolour},
+}
+\lstset{style=lststyle}
+
 \title{PhD thesis}
 \author{Joe G Greener}
 \date{}
@@ -38,6 +48,8 @@
 \include{allopred}
 
 \include{exprose}
+
+\include{appendices}
 
 \bibliographystyle{unsrt}
 \bibliography{library}
