@@ -1,11 +1,17 @@
 \chapter{ExProSE}
 \label{cha:exprose}
 
+This chapter describes ExProSE, a computational method based on distance geometry that generates an ensemble of protein structures from two input structures.
+The structures span conformational space and the ensemble generation procedure can be perturbed to predict allosteric sites.
+The work is further described in \cite{Greener2017}.
+
+
 \section{Materials and Methods}
 
 ExProSE is based on the CONCOORD distance geometry method \cite{DeGroot1997}, but has important differences that make it suitable for modelling conformational transitions and ensemble perturbations.
 These are primarily the use of two input structures instead of one, a different procedure for achieving convergence, the ability to predict the effect of a modulator and an auto-parameterisation procedure.
 ExProSE is implemented in Julia, a language that combines readable syntax similar to Python with performance approaching statically-compiled languages like C.
+Work was initially begun in a combination of Python and C++ before switching to Julia.
 Use of Julia allows good computational performance at the limiting steps, but also allows compact and easy-to-use code that others can modify.
 The code, documentation, details of the datasets and instructions for reproducing the data are freely-available under the MIT license as a Julia package at \url{https://github.com/jgreener64/ProteinEnsembles.jl}.
 The code is written in a modular way with associated unit tests and an automated building and testing procedure.
@@ -247,18 +253,42 @@ For tCONCOORD the time is $\sim$10 minutes.
 NMSim is run via the NMSim web server and takes $\sim$5 hours.
 MD and targeted MD use considerably more resources, with a 50 ns run taking $\sim$60 hours on 16 cores (2.3 GHz Intel Xeon CPU E5-2698) or $\sim$20 days on the single processor above.
 
+The ExProSE computation time is significantly improved over initial attempts due to optimisiation of the Julia code.
+Comparison of the performance-critical step (moving the atoms to satisfy the distance constraints) shows it is significantly faster that the same algorithm implemented in simple Python.
+The stochastic nature of the simulation means it is not easily amenable to vectorisation in NumPy.
+The performance-critical step in Julia showed speed around 1.5 times slower than an implementation in C.
+
 
 \section{Results}
 
+The motivation for developing ExProSE was to explore allostery in the framework of the protein structural ensemble.
+% Ref to into diagram
+A method was needed that could use existing structural information to generate ensembles that spanned the large conformational changes relevant in allostery.
+We decided to extend the popular existing method tCONCOORD.
+tCONCOORD converts a protein structure to a series of distance constraints based on chemical interactions (e.g. hydrogen bonds) then uses an iterative procedure to move randomly-placed atoms to satisfy the distance constraints.
+We alter this by using two structures as input, meaning the structures generated can span the conformational space spanned by the input structures.
+There are also other important differences to tCONCOOD (see methods).
+
 ExProSE is able to (i) generate ensembles of protein structures from two input structures and (ii) predict allosteric pockets on proteins.
-First, it is shown using a dataset of structural pairs that two widely-used methods for generating ensembles cannot span large conformational changes.
+First, the use of ExProSE is exemplified and explored on a protein kinase with a hinge opening motion.
+It is then shown using a dataset of structural pairs that two widely-used methods for generating ensembles cannot span large conformational changes, whereas ExProSE can.
 The ability of ExProSE to produce native-like ensembles is exemplified with T4-lysozyme.
 ExProSE ensembles can be perturbed to reveal the location of allosteric sites, as demonstrated on cyclin-dependent kinase 2 (CDK2).
-The performance of ExProSE in predicting allosteric sites is assessed on a dataset of 58 known allosteric proteins.
+The performance of ExProSE in predicting allosteric sites is assessed on a dataset of 58 known allosteric proteins and compared to existing methods.
 Finally, a well-studied example of dynamic allostery is examined.
 
 
 \subsection{Ensemble generation}
+
+\subsubsection{Adenylate kinase}
+
+Adenylate kinase is... hinge opening...
+Importance of parameterisation and how this can be a problem with existing methods/MD.
+Important parameter in ExProSE.
+Desire to control it.
+Fig shows ensemble spread with different parameters and set chosen by auto-parameterisation.
+This method used throughout.
+
 
 \subsubsection{Apo/holo dataset}
 

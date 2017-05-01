@@ -76,7 +76,7 @@ CDK2:
 - Flowchart of virtual screening procedure?
 - Structures of compounds
 - Excel details of compounds as table
-- Experimental stuff
+- Experimental stuff, e.g. FRET mechanism
 
 Conclusion:
 -
