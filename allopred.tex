@@ -155,6 +155,14 @@ The standalone version of the code runs faster and it is recommended that users 
 
 \section{Results}
 
+We developed a computational procedure, AlloPred, which uses NMA to predict the allosteric pockets on a protein.
+AlloPred models how the dynamics of a protein would be altered in the presence of a modulator at a specific pocket.
+As described in Section... if the binding of a modulator causes a change in dynamics at the active site, it can be predicted to have an allosteric effect.
+Pockets on the protein were first predicted using the Fpocket \cite{LeGuilloux2009} algorithm, which locates pockets using Voronoi tessellation and alpha spheres.
+The normal modes of the protein were then calculated using the elastic network model, except the spring constant of any atom pair including a residue in a chosen pocket was set to be a higher value.
+The effect of this perturbation was measured at the active site.
+These results were combined with output from Fpocket in a support vector machine (SVM) to predict allosteric pockets on proteins.
+
 AlloPred was tested on a test set of 40 known allosteric proteins (see the Methods section for selection criteria).
 For each protein AlloPred ranked the pockets and the top ranked pocket was examined.
 For 23 of 40 proteins AlloPred ranked top a pocket containing an allosteric binding residue (an \emph{allosteric pocket}), when 18\% of pockets were allosteric pockets.
@@ -217,3 +225,5 @@ A method based around the changes in dynamics on ligand binding is likely to mis
 In particular, classic examples of allostery such as haemoglobin that involve oligomeric re-organisation to affect ligand cooperativity are not suitable for use with this method.
 However, the results shown here and in other studies are encouraging and indicate a future where we can pick modulating sites on proteins with reasonable confidence.
 Our method, for example, successfully predicts allosteric sites on proteins with a variety of sizes and functions.
+
+% Size bias discussion
