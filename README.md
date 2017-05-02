@@ -26,6 +26,11 @@
 - September 2015 report
 
 
+## Issues
+
+- Images should have consistent white background
+
+
 ## Thesis outline
 
 - Abstract
@@ -75,7 +80,7 @@ CDK2:
 - Modelled cyclin structure and PPI from Phyre and others
 - Flowchart of virtual screening procedure?
 - Structures of compounds
-- Excel details of compounds as table
+- Excel details of compounds as table, and stuff from SwissADME
 - Experimental stuff, e.g. FRET mechanism
 
 Conclusion:
@@ -92,11 +97,13 @@ Appendices:
 
 ### Introduction
 
-Allostery
-Ensemble
-Normal modes
-Protein kinases
-CDK2
+Based off COSB review.
+Allostery.
+Ensemble.
+NMA.
+Allosteric prediction - ASD.
+Protein kinases.
+CDK2.
 
 
 ### AlloPred
@@ -109,11 +116,12 @@ Discuss pocket size bias.
 
 ### ExProSE
 
-Methods from paper.
-Start with a simple example, like adenylate kinase?
+Methods from paper, and further from LSR.
+Start with a simple example, like adenylate kinase? Have other crystals on PC plot. Talk about development of method, e.g. SPE score minimisation diagram.
 Calmodulin (huge conformational change)?
 Use above to demonstrate parameters etc.
 Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP, don't forget supplementary.
+LSR has other results like NtrC.
 Beta-lactamase and transient allosteric pocket?
 Run on a huge structure?
 

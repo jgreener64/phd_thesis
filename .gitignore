@@ -1,4 +1,5 @@
 resources
+images
 *.pdf
 *.aux
 *.log
