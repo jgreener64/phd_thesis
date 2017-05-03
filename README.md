@@ -29,6 +29,7 @@
 ## Issues
 
 - Images should have consistent white background
+- Consistent C-alpha
 
 
 ## Thesis outline
@@ -98,10 +99,10 @@ Appendices:
 ### Introduction
 
 Based off COSB review.
-Allostery.
-Ensemble.
+Allostery and the protein ensemble.
+Ensemble generation - MD, coarse-grained methods.
+Allosteric prediction - methods, pathway methods, experimental stuff, ASD.
 NMA.
-Allosteric prediction - ASD.
 Protein kinases.
 CDK2.
 

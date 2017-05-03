@@ -2,12 +2,53 @@
 \label{cha:introduction}
 
 This chapter introduces the concepts of allostery in proteins, the protein structural ensemble, normal mode analysis, structural prediction of allostery, protein kinases and cyclin-dependent kinase 2 (CDK2).
+% Change this to fit flow
 Some of this introduction has been written as a review (cite).
+
+
+\section{Allostery and the protein ensemble}
+
+
+\section{Ensemble generation}
+
+Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016}.
+X-ray crystallography provides a static view of the structure of proteins.
+However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007b} are hard to elucidate.
+Experimental techniques to explore the dynamics of proteins, such as nuclear magnetic resonance (NMR), are sophisticated and time-consuming.
+Molecular dynamics (MD) is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
+It is effective at modelling motions up to the timescale of nanoseconds.
+However, the computational cost of modelling proteins on the scale of microseconds or milliseconds means MD is not suitable for larger-scale transitions.
+Advanced MD methods such as targeted or accelerated MD can overcome this sampling problem \cite{Maximova2016}, but these methods are not yet routinely applicable due to the parameterisation required for each protein.
+
+Various non-MD methods have been used to generate ensembles of protein structures from a crystal input structure, and hence explore protein dynamics.
+These ensembles have uses in flexible ligand docking \cite{Totrov2008}, generating poses for protein-protein docking \cite{Mustard2005}, predicting structures on trajectories between two crystal structures \cite{Weiss2009}, and predicting flexible regions in proteins \cite{Ahmed2011}.
+
+CONCOORD \cite{DeGroot1997, DeGroot1999} is a distance geometry method to generate structures from an input structure and consists of a two-step process.
+First, the different types of chemical interactions in the input structure, e.g.\ H-bonding and hydrophobic interactions, are converted to distance constraints with a given tolerance.
+Next, an iterative minimisation procedure is performed to move a set of randomly-placed coordinates such that most distance constraints are satisfied.
+This generates a protein structure in a similar manner to the way a structure is produced from NMR constraints.
+The process is repeated to obtain an ensemble of structures.
+tCONCOORD extends CONCOORD and gives better sampling of proteins with large conformational changes by predicting H-bonds in the structure that are liable to break \cite{Seeliger2007}.
+
+
+\section{Allosteric prediction}
 
 
 \section{Normal mode analysis}
 
-
+Several studies have used normal mode analysis (NMA) to model allosteric regulation \cite{Mitternacht2011, Panjkovich2012, Balabin2009, Rodgers2013, Zheng2007}.
+In NMA, the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
+Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
+All observed configurations of the system can be generated from a linear combination of its normal modes.
+The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
+NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
+Even considering the C-alpha atoms alone as a network of balls and springs can be sufficient, meaning NMA is a computationally efficient way of exploring protein flexibility compared to MD.
+The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
+However, allostery does involve local effects so higher-frequency modes should also be taken into account \cite{Collier2013}.
+NMA can also be used to generate conformations of proteins, usually by modelling the protein along the relevant vibrations.
+The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
+This gives sampling similar to MD but is more computationally efficient.
+% Rep of above
 
 
 \section{Protein kinases}
