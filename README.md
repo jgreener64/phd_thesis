@@ -30,6 +30,7 @@
 
 - Images should have consistent white background
 - Consistent C-alpha
+- How to refer to other sections
 
 
 ## Thesis outline
@@ -82,7 +83,7 @@ CDK2:
 - Flowchart of virtual screening procedure?
 - Structures of compounds
 - Excel details of compounds as table, and stuff from SwissADME
-- Experimental stuff, e.g. FRET mechanism
+- Experimental stuff, e.g. FRET mechanism, assay protocol
 
 Conclusion:
 -
@@ -130,9 +131,9 @@ Run on a huge structure?
 ### CDK2
 
 Computational methods.
-Experimental methods.
+Experimental methods - see Tifa's report.
 Computational results.
-Experimental results.
+Experimental results - see Tifa's report.
 
 
 ### Conclusion
