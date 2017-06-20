@@ -65,7 +65,7 @@ Introduction:
 - Protein ensemble/energy levels diagram
 - Normal modes flowchart: protein -> ENM -> Hessian -> diagonalise -> view on structure
 - Conserved protein kinase structure and known allosteric kinase modulators
-- CDK2 structure, cyclin binding, steps of activation in PyMol
+- CDK2 structure, cyclin binding, steps of activation in PyMol (also possibly in CDK2 section)
 
 AlloPred:
 - Flexibility (paper Fig 1)
@@ -105,7 +105,7 @@ Ensemble generation - MD, coarse-grained methods.
 Allosteric prediction - methods, pathway methods, experimental stuff, ASD.
 NMA.
 Protein kinases.
-CDK2.
+CDK2 - see Pellerano 2017 for text and refs.
 
 
 ### AlloPred
@@ -133,7 +133,7 @@ Run on a huge structure?
 Computational methods.
 Experimental methods - see Tifa's report.
 Computational results.
-Experimental results - see Tifa's report.
+Experimental results - see Tifa's report, Comley 2006 for TR-FRET diagram.
 
 
 ### Conclusion
