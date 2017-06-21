@@ -82,7 +82,7 @@ CDK2:
 - Modelled cyclin structure and PPI from Phyre and others
 - Flowchart of virtual screening procedure?
 - Structures of compounds
-- Excel details of compounds as table, and stuff from SwissADME
+- Excel details of compounds as table
 - Experimental stuff, e.g. FRET mechanism, assay protocol
 
 Conclusion:
