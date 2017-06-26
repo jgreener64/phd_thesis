@@ -44,6 +44,7 @@ pdflatex thesis.tex
 - Cyclin A or A2? Cyclin capitalised?
 - Binding assay or immunoblot assay etc
 - Abbreviations: TR-FRET, PPI
+- g to rpm
 
 
 ## Thesis outline
