@@ -1,5 +1,14 @@
 # PhD thesis
 
+Build instructions:
+```
+pdflatex thesis.tex
+bibtex thesis
+pdflatex thesis.tex
+pdflatex thesis.tex
+```
+
+
 ## Plan
 
 - Research official requirements and timeline
@@ -24,6 +33,7 @@
 - ESA: ~3,500 words
 - LSR: ~8,000 words
 - September 2015 report
+- Presentations - group meeting and other
 
 
 ## Issues
@@ -32,7 +42,8 @@
 - Consistent C-alpha
 - How to refer to other sections
 - Cyclin A or A2? Cyclin capitalised?
-- Abbreviations: TR-FRET
+- Binding assay or immunoblot assay etc
+- Abbreviations: TR-FRET, PPI
 
 
 ## Thesis outline

@@ -86,13 +86,13 @@ After washing the beads cyclin A was eluted with imidazole and stored at -20$^{\
 
 Wild-type CDK2 was previously prepared in the lab.
 His-tagged cyclin A (75 nM) was incubated on Sepharose fast flow beads (?) in buffer X with 12\% DMSO.
-CDK2 was added () along with compounds in 5 concentrations (0 M control, 8 um, 40 um, 200 uM and 1 mM).
+CDK2 was added (8 nM) along with compounds in 5 concentrations: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
 After incubation for 1 hour the beads were washed with buffer X and heated in gel-loading dye at 100$^{\circ}$C for 10 minutes to release bound protein.
 The proteins in the supernatant were separated by SDS-PAGE and transferred to a nitrocellulose membrane by electroblotting in transfer buffer for 1 hour at 100 V.
 The membrane was incubated for 15 minutes in TBS-T buffer with 1.5\% skimmed milk powder.
 The primary antibody, CDK2 rabbit polyclonal antibody ( M) was added and the membrane incubated overnight at 4$^{\circ}$C.
 After washing with TBS-T the secondary antibody was added ( M) and incubation for 1 hour carried out.
-The membrane was washed with TBS-T and imaged by adding ...
+The membrane was washed with TBS-T and imaged by adding ... and 1 s exposure.
 % Check with other papers that do this
 
 
@@ -104,6 +104,7 @@ Excess dye was removed by gel filtration.
 
 For the TR-FRET CDK2 titration a 392 (?) well plate was used.
 Each well contained 1 nM Cyclin A-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
+A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
 The plate was incubated for 1 hour and centrifuged at 800 g.
 ... plate reader was used to read the plate.
 20 (?) repeats were taken for each reading.
@@ -130,7 +131,7 @@ Figure.
 
 \caption{Structure and screening of CDK2.
 (A) The structure of CDK2 (PDB ID 1HCL) with (colours)...
-(B) The CDK2-cyclin A complex required for CDK2 activation.
+(B) The CDK2-Cyclin A complex required for CDK2 activation.
 The crystallised complex (PDB ID 1FIN) is shown with CDK2 in green and the crystallised portion of cyclin A in cyan.
 The whole cyclin A sequence was modelled using Phyre2 \cite{Kelley2015} and aligned to the above complex and the ab initio modelled region (with no structural templates) is shown in magenta.
 Part of this region potentially interacts with CDK2.
@@ -218,20 +219,27 @@ The purification of His-tagged cyclin A however produced considerably more prote
 Fig with gel bands and different conditions.
 
 
-\subsection{Binding assay}
-
-\begin{figure}
-\centering
-
-%\includegraphics[width=\textwidth]{images/binding_assay}
-
-\caption{}
-
-\label{fig:binding_assay}
-\end{figure}
-
-
 \subsection{TR-FRET}
+
+The main aim of the experimental work was to screen the purchased compounds using the TR-FRET assay.
+This popular assay for drug discovery research is the combination of time-resolved fluorometry with F\"{o}rster resonance energy transfer (FRET).
+FRET involves two fluorophores, a donor and an acceptor.
+Figure~\ref{fig:tr_fret}A outlines the principles of a TR-FRET assay.
+
+% Excitation of the donor by an energy source (e.g. flash lamp or laser) produces an energy transfer to the acceptor if the two are within a given proximity to each other. The acceptor in turn emits light at its characteristic wavelength.
+
+A time delay between excitation and measurement means measurement occurs after the timescale of background fluorescence.
+The long emission time of the donor fluorophore means a signal is obtained after the time delay.
+
+CDK2 prepared previously in the lab was labelled with Cy5 dye.
+The TR-FRET assay was tested using a titration of CDK2 with constant Cyclin A and donor fluorophore.
+An increase in signal with increasing CDK2 concentration would be expected.
+Figure~\ref{fig:tr_fret}B shows the result of this titration.
+Whilst there is a higher signal at higher CDK2 concentrations, this trend is also present for the control of Cyclin A-GST.
+Cyclin A-GST lacks the His tag required to bind to the donor fluorophore so should not lead to a TR-FRET signal.
+This indicates that the increased signal with CDK2 concentration is likely due to excess, unbound Cy5 dye in the CDK2 solution.
+Time constraints meant that a further gel filtration could not be carried out to remove this unbound dye.
+The high background signal would means the screen would not be effective at finding compounds that inhibit the Cyclin A-CDK2 interaction, so the compounds were not put through the TR-FRET screen.
 
 \begin{figure}
 \centering
@@ -248,6 +256,57 @@ Light is shone at the excitation wavelength of...
 \end{figure}
 
 
+\subsection{Binding assay}
+
+A binding assay was carried out to test whether the compounds could inhibit the CDK2-Cyclin A interaction.
+Cyclin A-His and CDK2 were incubated with beads that selectively bind His tags.
+After washing the beads to remove unbound protein only Cyclin A and proteins bound to it should remain.
+In the absence of a PPI inhibitor a signal for CDK2 would be expected in immunoblotting as CDK2 binds to Cyclin A.
+This signal would be expected to disappear in the presence of a modulator that prevented the interaction.
+
+The binding assay results can be seen in Figure~\ref{fig:binding_assay} for the 12 compounds it was carried out on.
+A significant problem with the assay was binding of CDK2 to the beads despite the lack of a His tag on CDK2.
+This gave a significant background signal and means that a signal from the compounds would be hard to distinguish from the background.
+However, some compounds do appear to remove the CDK2 signal at high concentrations.
+Compound D at 200 \textmu M and 1 mM, and compound J at 1 m, cause the CDK2 signal to decrease.
+As the expected background is high this is probably due to solubility issues of those compounds at high concentrations...
+% Assay not very quanititative anyway
+% Fluorescent also tried (gel)
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{images/binding_assay}
+
+\caption{(A) Binding assay results for the 12 compounds tested.
+The five bands represent increasing compound concentrations from left to right: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
+The strength of the band represents the presence of CDK2.
+The background signal, in the absence of Cyclin A, is also shown.
+This shows non-specific binding of CDK2 to the beads and indicates that a signal in the assay would be hard to distinguish from the background.}
+
+\label{fig:binding_assay}
+\end{figure}
+
+
 \section{Discussion}
 
-Difficulty of purifying cyclin A, due to flexible structure?, also GST may affect folding, ref to lack of crystal structure for certain region (run Disopred to check disorder?).
+% Difficulty of purifying cyclin A, due to flexible structure?, also GST may affect folding, ref to lack of crystal structure for certain region (run Disopred to check disorder?).
+The difficulty of purifying Cyclin A is likely due to the propensity of the protein to aggregate.
+As shown in Figure~\ref{fig:cdk2_structure}B the crystal structure of the CDK2-Cyclin A complex has only been found for part of the structure.
+Cyclin A alone has not been crystallised??
+The presence of the GST tag made Cyclin A purification considerably more difficult than the His tag.
+This could be due to the large GST segment causing problems with folding leading to aggregation in the fusion protein.
+% Check the paper, was it hard to crystallise?
+
+Though time constraints meant that no more experiments could be carried out, there are a number of other tests that could be done.
+Primarily this would involve further work on the TR-FRET and binding assays to reduce background signal and allow the compounds to be screened.
+Other tests that could be carried out include:
+
+\begin{itemize}
+\item X-ray crystallography:
+\item Anti-proliferation assay:
+\item Kinase assay:
+\item Mutagenesis:
+\item Thermal shift assay:
+\item Surface plasmon resonance:
+\end{itemize}
