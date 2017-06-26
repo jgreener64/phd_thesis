@@ -13,43 +13,59 @@ Chosen molecules were purchased and tested...
 \subsection{Virtual screening}
 
 ZINC is a free database of commercially-available compounds for virtual screening \cite{Sterling2015}.
-The ZINC12 LeadsNow subset contains over 3 million lead-like molecules in stock at chosen suppliers, where lead-like...
+The ZINC12 LeadsNow subset contains over 3 million lead-like molecules in stock at chosen suppliers.
+Lead-like molecules have a molecular weight between 250 and 350, an octanol-water partition coefficient not greater than 3.5 and no more than 7 rotatable bonds.
+These criteria give smaller and more x molecules than those that would conventionally end up being drugs.
+This is because at the hit stage the priority is finding effective scaffolds with high affinity per atom (ligand efficiency).
+Elaboration of the structure with further functional groups generally occurs later and would usually result in the addition of chemical groups, raising the molecular weight.
 These are clustered using a 90\% Tanimoto cutoff as described at \url{http://zinc.docking.org} to get a representative subset of $\sim$250,000 compounds.
+% sidechains allowed to move?
 These compounds are docked using AutoDock Vina \cite{Trott2010} to the pocket of interest in the ANS-bound structure, PDB ID 3PXF.
 The receptor and ligands are prepared in line with the AutoDock Vina documentation.
 The top 2,000 structures by affinity score from this screen were retained for further docking studies.
 These molecules were docked using AutoDock Vina and DOCK \cite{Allen2015} onto four structures:
 \begin{itemize}
-\item ...
-\item ...
-\item ...
-\item ...
+\item The ANS-bound structure, PDB ID 3PXF.
+\item The ANS-bound structure with the active site inhibitor staurosporine, PDB ID 4EZ7.
+\item A structure selected from an ensemble of structures generated from (1) using ExProSE.
+The selected structure has the maximum sum of two distances across the opening of the pocket, .
+This struture is energy minimised as described in (exprose experimental ref).
+\item The same as (3) but the ensemble is generated using ExProSE from (2).
 \end{itemize}
 % Move these to results
-Docking to multiple structures means the compounds are scored in multiple conformations of the binding site (ensemble docking).
+Docking to multiple structures means the compounds are scored in multiple conformations of the binding site, which is an approximation of ensemble docking.
 This is important for this pocket as it is a flexible pocket.
-% Mention cross-docking?
+Using two different docking algorithms, AutoDock Vina and DOCK, .
+Compounds were in general better scored for structures (3) and (4), those with the pocket of interest open.
+This is to be expected as a larger pocket presents more opportunities for interactions with the ligand.
+% Mention cross-docking? In results
+
+d1 = distance(struc['A'][180]["OH"], struc['A'][150]["NH1"])
+d2 = distance(struc['A'][188]["OG"], struc['A'][165]["O"])
 
 
 \subsection{Compound selection}
 
 Compounds were ranked by the average of the 8 scores from the above docking (4 structures, 2 docking methods).
-Violations and benign functionality \cite{Daina2017}.
-Compounds removed by similarity in ChemMine \cite{Backman2011}.
-% Do any compounds appear in the PDB as ligands already?
-Compounds purchased from Enamine (\url{http://www.enamine.net}).
+In addition to the lead-like properties described previously, compounds were further filtered to remove compounds that would potentially give erroneous assay results.
+Compounds violating various criteria set out by the SwissADME server for assessing medicinal chemistry friendliness \cite{Daina2017}, such as properties of pan-assay interference compounds \cite{Baell2014}, were removed.
+Compounds marked as not having benign functionality in ZINC12 were also removed.
+Although compounds were clustered by ZINC12, some compounds were similar to each other on inspection.
+Compounds were hence removed by similarity in ChemMine \cite{Backman2011} (binning clustering at a similarity cutoff of 0.5) and the highest ranked retained in each case.
+The top 20 ranked compounds remaining that were available from Enamine (\url{http://www.enamine.net}) were purchased and taken forward for testing.
+None of these are ligands in the PDB.
 
 
 \subsection{Reagents and compounds}
 
 The buffers and media used were as follows:
 \begin{itemize}
-\item Auto-induction media:
-\item LB broth
-\item TB broth?
-\item Lysis buffer: triton?
-\item Tris pH 8 buffer: 100 mM Tris-HCl pH 8.0, MgCl$_{2}$, NaCl.
-\item TBS-T buffer
+\item Auto-induction media: 10 g\\L tryptone, 5 g\\L yeast extract, 5052, NPS, 1 M MgSO$_{4}$, Ampicillin.
+\item LB broth: 10 g\\L tryptone, 5 g\\L yeast extract, 10 g\\L NaCl.
+\item Lysis buffer: 50 mM HEPES pH ?, 150 mM NaCl, 10 mM MgCl$_{2}$, 2 mM DTT, 1 mM EGTA, Triton.
+\item Tris pH 8 buffer: 100 mM Tris-HCl pH 8.0, 150 mM NaCl, 10 mM MgCl$_{2}$.
+\item TBS-T buffer: 50 mM Tris-HCl pH 7.5, 150 mM NaCl, 0.1\% Tween 20 (?).
+\item Transfer buffer: 20\% methanol, 190 mM glycine, 25 mM Tris.
 \end{itemize}
 
 
@@ -72,7 +88,7 @@ Wild-type CDK2 was previously prepared in the lab.
 His-tagged cyclin A (75 nM) was incubated on Sepharose fast flow beads (?) in buffer X with 12\% DMSO.
 CDK2 was added () along with compounds in 5 concentrations (0 M control, 8 um, 40 um, 200 uM and 1 mM).
 After incubation for 1 hour the beads were washed with buffer X and heated in gel-loading dye at 100$^{\circ}$C for 10 minutes to release bound protein.
-The proteins in the supernatant were separated by SDS-PAGE and transferred to a nitrocellulose membrane by electroblotting in buffer Y for 1 hour at 100 V.
+The proteins in the supernatant were separated by SDS-PAGE and transferred to a nitrocellulose membrane by electroblotting in transfer buffer for 1 hour at 100 V.
 The membrane was incubated for 15 minutes in TBS-T buffer with 1.5\% skimmed milk powder.
 The primary antibody, CDK2 rabbit polyclonal antibody ( M) was added and the membrane incubated overnight at 4$^{\circ}$C.
 After washing with TBS-T the secondary antibody was added ( M) and incubation for 1 hour carried out.
@@ -82,7 +98,15 @@ The membrane was washed with TBS-T and imaged by adding ...
 
 \subsection{TR-FRET assay}
 
-Labelling of CDK2...
+CDK2 was labelled with Cy5 dye...
+CDK2 (10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with NHS ester dye in anhydrous DMF.
+Excess dye was removed by gel filtration.
+
+For the TR-FRET CDK2 titration a 392 (?) well plate was used.
+Each well contained 1 nM Cyclin A-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
+The plate was incubated for 1 hour and centrifuged at 800 g.
+... plate reader was used to read the plate.
+20 (?) repeats were taken for each reading.
 
 
 \section{Results}
@@ -115,7 +139,7 @@ This is pocket 3 from Figure~\ref{fig:cdk2}.
 The structures shown are three crystal structures with the PDB IDs given, and two structures with the pocket open generated using ExProSE from the structures indicated.
 (D) Residues displayed around the pocket of interest using SurfStamp (\url{https://yamule.github.io/SurfStamp-public}). % http://process.sakura.ne.jp/surfstamp/viewer/test.cgi?pdbid=3PXF
 The orientation is the same as in C.
-(E) Example docking poses of screened compounds using AutoDock vina on the structure with PDB ID 3PXF.
+(E) Example docking poses of screened compounds using AutoDock Vina on the structure with PDB ID 3PXF.
 Shown are the lowest energy poses for compound A (magenta), B (cyan) and C (orange) from Table~\ref{tab:enamine_compounds}.}
 
 \label{fig:cdk2_structure}
@@ -132,13 +156,13 @@ Shown are the lowest energy poses for compound A (magenta), B (cyan) and C (oran
 % Table generated by Excel2LaTeX from sheet 'compounds'
 \begin{tabular}{lllrrrrrrrrr}
 \hline
-      &       &       &       & \multicolumn{4}{c}{\textbf{AutoDock vina best energy / units?}} & \multicolumn{4}{c}{\textbf{DOCK best grid score / units?}} \\
+      &       &       &       & \multicolumn{4}{c}{\textbf{AutoDock Vina best energy / units?}} & \multicolumn{4}{c}{\textbf{DOCK best grid score / units?}} \\
 \textbf{Compound ID} & \textbf{ZINC12 ID} & \textbf{Enamine ID} & \multicolumn{1}{l}{\textbf{Molecular weight (g/mol)}} & \multicolumn{1}{l}{\textbf{A}} & \multicolumn{1}{l}{\textbf{B}} & \multicolumn{1}{l}{\textbf{C}} & \multicolumn{1}{l}{\textbf{D}} & \multicolumn{1}{l}{\textbf{A}} & \multicolumn{1}{l}{\textbf{B}} & \multicolumn{1}{l}{\textbf{C}} & \multicolumn{1}{l}{\textbf{D}} \\
 \hline
-A     & ZINC06731189 & Z28083007 & 279.3 & -7.1  & -8.1  & -7.6  & -7.4  & -37.3 & -40.0 & -40.8 & -35.1 \\
+A     & ZINC06731189 & Z28083007   & 279.3 & -7.1  & -8.1  & -7.6  & -7.4  & -37.3 & -40.0 & -40.8 & -35.1 \\
 B     & ZINC29799246 & Z2241108787 & 281.3 & -7.4  & -7.9  & -7.9  & -7.7  & -31.2 & -38.9 & -39.7 & -32.4 \\
 C     & ZINC58182552 & Z953947716  & 273.3 & -7.2  & -7.4  & -7.8  & -7.4  & -32.8 & -39.3 & -41.5 & -36.0 \\
-D     & ZINC03275010 & Z56813876 & 280.3 & -7.3  & -7.3  & -7.3  & -7.7  & -36.5 & -39.2 & -40.6 & -36.3 \\
+D     & ZINC03275010 & Z56813876   & 280.3 & -7.3  & -7.3  & -7.3  & -7.7  & -36.5 & -39.2 & -40.6 & -36.3 \\
 E     & ZINC25129280 & Z125831222  & 281.3 & -7.3  & -7.8  & -7.1  & -7.5  & -32.8 & -41.2 & -39.9 & -38.8 \\
 F     & ZINC97022380 & Z1537396696 & 280.3 & -7.7  & -7.6  & -7.4  & -7.8  & -35.0 & -37.0 & -38.2 & -32.6 \\
 G     & ZINC84057181 & Z1367181624 & 280.3 & -7.2  & -7.8  & -7.9  & -7.4  & -30.9 & -37.8 & -35.5 & -37.1 \\
@@ -151,18 +175,19 @@ M     & ZINC71914433 & Z1232176487 & 274.3 & -7.0  & -7.4  & -7.4  & -7.5  & -36
 N     & ZINC72288573 & Z1229931451 & 268.3 & -7.7  & -7.8  & -7.9  & -7.4  & -29.4 & -36.2 & -33.3 & -34.1 \\
 O     & ZINC69453509 & Z1030096350 & 287.4 & -7.2  & -7.6  & -7.1  & -7.7  & -33.9 & -40.5 & -33.1 & -35.8 \\
 P     & ZINC79097391 & Z1408168262 & 281.3 & -7.0  & -7.6  & -7.6  & -7.3  & -33.7 & -38.5 & -37.5 & -33.8 \\
-Q     & ZINC16497227 & Z66926805 & 280.3 & -6.9  & -7.4  & -7.8  & -7.9  & -29.2 & -38.8 & -40.0 & -33.5 \\
+Q     & ZINC16497227 & Z66926805   & 280.3 & -6.9  & -7.4  & -7.8  & -7.9  & -29.2 & -38.8 & -40.0 & -33.5 \\
 R     & ZINC23143433 & Z352550190  & 271.3 & -7.5  & -7.3  & -6.9  & -7.1  & -32.5 & -39.6 & -38.4 & -36.2 \\
 S     & ZINC89858262 & Z1162482939 & 273.3 & -7.2  & -7.3  & -8.3  & -7.4  & -23.9 & -35.1 & -39.6 & -36.2 \\
 T     & ZINC69369685 & Z1097406485 & 272.3 & -7.2  & -7.1  & -7.0  & -7.1  & -37.0 & -40.6 & -43.1 & -35.6 \\
 \hline
 \end{tabular}
 \end{small}
+% Average of scores?
 
 \caption{Selected compounds to screen experimentally against a potential allosteric site on CDK2.
 ZINC12 ID is the ID in the ZINC12 database (\url{http://zinc.docking.org/}).
 Enamine ID is the ID at Enamine Ltd (\url{http://www.enamine.net}).
-The AutoDock vina best energy and DOCK best grid score are shown for each ligand docked to four structures:
+The AutoDock Vina best energy and DOCK best grid score are shown for each ligand docked to four structures:
 (A) 3PXF,
 (B) 4EZ7,
 (C) ExProSE pocket open structure from 3PXF,
@@ -216,6 +241,8 @@ Fig with gel bands and different conditions.
 \caption{(A) The principle of a TR-FRET assay.
 Light is shone at the excitation wavelength of...
 (B) Results of a CDK2 titration TR-FRET assay.}
+% NHS-ester reaction as below?
+% https://www.thermofisher.com/uk/en/home/life-science/protein-biology/protein-biology-learning-center/protein-biology-resource-library/pierce-protein-methods/amine-reactive-crosslinker-chemistry.html
 
 \label{fig:tr_fret}
 \end{figure}
