@@ -41,10 +41,11 @@ pdflatex thesis.tex
 - Images should have consistent white background
 - Consistent C-alpha
 - How to refer to other sections
-- Cyclin A or A2? Cyclin capitalised?
+- Cyclin A or A2? Cyclin capitalised? Is there a space?
 - Binding assay or immunoblot assay etc
 - Abbreviations: TR-FRET, PPI
-- g to rpm
+- Italicisation throughout
+- Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
 
 
 ## Thesis outline

@@ -75,25 +75,52 @@ The plate was incubated for 1 hour and centrifuged at 800 rpm.
 \label{sec:cdk2_results}
 
 Having predicted a new allosteric site on CDK2 using ExProSE, we seeked to test experimentally whether it was in fact an allosteric site.
+See Section~\ref{sec:exprose_results} and Figure~\ref{fig:cdk2} for a description of how ExProSE predicts pocket 3, henceforth referred to as the pocket of interest, as being allosteric.
+This pocket is not open in the apo CDK2 structure (PDB ID 1HCL) or in the Cyclin A-bound structure (PDB ID 1FIN).
+In the Cyclin A-bound structure there is in fact a protrusion instead of a pocket opening, suggesting that a small molecule would not be able to bind the pocket at the same time as Cyclin A is bound to CDK2 (?).
+The pocket is open but small (45 ligsite size, A cubed?) in the structure with two ANS molecules bound in the known allosteric site (PDB ID 3PXF).
+It is a similar shape in the structure with two ANS molecules and the active site inhibitor staurosporine (PDB ID 4EZ7).
+This structure also has the solvent (?) ethanediol crystallised at the pocket of interest, implying that binding there is possible.
+A structure with ethanediol bound at the ANS site and an active site inhibitor (PDB ID 4EZ3) appears to have the pocket slightly open.
+This furthers the suggestion that (conf selection and inactive state)...
+The idea is to...
+The hope is that the pocket of interest can accommodate a small molecule ligand, and potentially that it can open further to present more binding interactions.
+One risk of targeting this site is that the pocket is small, meaning a limited number of interactions can be made with a ligand.
+The pocket is also only available in some states, meaning that there may be an energetic cost to stabilising it.
+Off site binding may also be a problem - the ATP-binding site and ANS allosteric site present large pockets on CDK2 and small molecules may preferentially bind to these.
+% Given that I mention this should mention cross-docking?
+For example, scanning the surface for binding hotspots using FTMap \cite{Kozakov2015} does not predict the pocket of interest as a binding site.
 
-Native kind of there (1HCL), ANS-bound there (3PXF), Cyclin A-bound not there (1FIN), 4EZ3 half open.
-There are x structures of human CDK2 present in the PDB.
-Of these, x are bound to an active site inhibitor.
-2 (?) have binding at the ANS site.
+ResiCon calculates dynamic regions in proteins by considering contacts between residues \cite{Dziubinski2016}.
+ResiCon was run on CDK2.
+The pocket of interest seems to be on edge of dynamic domains across a variety of given domain numbers, including the given result of two domains (?).
+% Possibly this in the figure, may need to split the figure up
+This indicates that binding to the site could have the ability to cause structural rearrangement in distal parts of the protein.
+
+In fact, the CoDNaS database \cite{Monzon2013} (not in Mendeley) showing conformational diversity of native states in proteins shows that the structures with PDB ID 3PXF and 4EZ7 are in the same...
+% Not too strong, RMSD could probably show this - RMSD values anywhere here?
+
+There are 371 structures of human CDK2 present in the PDB.
+Of these, x are bound to Cyclin proteins (A and E separate?), including 17 to non-human Cyclins.
+x of the 371 are bound to ATP-binding site inhibitors. % Use Proteopedia to help here
+x have binding at the ANS allosteric binding site \cite{Betzi2011}? % Check related strucs for number
+
 PDB - n strucs, nothing bound apart from EDO in 3QQH/4EZ7.
-Scanning the surface for binding hotspots using FTMap \cite{Kozakov2015} does not predict the pocket of interest as a binding site (?).
-Carried out virtual screening - example of docking pose by Vina/DOCK.
-Figure.
+Talk about there being an internal cavity in other strucs?
+Fragment Hotspot Maps
+DynOmics server
+PDBFlex database (and written)
 
 
 % Make sure all parts of this are referenced from main text
+% What about apo (1HCL) or Cyclin A-bound (1FIN)?
 \begin{figure}
 \centering
 
 %\includegraphics[width=\textwidth]{images/cdk2_structure}
 
 \caption{Structure and screening of CDK2.
-(A) The structure of CDK2 (PDB ID 1HCL) with (colours)...
+(A) The structure of CDK2 (PDB ID 1HCL) with colours, including existing allosteric site, active site, T loop, C-helix...
 (B) The CDK2-Cyclin A complex required for CDK2 activation.
 The crystallised complex (PDB ID 1FIN) is shown with CDK2 in green and the crystallised portion of Cyclin A in cyan.
 The whole Cyclin A sequence was modelled using Phyre2 \cite{Kelley2015} and aligned to the above complex and the ab initio modelled region (with no structural templates) is shown in magenta.
