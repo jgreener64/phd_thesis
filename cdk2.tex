@@ -1,59 +1,20 @@
 \chapter{CDK2}
 \label{cha:cdk2}
 
-This chapter describes computational and experimental work to test a potential allosteric site on a protein important in cell cycle regulation, cyclin-dependent kinase 2 (CDK2).
+This chapter describes computational and experimental work to test a potential allosteric site on a protein important in cell cycle regulation, Cyclin-dependent kinase 2 (CDK2).
 % Change this to section ref
 This allosteric site was predicted by ExProSE in Chapter~\ref{cha:exprose}.
 A virtual screen of small molecules was carried out against the pocket.
-Chosen molecules were purchased and tested...
+Selected molecules were purchased and tested using two experimental assays to see if they could inhibit the interaction between CDK2 and Cyclin A.
 
 
 \section{Materials and Methods}
+\label{sec:cdk2_methods}
 
 \subsection{Virtual screening}
 
-ZINC is a free database of commercially-available compounds for virtual screening \cite{Sterling2015}.
-The ZINC12 LeadsNow subset contains over 3 million lead-like molecules in stock at chosen suppliers.
-Lead-like molecules have a molecular weight between 250 and 350, an octanol-water partition coefficient not greater than 3.5 and no more than 7 rotatable bonds.
-These criteria give smaller and more x molecules than those that would conventionally end up being drugs.
-This is because at the hit stage the priority is finding effective scaffolds with high affinity per atom (ligand efficiency).
-Elaboration of the structure with further functional groups generally occurs later and would usually result in the addition of chemical groups, raising the molecular weight.
-These are clustered using a 90\% Tanimoto cutoff as described at \url{http://zinc.docking.org} to get a representative subset of $\sim$250,000 compounds.
-% sidechains allowed to move?
-These compounds are docked using AutoDock Vina \cite{Trott2010} to the pocket of interest in the ANS-bound structure, PDB ID 3PXF.
-The receptor and ligands are prepared in line with the AutoDock Vina documentation.
-The top 2,000 structures by affinity score from this screen were retained for further docking studies.
-These molecules were docked using AutoDock Vina and DOCK \cite{Allen2015} onto four structures:
-\begin{itemize}
-\item The ANS-bound structure, PDB ID 3PXF.
-\item The ANS-bound structure with the active site inhibitor staurosporine, PDB ID 4EZ7.
-\item A structure selected from an ensemble of structures generated from (1) using ExProSE.
-The selected structure has the maximum sum of two distances across the opening of the pocket, .
-This struture is energy minimised as described in (exprose experimental ref).
-\item The same as (3) but the ensemble is generated using ExProSE from (2).
-\end{itemize}
-% Move these to results
-Docking to multiple structures means the compounds are scored in multiple conformations of the binding site, which is an approximation of ensemble docking.
-This is important for this pocket as it is a flexible pocket.
-Using two different docking algorithms, AutoDock Vina and DOCK, .
-Compounds were in general better scored for structures (3) and (4), those with the pocket of interest open.
-This is to be expected as a larger pocket presents more opportunities for interactions with the ligand.
-% Mention cross-docking? In results
-
-d1 = distance(struc['A'][180]["OH"], struc['A'][150]["NH1"])
-d2 = distance(struc['A'][188]["OG"], struc['A'][165]["O"])
-
-
-\subsection{Compound selection}
-
-Compounds were ranked by the average of the 8 scores from the above docking (4 structures, 2 docking methods).
-In addition to the lead-like properties described previously, compounds were further filtered to remove compounds that would potentially give erroneous assay results.
-Compounds violating various criteria set out by the SwissADME server for assessing medicinal chemistry friendliness \cite{Daina2017}, such as properties of pan-assay interference compounds \cite{Baell2014}, were removed.
-Compounds marked as not having benign functionality in ZINC12 were also removed.
-Although compounds were clustered by ZINC12, some compounds were similar to each other on inspection.
-Compounds were hence removed by similarity in ChemMine \cite{Backman2011} (binning clustering at a similarity cutoff of 0.5) and the highest ranked retained in each case.
-The top 20 ranked compounds remaining that were available from Enamine (\url{http://www.enamine.net}) were purchased and taken forward for testing.
-None of these are ligands in the PDB.
+The selected structure has the maximum sum of two distances across the opening of the pocket: the distance between atom OH on residue TYR180 and atom NH1 on ARG150, and the distance between atom OG on residue SER188 and atom O on THR165.
+This struture is energy minimised as described in Section~\ref{sec:exprose_methods} to remove any violations of stereochemistry.
 
 
 \subsection{Reagents and compounds}
@@ -69,15 +30,15 @@ The buffers and media used were as follows:
 \end{itemize}
 
 
-\subsection{Purification of cyclin A}
+\subsection{Purification of Cyclin A}
 
-The plasmid for His-tagged cyclin A (residues ) was transformed into \textit{E. coli} Tuner cells.
+The plasmid for His-tagged Cyclin A (residues ) was transformed into \textit{E. coli} Tuner cells.
 Various conditions for growth were tried (see results).
 The final conditions used were growth of cultures at 37$^{\circ}$C until optical density in auto-induction media, then incubated at 18$^{\circ}$C for 40 hours.
-Cells were harvested by centrifugation (10 min at 5,000 g).
+Cells were harvested by centrifugation (10 min at 5,000 rpm).
 Harvested cells were resuspended in lysis buffer with 0.5 mg ml$^{-1}$ (?) lysozyme.
-After sonication and centrifugation (30 min at 16,000 g) the supernatant was incubated on Sepharose (?) beads for 1 hour.
-After washing the beads cyclin A was eluted with imidazole and stored at -20$^{\circ}$C (?) in 50\% glycerol.
+After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Sepharose (?) beads for 1 hour.
+After washing the beads Cyclin A was eluted with imidazole and stored at -20$^{\circ}$C (?) in 50\% glycerol.
 % Amounts and concentration produced?
 
 
@@ -85,7 +46,7 @@ After washing the beads cyclin A was eluted with imidazole and stored at -20$^{\
 % More specific - immunoblotting assay?
 
 Wild-type CDK2 was previously prepared in the lab.
-His-tagged cyclin A (75 nM) was incubated on Sepharose fast flow beads (?) in buffer X with 12\% DMSO.
+His-tagged Cyclin A (75 nM) was incubated on Sepharose fast flow beads (?) in buffer X with 12\% DMSO.
 CDK2 was added (8 nM) along with compounds in 5 concentrations: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
 After incubation for 1 hour the beads were washed with buffer X and heated in gel-loading dye at 100$^{\circ}$C for 10 minutes to release bound protein.
 The proteins in the supernatant were separated by SDS-PAGE and transferred to a nitrocellulose membrane by electroblotting in transfer buffer for 1 hour at 100 V.
@@ -105,16 +66,17 @@ Excess dye was removed by gel filtration.
 For the TR-FRET CDK2 titration a 392 (?) well plate was used.
 Each well contained 1 nM Cyclin A-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
 A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
-The plate was incubated for 1 hour and centrifuged at 800 g.
+The plate was incubated for 1 hour and centrifuged at 800 rpm.
 ... plate reader was used to read the plate.
 20 (?) repeats were taken for each reading.
 
 
 \section{Results}
+\label{sec:cdk2_results}
 
 Having predicted a new allosteric site on CDK2 using ExProSE, we seeked to test experimentally whether it was in fact an allosteric site.
 
-Native kind of there (1HCL), ANS-bound there (3PXF), cyclin-bound not there (1FIN), 4EZ3 half open.
+Native kind of there (1HCL), ANS-bound there (3PXF), Cyclin A-bound not there (1FIN), 4EZ3 half open.
 There are x structures of human CDK2 present in the PDB.
 Of these, x are bound to an active site inhibitor.
 2 (?) have binding at the ANS site.
@@ -124,6 +86,7 @@ Carried out virtual screening - example of docking pose by Vina/DOCK.
 Figure.
 
 
+% Make sure all parts of this are referenced from main text
 \begin{figure}
 \centering
 
@@ -132,8 +95,8 @@ Figure.
 \caption{Structure and screening of CDK2.
 (A) The structure of CDK2 (PDB ID 1HCL) with (colours)...
 (B) The CDK2-Cyclin A complex required for CDK2 activation.
-The crystallised complex (PDB ID 1FIN) is shown with CDK2 in green and the crystallised portion of cyclin A in cyan.
-The whole cyclin A sequence was modelled using Phyre2 \cite{Kelley2015} and aligned to the above complex and the ab initio modelled region (with no structural templates) is shown in magenta.
+The crystallised complex (PDB ID 1FIN) is shown with CDK2 in green and the crystallised portion of Cyclin A in cyan.
+The whole Cyclin A sequence was modelled using Phyre2 \cite{Kelley2015} and aligned to the above complex and the ab initio modelled region (with no structural templates) is shown in magenta.
 Part of this region potentially interacts with CDK2.
 (C) The pocket of interest on CDK2 shown in various structures.
 This is pocket 3 from Figure~\ref{fig:cdk2}.
@@ -148,6 +111,47 @@ Shown are the lowest energy poses for compound A (magenta), B (cyan) and C (oran
 
 
 \subsection{Virtual screening}
+
+ZINC is a free database of commercially-available compounds for virtual screening \cite{Sterling2015}.
+The ZINC12 LeadsNow subset contains over 3 million lead-like molecules in stock at chosen suppliers.
+Lead-like molecules have a molecular weight between 250 and 350, an octanol-water partition coefficient not greater than 3.5 and no more than 7 rotatable bonds.
+These criteria give smaller and more x molecules than those that would conventionally end up being drugs.
+This is because at the hit stage the priority is finding effective scaffolds with high affinity per atom (ligand efficiency).
+Elaboration of the structure with further functional groups generally occurs later and would usually result in the addition of chemical groups, raising the molecular weight.
+The LeadsNow subset is clustered using a 90\% Tanimoto cutoff as described at \url{http://zinc.docking.org} to get a representative subset of $\sim$250,000 compounds.
+% sidechains allowed to move?
+These compounds are docked using AutoDock Vina \cite{Trott2010} to the pocket of interest in the ANS-bound structure, PDB ID 3PXF.
+The receptor and ligands are prepared in line with the AutoDock Vina documentation.
+Examples of docking poses can be seen in Figure~\ref{fig:cdk2_structure}E.
+The top 2,000 structures by affinity score from this screen were retained for further docking studies.
+This was due to the computational cost of virtual screening - AutoDock Vina on one structure was used to eliminate most compounds and the remaining compounds were taken forward for further studies.
+These molecules were docked using AutoDock Vina and DOCK \cite{Allen2015} onto four structures:
+\begin{itemize}
+\item The ANS-bound structure, PDB ID 3PXF.
+\item The ANS-bound structure with the active site inhibitor staurosporine, PDB ID 4EZ7.
+\item A structure selected from an ensemble of structures generated from (1) using ExProSE.
+The structure selected is the one with the pocket of interest most open.
+\item The same as (3) but the ensemble is generated using ExProSE from (2).
+\end{itemize}
+The structure of the pocket of interest in each of these structures is shown in Figure~\ref{fig:cdk2_structure}C.
+Docking to multiple structures means the compounds are scored in multiple conformations of the binding site, which is an approximation of ensemble docking.
+This is important in general to take into account the flexibility of binding pockets, and especially important for this pocket as it is a flexible pocket not present in all structures.
+Using two different docking algorithms, AutoDock Vina and DOCK, provides two different scores for each structure.
+Compounds were in general better scored for structures (3) and (4), those with the pocket of interest open.
+This is to be expected as a larger pocket presents more opportunities for interactions with the ligand.
+% Mention cross-docking? Possibly not
+
+
+\subsection{Compound selection}
+
+Compounds were ranked by the average of the 8 scores from the above docking (4 structures, 2 docking methods).
+In addition to the lead-like properties described previously, compounds were further filtered to remove compounds that would potentially give erroneous assay results.
+Compounds violating various criteria set out by the SwissADME server for assessing medicinal chemistry friendliness \cite{Daina2017}, such as properties of pan-assay interference compounds \cite{Baell2014}, were removed.
+Compounds marked as not having benign functionality in ZINC12 were also removed.
+Although compounds were clustered by ZINC12, some compounds were similar to each other on inspection.
+Compounds were hence removed by similarity in ChemMine \cite{Backman2011} (binning clustering at a similarity cutoff of 0.5) and the highest ranked retained in each case.
+The top 20 ranked compounds remaining that were available from Enamine (\url{http://www.enamine.net}) were purchased and taken forward for testing.
+None of these are ligands in the PDB.
 
 
 \begin{sidewaystable}
@@ -211,11 +215,11 @@ Images generated using \url{http://cdb.ics.uci.edu/cgibin/Smi2DepictWeb.py}.}
 \end{figure}
 
 
-\subsection{Purification of cyclin A}
+\subsection{Purification of Cyclin A}
 
-Initially the purification of GST-tagged cyclin A was attempted.
+Initially the purification of GST-tagged Cyclin A was attempted.
 This resulted in low quantities of soluble protein (x mg from y L culture) and purity was low.
-The purification of His-tagged cyclin A however produced considerably more protein (x mg from y L culture), so it was decided to use this.
+The purification of His-tagged Cyclin A however produced considerably more protein (x mg from y L culture), so it was decided to use this.
 Fig with gel bands and different conditions.
 
 
@@ -290,7 +294,7 @@ This shows non-specific binding of CDK2 to the beads and indicates that a signal
 
 \section{Discussion}
 
-% Difficulty of purifying cyclin A, due to flexible structure?, also GST may affect folding, ref to lack of crystal structure for certain region (run Disopred to check disorder?).
+% Difficulty of purifying Cyclin A, due to flexible structure?, also GST may affect folding, ref to lack of crystal structure for certain region (run Disopred to check disorder?).
 The difficulty of purifying Cyclin A is likely due to the propensity of the protein to aggregate.
 As shown in Figure~\ref{fig:cdk2_structure}B the crystal structure of the CDK2-Cyclin A complex has only been found for part of the structure.
 Cyclin A alone has not been crystallised??
