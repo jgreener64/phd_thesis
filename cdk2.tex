@@ -11,6 +11,9 @@ Selected molecules were purchased and tested using two experimental assays to se
 \section{Materials and Methods}
 \label{sec:cdk2_methods}
 
+Bioinformatics resources generally had 3PXF as input.
+
+
 \subsection{Virtual screening}
 
 The selected structure has the maximum sum of two distances across the opening of the pocket: the distance between atom OH on residue TYR180 and atom NH1 on ARG150, and the distance between atom OG on residue SER188 and atom O on THR165.
@@ -78,26 +81,32 @@ Having predicted a new allosteric site on CDK2 using ExProSE, we seeked to test 
 See Section~\ref{sec:exprose_results} and Figure~\ref{fig:cdk2} for a description of how ExProSE predicts pocket 3, henceforth referred to as the pocket of interest, as being allosteric.
 This pocket is not open in the apo CDK2 structure (PDB ID 1HCL) or in the Cyclin A-bound structure (PDB ID 1FIN).
 In the Cyclin A-bound structure there is in fact a protrusion instead of a pocket opening, suggesting that a small molecule would not be able to bind the pocket at the same time as Cyclin A is bound to CDK2 (?).
-The pocket is open but small (45 ligsite size, A cubed?) in the structure with two ANS molecules bound in the known allosteric site (PDB ID 3PXF).
+The pocket is open but small (45 \AA$^{3}$ in LIGSITE\textsuperscript{\it cs}) in the structure with two ANS molecules bound in the known allosteric site (PDB ID 3PXF).
 It is a similar shape in the structure with two ANS molecules and the active site inhibitor staurosporine (PDB ID 4EZ7).
-This structure also has the solvent (?) ethanediol crystallised at the pocket of interest, implying that binding there is possible.
+This structure also has the crystallisation artefact ethanediol crystallised at the pocket of interest, implying that binding there is possible.
 A structure with ethanediol bound at the ANS site and an active site inhibitor (PDB ID 4EZ3) appears to have the pocket slightly open.
-This furthers the suggestion that (conf selection and inactive state)...
-The idea is to...
+This furthers the suggestion that (conf selection and inactive state) the inactive state caused by binding at the ANS site is linked to the presence of the pocket.
+The idea is that by stabilising the pocket of interest the inactive state is favoured and activation by Cyclin A cannot occur.
 The hope is that the pocket of interest can accommodate a small molecule ligand, and potentially that it can open further to present more binding interactions.
 One risk of targeting this site is that the pocket is small, meaning a limited number of interactions can be made with a ligand.
 The pocket is also only available in some states, meaning that there may be an energetic cost to stabilising it.
 Off site binding may also be a problem - the ATP-binding site and ANS allosteric site present large pockets on CDK2 and small molecules may preferentially bind to these.
 % Given that I mention this should mention cross-docking?
 For example, scanning the surface for binding hotspots using FTMap \cite{Kozakov2015} does not predict the pocket of interest as a binding site.
+The Fragment Hotspot Map \cite{Radoux2016} samples the protein surface with molecular probes to find fragment binding hotspots.
+Applying the Fragment Hotspot Map to CDK2 does not reveal the pocket of interest as a fragment binding site in the default map.
+However adjusting the score cutoff does show there is some ability for fragment to bind to the pocket.
 
 ResiCon calculates dynamic regions in proteins by considering contacts between residues \cite{Dziubinski2016}.
 ResiCon was run on CDK2.
-The pocket of interest seems to be on edge of dynamic domains across a variety of given domain numbers, including the given result of two domains (?).
+The pocket of interest seems to be on the edge of dynamic domains across a variety of given numbers of domain outputs, including the default result of two domains.
 % Possibly this in the figure, may need to split the figure up
-This indicates that binding to the site could have the ability to cause structural rearrangement in distal parts of the protein.
+This indicates that the site could have the ability to cause structural rearrangement in distal parts of the protein by acting as a hinge that responds to ligand binding.
+This is further evidenced by examining CDK2 using the DynOmics server \cite{Li2017}.
+Residue that are close to the pocket of interest, such as ASP127 in the pocket, are predicted to be hinge residues that control the two slowest normal modes.
+% Possibly this in figure too
 
-In fact, the CoDNaS database \cite{Monzon2013} (not in Mendeley) showing conformational diversity of native states in proteins shows that the structures with PDB ID 3PXF and 4EZ7 are in the same...
+%In fact, the CoDNaS database \cite{Monzon2013} (not in Mendeley) showing conformational diversity of native states in proteins shows that the structures with PDB ID 3PXF and 4EZ7 are in the same...
 % Not too strong, RMSD could probably show this - RMSD values anywhere here?
 
 There are 371 structures of human CDK2 present in the PDB.
@@ -107,8 +116,6 @@ x have binding at the ANS allosteric binding site \cite{Betzi2011}? % Check rela
 
 PDB - n strucs, nothing bound apart from EDO in 3QQH/4EZ7.
 Talk about there being an internal cavity in other strucs?
-Fragment Hotspot Maps
-DynOmics server
 PDBFlex database (and written)
 
 
