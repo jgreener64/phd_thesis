@@ -46,6 +46,7 @@ pdflatex thesis.tex
 - Abbreviations: TR-FRET, PPI
 - Italicisation throughout
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
+- Refer to all parts of figures in main text
 
 
 ## Thesis outline

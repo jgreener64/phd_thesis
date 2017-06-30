@@ -16,6 +16,11 @@ Bioinformatics resources generally had 3PXF as input.
 
 \subsection{Virtual screening}
 
+The receptor and ligands are prepared in line with the AutoDock Vina documentation.
+
+ChemMine clustering used binning clustering at a similarity cutoff of 0.5.
+The highest ranked by docking scores was retained in each case.
+
 The selected structure has the maximum sum of two distances across the opening of the pocket: the distance between atom OH on residue TYR180 and atom NH1 on ARG150, and the distance between atom OG on residue SER188 and atom O on THR165.
 This struture is energy minimised as described in Section~\ref{sec:exprose_methods} to remove any violations of stereochemistry.
 
@@ -45,6 +50,20 @@ After washing the beads Cyclin A was eluted with imidazole and stored at -20$^{\
 % Amounts and concentration produced?
 
 
+\subsection{TR-FRET assay}
+
+CDK2 was labelled with Cy5 dye...
+CDK2 (10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with NHS ester dye in anhydrous DMF.
+Excess dye was removed by gel filtration.
+
+For the TR-FRET CDK2 titration a 392 (?) well plate was used.
+Each well contained 1 nM Cyclin A-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
+A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
+The plate was incubated for 1 hour and centrifuged at 800 rpm.
+... plate reader was used to read the plate.
+20 (?) repeats were taken for each reading.
+
+
 \subsection{Binding assay}
 % More specific - immunoblotting assay?
 
@@ -58,20 +77,6 @@ The primary antibody, CDK2 rabbit polyclonal antibody ( M) was added and the mem
 After washing with TBS-T the secondary antibody was added ( M) and incubation for 1 hour carried out.
 The membrane was washed with TBS-T and imaged by adding ... and 1 s exposure.
 % Check with other papers that do this
-
-
-\subsection{TR-FRET assay}
-
-CDK2 was labelled with Cy5 dye...
-CDK2 (10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with NHS ester dye in anhydrous DMF.
-Excess dye was removed by gel filtration.
-
-For the TR-FRET CDK2 titration a 392 (?) well plate was used.
-Each well contained 1 nM Cyclin A-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
-A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
-The plate was incubated for 1 hour and centrifuged at 800 rpm.
-... plate reader was used to read the plate.
-20 (?) repeats were taken for each reading.
 
 
 \section{Results}
@@ -124,7 +129,7 @@ PDBFlex database (and written)
 \begin{figure}
 \centering
 
-%\includegraphics[width=\textwidth]{images/cdk2_structure}
+%\includegraphics[width=\textwidth]{figures/cdk2_structure}
 
 \caption{Structure and screening of CDK2.
 (A) The structure of CDK2 (PDB ID 1HCL) with colours, including existing allosteric site, active site, T loop, C-helix...
@@ -146,6 +151,7 @@ Shown are the lowest energy poses for compound A (magenta), B (cyan) and C (oran
 
 \subsection{Virtual screening}
 
+A virtual screening strategy was carried out to predict compounds that bind to the pocket of interest.
 ZINC is a free database of commercially-available compounds for virtual screening \cite{Sterling2015}.
 The ZINC12 LeadsNow subset contains over 3 million lead-like molecules in stock at chosen suppliers.
 Lead-like molecules have a molecular weight between 250 and 350, an octanol-water partition coefficient not greater than 3.5 and no more than 7 rotatable bonds.
@@ -153,13 +159,13 @@ These criteria give smaller and more x molecules than those that would conventio
 This is because at the hit stage the priority is finding effective scaffolds with high affinity per atom (ligand efficiency).
 Elaboration of the structure with further functional groups generally occurs later and would usually result in the addition of chemical groups, raising the molecular weight.
 The LeadsNow subset is clustered using a 90\% Tanimoto cutoff as described at \url{http://zinc.docking.org} to get a representative subset of $\sim$250,000 compounds.
-% sidechains allowed to move?
 These compounds are docked using AutoDock Vina \cite{Trott2010} to the pocket of interest in the ANS-bound structure, PDB ID 3PXF.
-The receptor and ligands are prepared in line with the AutoDock Vina documentation.
+AutoDock Vina...
+% Sidechains allowed to move?
 Examples of docking poses can be seen in Figure~\ref{fig:cdk2_structure}E.
 The top 2,000 structures by affinity score from this screen were retained for further docking studies.
-This was due to the computational cost of virtual screening - AutoDock Vina on one structure was used to eliminate most compounds and the remaining compounds were taken forward for further studies.
-These molecules were docked using AutoDock Vina and DOCK \cite{Allen2015} onto four structures:
+This was due to the computational cost of virtual screening - the score from AutoDock Vina on the ANS-bound structure was used to eliminate most compounds and the remaining compounds were taken forward for further studies.
+The 2,000 retained molecules were docked using AutoDock Vina and DOCK \cite{Allen2015} onto four structures:
 \begin{itemize}
 \item The ANS-bound structure, PDB ID 3PXF.
 \item The ANS-bound structure with the active site inhibitor staurosporine, PDB ID 4EZ7.
@@ -170,7 +176,7 @@ The structure selected is the one with the pocket of interest most open.
 The structure of the pocket of interest in each of these structures is shown in Figure~\ref{fig:cdk2_structure}C.
 Docking to multiple structures means the compounds are scored in multiple conformations of the binding site, which is an approximation of ensemble docking.
 This is important in general to take into account the flexibility of binding pockets, and especially important for this pocket as it is a flexible pocket not present in all structures.
-Using two different docking algorithms, AutoDock Vina and DOCK, provides two different scores for each structure.
+Using two different docking algorithms, AutoDock Vina and DOCK, provides two different scores for each structure and goes some way to reducing the inaccuracies of virtual screening.
 Compounds were in general better scored for structures (3) and (4), those with the pocket of interest open.
 This is to be expected as a larger pocket presents more opportunities for interactions with the ligand.
 % Mention cross-docking? Possibly not
@@ -181,11 +187,13 @@ This is to be expected as a larger pocket presents more opportunities for intera
 Compounds were ranked by the average of the 8 scores from the above docking (4 structures, 2 docking methods).
 In addition to the lead-like properties described previously, compounds were further filtered to remove compounds that would potentially give erroneous assay results.
 Compounds violating various criteria set out by the SwissADME server for assessing medicinal chemistry friendliness \cite{Daina2017}, such as properties of pan-assay interference compounds \cite{Baell2014}, were removed.
-Compounds marked as not having benign functionality in ZINC12 were also removed.
-Although compounds were clustered by ZINC12, some compounds were similar to each other on inspection.
-Compounds were hence removed by similarity in ChemMine \cite{Backman2011} (binning clustering at a similarity cutoff of 0.5) and the highest ranked retained in each case.
-The top 20 ranked compounds remaining that were available from Enamine (\url{http://www.enamine.net}) were purchased and taken forward for testing.
-None of these are ligands in the PDB.
+Compounds marked as not having benign chemical functionality in ZINC12 were also removed.
+Although compounds were clustered by ZINC12 to remove similar compounds, some compounds were relatively similar to each other on visual inspection.
+Compounds were hence removed by similarity in ChemMine \cite{Backman2011}.
+The top 20 ranked compounds remaining that were available from Enamine (\url{http://www.enamine.net}) were purchased and taken forward for experimental testing.
+The structures of the compounds are shown in Figure~\ref{fig:compound_structures}.
+Docking scores and compound IDs are shown in Table~\ref{tab:enamine_compounds}.
+None of these are found as ligands in the PDB.
 
 
 \begin{sidewaystable}
@@ -231,6 +239,7 @@ The AutoDock Vina best energy and DOCK best grid score are shown for each ligand
 (B) 4EZ7,
 (C) ExProSE pocket open structure from 3PXF,
 (D) ExProSE pocket open structure from 4EZ7.}
+% Or refer to main text for structure information?
 
 \label{tab:enamine_compounds}
 \end{sidewaystable}
@@ -239,7 +248,7 @@ The AutoDock Vina best energy and DOCK best grid score are shown for each ligand
 \begin{figure}
 \centering
 
-%\includegraphics[width=\textwidth]{images/compound_structures}
+%\includegraphics[width=\textwidth]{figures/compound_structures}
 
 \caption{Chemical structures of selected compounds to screen experimentally against a potential allosteric site on CDK2.
 The compounds are labelled as in Table~\ref{tab:enamine_compounds}.
@@ -249,15 +258,7 @@ Images generated using \url{http://cdb.ics.uci.edu/cgibin/Smi2DepictWeb.py}.}
 \end{figure}
 
 
-\subsection{Purification of Cyclin A}
-
-Initially the purification of GST-tagged Cyclin A was attempted.
-This resulted in low quantities of soluble protein (x mg from y L culture) and purity was low.
-The purification of His-tagged Cyclin A however produced considerably more protein (x mg from y L culture), so it was decided to use this.
-Fig with gel bands and different conditions.
-
-
-\subsection{TR-FRET}
+\subsection{Experimental aims}
 
 The main aim of the experimental work was to screen the purchased compounds using the TR-FRET assay.
 This popular assay for drug discovery research is the combination of time-resolved fluorometry with F\"{o}rster resonance energy transfer (FRET).
@@ -269,7 +270,53 @@ Figure~\ref{fig:tr_fret}A outlines the principles of a TR-FRET assay.
 A time delay between excitation and measurement means measurement occurs after the timescale of background fluorescence.
 The long emission time of the donor fluorophore means a signal is obtained after the time delay.
 
-CDK2 prepared previously in the lab was labelled with Cy5 dye.
+
+\subsection{Purification of Cyclin A}
+% Describe GST and His tags
+
+% Mention the construct is not all of Cyclin A
+There are x surface-exposed cysteine residues on Cyclin A (construct?).
+In order to improve the TR-FRET signal it would be beneficial to have a single surface-exposed cysteine that could be labelled with Cy5 dye.
+Hence, initial purification was attempted for Cyclin A-GST (mut).
+The GST tag allowed selective separation of the protein during purification.
+The His tag could not be used as this was going to be present on CDK2 to bind the donor fluorophore.
+Purification of Cyclin A-GST (mut) resulted in low quantities of soluble protein (x mg from y L media) and purity was low, as shown in Figure~\ref{fig:purification}A.
+Different purification strategies including varying the media, incubation temperature and incubation times were attempted.
+
+The difficulty of purifying this Cyclin A mutant led us to try purification of the wild-type Cyclin A-GST (with truncation though).
+This purified more readily than the mutant, as shown in Figure~\ref{fig:purification}A.
+x mg from y L media, which is still low...
+This could be because the x mutation destabilises the protein, increasing its tendency to aggregate.
+% Here or discussion?
+However concentration of the protein to higher concentrations using spin filtration led to loss of the protein.
+This, along with the low yield, suggests that Cyclin A-GST is unstable and has a tendency to aggregate and become insoluble.
+
+Due to the difficulty of purifying Cyclin A-GST, a change was made to the experimental strategy.
+The donor and acceptor fluorophores were switched so that the Eu anti-His antibody was targeted at Cyclin A and CDK2 was dyed with Cy5 dye - see Figure~\ref{fig:tr_fret}B.
+This required purification of Cyclin A-His.
+This purification proved considerably more successful than Cyclin A-GST, with x mg produced from y L media - see Figure~\ref{fig:purification}C.
+This indicates that the large GST tag may disrupt the stability or folding of Cyclin A.
+Purified Cyclin A-His was taken forward for the TR-FRET assay.
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{figures/purification/purification}
+
+\caption{SDS-PAGE results for purification of Cyclin A.
+(A) Purification of Cyclin A-GST single cysteine mutant (mut).
+% Gels for other conditions?
+% Pellet gel?
+(B) Purification of Cyclin A-GST.
+(C) Purification of Cyclin A-His.}
+
+\label{fig:purification}
+\end{figure}
+
+
+\subsection{TR-FRET}
+
+CDK2 prepared previously in the lab was labelled with Cy5 dye (see fig for reaction?).
 The TR-FRET assay was tested using a titration of CDK2 with constant Cyclin A and donor fluorophore.
 An increase in signal with increasing CDK2 concentration would be expected.
 Figure~\ref{fig:tr_fret}B shows the result of this titration.
@@ -282,13 +329,20 @@ The high background signal would means the screen would not be effective at find
 \begin{figure}
 \centering
 
-%\includegraphics[width=\textwidth]{images/tr_fret}
+%\includegraphics[width=\textwidth]{figures/tr_fret}
 
-\caption{(A) The principle of a TR-FRET assay.
-Light is shone at the excitation wavelength of...
-(B) Results of a CDK2 titration TR-FRET assay.}
+\caption{(A) The principle of the TR-FRET assay used.
+One protein in the binding pair is covalently-bound to Cy5 dye (the acceptor fluorophore).
+The other protein is targeted with an antibody containing the lanthanide Eu (the donor fluorophore).
+Light is shone at the excitation wavelength of the donor fluorophore.
+This emits at the excitation wavelength of the acceptor fluorophore.
+After a delay to allow background emission to recede, emission from the acceptor fluorophore is measured.
+If a modulator prevents the proteins interacting, emission from the donor to the acceptor fluorophore is not possible and there is no signal.
+(B) After difficulty purifying Cyclin A-GST, the strategy was switched so Cyclin A-His binds the Eu antibody and CDK2 is labelled with the dye.
 % NHS-ester reaction as below?
 % https://www.thermofisher.com/uk/en/home/life-science/protein-biology/protein-biology-learning-center/protein-biology-resource-library/pierce-protein-methods/amine-reactive-crosslinker-chemistry.html
+(C) Results of a CDK2 titration TR-FRET assay.}
+% Different figure?
 
 \label{fig:tr_fret}
 \end{figure}
@@ -314,7 +368,7 @@ As the expected background is high this is probably due to solubility issues of 
 \begin{figure}
 \centering
 
-%\includegraphics[width=\textwidth]{images/binding_assay}
+%\includegraphics[width=\textwidth]{figures/binding_assay}
 
 \caption{(A) Binding assay results for the 12 compounds tested.
 The five bands represent increasing compound concentrations from left to right: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
