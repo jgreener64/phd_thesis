@@ -9,6 +9,21 @@ pdflatex thesis.tex
 ```
 
 
+## Issues
+
+- Images should have consistent white background
+- Consistent C-alpha
+- How to refer to other sections
+- Cyclin A or A2? Cyclin capitalised? Is there a space?
+- Binding assay or immunoblot assay etc
+- Abbreviations: TR-FRET, PPI
+- Italicisation throughout
+- Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
+- Refer to all parts of figures in main text
+- LaTeX style templates available?
+- Title
+
+
 ## Plan
 
 - Research official requirements and timeline
@@ -34,19 +49,6 @@ pdflatex thesis.tex
 - LSR: ~8,000 words
 - September 2015 report
 - Presentations - group meeting and other
-
-
-## Issues
-
-- Images should have consistent white background
-- Consistent C-alpha
-- How to refer to other sections
-- Cyclin A or A2? Cyclin capitalised? Is there a space?
-- Binding assay or immunoblot assay etc
-- Abbreviations: TR-FRET, PPI
-- Italicisation throughout
-- Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
-- Refer to all parts of figures in main text
 
 
 ## Thesis outline
