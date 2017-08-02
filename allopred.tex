@@ -3,6 +3,8 @@
 
 This chapter describes the development and validation of a computational approach based on the perturbation of normal modes to predict allosteric sites on proteins.
 The work is further described in \cite{Greener2015} and is available as a web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) that has had over 400 submissions from around the world so far.
+% Could be latent allosteric sites
+% Measure of how effective NMA features are alone (some in NAR paper)
 
 
 \section{Materials and Methods}
@@ -191,15 +193,19 @@ This shows that the above results used for comparison to other methods are indic
 
 \subsection{Web server}
 
-The AlloPred web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) allows users to analyse the prediction results via an intuitive interface.
+The publicly-available AlloPred web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) allows users to analyse the prediction results via an intuitive interface.
 Users can either input a PDB ID and chain(s) or upload a PDB file.
-The active site residues of the protein must be given but there is an option to retrieve this data, if it is available, from the Catalytic Site Atlas \cite{Furnham2014}.
-The results page is shown in Figure~\ref{fig:web_results}.
+The active site residues of the protein must be given but there is an option to retrieve this data, if it is available, from the Catalytic Site Atlas (CSA) \cite{Furnham2014}.
+The CSA has catalytic site data for around 70\% of enzymatic proteins in the PDB.
+After submission a progress page shows the log file of the job and gives an estimated completion time.
+When the results are available a link appears to the results page.
+An example results page is shown in Figure~\ref{fig:web_results}.
 All pockets are displayed in a table with their AlloPred rankings and Fpocket output.
 The table can be sorted and filtered by any one or more of the 29 AlloPred and Fpocket features.
 The page also allows users to visualise each pocket on the protein in a JSmol window that lets the user explore the protein and its predicted allosteric sites.
 Features include highlighting the active site residues, selecting one of three visualisation options and a JSmol terminal to insert custom commands.
 The results, including full details of each pocket, can be downloaded for further analysis as a tab-delimited text file.
+The exploratory features on the website and results file containing all the pocket information set AlloPred apart from similar servers by allowing more extensive analysis of the results.
 The calculation time is fast, with a 400 residue protein ($\sim$15 predicted pockets) analysed within 5 minutes.
 The web server also includes a tutorial and a link to the source code to run AlloPred offline.
 

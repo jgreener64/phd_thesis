@@ -52,6 +52,7 @@ pdflatex thesis.tex
 - LSR: ~8,000 words
 - September 2015 report
 - Presentations - group meeting and other
+- AlloPred paper submissions to NAR/Bioinformatics
 
 
 ## Thesis outline
@@ -85,6 +86,7 @@ Introduction:
 - Some simple allostery such as block diagram from slides, PyMol example from slides, MWC/KNF difference
 - Protein ensemble/energy levels diagram
 - Normal modes flowchart: protein -> ENM -> Hessian -> diagonalise -> view on structure
+- Normal mode methods (binding leverage, PARS, AlloPred) shown visually?
 - Conserved protein kinase structure and known allosteric kinase modulators
 - CDK2 structure, cyclin binding, steps of activation in PyMol (also possibly in CDK2 section)
 
@@ -134,13 +136,13 @@ CDK2 - see Pellerano 2017 for text and refs.
 Methods from paper.
 Results from paper.
 One example in more detail?
-Discuss pocket size bias.
 
 
 ### ExProSE
 
-Methods from paper, and further from LSR.
-Start with a simple example, like adenylate kinase? Have other crystals on PC plot. Talk about development of method, e.g. SPE score minimisation diagram.
+Methods from paper, and further from LSR (constraints diagram).
+Start with a simple example, like adenylate kinase? Have other crystals on PC plot
+Talk about development of method, e.g. SPE score minimisation diagram from LSR.
 Calmodulin (huge conformational change)?
 Use above to demonstrate parameters etc.
 Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP, don't forget supplementary.
