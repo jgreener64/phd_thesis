@@ -22,6 +22,9 @@ pdflatex thesis.tex
 - Refer to all parts of figures in main text
 - LaTeX style templates available?
 - Title
+- Get C-helix inactivation ref from Greg
+- OA on GitHub
+- Add to Spiral
 
 
 ## Plan
@@ -150,7 +153,7 @@ Run on a huge structure?
 
 Computational methods.
 Experimental methods - see Tifa's report.
-Computational results.
+Computational results - see todo for other things I could have done, see Ho 2009.
 Experimental results - see Tifa's report, Comley 2006 for TR-FRET diagram.
 
 
