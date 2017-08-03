@@ -11,6 +11,8 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Caption formatting - small text, margin, bold starting label, bold A/B?
+- Consistent table formatting - use top/mid/bottom rule
 - Images should have consistent white background
 - Consistent C-alpha
 - How to refer to other sections
@@ -23,6 +25,7 @@ pdflatex thesis.tex
 - LaTeX style templates available?
 - Title
 - Get C-helix inactivation ref from Greg
+- Panjkovich thesis has some stuff about lack of conservation - see also Panjkovich2010
 - OA on GitHub
 - Add to Spiral
 
@@ -83,7 +86,7 @@ pdflatex thesis.tex
 ## Figure list
 
 Introduction:
-- Some simple allostery such as block diagram from slides, PyMol example from slides, MWC/KNF difference
+- Some simple allostery such as block diagram from slides, PyMol example from slides, MWC/KNF difference; base off review figure
 - Protein ensemble/energy levels diagram
 - Normal modes flowchart: protein -> ENM -> Hessian -> diagonalise -> view on structure
 - Normal mode methods (binding leverage, PARS, AlloPred) shown visually?
