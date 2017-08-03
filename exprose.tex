@@ -202,6 +202,7 @@ Changing this parameter changes the strength of the perturbations but does not g
 For CAP a different procedure was used as the location of the bound cAMP molecules is known from the crystal structure.
 In this case 120 fake points are added at 1.2 \AA\ gaps in a ball around the location of the C1' atom in cAMP, while the cAMP molecules are themselves omitted from the simulation.
 Selected points have distance constraints of tolerance 0.1 \AA\ with all protein atoms within 7 \AA.
+% NtrC phosphorylation here
 Addition of the new distance constraints leads to ensembles that may differ significantly from the unperturbed ensemble.
 
 In the allosteric prediction procedure ensembles are generated with additional constraints (termed `perturbation') at selected pockets in turn, then compared to the original `unperturbed' ensemble.
@@ -210,6 +211,7 @@ Below this size a small-molecule modulator is unlikely to have enough space to b
 8 pockets gives a reasonable sampling of the surface of a protein and generally includes all sizeable pockets.
 The C$\alpha$ RMSD between the average structure in the unperturbed ensemble and the average structure in the perturbed ensemble is used to compare ensembles.
 This RMSD is used to rank the perturbed pockets in terms of their predicted allosteric nature (largest to smallest RMSD).
+This RMSD measure may seem simplistic but gave similar or superior performance to statistical measures, such as the Mann-Whitney $U$ test on the ensemble fluctuations between the unperturbed and perturbed ensembles, during development.
 A pocket is considered allosteric for validation purposes if the pocket centre is within 6 \AA\ of at least one atom of the modulator defined as the allosteric modulator in the ASD.
 This is similar to previous studies \cite{Panjkovich2012}.
 
@@ -794,6 +796,40 @@ The bound cAMP molecules are shown for reference as green sticks.
 Red regions indicate residues with more flexibility compared to Apo-CAP, and blue regions indicate residues with less flexibility compared to Apo-CAP.}
 
 \label{fig:cap}
+\end{figure}
+
+
+\subsection{Activation by phosphorylation}
+
+The nitrogen regulatory protein C (NtrC) is a signaling protein.
+Phosphorylation of the receiver domain causes a large structural change \cite{Kern1999} that leads to oligomerisation and promotion of transcription.
+ExProSE was used to explore this system with the distance constraints coming from the inactive and active states (PDB ID 1DC7 and 1DC8 respectively), and extra constraints at the phosphorylation site in the active state (see Methods).
+Figure~\ref{fig:ntrc} shows the mean square fluctuation across the ensemble in the unperturbed ensemble (A, shown on the inactive state) and the ensemble with perturbation at the phosphorylation site (B, shown on the active state).
+Phosphorylation leads to considerably less variation across the ensemble, and the regions which are effected are the regions which show structural differences between the active and inactive state.
+
+A comprehensive NMR study has been carried out on NtrC \cite{Volkman2001} and ExProSE produced results consistent with those findings.
+In that study the exchange term $R_{ex}$ showed that inactive NtrC had considerable motions on the microsecond to millisecond timescale - particularly around the \textalpha 3 and \textalpha 4 helices, the surrounding loops and the \textbeta 5 sheet.
+These motions are seen in the ensemble produced by ExProSE (see Figure~\ref{fig:ntrc}).
+On phosphorylation NMR indicates that most of these dynamics disappear, with only some motion in the \textbeta 5 sheet and loop regions.
+This is largely recreated by ExProSE, with the remaining flexible region close to that in the NMR data.
+This supports the conformational selection hypothesis outlined in \cite{Volkman2001}.
+It also indicates that conformational variability as displayed in ExProSE is linked to the micro/millisecond timescale dynamics of the system.
+This indicates why ExProSE is efffective as an allosteric prediction tool as the motions relevant to allostery are often on these timescales, which are usually inaccessible to MD studies.
+These results also show that ExProSE can be used to study covalent modifications (here, phosphorylation) as well as the small molecule non-covalent interactions explored in Section (allostery).
+% Is there anything more recent in the literature relevant for NtrC?
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{figures/ntrc/ntrc}
+
+\caption{Ensembles of NtrC.
+(A) The mean square fluctuation in the unperturbed ensemble is shown on the inactive structure (PDB ID 1DC7).
+(B) The mean square fluctuation in the ensemble with additional constraints representing phosphorylation is shown in the active structure (PDB ID 1DC8).
+Labels are taken from \cite{Volkman2001}.}
+
+\label{fig:ntrc}
 \end{figure}
 
 

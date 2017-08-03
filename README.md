@@ -11,11 +11,12 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Recheck plagiarism rules
 - Caption formatting - small text, margin, bold starting label, bold A/B? See LSR
 - Consistent table formatting - use top/mid/bottom rule
 - Images should have consistent white background
 - Consistent C-alpha
-- How to refer to other sections
+- How to refer to other sections - use labels
 - Cyclin A or A2? Cyclin capitalised? Is there a space?
 - Binding assay or immunoblot assay etc
 - Abbreviations: TR-FRET, PPI
@@ -23,7 +24,6 @@ pdflatex thesis.tex
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
 - Refer to all parts of figures in main text
 - LaTeX style templates available?
-- Title
 - Get C-helix inactivation ref from Greg
 - Panjkovich thesis has some stuff about lack of conservation - see also Panjkovich2010
 - OA on GitHub
@@ -150,7 +150,7 @@ Calmodulin (huge conformational change)?
 Use above to demonstrate parameters etc.
 Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP, don't forget supplementary.
 LSR has other results like NtrC.
-Beta-lactamase and transient allosteric pocket?
+Beta-lactamase and transient allosteric pocket? This would be nice to link with cryptic stuff in intro. Or at least mention that it was done in the discussion
 Run on a huge structure?
 
 
