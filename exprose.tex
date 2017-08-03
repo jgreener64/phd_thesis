@@ -58,6 +58,22 @@ This process yields a set of distance constraints for each crystal structure of 
 The distance constraints generated from the two structures for the same protein are combined to get a set of combined constraints.
 The constraints are combined in such a way that the new constraints for a given atom pair cover the distance of both the individual constraints for that pair.
 For example if two atoms have a lower and upper distance constraint of 6.0 \AA\ and 7.0 \AA\ in structure one, and 6.5 \AA\ and 7.5 \AA\ in structure two, then the new constraints will be 6.0 \AA\ and 7.5 \AA.
+This is shown visually in Figure~\ref{fig:distance_constraints}.
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=0.7\textwidth]{figures/distance_constraints/distance_constraints}
+
+\caption{The method to calculate the upper and lower distance constraints between two atoms given two input protein structures.
+First, the distance between the two atoms in each of the two input structures is calculated ($d_{A}$ and $d_{B}$).
+An upper and lower distance constraint is then calculated for each of these distances by multiplying the constraint tolerance for the interaction in that structure by the tolerance weighting factor (these constraints are shown as blue bars).
+The upper and lower limits of these constraints are combined to get the new distance constraints $B_{U}$ and $B_{L}$ (green bar).}
+
+\label{fig:distance_constraints}
+\end{figure}
+
 
 It is undesirable to retain all the `All other pairs' interactions (type 15 in Table~\ref{tab:interaction_types}) as they vastly outnumber the specific interactions (types 1-14).
 Specific interactions scale with the atom number $N_{A}$ whereas other pairs scale as $N_{A}^{2}$.
@@ -291,6 +307,27 @@ Important parameter in ExProSE.
 Desire to control it.
 Fig shows ensemble spread with different parameters and set chosen by auto-parameterisation.
 This method used throughout.
+
+% Modify
+It is instructive to examine the convergence of the structural generation simulations.
+The SPE error score is a measure of how many distance constraints are violated.
+Figure~\ref{fig:spe_convergence} shows the SPE error score over the course of the iterative constraint correcting process for 5 independent runs of CDK2 structure generation.
+It can be seen that 60,000 iterations per atom is enough for the structure to improve as much as it can.
+Further iterations beyond this do not have a meaningful effect on the SPE error score.
+Similar convergence behaviour was seen with proteins across a variety of sizes.
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=\textwidth]{figures/spe_convergence/spe_convergence}
+
+\caption{The SPE error score, a measure of how many distance constraints are violated, shown over the course of 5 separate runs on CDK2.
+Initially the random atomic coordinates give a high score.
+As the iterative procedure occurs atoms that violate distance constraints are moved, reducing the SPE error score.}
+
+\label{fig:spe_convergence}
+\end{figure}
 
 
 \subsubsection{Apo/holo dataset}
