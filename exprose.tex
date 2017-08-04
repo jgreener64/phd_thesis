@@ -233,7 +233,12 @@ $$
 where the averages in angle brackets are over the ensemble and $x$ represents the atomic coordinates.
 $C$ is then diagonalised to yield the PCs.
 The mean square fluctuation of each C\textsuperscript{\textalpha} atom in the structure is also calculated, giving a measure of how much the location of each atom varied across the ensemble.
-% PROCHECK intro chapter from LSR or is this covered in results?
+
+PROCHECK checks the stereochemical quality of protein structures \cite{Laskowski1993}.
+The PROCHECK overall G-factor is a log-odds score based on the observed distributions of various stereochemical parameters in reference proteins.
+A lower overall G-factor represents a low-probability conformation, and indicates a less stereochemically-valid structure.
+Ideally, scores should be above -0.5, and values below -1.0 may need investigation \cite{Esposito2006}.
+PROCHECK was run for each structure generated in order to assess whether the method was able to produce stereochemically-valid protein structures.
 
 
 \subsection{Modulator constraint generation}
@@ -341,20 +346,20 @@ The performance-critical step in Julia showed speed around 1.5 times slower than
 \label{sec:exprose_results}
 
 The motivation for developing ExProSE was to explore allostery in the framework of the protein structural ensemble.
-% Ref to into diagram
+% Ref to intro diagram
 A method was needed that could use existing structural information to generate ensembles that spanned the large conformational changes relevant in allostery.
-We decided to extend the popular existing method tCONCOORD.
-tCONCOORD converts a protein structure to a series of distance constraints based on chemical interactions (e.g.\ hydrogen bonds) then uses an iterative procedure to move randomly-placed atoms to satisfy the distance constraints.
+We decided to extend the popular existing method CONCOORD and its extension tCONCOORD.
+CONCOORD converts a protein structure to a series of distance constraints based on chemical interactions (e.g.\ hydrogen bonds) then uses an iterative procedure to move randomly-placed atoms to satisfy the distance constraints.
 We alter this by using two structures as input, meaning the structures generated can span the conformational space spanned by the input structures.
-There are also other important differences to tCONCOOD (see methods).
+There are also other important differences to CONCOOD (see methods).
 
 ExProSE is able to (i) generate ensembles of protein structures from two input structures and (ii) predict allosteric pockets on proteins.
 First, the use of ExProSE is exemplified and explored on a protein kinase with a hinge opening motion.
 It is then shown using a dataset of structural pairs that two widely-used methods for generating ensembles cannot span large conformational changes, whereas ExProSE can.
-The ability of ExProSE to produce native-like ensembles is exemplified with T4-lysozyme.
+The ability of ExProSE to produce native-like ensembles, i.e.\ ensembles close to other crystal structures, is exemplified with T4-lysozyme.
 ExProSE ensembles can be perturbed to reveal the location of allosteric sites, as demonstrated on cyclin-dependent kinase 2 (CDK2).
 The performance of ExProSE in predicting allosteric sites is assessed on a dataset of 58 known allosteric proteins and compared to existing methods.
-Finally, a well-studied example of dynamic allostery is examined.
+Finally, a well-studied example of dynamic allostery and an example of activation by phosphorylation are examined to show that ExProSE can explore changes in dynamics in proteins.
 
 
 \subsection{Ensemble generation}
@@ -391,6 +396,23 @@ As the iterative procedure occurs atoms that violate distance constraints are mo
 \end{figure}
 
 
+Figure~\ref{fig:score_procheck} shows the final SPE error score for each structure generated in the CDK2 ensemble plotted against the PROCHECK overall G-factor.
+It can be seen that most structures have an overall G-factor between -0.4 and -0.6, and that there is an inverse correlation between overall G-factor and SPE error score.
+This is to be expected as structures which have more violations of the distance constraints are more likely to have poor stereochemical quality.
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=\textwidth]{figures/score_procheck/score_procheck}
+
+\caption{The SPE error score of each structure in the CDK2 ensemble is plotted against the PROCHECK overall G-factor of the structure.
+Note that an ensemble of 300 structures was generated and only the 200 structures with the lowest SPE error score were retained (see Methods section).}
+
+\label{fig:score_procheck}
+\end{figure}
+
+
 \subsubsection{Apo/holo dataset}
 
 In order to examine the ability of existing non-MD methods to generate ensembles that span conformational changes, a dataset of apo (no modulator) and holo (modulator bound) structures was used \cite{Atilgan2010}.
@@ -411,10 +433,6 @@ For 11 out of the 12 proteins ExProSE can generate a structure closer to the hol
 For the opposite case, comparing to the apo crystal, ExProSE also generates a closer structure for 11 out of 12 proteins.
 Hence ExProSE is useful for generating ensembles when two or more structures are available.
 
-PROCHECK checks the stereochemical quality of protein structures \cite{Laskowski1993}.
-The PROCHECK overall G-factor is a log-odds score based on the observed distributions of various stereochemical parameters in reference proteins.
-A lower overall G-factor represents a low-probability conformation, and indicates a less stereochemically-valid structure.
-Ideally, scores should be above -0.5, and values below -1.0 may need investigation \cite{Esposito2006}.
 The median PROCHECK overall G-factor across all generated structures is -0.99 for ExProSE, indicating that PROCHECK produces structures that are generally acceptable.
 The values for NMSim and tCONCOORD are -0.32 and -1.83 respectively, indicating that NMSim produces good quality structures and tCONCOORD produces structures with poor stereochemical quality.
 The stereochemistry of generated structures can be improved by energy minimisation (see below).
@@ -536,6 +554,7 @@ In each case the default parameters gave similar or better coverage of the confo
 \centering
 
 %\includegraphics[width=\textwidth]{figures/t4l}
+% Make this figure bigger with large ensemble in PyMol
 
 \caption{T4-lysozyme ensembles.
 (\textbf{A}) Four structures generated from ExProSE using the open (PDB ID 169L, chain E)  and closed (PDB ID 2LZM) conformations as input are shown in orange.
@@ -674,6 +693,7 @@ In brief, additional constraints are added representing a modulator bound in the
 Projections of the structures of the unperturbed ensemble and the structures of the ensemble with perturbation at the pocket centre are shown in Figure~\ref{fig:cdk}B, one graph per pocket centre.
 The third PC was chosen for visualisation instead of the second as it represents the inactivating motion of the C-helix, whereas the second PC represents a rotation in the region of the protein considered to be functionally less important, the C-lobe.
 
+% This should link to later
 Site 1 in Figure~\ref{fig:cdk}A and \ref{fig:cdk}B is the ANS allosteric pocket.
 Simulating a modulator there shifts the ensemble towards the inactive state, agreeing with previous experimental data \cite{Betzi2011}.
 Site 2 is the ATP-binding site and there is no change in the ensemble by simulating a modulator there.
@@ -889,6 +909,8 @@ The RMSD of chain A (B) between the averages of the ensembles was 0.16 \AA\ (0.0
 This indicates minor structural re-arrangement in chain A due to ligand binding, but almost no change in chain B.
 This agrees with chemical shift mapping in the existing study \cite{Popovych2006}.
 These results indicate that ExProSE is able to reproduce dynamic allostery in a model system.
+The same process could be used to explore positive or negative cooperativity in other proteins.
+The results also demonstrate that ExProSE can give useful information with only a single structure used as input.
 
 
 \begin{figure}
