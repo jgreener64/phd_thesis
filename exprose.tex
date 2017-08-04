@@ -982,6 +982,7 @@ It also requires the structures to be different from each other in order to gene
 This makes the method unsuitable for use on proteins where only one structure, or highly similar structures, are available.
 However, many medically-important proteins have multiple structures available, including the examples used in this study.
 In these cases, it makes sense to use the additional structural information.
+There are some methods which can predict holo structures from an apo input structure \cite{Seeliger2010, Grove2013} and these could be used to generate apo/holo pairs.
 The method also was successful at reproducing the allostery in CAP using only one structure as input.
 For proteins with multiple different conformational states, more than two structures could be used as input to ExProSE to explore further regions of conformational space - the constraint combination procedure can be applied to an arbitrary number of structures.
 
@@ -996,10 +997,33 @@ This provides a way to generate an ensemble with more flexibility if the input s
 In this study, LIGSITE\textsuperscript{\it cs} was used to predict pockets for ExProSE.
 However, it is worth noting that any pocket prediction method that outputs pocket points is compatible with ExProSE without modification.
 One of the challenges in allosteric site prediction is discovery of transient pockets - pockets that are only present in some structures of the ensemble.
+These pockets are an appealing target as they have thus far been unavailable to pocket prediction methods on crystal structures.
 There are currently no general methods that use transient pockets for allosteric site prediction \cite{Boehr2009}, though recent studies have used Markov state models on MD simulations to predict cryptic allosteric sites on multiple proteins \cite{Bowman2012, Bowman2015}.
 These studies concluded that cryptic allosteric sites are more ubiquitous than previously thought.
+For example, transient sites were found on TEM-1 \textbeta -lactamase, which has been studied extensively without observing these sites \cite{Bowman2015}.
 ExProSE has the potential to identify transient pockets and predict their ability as allosteric sites.
-For example, an ensemble could be clustered into a few representative structures and perturbation at sites on these structures could be used to predict transient allosteric pockets.
+For example, an ensemble could be generated from apo/holo pairs and clustered into a few representative structures.
+LIGSITE\textsuperscript{\it cs} could then be run on these structures to find potential transient pockets, and the perturbation procedure carried out to assess their allosteric character.
+Methods for predicting pockets on an ensemble of protein structures, such as MDpocket \cite{Schmidtke2011} or the method in Polyphony \cite{Pitt2014}, could also be run on ensembles generated using ExProSE.
+
+The results from ExProSE have implications for the conformational selection/induced fit debate \cite{Boehr2009}.
+The principle of ExProSE is based on the conformational selection paradigm - an existing ensemble is perturbed by an effector to change the populations, as shown in Figure~intro fig.
+% Is this really true?
+This suggests that cases for which ExProSE is successful adopt a conformational selection mechanism.
+The conformational selecion present in NtrC was reproduced by the method, for example.
+In general this focus on conformational selection can be seen as a positive because small molecules binding with weaker interactions has been associated with a preference for conformational selection over induced fit \cite{Okazaki2008}, and it is these type of interactions that are important for allosteric modulator discovery.
+It was found in some cases, however, that the additional constraints due to a predicted modulator caused the system to sample structures not present in the unperturbed ensemble.
+% Any examples from figures?
+This can be viewed as an induced fit effect, with the modulator binding allowing the ensemble to access structures which are not available in the absence of the modulator.
+Study of perturbed ensembles using ExProSE could therefore give evidence for conformational selection or induced fit mechanisms in specific proteins.
+
+ExProSE has the potential to be further improved.
+Other numberical methods for satisfying the distance constraints could be explored, as there are many available \cite{DeBakker2006}.
+The interactions used to generate distance constraints could be further refined; this was carried out for CONCOORD and gave slightly improved results \cite{DeGroot1999}.
+Given the ease of automation of the whole pipeline, ExProSE has the potential to be turned into a web server.
+Users could generate an ensemble of protein structures from one or two input structures, or predict allosteric sites from two input structures.
+The ability of the method to generate structures for protein-protein docking or for flexible ligand docking could be explicitly investigated.
+For example, structures generated from unbound protein interacting partners could be generated and docked to see if better binding models are produced.
 
 ExProSE builds on existing methods by using more structural information as input.
 It is able to generate ensembles of protein structures that span relevant conformational changes in proteins.
