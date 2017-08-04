@@ -9,8 +9,11 @@ The work is further described in \cite{Greener2017}.
 \section{Materials and Methods}
 \label{sec:exprose_methods}
 
-ExProSE is based on the CONCOORD distance geometry method \cite{DeGroot1997}, but has important differences that make it suitable for modelling conformational transitions and ensemble perturbations.
+ExProSE is based on the CONCOORD distance geometry method \cite{DeGroot1997} and consists of a two-step process of (i) converting interactions in one or more crystal structures into distance constraints and (ii) generating new structures from these constraints.
+ExProSE has important differences to CONCOORD that make it suitable for modelling conformational transitions and ensemble perturbations.
 These are primarily the use of two input structures instead of one, a different procedure for achieving convergence, the ability to predict the effect of a modulator and an auto-parameterisation procedure.
+The effect of a potential modulator can be explored by adding new distance constraints arising due to the modulator and generating new structures with these additional constraints. The original ensemble and the ensemble generated with the extra constraints can then be compared to see how the modulator affects the protein.
+
 ExProSE is implemented in Julia, a language that combines readable syntax similar to Python with performance approaching statically-compiled languages like C.
 Work was initially begun in a combination of Python and C++ before switching to Julia.
 Use of Julia allows good computational performance at the limiting steps, but also allows compact and easy-to-use code that others can modify.
@@ -21,9 +24,12 @@ The code is written in a modular way with associated unit tests and an automated
 \subsection{Distance constraint generation}
 
 The first step is to obtain a set of distance constraints from a protein structure.
+Files for selected structures were obtained from the PDB.
 Contrary to similar studies \cite{Panjkovich2012, Huang2013} the smallest biological assembly of the protein is used, rather than only the chain containing the allosteric modulator.
+For each protein structure, interatomic distances are calculated from the PDB coordinates.
 Hetero atom records, including the allosteric modulators, are removed.
 Any existing hydrogens are removed and polar hydrogens are added using an in-house script.
+For disordered atoms the location with the highest occupancy in the PDB is selected.
 Secondary structure assignments, required to obtain additional distance constraints, are obtained using the DSSP software \cite{Touw2015}.
 As two structures for the same protein are utilised to generate distance constraints, only atoms common to both structures are used.
 Every atom pair is examined and assigned an interaction type.
@@ -74,14 +80,14 @@ $$
 l_{ij} = d_{ij} - W_{B} t_{ij}, \quad u_{ij} = d_{ij} + W_{B} t_{ij}
 $$
 
-The selection of $W_{B}$ is described below.
+The justification for and selection of $W_{B}$ is described below.
 For example two atoms 1.54 \AA\ apart and in a covalent bond with $W_{B}$ equal to 0.5 would have a lower distance constraint of 1.53 \AA\ and an upper distance constraint of 1.55 \AA, as the constraint tolerance multiplied by $W_{B}$ is 0.01 \AA.
 This process yields a set of distance constraints for each crystal structure of a protein.
 
 The distance constraints generated from the two structures for the same protein are combined to get a set of combined constraints.
+This is shown visually in Figure~\ref{fig:distance_constraints}.
 The constraints are combined in such a way that the new constraints for a given atom pair cover the distance of both the individual constraints for that pair.
 For example if two atoms have a lower and upper distance constraint of 6.0 \AA\ and 7.0 \AA\ in structure one, and 6.5 \AA\ and 7.5 \AA\ in structure two, then the new constraints will be 6.0 \AA\ and 7.5 \AA.
-This is shown visually in Figure~\ref{fig:distance_constraints}.
 
 
 \begin{figure}
@@ -103,25 +109,29 @@ Specific interactions scale with the atom number $N_{A}$ whereas other pairs sca
 Hence only a fraction of the other pairs are retained as distance constraints.
 The probability of retaining an other pair is chosen so that the final number of other pairs is roughly $20N_{A}$, the value used by studies utilising CONCOORD \cite{DeGroot1999}.
 
+The parameter $W_{B}$ determines how much the structures are allowed to vary from the input structures.
 $W_{B}$ is chosen for each protein in the apo/holo and allosteric datasets by a process of auto-parameterisation.
 $W_{B}$ equal to 0.0 usually results in a narrow range of structures that are midway between the two input structures.
 By contrast, $W_{B}$ equal to 1.0 usually results in structures that cover a wide conformational space beyond the input structures.
 A measure for the conformational spread of the ensemble was developed.
 This measure $F$ is the fraction of structures $S$ in the ensemble for which $TM(S,A) > TM(B,A)$ and $TM(S,B) > TM(A,B)$ where $TM(X,Y)$ is the TM-score between model $X$ and reference $Y$, and $A$ and $B$ are the two input crystal structures.
-The TM-score is a measure of similarity between two protein structures.
+The TM-score is a measure of similarity between two protein structures, with a higher score indicating more similar structures.
 $F$ therefore gives the proportion of structures that are closer to both input structures than the input structures are to each other.
 $F$ equal to 0.9 indicates an ensemble that effectively covers the conformational space of the input structures.
 Ensembles of 50 structures are generated with $W_{B}$ starting at 1.0 and decreasing in steps of 0.1.
 When the ensemble generated has an $F$ value of at least 0.9, that $W_{B}$ is chosen.
 For the specific examples T4-lysozyme and CDK2, $W_{B}$ is equal to 0.2 and 0.3 respectively.
-It should be noted that the above auto-parameterisation procedure to select $W_{B}$ is implemented automatically and requires no input by the user.
+It should be noted that the above auto-parameterisation procedure to select $W_{B}$ can be implemented automatically by the ExProSE software and requires no input by the user.
 For CAP only one input structure is used so $W_{B}$ is selected manually as 0.4.
+% NtrC?
 This value allows flexibility in the ensemble whilst giving good quality structures.
 
 
 \subsection{Protein structure generation}
 
 Once the distance constraints have been generated, an iterative process is used to generate structures that satisfy the constraints.
+CONCOORD uses a procedure where an atom pair violating a constraint is moved together or apart such that the new distance between the atoms falls randomly within the allowed region.
+A new procedure was used here that was found to provide better convergence when utilising combined distance constraints from two structures.
 Stochastic Proximity Embedding (SPE) \cite{Agrafiotis2013} was selected, as it has been shown to converge effectively and scales well with system size.
 This procedure provides better convergence than the CONCOORD procedure of moving atoms to a random distance within the distance constraints.
 The pseudocode for the SPE algorithm, rephrased from an existing review \cite{Agrafiotis2013}, is shown in Algorithm~\ref{algorithm:spe}.
@@ -188,18 +198,29 @@ This was found during development to generally produce ensembles of structures w
 
 
 The number of iterations per atom, the product of the number of cycles $C$ and the number of steps $S$ from Algorithm~\ref{algorithm:spe}, is taken as 60,000.
-This was chosen as the SPE error score did not generally decrease for iterations beyond this.
+This was chosen as the SPE error score did not generally decrease for iterations beyond this - see Figure~\ref{fig:spe_convergence}.
 The ratio of $S$ to $C$ is taken as 50:1 as in practice any value of $S > C$ will give similar results \cite{Agrafiotis2013}.
 The reduction in learning rate over the course of the minimisation makes this process similar to simulated annealing.
 Initially large movements through the conformational space allow the correct region to be found.
 The movements are dampened over time to allow the system to converge to a solution.
 This procedure is carried out separately multiple times to obtain an ensemble.
+The structures are different from an MD ensemble.
+They are not a trajectory where each structure is a snapshot in time; instead, each structure is produced independently from the others.
+% Beware repetition from elsewhere
 
 
 \subsection{Ensemble analysis}
 
-Ensembles of structures produced are iteratively aligned following the procedure described in the methodology of a previous study \cite{Bakan2009}.
-This aligns an ensemble without the use of a reference structure.
+Ensembles of structures produced were iteratively aligned following the procedure described in the methodology of a previous study \cite{Bakan2009}.
+This aligns the ensemble without the use of a reference structure as follows:
+
+\begin{enumerate}
+\item Each structure in the ensemble is pairwise superimposed onto a randomly selected reference structure using the Kabsch algorithm \cite{Kabsch1976}.
+\item An average set of coordinates is calculated for the superimposed set.
+\item Each structure is pairwise superimposed onto the average coordinates using the Kabsch algorithm.
+\item Steps 2-3 are repeated until the average model generated in two successive iterations changes by less than a threshold RMSD of 0.001 \AA.
+\end{enumerate}
+
 The average structure of the ensemble is taken as the centroid of the coordinates across the ensemble following this superimposition.
 
 PCA is carried out on the generated ensemble.
@@ -211,11 +232,14 @@ C_{ij} = \langle (x_{i} - \langle x_{i} \rangle) \cdot (x_{j} - \langle x_{j} \r
 $$
 where the averages in angle brackets are over the ensemble and $x$ represents the atomic coordinates.
 $C$ is then diagonalised to yield the PCs.
+The mean square fluctuation of each C\textsuperscript{\textalpha} atom in the structure is also calculated, giving a measure of how much the location of each atom varied across the ensemble.
+% PROCHECK intro chapter from LSR or is this covered in results?
 
 
 \subsection{Modulator constraint generation}
 
 In order to predict how a modulator binding to the protein affects the distribution of structures in conformational space, additional distance constraints representing the modulator need to be generated.
+Addition of the new distance constraints leads to ensembles that may differ significantly from the unperturbed ensemble.
 Potential binding sites are predicted using LIGSITE\textsuperscript{\it cs} \cite{Huang2006}, which is a development of the original LIGSITE algorithm \cite{Hendlich1997}.
 Additional constraints are generated based on pocket points predicted by LIGSITE\textsuperscript{\it cs}.
 In order to keep the number of additional points the same for pockets of different sizes, 120 points are chosen randomly.
@@ -225,8 +249,8 @@ Changing this parameter changes the strength of the perturbations but does not g
 For CAP a different procedure was used as the location of the bound cAMP molecules is known from the crystal structure.
 In this case 120 fake points are added at 1.2 \AA\ gaps in a ball around the location of the C1' atom in cAMP, while the cAMP molecules are themselves omitted from the simulation.
 Selected points have distance constraints of tolerance 0.1 \AA\ with all protein atoms within 7 \AA.
-% NtrC phosphorylation here
-Addition of the new distance constraints leads to ensembles that may differ significantly from the unperturbed ensemble.
+A similar procedure to CAP is carried out for NtrC, with the oxygen to which the phosphate binds (OD1 on ASP54) taken as the centre.
+% Was the NtrC phosphate omitted?
 
 In the allosteric prediction procedure ensembles are generated with additional constraints (termed `perturbation') at selected pockets in turn, then compared to the original `unperturbed' ensemble.
 Each pocket greater than a size cutoff of 13 \AA\textsuperscript{3} is selected, up to a maximum of 8 pockets per protein.
@@ -246,18 +270,30 @@ Out of the 25 proteins used in a prior study \cite{Atilgan2010}, the 12 with apo
 
 \subsection{Allosteric dataset}
 
-All 150 proteins in the ASD \cite{Shen2016} with apo and holo structures available in the PDB are examined.
-58 proteins with apo and holo structures are selected using the following criteria: (i) apo/holo all-atom RMSD greater than 0.25 \AA, (ii) TM-score greater than 0.5 and (iii) no more than two chains and 1,000 residues in the smallest biological assembly.
-Proteins are also clustered by sequence identity at a threshold of 30\%, with representatives being the proteins with the highest apo/holo RMSD, to remove similar proteins.
+In order to assess the performance of ExProSE as an allosteric site predictor, a dataset of known allosteric proteins was assembled.
+All proteins in the ASD with apo and holo structures available in the PDB were retrieved (150 proteins).
+Those with ASD RMSD between the apo and holo structures less than 0.25 \AA\ were removed (14 removed) as the apo and holo structures were too similar.
+The proteins with more than two chains in the smallest biological assembly were removed (43 removed) as the method presented here, and the methods it is compared to, are more suited to monomers and dimers than large oligomeric assemblies.
+The proteins were clustered by sequence identity at a threshold of 30\% and the proteins with the largest ASD RMSD were kept (17 removed).
+This was to ensure a diverse dataset.
+TM-score measures the structural similarity of proteins on a scale from 0 to 1.
+Some apo-holo pairs had TM-score less than 0.5 and these were removed (5 removed) as the proteins were too different from each other.
+Proteins with more than 1000 residues in the smallest biological assembly were also removed (9 removed).
+Finally, proteins with missing regions or other problems were removed (4 removed).
+58 proteins with apo and holo structures remained in the dataset.
 
 
 \subsection{Method comparison}
+
+Existing methods for ensemble generation and allosteric site prediction were compared against the method described here.
+
 
 \subsubsection{Ensemble generation}
 
 tCONCOORD \cite{Seeliger2007} is run with default parameters.
 NMSim is run via the NMSim web server \cite{Kruger2012} with the default parameters for large scale motions.
 This produces 5 trajectories of 500 structures. Every tenth structure is taken from each trajectory to yield representative ensembles of 250 structures.
+A `targeted' simulation on the NMSim web server using both apo and holo structures was also carried out but did not produce better results.
 Alternative parameters for tCONCOORD and NMSim are used to generate the results in Figure~\ref{fig:method_params} and these are described in the figure.
 
 

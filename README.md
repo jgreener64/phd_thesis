@@ -11,7 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
-- Recheck plagiarism rules
+- Remove multicolumn table tags
 - Caption formatting - small text, margin, bold starting label, bold A/B? See LSR
 - Consistent table formatting - use top/mid/bottom rule
 - Images should have consistent white background
