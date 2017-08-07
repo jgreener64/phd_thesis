@@ -13,7 +13,7 @@ pdflatex thesis.tex
 
 - Remove multicolumn table tags
 - Caption formatting - small text, margin, bold starting label, bold A/B? See LSR
-- Consistent table formatting - use top/mid/bottom rule
+- Consistent table formatting - use top/mid/bottom rule? use booktabs?
 - Images should have consistent white background
 - Consistent C-alpha
 - How to refer to other sections - use labels
@@ -98,7 +98,7 @@ AlloPred:
 - Flowchart (paper Fig 2)
 - Venn (paper Fig 3)
 - AlloPred results page (paper Fig 4), possibly with a different protein
-- Example in PyMol
+- Example in PyMol?
 
 ExProSE:
 -
