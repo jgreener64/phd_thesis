@@ -11,6 +11,9 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Check latex log for errors
+- Minted package to highlight source code
+- Keep COSB review and intro/conc up to date
 - Remove multicolumn table tags
 - Caption formatting - small text, margin, bold starting label, bold A/B? See LSR
 - Consistent table formatting - use top/mid/bottom rule? use booktabs?

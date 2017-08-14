@@ -61,6 +61,26 @@ This higher value was chosen after values from 1.2 to 2.5 kcal mol\textsuperscri
 Active site residues were not counted as being in any pocket for this alteration of $k$, in order to avoid direct perturbation of the site at which the effect was measured.
 This approach assumes nothing about the shape of the modulator other than that it affects the flexibility of the whole pocket to which it binds.
 
+
+\begin{figure}
+\centering
+
+\includegraphics[width=\textwidth]{figures/ligand_binding/ligand_binding}
+
+\caption{The change in flexibility of a protein on modulator binding at an allosteric site.
+The black line indicates the surface of the protein and circles show residues: purple circles represent residues that are part of pocket P and green circles represent other residues.
+Dashed arrows represent the magnitude of the fluctuations of a residue about equilibrium.
+(\textbf{A}) shows the protein in the absence of a modulator.
+All residues can vibrate.
+(\textbf{B}) shows the effect of modulator M binding in pocket P.
+The residues in the pocket have restricted motion and are less able to vibrate around their equilibrium positions.
+Our method sought to approximate the effect of ligand binding by artificially restricting the flexibility of residues in a pocket using a higher spring constant in the elastic network.
+Figure based on Figure~1 from Greener and Sternberg 2015 \cite{Greener2015}.}
+
+\label{fig:ligand_binding}
+\end{figure}
+
+
 Once the perturbed NMA had been carried out, the degree of change caused by the perturbation needed to be measured.
 Since changes at the active site will likely determine how strong an effect a modulator has, the effect of the perturbation on the active site should be considered.
 Within each individual normal mode the effect of the perturbation was measured by averaging across all identified active site residues the magnitude of the difference between the perturbed and the unperturbed displacements from equilibrium.
@@ -157,6 +177,20 @@ Bootstrap was used for page styling.
 The standalone version of the code runs faster and it is recommended that users who intend to use the method extensively or in batch download the code for local use.
 
 
+\begin{figure}
+\centering
+
+\includegraphics[width=0.7\textwidth]{figures/flowchart/flowchart}
+
+\caption{Flowchart showing the stages involved in running a job submitted to the AlloPred web server.
+Trapeziums represent inputs or outputs available to the user via the web front end.
+Rectangles represent stages in the calculation pipeline that occur via the web back end.
+Figure based on Figure~2 from Greener and Sternberg 2015 \cite{Greener2015}.}
+
+\label{fig:flowchart}
+\end{figure}
+
+
 \section{Results}
 \label{sec:allopred_results}
 
@@ -191,6 +225,21 @@ The average number of correct predictions across the 20 runs was 23.6 out of 40.
 This shows that the above results used for comparison to other methods are indicative of the performance of the method.
 
 
+\begin{figure}
+\centering
+
+\includegraphics[width=0.5\textwidth]{figures/results_venn/results_venn}
+
+\caption{Results comparison by method.
+Venn diagram showing the number of top predictions for each protein by each method that were correct, from the test set of 40 proteins.
+For AlloPred and AlloSite a correct prediction was prediction of a pocket containing at least one allosteric binding residue.
+For PARS a correct prediction was prediction of a site within 10 \AA\ of at least one atom of the allosteric modulator in the protein-modulator crystal.
+Figure based on Figure~3 from Greener and Sternberg 2015 \cite{Greener2015}.}
+
+\label{fig:results_venn}
+\end{figure}
+
+
 \subsection{Web server}
 
 The publicly-available AlloPred web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) allows users to analyse the prediction results via an intuitive interface.
@@ -208,6 +257,24 @@ The results, including full details of each pocket, can be downloaded for furthe
 The exploratory features on the website and results file containing all the pocket information set AlloPred apart from similar servers by allowing more extensive analysis of the results.
 The calculation time is fast, with a 400 residue protein ($\sim$15 predicted pockets) analysed within 5 minutes.
 The web server also includes a tutorial and a link to the source code to run AlloPred offline.
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=0.8\textwidth]{figures/web_results/web_results}
+
+\caption{Screenshots of the AlloPred results page for the receptor-type adenylate cyclase with PDB ID 1FX2.
+(\textbf{A}) The results table with default columns selected.
+Three pockets have been chosen for visualisation.
+(\textbf{B}) The JSmol window shown when the boxes are selected as in (\textbf{A}).
+The ribbon visualisation option is used and the residues identified as being part of the active site are shown as balls and sticks.
+Three pockets are shown in green, yellow and blue.
+AlloPred correctly predicts the green pocket as being allosteric.
+Figure based on Figure~4 from Greener and Sternberg 2015 \cite{Greener2015}.}
+
+\label{fig:web_results}
+\end{figure}
 
 
 \section{Discussion}
