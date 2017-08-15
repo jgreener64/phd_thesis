@@ -345,7 +345,6 @@ The performance-critical step in Julia showed speed around 1.5 times slower than
 \section{Results}
 \label{sec:exprose_results}
 
-% Have paper graphical abstract here as method overview
 The motivation for developing ExProSE was to explore allostery in the framework of the protein structural ensemble.
 % Ref to intro diagram
 A method was needed that could use existing structural information to generate ensembles that spanned the large conformational changes relevant in allostery.
@@ -353,6 +352,7 @@ We decided to extend the popular existing method CONCOORD and its extension tCON
 CONCOORD converts a protein structure to a series of distance constraints based on chemical interactions (e.g.\ hydrogen bonds) then uses an iterative procedure to move randomly-placed atoms to satisfy the distance constraints.
 We alter this by using two structures as input, meaning the structures generated can span the conformational space spanned by the input structures.
 There are also other important differences to CONCOOD (see methods).
+An overview of the method is shown in Figure~\ref{fig:exprose_overview}.
 
 ExProSE is able to (i) generate ensembles of protein structures from two input structures and (ii) predict allosteric pockets on proteins.
 First, the use of ExProSE is exemplified and explored on a protein kinase with a hinge opening motion.
@@ -361,6 +361,22 @@ The ability of ExProSE to produce native-like ensembles, i.e.\ ensembles close t
 ExProSE ensembles can be perturbed to reveal the location of allosteric sites, as demonstrated on cyclin-dependent kinase 2 (CDK2).
 The performance of ExProSE in predicting allosteric sites is assessed on a dataset of 58 known allosteric proteins and compared to existing methods.
 Finally, a well-studied example of dynamic allostery and an example of activation by phosphorylation are examined to show that ExProSE can explore changes in dynamics in proteins.
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=0.9\textwidth]{figures/exprose_overview/exprose_overview}
+
+\caption{Overview of the ExProSE computational method.
+Two structures of a protein (shown in blue and green) are converted to distance constraints.
+These constraints are combined and satisfied by an iterative procedure to generate an ensemble of structures.
+By adding extra constraints to one structure, for example representing perturbation at a pocket, a perturbed ensemble can be generated.
+This perturbed ensemble can be compared to the unperturbed ensemble to predict allosteric sites.
+Figure based on Graphical Abstract from Greener and Sternberg 2017 \cite{Greener2017}.}
+
+\label{fig:exprose_overview}
+\end{figure}
 
 
 \subsection{Ensemble generation}

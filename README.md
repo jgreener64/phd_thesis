@@ -20,7 +20,7 @@ pdflatex thesis.tex
 - Images should have consistent white background
 - Consistent C-alpha
 - How to refer to other sections - use labels
-- Cyclin A or A2? Cyclin capitalised? Is there a space?
+- Cyclin A or A2? Cyclin capitalised? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
 - Abbreviations: TR-FRET, PPI
 - Italicisation throughout
