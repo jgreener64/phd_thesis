@@ -22,7 +22,7 @@ Follow these steps to set up AlloPred - the shell commands are for bash:
 \begin{enumerate}
 \item Download the files and extract them as usual, or clone the repository.
 \item The environmental variables \verb|$ALLOPRED_DIR| and \verb|$SVM_LIGHT_DIR| need to be set as the filepaths to the AlloPred directory and the SVM-light directory respectively:
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     export ALLOPRED_DIR=/path/to/allopred/
     export SVM_LIGHT_DIR=/path/to/svm_light/
 \end{lstlisting}
@@ -37,13 +37,13 @@ Follow these step to run AlloPred:
 \item Create a one-line file (\verb|act_res.txt|) containing the active site residues of the protein. The format is \verb|10:A,11:B| for residue 10 on chain A and residue 11 on chain B. These can be found using resources such as the Catalytic Site Atlas. An example PDB file and active residue file can be found in the example directory of AlloPred.
 
 \item Run fpocket v2.0 on the PDB file:
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     fpocket -f in_file.pdb
 \end{lstlisting}
 This assumes \verb|fpocket| is on the path. This produces the directory \verb|in_file_out|. AlloPred is optimised on the default fpocket parameters but you can change these in accordance with the fpocket documentation if you wish.
 
 \item The following command, from the directory containing \verb|in_file.pdb| and \verb|in_file_out|, runs the AlloPred pipeline:
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     python $ALLOPRED_DIR/run_allopred.py in_file act_res.txt
 \end{lstlisting}
 The arguments are the input file prefix and the path to the active site residue file. Running the \verb|run_allopred.py| script with fewer than 2 arguments returns these instructions for the command.
@@ -75,7 +75,7 @@ This section contains documentation for the ExProSE source code, which can be fo
 
 Install using \verb|Pkg.add("ProteinEnsembles")| from within Julia v0.5. Run using
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     exprose --i1 input_1.pdb --d1 input_1.dssp \
         --i2 input_2.pdb --d2 input_2.dssp \
         -n 50 -o exprose_out
@@ -104,19 +104,19 @@ These instructions are tailored towards Mac/Unix. However they could be modified
 
 Although organised as a Julia package, ProteinEnsembles.jl is primarily designed for use from the command line. The \verb|exprose| script in the \verb|bin| directory implements this. For example, to see the command line options run
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     ~/.julia/v0.5/ProteinEnsembles/bin/exprose -h
 \end{lstlisting}
 
 For easy access to the \verb|exprose| command you might like to add the following line to your profile:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     export PATH=$PATH:~/.julia/v0.5/ProteinEnsembles/bin
 \end{lstlisting}
 
 Then, if all input files are in your current directory, run the program as follows:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     # Generate an ensemble of 50 structures with an output directory exprose_out
     exprose --i1 input_1.pdb --d1 input_1.dssp --i2 input_2.pdb \
         --d2 input_2.dssp -n 50 -o exprose_out
@@ -162,7 +162,7 @@ Or, to split it up a little into the constituent functions:
 
 The auto-parameterisation procedure can select a more suitable tolerance weighting value (see the paper). TM-score must be installed to do this. For example:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     exprose-param --i1 input_1.pdb --d1 input_1.dssp --i2 input_2.pdb \
         --d2 input_2.dssp -o exprose_param -t TMscore
 \end{lstlisting}
@@ -174,13 +174,13 @@ runs the auto-parameterisation procedure with the \verb|-t| option specifying th
 
 To predict allosteric sites you should run LIGSITE\textsuperscript{\it cs} on the \emph{second} input structure (the one you give as \verb|--i2|). You then need to run the \verb|cluster-ligsite| script in \verb|bin| to assign the points to pockets:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     cluster-ligsite pocket_r.pdb pocket_all.pdb pocket_points.pdb
 \end{lstlisting}
 
 where \verb|pocket_r.pdb| and \verb|pocket_all.pdb| are in the LIGSITE\textsuperscript{\it cs} output. Then carry out an \verb|exprose| run with the \verb|pocket_points.pdb| file (\verb|-l|) and the number of pockets (e.g.\ top 4) to perturb at (\verb|-m|) as parameters:
 
-\begin{lstlisting}
+\begin{lstlisting}[language=bash]
     exprose --i1 input_1.pdb --d1 input_1.dssp --i2 input_2.pdb \
         --d2 input_2.dssp -n 50 -o exprose_out -l pocket_points.pdb -m 4
 \end{lstlisting}
