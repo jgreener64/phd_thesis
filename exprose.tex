@@ -261,7 +261,7 @@ In the allosteric prediction procedure ensembles are generated with additional c
 Each pocket greater than a size cutoff of 13 \AA\textsuperscript{3} is selected, up to a maximum of 8 pockets per protein.
 Below this size a small-molecule modulator is unlikely to have enough space to bind.
 8 pockets gives a reasonable sampling of the surface of a protein and generally includes all sizeable pockets.
-The C$\alpha$ RMSD between the average structure in the unperturbed ensemble and the average structure in the perturbed ensemble is used to compare ensembles.
+The C\textsuperscript{\textalpha} RMSD between the average structure in the unperturbed ensemble and the average structure in the perturbed ensemble is used to compare ensembles.
 This RMSD is used to rank the perturbed pockets in terms of their predicted allosteric nature (largest to smallest RMSD).
 This RMSD measure may seem simplistic but gave similar or superior performance to statistical measures, such as the Mann-Whitney $U$ test on the ensemble fluctuations between the unperturbed and perturbed ensembles, during development.
 A pocket is considered allosteric for validation purposes if the pocket centre is within 6 \AA\ of at least one atom of the modulator defined as the allosteric modulator in the ASD.
@@ -310,7 +310,7 @@ MD runs of T4-lysozyme are conducted using periodic boundary conditions, SPC wat
 An initial energy minimisation is followed by a constant temperature and volume equilibration for 100 ps, then a constant pressure and temperature equilibration for 100 ps.
 MD is run for 50 ns.
 PLUMED \cite{Tribello2014} with GROMACS is used to carry out targeted MD.
-C$\alpha$ RMSD to the target structure is used as a collective variable with a $\kappa$ value starting at 0 $\textup{kJ} \: \textup{mol}^{-1} \: \textup{\AA}^{-2}$ and increasing linearly to 1000 $\textup{kJ} \: \textup{mol}^{-1} \: \textup{\AA}^{-2}$ over 10 ps, and remaining at this value for the rest of the run.
+C\textsuperscript{\textalpha} RMSD to the target structure is used as a collective variable with a $\kappa$ value starting at 0 $\textup{kJ} \: \textup{mol}^{-1} \: \textup{\AA}^{-2}$ and increasing linearly to 1000 $\textup{kJ} \: \textup{mol}^{-1} \: \textup{\AA}^{-2}$ over 10 ps, and remaining at this value for the rest of the run.
 
 
 \subsubsection{Allosteric site prediction}
