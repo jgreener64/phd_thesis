@@ -209,6 +209,7 @@ The default plot colours are blue for generated structures, red for input struct
 \section{BioJulia Bio.Structure module}
 
 The structure of the type heirarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
+Examples of basic use cases for Bio.Structure are shown in Figure~\ref{fig:biojulia_example}.
 
 
 \begin{figure}
@@ -225,4 +226,18 @@ A blue line indicates that an instance of the type contains a list of the indica
 For example, a \texttt{Chain} contains multiple \texttt{AbstractResidue}s.}
 
 \label{fig:model_structure}
+\end{figure}
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=0.9\textwidth]{figures/biojulia_example/biojulia_example}
+
+\caption{Example functionality of the Bio.Structure module.
+The Jupyter Notebook and Julia v0.5.2 are used.
+Cases shown are importing the module, reading in a PDB file, accessing residues by index, extracting C\textsuperscript{\textalpha} atoms, extracting the amino acid sequence and iterating over sub-elements.}
+% cite Jupyter? Possibly http://ebooks.iospress.nl/publication/42900
+
+\label{fig:biojulia_example}
 \end{figure}
