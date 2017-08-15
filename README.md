@@ -30,6 +30,7 @@ pdflatex thesis.tex
 - Panjkovich thesis has some stuff about lack of conservation - see also Panjkovich2010
 - OA on GitHub
 - Add to Spiral
+- Spellcheck
 
 
 ## Plan
@@ -117,6 +118,7 @@ Conclusion:
 -
 
 Appendices:
+- Refer to Bio.Strucure docs but whole docs not relevant
 - Flowchart of type structure in the parser
 - Screenshot of parse and output in Julia REPL
 - Table from pdb-benchmarks README

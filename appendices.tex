@@ -206,4 +206,23 @@ For allosteric site prediction there will be \verb|pdbs_mod_n| and \verb|mod_n| 
 The default plot colours are blue for generated structures, red for input structure 1, green for input structure 2 and orange for perturbed ensemble structures.
 
 
-\section{BioJulia PDB file parser}
+\section{BioJulia Bio.Structure module}
+
+The structure of the type heirarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=0.9\textwidth]{figures/model_structure/model_structure}
+
+\caption{Type structure of the BioJulia Bio.Structure module.
+Types, analogous to classes in other languages, are shown in text.
+\texttt{StructuralElement}, \texttt{AbstractResidue} and \texttt{AbstractAtom} are abstract types and may not themselves be instantiated.
+Concrete (i.e.\ not abstract) types are shown in bold text.
+Subtypes, analogous to subclasses, are indicated by red dotted lines.
+A blue line indicates that an instance of the type contains a list of the indicated type.
+For example, a \texttt{Chain} contains multiple \texttt{AbstractResidue}s.}
+
+\label{fig:model_structure}
+\end{figure}
