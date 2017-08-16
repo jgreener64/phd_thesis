@@ -208,6 +208,9 @@ The default plot colours are blue for generated structures, red for input struct
 
 \section{BioJulia Bio.Structure module}
 
+Open source software packages to parse PDB files and manipulate protein structures exist in many programming languages.
+There are a lack of such packages in the Julia language so a new module, Bio.Structure, was contributed to the BioJulia project (\url{http://biojulia.net}).
+Features of the package include...
 The structure of the type heirarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
 Examples of basic use cases for Bio.Structure are shown in Figure~\ref{fig:biojulia_example}.
 
@@ -240,4 +243,56 @@ Cases shown are importing the module, reading in a PDB file, accessing residues 
 % cite Jupyter? Possibly http://ebooks.iospress.nl/publication/42900
 
 \label{fig:biojulia_example}
+\end{figure}
+
+
+As part of the development of Bio.Structure information was collected on existing packages with similar functionality.
+This is shown in Table~\ref{tab:package_comparison}.
+A comparison of running times on various benchmarks is shown in Figure~\ref{fig:pdb_benchmarks}.
+Bio.Structure is able to read in PDB file 1CRN in 1.4 ms (after just-in-time compilation) on average.
+This is faster than any other package tested.
+
+
+\begin{sidewaystable}
+\centering
+
+\begin{small}
+\begin{tabular}{ llllllllllll }
+\hline
+                      & BioJulia     & MIToS        & Biopython    & ProDy        & MDAnalysis   & Bio3D        & Rpdb         & BioPerl       & BioRuby      & Victor        & ESBTL        \\
+\hline
+Parse 1CRN / ms       & 1.4          & 2.4          & 9.1          & 2.2          & 6.4          & 31           & 19           & 63            & 25           & 10            & 6.8          \\
+Parse 3JYV / s        & 0.49         & 0.74         & 1.0          & 0.28         & 0.80         & 14           & 2.2          & 3.8           & 0.98         & 7.7           & 0.95         \\
+Parse 1HTQ / s        & 27           & 28           & 25           & 1.7          & 3.0          & 60           & 34           & 71            & 18           & 17            & -            \\
+Count / ms            & 0.91         & 0.16         & 0.48         & 8.9          & 5.7          & 0.53         & 0.46         & 0.79          & 0.19         & -             & -            \\
+Distance / ms         & 0.11         & 0.011        & 0.39         & 5.6          & 3.3          & 1.4          & 1.9          & 0.85          & 0.51         & -             & -            \\
+Ramachandran / ms     & 13           & -            & 130          & 180          & 3500         & -            & -            & -             & -            & -             & -            \\
+Language              & Julia        & Julia        & Python       & Python       & Python       & R            & R            & Perl          & Ruby         & C++           & C++          \\
+Parses header         & $\times$     & $\times$     & $\checkmark$ & $\checkmark$ & $\times$     & $\checkmark$ & $\checkmark$ & $\times$      & $\checkmark$ & $\checkmark$  & $\times$     \\
+Heirarchichal parsing & $\checkmark$ & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$     & $\checkmark$  & $\checkmark$ & $\checkmark$  & $\checkmark$ \\
+Supports disorder     & $\checkmark$ & $\times$     & $\checkmark$ & $\times$     & $\times$     & $\times$     & $\times$     & $\times$      & $\times$     & $\times$      & $\checkmark$ \\
+Writes PDBs           & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\times$     & $\checkmark$  & $\checkmark$ \\
+Superimposition       & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$      & $\times$     & $\times$      & $\times$     \\
+PCA                   & $\times$     & $\times$     & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$      & $\times$     & $\times$      & $\times$     \\
+License               & MIT          & MIT          & Biopython    & MIT          & GPLv2        & GPLv2        & GPL          & GPL/Artistic  & Ruby         & GPLv3         & GPLv3        \\
+\hline
+\end{tabular}
+\end{small}
+
+\caption{Comparison of open source packages to read and manipulate PDB files in various programming languages.}
+% Details of benchmarks
+
+\label{tab:package_comparison}
+\end{sidewaystable}
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=\textwidth]{figures/pdb_benchmarks/pdb_benchmarks}
+
+\caption{}
+% Details of benchmarks
+
+\label{fig:pdb_benchmarks}
 \end{figure}
