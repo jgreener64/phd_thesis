@@ -210,7 +210,7 @@ The default plot colours are blue for generated structures, red for input struct
 
 Open source software packages to parse PDB files and manipulate protein structures exist in many programming languages.
 There are a lack of such packages in the Julia language so a new module, Bio.Structure, was contributed to the BioJulia project (\url{http://biojulia.net}).
-Features of the package include...
+Features of the package include easy access to structural elements, iteration over elements, selector functions, downloading of PDB files, writing PDB files and spatial functions such as distances and Ramachandran angles.
 The structure of the type heirarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
 Examples of basic use cases for Bio.Structure are shown in Figure~\ref{fig:biojulia_example}.
 
@@ -271,16 +271,17 @@ Language              & Julia        & Julia        & Python       & Python     
 Parses header         & $\times$     & $\times$     & $\checkmark$ & $\checkmark$ & $\times$     & $\checkmark$ & $\checkmark$ & $\times$      & $\checkmark$ & $\checkmark$  & $\times$     \\
 Heirarchichal parsing & $\checkmark$ & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$     & $\checkmark$  & $\checkmark$ & $\checkmark$  & $\checkmark$ \\
 Supports disorder     & $\checkmark$ & $\times$     & $\checkmark$ & $\times$     & $\times$     & $\times$     & $\times$     & $\times$      & $\times$     & $\times$      & $\checkmark$ \\
-Writes PDBs           & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\times$     & $\checkmark$  & $\checkmark$ \\
+Writes PDB files      & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\times$     & $\checkmark$  & $\checkmark$ \\
 Superimposition       & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$      & $\times$     & $\times$      & $\times$     \\
 PCA                   & $\times$     & $\times$     & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$      & $\times$     & $\times$      & $\times$     \\
-License               & MIT          & MIT          & Biopython    & MIT          & GPLv2        & GPLv2        & GPL          & GPL/Artistic  & Ruby         & GPLv3         & GPLv3        \\
+Software license      & MIT          & MIT          & Biopython    & MIT          & GPLv2        & GPLv2        & GPL          & GPL/Artistic  & Ruby         & GPLv3         & GPLv3        \\
 \hline
 \end{tabular}
 \end{small}
 
-\caption{Comparison of open source packages to read and manipulate PDB files in various programming languages.}
-% Details of benchmarks
+\caption{Comparison of open source packages to read and manipulate PDB files in various programming languages.
+See Figure~\ref{fig:pdb_benchmarks} for descriptions and a visual representation of the benchmarks.}
+% Do the methods need citation?
 
 \label{tab:package_comparison}
 \end{sidewaystable}
@@ -291,8 +292,15 @@ License               & MIT          & MIT          & Biopython    & MIT        
 
 \includegraphics[width=0.9\textwidth]{figures/pdb_benchmarks/pdb_benchmarks}
 
-\caption{}
-% Details of benchmarks
+\caption{Benchmarks on common tasks for open source packages to read and manipulate PDB files in various programming languages.
+Benchmarks were carried out on a 3.1 GHz Intel Core i7 processor with 16 GB 1867 MHz DDR3 RAM.
+The operating system was Mac OS X Yosemite 10.10.5.
+Time is the elapsed time.
+The mean over a number of runs is taken for each benchmark.
+The three PDB files parsed are 1CRN (327 atoms), 3JYV (57,327 atoms) and 1HTQ (10 models of 97,872 atoms) and are taken from the benchmarking in \cite{Gajda2013}.
+`Count' is a count of the number of alanine residues in adenylate kinase (PDB ID 1AKE).
+`Distance' is a calculation of the distance between residues 50 and 60 of chain A in adenylate kinase.
+`Ramachandran' is a calculation of the Ramachandran \textphi /\textpsi\ angles in adenylate kinase.}
 
 \label{fig:pdb_benchmarks}
 \end{figure}
