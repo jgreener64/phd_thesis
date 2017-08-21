@@ -31,6 +31,7 @@ pdflatex thesis.tex
 - OA on GitHub
 - Add to Spiral
 - Spellcheck
+- Permission to use figures required?
 
 
 ## Plan
@@ -156,6 +157,7 @@ Paper results - ensemble dataset, T4-lysozyme, CDK2, allosteric dataset, CAP, do
 LSR has other results like NtrC.
 Beta-lactamase and transient allosteric pocket? This would be nice to link with cryptic stuff in intro. Or at least mention that it was done in the discussion
 Run on a huge structure?
+Mention Nick's docking work
 
 
 ### CDK2
