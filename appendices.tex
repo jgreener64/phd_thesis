@@ -3,7 +3,8 @@
 
 \section{AlloPred documentation}
 
-This section contains documentation for the AlloPred source code, which can be found at \url{https://github.com/jgreener64/allopred}.
+This section contains documentation for the AlloPred source code.
+This documentation can be found along with the source code at \url{https://github.com/jgreener64/allopred}.
 
 
 \subsection{Requirements}
@@ -67,7 +68,8 @@ The arguments are the input file prefix and the path to the active site residue 
 
 \section{ExProSE documentation}
 
-This section contains documentation for the ExProSE source code, which can be found at \url{https://github.com/jgreener64/ProteinEnsembles.jl}.
+This section contains documentation for the ExProSE source code.
+This documentation can be found along with the source code at \url{https://github.com/jgreener64/ProteinEnsembles.jl}.
 % Version info
 
 
@@ -195,7 +197,7 @@ The output directory contains the following:
 \item \verb|input_1.pdb| and \verb|input_2.pdb|: atoms used from the input structures are written back out and superimposed.
 \item \verb|pdbs|: generated structures in PDB format. Superimposed to \verb|input_1.pdb| and \verb|input_2.pdb|.
 \item \verb|pcs|: projections onto the principal components (PCs) from the principal component analysis of the generated structures. Contains files for generated (\verb|pcs.tsv|) and input structures (\verb|pcs_input_1.tsv| and \verb|pcs_input_2.tsv|) - line n corresponds to structure n and column c corresponds to PC c. Has graphs of these for the first few PCs (\verb|pc_x_y.png|). Also includes a list of PCs ordered by decreasing distance betwen the input structures (\verb|pcs_input_dist.tsv|) and the percentage variation explained by each PC (\verb|evals_spread.tsv|).
-\item \verb|pymol|: PyMol scripts to view PCs on \verb|input_1.pdb|, e.g.\ run \verb|pymol input_1.pdb pymol/view_pc_1.pml|.
+\item \verb|pymol|: PyMol scripts to view PCs on \verb|input_1.pdb|, e.g.\ run\newline \verb|pymol input_1.pdb pymol/view_pc_1.pml|.
 \item \verb|rmsds_input_1.tsv| and \verb|rmsds_input_2.tsv|: RMSDs of generated structures to the input structures. Line n corresponds to structure n.
 \item \verb|rmsfs.tsv| and \verb|rmsfs.png|: RMSFs of each residue over the ensemble of generated structures, and a plot of this. Line n corresponds to residue index n.
 \item \verb|spe_scores.tsv|: SPE error scores of generated structures (see paper). Line n corresponds to structure n.
@@ -210,7 +212,7 @@ The default plot colours are blue for generated structures, red for input struct
 
 Open source software packages to parse PDB files and manipulate protein structures exist in many programming languages.
 There are a lack of such packages in the Julia language so a new module, Bio.Structure, was contributed to the BioJulia project (\url{http://biojulia.net}).
-Features of the package include easy access to structural elements, iteration over elements, selector functions, downloading of PDB files, writing PDB files and spatial functions such as distances and Ramachandran angles.
+Features of the package include fast PDB parsing, easy access to structural elements, iteration over elements, selector functions, downloading of PDB files, writing PDB files and spatial functions such as distances and Ramachandran angles.
 The structure of the type heirarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
 Examples of basic use cases for Bio.Structure are shown in Figure~\ref{fig:biojulia_example}.
 
@@ -247,8 +249,8 @@ Cases shown are importing the module, reading in a PDB file, accessing residues 
 
 
 As part of the development of Bio.Structure information was collected on existing packages with similar functionality.
-This is shown in Table~\ref{tab:package_comparison}.
-A comparison of running times on various benchmarks is shown in Figure~\ref{fig:pdb_benchmarks}.
+These comparisons are shown in Table~\ref{tab:package_comparison}.
+The results of each package running various benchmarks are shown in Figure~\ref{fig:pdb_benchmarks}.
 Bio.Structure is able to read in PDB file 1CRN in 1.4 ms (after just-in-time compilation) on average.
 This is faster than any other package tested.
 
@@ -256,8 +258,8 @@ This is faster than any other package tested.
 \begin{sidewaystable}
 \centering
 
-\begin{small}
-\begin{tabular}{ llllllllllll }
+\begin{footnotesize}
+\begin{tabular}{ l p{1.2cm} p{1.2cm} p{1.5cm} p{1.2cm} p{1.7cm} p{1.2cm} p{1.2cm} p{1.2cm} p{1.2cm} p{1.2cm} p{1.2cm} }
 \hline
                       & BioJulia     & MIToS        & Biopython    & ProDy        & MDAnalysis   & Bio3D        & Rpdb         & BioPerl       & BioRuby      & Victor        & ESBTL        \\
 \hline
@@ -274,10 +276,10 @@ Supports disorder     & $\checkmark$ & $\times$     & $\checkmark$ & $\times$   
 Writes PDB files      & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\times$     & $\checkmark$  & $\checkmark$ \\
 Superimposition       & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$      & $\times$     & $\times$      & $\times$     \\
 PCA                   & $\times$     & $\times$     & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     & $\times$      & $\times$     & $\times$      & $\times$     \\
-Software license      & MIT          & MIT          & Biopython    & MIT          & GPLv2        & GPLv2        & GPL          & GPL/Artistic  & Ruby         & GPLv3         & GPLv3        \\
+Software license      & MIT          & MIT          & Biopython    & MIT          & GPLv2        & GPLv2        & GPL          & GPL/\newline Artistic  & Ruby         & GPLv3         & GPLv3        \\
 \hline
 \end{tabular}
-\end{small}
+\end{footnotesize}
 
 \caption{Comparison of open source packages to read and manipulate PDB files in various programming languages.
 See Figure~\ref{fig:pdb_benchmarks} for descriptions and a visual representation of the benchmarks.}
@@ -297,7 +299,8 @@ Benchmarks were carried out on a 3.1 GHz Intel Core i7 processor with 16 GB 1867
 The operating system was Mac OS X Yosemite 10.10.5.
 Time is the elapsed time.
 The mean over a number of runs is taken for each benchmark.
-The three PDB files parsed are 1CRN (327 atoms), 3JYV (57,327 atoms) and 1HTQ (10 models of 97,872 atoms) and are taken from the benchmarking in \cite{Gajda2013}.
+The three PDB files parsed are 1CRN (327 atoms), 3JYV (57,327 atoms) and 1HTQ (10 models of 97,872 atoms).
+These are taken from the benchmarking in \cite{Gajda2013}.
 `Count' is a count of the number of alanine residues in adenylate kinase (PDB ID 1AKE).
 `Distance' is a calculation of the distance between residues 50 and 60 of chain A in adenylate kinase.
 `Ramachandran' is a calculation of the Ramachandran \textphi /\textpsi\ angles in adenylate kinase.}
