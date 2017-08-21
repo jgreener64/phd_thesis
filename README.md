@@ -11,6 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Consistent A/B labelling in figures: font, bold and rough size
 - Check latex log for errors
 - Keep COSB review and intro/conc up to date
 - Remove multicolumn table tags
@@ -165,7 +166,7 @@ Mention Nick's docking work
 Computational methods.
 Experimental methods - see Tifa's report.
 Computational results - see todo for other things I could have done, see Ho 2009.
-Experimental results - see Tifa's report, Comley 2006 for TR-FRET diagram.
+Experimental results - see Tifa's report, Comley 2006 for TR-FRET diagram, check flow with group presentation slides.
 
 
 ### Conclusion
