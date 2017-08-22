@@ -21,18 +21,17 @@ FTMap \cite{Kozakov2015}, the Fragment Hotspot Map \cite{Radoux2016}, ResiCon \c
 
 \subsection{Virtual screening}
 
-The receptor and ligands are prepared in line with the AutoDock Vina documentation.
-
-ChemMine clustering used binning clustering at a similarity cutoff of 0.5.
+AutoDock Vina and DOCK were run in line with the respective documentation.
+ChemMine clustering of structures used binning clustering at a similarity cutoff of 0.5.
 The highest ranked by docking scores was retained in each case.
 
-The selected structure has the maximum sum of two distances across the opening of the pocket: the distance between atom OH on residue TYR180 and atom NH1 on ARG150, and the distance between atom OG on residue SER188 and atom O on THR165.
-This struture is energy minimised as described in Section~\ref{sec:exprose_methods} to remove any violations of stereochemistry.
+The ExProSE structures selected with an open pocket have the maximum sum of two distances across the opening of the pocket: the distance between atom OH on residue TYR180 and atom NH1 on ARG150, and the distance between atom OG on residue SER188 and atom O on THR165.
+These strutures are energy minimised as described in Section~\ref{sec:exprose_methods} to remove any violations of stereochemistry.
 
 
 \subsection{Reagents and compounds}
 
-The buffers and media used were as follows:
+The buffers and media used for experimental work were as follows:
 \begin{itemize}
 \item Auto-induction media: 10 g/L tryptone, 5 g/L yeast extract, 5052, NPS, 1 M MgSO$_{4}$, Ampicillin.
 \item LB broth: 10 g/L tryptone, 5 g/L yeast extract, 10 g/L NaCl.
@@ -45,42 +44,48 @@ The buffers and media used were as follows:
 
 \subsection{Purification of Cyclin A}
 
-The plasmid for His-tagged Cyclin A (residues ) was transformed into \textit{E. coli} Tuner cells.
-Various conditions for growth were tried (see results).
-The final conditions used were growth of cultures at 37$^{\circ}$C until optical density in auto-induction media, then incubation at 18$^{\circ}$C for 40 hours.
+The plasmid for Cyclin A with either a His tag or GST tag were transformed into \textit{E. coli} Tuner cells.
+% Residue numbers
+Various conditions for growth were tried.
+The final conditions used for His-tagged Cyclin A were growth of cultures at 37$^{\circ}$C until optical density in auto-induction media, then incubation at 18$^{\circ}$C for 40 hours.
 Cells were harvested by centrifugation (10 min at 5,000 rpm).
-Harvested cells were resuspended in lysis buffer with 0.5 mg ml$^{-1}$ (?) lysozyme.
-After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Sepharose (?) beads for 1 hour.
-After washing the beads, Cyclin A was eluted with imidazole and stored at -20$^{\circ}$C (?) in 50\% glycerol.
+Harvested cells were resuspended in lysis buffer with 0.5 mg ml$^{-1}$ lysozyme.
+After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Sepharose beads for 1 hour.
+% Sepharose name?
+After washing the beads, Cyclin A was eluted with imidazole and stored at -20$^{\circ}$C in 50\% glycerol.
 % Amounts and concentration produced?
 
 
 \subsection{TR-FRET assay}
 
-CDK2 was labelled with Cy5 dye...
-CDK2 (10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with NHS ester dye in anhydrous DMF.
+To label CDK2 with Cy5 dye CDK2 (10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with Cy5 NHS ester dye in anhydrous DMF.
 Excess dye was removed by gel filtration.
 
-For the TR-FRET CDK2 titration a 392 (?) well plate was used.
+For the TR-FRET CDK2 titration a 392 well plate was used.
+% 392 well plate?
 Each well contained 1 nM Cyclin A-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
 A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
 The plate was incubated for 1 hour and centrifuged at 800 rpm.
-... plate reader was used to read the plate.
-20 (?) repeats were taken for each reading.
+% ... plate reader was used to read the plate.
+20 repeats were taken for each reading.
 
 
 \subsection{Binding assay}
 % More specific - immunoblotting assay?
 
-Wild-type CDK2 was previously prepared in the lab.
-His-tagged Cyclin A (75 nM) was incubated on Sepharose fast flow beads (?) in buffer X with 12\% DMSO.
+Wild-type CDK2 was previously prepared by other members of the lab.
+His-tagged Cyclin A (75 nM) was incubated on Sepharose fast flow beads in buffer X with 12\% DMSO.
+% Sepharose?
 CDK2 was added (8 nM) along with compounds in 5 concentrations: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
 After incubation for 1 hour the beads were washed with buffer X and heated in gel-loading dye at 100$^{\circ}$C for 10 minutes to release bound protein.
 The proteins in the supernatant were separated by SDS-PAGE and transferred to a nitrocellulose membrane by electroblotting in transfer buffer for 1 hour at 100 V.
 The membrane was incubated for 15 minutes in TBS-T buffer with 1.5\% skimmed milk powder.
-The primary antibody, CDK2 rabbit polyclonal antibody ( M) was added and the membrane incubated overnight at 4$^{\circ}$C.
-After washing with TBS-T the secondary antibody was added ( M) and incubation for 1 hour carried out.
-The membrane was washed with TBS-T and imaged by adding ... and 1 s exposure.
+The primary antibody, CDK2 rabbit polyclonal antibody was added and the membrane incubated overnight at 4$^{\circ}$C.
+% conc
+After washing with TBS-T the secondary antibody was added and incubation for 1 hour carried out.
+% conc
+The membrane was washed with TBS-T and imaged with chemiluminescence by adding ECL dye and using a 1 s exposure.
+% Clarify dye
 % Check with other papers that do this
 
 
