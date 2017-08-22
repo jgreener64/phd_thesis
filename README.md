@@ -19,7 +19,7 @@ pdflatex thesis.tex
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
 - Images should have consistent white background
 - Consistent C-alpha
-- How to refer to other sections - use labels
+- How to refer to other sections - use labels, check throughout
 - Cyclin A or A2? Cyclin capitalised? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
 - Abbreviations: TR-FRET, PPI
