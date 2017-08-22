@@ -15,12 +15,13 @@ pdflatex thesis.tex
 - Check latex log for errors
 - Keep COSB review and intro/conc up to date
 - Remove multicolumn table tags
+- Fpocket capitalisation consistent
 - Caption formatting - small text, margin, bold starting label, margin to figure, bold A/B? See LSR
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
 - Images should have consistent white background
 - Consistent C-alpha
 - How to refer to other sections - use labels, check throughout
-- Cyclin A or A2? Cyclin capitalised? Is there a space? See Greg's paper
+- Cyclin A or A2? Cyclin capitalised (also in title)? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
 - Abbreviations: TR-FRET, PPI
 - Italicisation throughout
