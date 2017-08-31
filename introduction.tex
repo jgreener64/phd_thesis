@@ -1,14 +1,12 @@
 \chapter{Introduction}
 \label{cha:introduction}
 
-This chapter introduces the concepts of allostery in proteins, the protein structural ensemble, normal mode analysis, structural prediction of allostery, protein kinases and cyclin-dependent kinase 2 (CDK2).
+This chapter introduces the concepts of allostery in proteins, structure-based allosteric prediction, normal mode analysis, the protein structural ensemble, protein kinases and cyclin-dependent kinase 2 (CDK2).
 % Change this to fit flow
 Some of this introduction has been written as a review (cite).
 
 
-\section{Allostery and the protein ensemble}
-
-\subsection{Allostey in proteins}
+\section{Allostery in proteins}
 
 Allostery in its broadest sense is the functional change at one site on a protein caused by a change at a distant site.
 The perturbation at the allosteric site can be non-covalent binding of a molecule (e.g.\ small molecule, ions, RNA, DNA), covalent binding (e.g.\ phosphorylation) or light absorption \cite{Nussinov2013}.
@@ -29,7 +27,7 @@ It is also important to consider the effect of allostery on cellular networks an
 Allosteric drugs have hardly been explored and hold many potential benefits over orthosteric (non-allosteric) drugs: they are highly specific as they do not bind to active sites that are often conserved in protein families; they can activate as well as inhibit a protein; and they can have a ceiling to their effect \cite{Wenthur2014}.
 Allosteric modulators have been elucidated for targets as diverse as G protein-coupled receptors (GPCRs), protein kinases, the GABA receptor, hepatitis C virus polymerase and RNA.
 Numerous other allosteric modulators are in various stages of human clinical trails.
-However, discovery of allosteric drugs presents challenges beyond those encountered in orthosteric drug discovery - see Box 1.
+However, discovery of allosteric drugs presents challenges beyond those encountered in orthosteric drug discovery - see later.
 
 In order to understand and utilise allostery it is necessary to be able to predict allosteric sites, allosteric modulators and residues involved in propagating the allosteric signal.
 This review outlines advances from the last few years in the structure-based prediction of protein allostery, largely focusing on computational approaches.
@@ -51,7 +49,7 @@ The emerging fields of cryptic allosteric site discovery and allosteric site des
 In the presence of the allosteric inhibitor the inactive state is favoured either by the inhibitor binding to the protein when it is in the inactive state (red arrow - conformational selection) or by the inhibitor binding to the active state and causing inactivation (blue arrow - induced fit).
 (B) The variety of motions that can lead to allostery.
 Larger motions or more disorder are shown further down the vertical axis.
-Figure based on Figure 2 from \cite{Motlagh2014}.
+Figure based on Figure~2 from \cite{Motlagh2014}.
 (C) A simplified representation of the change in the energy landscape on binding of an allosteric inhibitor.
 The shaded regions show the main occupied conformation in each case.
 On inhibitor binding the relative energies of the active and inactive states are altered.
@@ -64,10 +62,11 @@ The active site and allosteric site are coloured purple and green respectively.}
 \end{figure}
 
 
-\section{Computational methods}
+\subsection{Computational methods for allosteric prediction}
 
 The last few years have seen the emergence of the first general methods that predict allostery based on protein structure.
-Table 1 summarises these methods, many of which are available as web servers.
+Table~\ref{tab:allosteric_methods} summarises these methods, many of which are available as web servers.
+
 
 \begin{sidewaystable}
 \centering
@@ -96,9 +95,11 @@ STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical re
 \caption{Computational allosteric prediction methods currently available to run locally or as a web server, ordered alphabetically.
 In addition there are various pocket prediction methods that aim to predict binding pockets on proteins, but not specifically allosteric pockets \cite{Huang2006, LeGuilloux2009, Cimmermancic2016}.}
 
+\label{tab:allosteric_methods}
 \end{sidewaystable}
 
-\subsection{Normal mode analysis methods}
+
+\subsubsection{Normal mode analysis}
 
 In normal mode analysis (NMA) the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes.
 The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
@@ -117,7 +118,25 @@ However whilst NMA-based methods might be expected to reveal perturbations to vi
 % \cite{Su2014}? probably not
 % \cite{Balabin2009}? probably not
 
-\subsection{Machine learning methods}
+% Integrate with above
+% Finish figure and ref
+Several studies have used normal mode analysis (NMA) to model allosteric regulation \cite{Mitternacht2011, Panjkovich2012, Balabin2009, Rodgers2013, Zheng2007}.
+In NMA, the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
+Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
+All observed configurations of the system can be generated from a linear combination of its normal modes.
+The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
+NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
+Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning NMA is a computationally efficient way of exploring protein flexibility compared to MD.
+The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
+However, allostery does involve local effects so higher-frequency modes should also be taken into account \cite{Collier2013}.
+Drawback is assumes harmonic...
+NMA can also be used to generate conformations of proteins, usually by modelling the protein along the relevant vibrations.
+The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
+This gives sampling similar to MD but is more computationally efficient.
+% Rep of above
+
+
+\subsubsection{Machine learning}
 
 A few methods have used machine learning to predict allostery.
 AlloSite \cite{Huang2013} uses a support vector machine and features from Fpocket \cite{LeGuilloux2009} to re-rank pockets in terms of their allosteric character.
@@ -125,7 +144,8 @@ However the results are often found to be similar to the Fpocket ranking, showin
 % AlloSitePro? Song2017
 A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and associated ligands to assign protein cavities as allosteric, regular or orthosteric.
 
-\subsection{Molecular dynamics methods}
+
+\subsubsection{Molecular dynamics}
 
 Molecular dynamics (MD) remains the standard computational tool for structural analysis when structures are available.
 A study on the signaling protein NtrC combined MD simulations and NMR data to explore the free energy landscape and investigate at atomic resolution the transition from active to inactive state \cite{Pontiggia2015}.
@@ -137,7 +157,8 @@ Weinkam et al.\ constructed energy landscapes and explored them with MD \cite{We
 They were able to study the allosteric mechanisms involved in three proteins.
 The method is available as the AllosMod web server.
 
-\subsection{Evolutionary methods}
+
+\subsubsection{Evolutionary methods}
 
 Classic work has shown that allosteric communication can be mediated by networks of residues conserved by evolution \cite{Suel2003}.
 One study developed previous work on protein sectors, groups of co-evolving residues physically contiguous in structure, to link sector-connected surface sites to allosteric sites \cite{Reynolds2011}.
@@ -146,7 +167,8 @@ The recent discovery that most directly co-evolving residues distant in 3D struc
 As more structural and conservation information is acquired it will be important to discover to what degree allostery in proteins is a result of selection on specific pathways, and to what degree novel allostery can be discovered on proteins in the absence of previous evolutionary pressure.
 % Be clear difference between conservation and co-evolution
 
-\subsection{Other methods}
+
+\subsubsection{Other methods}
 
 A recent study \cite{Amor2016} constructs an all-atom graph and calculates for each bond the bond propensity, the strength of coupling to the active site through the graph.
 The method is used to reproduce observed results for three proteins in detail and is also able to predict allosteric sites in a dataset of 20 allosteric proteins.
@@ -155,7 +177,8 @@ By adding extra constraints at a possible allosteric site, a perturbed ensemble 
 By comparing ensembles with and without the allosteric perturbation, allosteric sites can be predicted and the effect of perturbation on structure and dynamics can be explored.
 This work also includes a quantitative comparison of available allosteric site prediction methods.
 
-\subsection{Methods not specific to allostery}
+
+\subsubsection{Methods not specific to allostery}
 
 The identification of binding sites on the protein surface is a problem that has long pre-dated the search for pockets that are specifically allosteric.
 These methods are however useful in the structure-based prediction of allostery - the identification of a high-affinity binding site distant from a known active site could present an opportunity for allosteric regulation, for example.
@@ -163,7 +186,8 @@ The FTMap family of web servers \cite{Kozakov2015} predicts ligand-binding hotsp
 By using mixed-solvent MD this principle has been extended to the prediction of allosteric sites in particular, with success on some test cases \cite{Ghanakota2016}.
 Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{Huang2006} and Fpocket \cite{LeGuilloux2009} are able to find pockets on a protein large enough to bind small molecules, and these often correspond to allosteric sites \cite{Greener2017}.
 
-\subsection{Allosteric pathway prediction}
+
+\subsubsection{Allosteric pathway prediction}
 
 Allosteric signals can be propagated by multiple communication pathways \cite{DelSol2009}.
 Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{Dokholyan2016}.
@@ -172,7 +196,8 @@ A different approach, McPath, uses a Monte Carlo algorithm to define likely allo
 A study that added an allosteric domain to a protein analysed residue contact maps to find loops mechanically-coupled to the active site \cite{Dagliyan2016}.
 An investigation on the PDZ domain using MD found that allosteric changes are non-linear and occur in a non-local fashion, and are similar in many ways to protein folding \cite{Buchenberg2017}.
 
-\section{Experimental methods}
+
+\subsection{Experimental methods for allosteric prediction}
 
 Experimental studies such as crystallography, NMR and site-directed mutagenesis remain the best tools for exploring allostery in a particular protein.
 A synthetic azetidine derivative that kills Mycobacterium tuberculosis (Mtb) through allosteric inhibition of tryptophan synthase (TrpAB), a previously untargeted enzyme, was found by a high-throughput screen \cite{Wellington2017}.
@@ -190,7 +215,8 @@ In the future it is to be hoped that experimental screens specifically for allos
 % https://www.nature.com/nsmb/journal/vaop/ncurrent/pdf/nsmb.3440.pdf - An information theoretic framework reveals a tunable allosteric network in group II chaperonins - could go in evolution section
 % Shen2017 genomic screen
 
-\section{Cryptic allosteric sites}
+
+\subsection{Cryptic allosteric sites}
 
 The discovery of cryptic binding pockets - pockets that are only available in some conformations of the protein and may not have an associated experimental structure - has the potential to vastly increase the number of druggable sites on proteins \cite{Boehr2009} and is directly relevant to allosteric prediction.
 A recent study \cite{Lee2016} showed using NMR data that ligands of the LpxC enzyme access a cryptic site that is invisible to crystallography.
@@ -202,7 +228,8 @@ Secondly, there is potentially an energetic cost associated with the protein ado
 However, the discovery of ligands with inhibition constants in the low picomolar range in the above study \cite{Lee2016} show that these sites are druggable.
 Further computational and experimental studies are required to explore this promising area.
 
-\section{Design of allosteric sites}
+
+\subsection{Design of allosteric sites}
 
 The rational design of allosteric sites is a problem closely related to structure-based prediction of allostery.
 Introducing allosteric sites into existing proteins, or creating fusion proteins to add activity switches, has many potential applications including in biotechnology \cite{Makhlynets2015}.
@@ -216,7 +243,7 @@ uniRapR was used as an artificial regulatory domain to control activity of kinas
 The same group built on this and inserted the light-sensitive LOV2 domain into 3 proteins at non-conserved, surface-exposed loops identified computationally using residue contact analysis as being allosterically coupled to active sites \cite{Dagliyan2016}.
 
 
-\section{Discussion}
+\subsection{Discussion of allostery}
 
 It is challenging to compare different methods for allosteric prediction.
 The different inputs and, more commonly, outputs make systematic comparisons difficult.
@@ -244,11 +271,8 @@ A recent MD study proposes that allostery in the well-studied PDZ domain is driv
 The role of water in allostery also needs to be further explored as evidence has been found that re-arrangement of water molecules is a possible mechanism of allostery \cite{Buchli2013, Amor2016}.
 
 
-\begin{figure}
-\centering
+Challenges faced in the structure-based prediction of protein allostery:
 
-\fbox{
-\begin{minipage}{40em}
 \begin{enumerate}
 \item As shown in Figure 1B, an allosteric effect can arise from a variety of different mechanisms.
 A general predictor would have to account for these in a unified manner.
@@ -267,15 +291,9 @@ There is a lack of protein structural data for important types of proteins such 
 There may be different mechanisms or approaches to prediction that are relevant to less-studied protein families.
 The development of experimental methods such as cryo-electron microscopy should go some way to resolve this discrepancy \cite{Ozorowski2017}.
 \end{enumerate}
-\end{minipage}
-}
-
-Box 1: Challenges faced in the structure-based prediction of protein allostery.
-
-\end{figure}
 
 
-\section{Ensemble generation}
+\section{Protein structural ensembles}
 
 Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016}.
 X-ray crystallography provides a static view of the structure of proteins.
@@ -296,27 +314,6 @@ This generates a protein structure in a similar manner to the way a structure is
 The process is repeated to obtain an ensemble of structures.
 tCONCOORD extends CONCOORD and gives better sampling of proteins with large conformational changes by predicting H-bonds in the structure that are liable to break \cite{Seeliger2007}.
 
-
-\section{Allosteric prediction}
-
-
-\section{Normal mode analysis}
-% Use COSB review here
-
-Several studies have used normal mode analysis (NMA) to model allosteric regulation \cite{Mitternacht2011, Panjkovich2012, Balabin2009, Rodgers2013, Zheng2007}.
-In NMA, the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
-Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
-All observed configurations of the system can be generated from a linear combination of its normal modes.
-The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
-NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
-Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning NMA is a computationally efficient way of exploring protein flexibility compared to MD.
-The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
-However, allostery does involve local effects so higher-frequency modes should also be taken into account \cite{Collier2013}.
-Drawback is assumes harmonic...
-NMA can also be used to generate conformations of proteins, usually by modelling the protein along the relevant vibrations.
-The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
-This gives sampling similar to MD but is more computationally efficient.
-% Rep of above
 
 
 \section{Protein kinases}
