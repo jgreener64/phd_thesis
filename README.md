@@ -11,6 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
 - Check latex log for errors
 - Keep COSB review and intro/conc up to date

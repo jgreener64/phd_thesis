@@ -8,6 +8,272 @@ Some of this introduction has been written as a review (cite).
 
 \section{Allostery and the protein ensemble}
 
+\subsection{Allostey in proteins}
+
+Allostery in its broadest sense is the functional change at one site on a protein caused by a change at a distant site.
+The perturbation at the allosteric site can be non-covalent binding of a molecule (e.g.\ small molecule, ions, RNA, DNA), covalent binding (e.g.\ phosphorylation) or light absorption \cite{Nussinov2013}.
+Changes in structure or dynamics lead to effects such as a reduction or increase in catalytic activity, changes in disordered regions or changes in oligomerisation state.
+
+Since the first discovery of allosteric systems more than 50 years ago there have been various models put forward to describe the phenomenon.
+The dominant proposals for many years were the Monod-Wyman-Changeux (MWC) model, which posited that pre-existing states are subject to an equilibrium shift on modulator binding, and the Koshland-N\'{e}methy-Filmer (KNF) model, which advanced the idea that there was an induced fit of a binding site on interaction with a modulator \cite{Motlagh2014}.
+The structural view of allostery, which aimed to elucidate the allosteric mechanism by finding structural changes on effector binding, began to fill the gaps left by the phenomenological MWC and KNF descriptions.
+The discovery that entropic contributions to allostery can be significant predicted the phenomenon of allostery without conformational change, where the allosteric effect is communicated by a change in protein dynamics rather than protein structure \cite{Motlagh2014}.
+
+More recently these views on allostery have been revisited and reconciled in approaches that focus on the ensemble of conformational states that proteins exist in \cite{Motlagh2014, Cui2008}.
+Figure~\ref{fig:allostery} outlines the current understanding of allostery.
+A perturbation at any site in the structure leads to a shift in the occupancy of states by the population, so allostery is a property of the conformational ensemble.
+The effect at the allosteric site is linked to the active site by small conformational changes that transmit the allosteric effect in a wave-like manner along pathways of amino acids in the protein \cite{DelSol2009}.
+These pathways may be conserved by evolution.
+It is also important to consider the effect of allostery on cellular networks and reaction pathways \cite{Nussinov2013}, with allosteric effects propagating via protein-protein interactions.
+
+Allosteric drugs have hardly been explored and hold many potential benefits over orthosteric (non-allosteric) drugs: they are highly specific as they do not bind to active sites that are often conserved in protein families; they can activate as well as inhibit a protein; and they can have a ceiling to their effect \cite{Wenthur2014}.
+Allosteric modulators have been elucidated for targets as diverse as G protein-coupled receptors (GPCRs), protein kinases, the GABA receptor, hepatitis C virus polymerase and RNA.
+Numerous other allosteric modulators are in various stages of human clinical trails.
+However, discovery of allosteric drugs presents challenges beyond those encountered in orthosteric drug discovery - see Box 1.
+
+In order to understand and utilise allostery it is necessary to be able to predict allosteric sites, allosteric modulators and residues involved in propagating the allosteric signal.
+This review outlines advances from the last few years in the structure-based prediction of protein allostery, largely focusing on computational approaches.
+Previous reviews have covered similar topics \cite{SchuelerFurman2016, Wagner2016, Guarnera2016, Lu2014}.
+The emerging fields of cryptic allosteric site discovery and allosteric site design are described.
+
+% Other stuff from Nussinov
+% https://www.nature.com/articles/ncomms16018.pdf - The self-inhibitory nature of metabolic networks and its alleviation through compartmentalization - mention at network point?
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=0.9\textwidth]{figures/allostery/allostery}
+% Touch up and ensure symmetry
+
+\caption{The current conception of allostery.
+(A) A two-state model of allostery where a protein has an active and an inactive conformation.
+In the presence of the allosteric inhibitor the inactive state is favoured either by the inhibitor binding to the protein when it is in the inactive state (red arrow - conformational selection) or by the inhibitor binding to the active state and causing inactivation (blue arrow - induced fit).
+(B) The variety of motions that can lead to allostery.
+Larger motions or more disorder are shown further down the vertical axis.
+Figure based on Figure 2 from \cite{Motlagh2014}.
+(C) A simplified representation of the change in the energy landscape on binding of an allosteric inhibitor.
+The shaded regions show the main occupied conformation in each case.
+On inhibitor binding the relative energies of the active and inactive states are altered.
+For example, disruption of a hydrogen bond could destabilise the active state and stabilise the inactive state.
+(D) Glucokinase, a well-studied example of allostery \cite{Kamata2004}, is shown as a yellow cartoon.
+The glucose substrate and the allosteric modulator are shown as spheres coloured by element.
+The active site and allosteric site are coloured purple and green respectively.}
+
+\label{fig:allostery}
+\end{figure}
+
+
+\section{Computational methods}
+
+The last few years have seen the emergence of the first general methods that predict allostery based on protein structure.
+Table 1 summarises these methods, many of which are available as web servers.
+
+\begin{sidewaystable}
+\centering
+
+\begin{footnotesize}
+\begin{tabular}{ l l p{5cm} l l }
+\hline
+Name & Reference(s) & Output(s) & Web server available & Source code available online \\
+\hline
+AlloPred & \cite{Greener2015} & Predicted allosteric pockets & \url{http://www.sbg.bio.ic.ac.uk/allopred/home} & Yes, MIT license \\
+AlloSigMA & \cite{Guarnera2017} & Allosteric free energies & \url{http://allosigma.bii.a-star.edu.sg/home} & No \\
+AlloSite & \cite{Huang2013} & Predicted allosteric pockets & \url{http://mdl.shsmu.edu.cn/AST} & No \\ % AlloSitePro?
+AllosMod & \cite{Weinkam2012} & Modelled energy landscapes & \url{http://modbase.compbio.ucsf.edu/allosmod} & No \\
+% Bond propensity method & \cite{Amor2016} & Residues coupled to active site & No & No \\
+ENM method & \cite{Li2017} & Residues coupled to normal modes & \url{http://enm.pitt.edu} & Partly as ProDy, MIT license \\
+ExProSE & \cite{Greener2017} & Ensemble of protein structures,\newline predicted allosteric pockets & No & Yes, MIT license \\
+MCPath & \cite{Kaya2013} & Allosteric communication pathways & \url{http://safir.prc.boun.edu.tr/clbet_server} & No \\
+% MixMD & \cite{Ghanakota2016} & Fragment-binding allosteric hotspots & No & No \\
+PARS & \cite{Panjkovich2014, Panjkovich2012} & Predicted allosteric pockets & \url{http://bioinf.uab.cat/pars} & No \\
+SPACER & \cite{Goncearenco2013, Mitternacht2011} & Predicted allosteric residues,\newline exploration of allosteric communication & \url{http://allostery.bii.a-star.edu.sg} & No \\ % Or predicted allosteric sites?
+STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical residues & No & Yes \\ % Server was http://stress.molmovdb.org but down
+\hline
+\end{tabular}
+\end{footnotesize}
+
+\caption{Computational allosteric prediction methods currently available to run locally or as a web server, ordered alphabetically.
+In addition there are various pocket prediction methods that aim to predict binding pockets on proteins, but not specifically allosteric pockets \cite{Huang2006, LeGuilloux2009, Cimmermancic2016}.}
+
+\end{sidewaystable}
+
+\subsection{Normal mode analysis methods}
+
+In normal mode analysis (NMA) the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes.
+The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
+The binding leverage approach \cite{Mitternacht2011} predicts how ligand binding couples to the intrinsic motions of a protein.
+Sites with high binding leverage are predicted to be allosteric.
+Binding leverage was developed into the web server SPACER \cite{Goncearenco2013}, and into the general predictor STRESS \cite{Clarke2016} by a different group.
+% Mention other Mitternacht methods? Geometry/local closeness
+% This has been further developed \cite{Guarnera2016a}...
+% And turned into a web server \cite{Guarnera2017}...
+The PARS method \cite{Panjkovich2012, Panjkovich2014} calculates normal modes in the presence and absence of a simulated allosteric modulator.
+If the motions are significantly different the site is predicted as allosteric.
+The AlloPred method \cite{Greener2015} calculates the normal modes of a protein, then holds the springs in the region of a potential allosteric site rigid and measures the effect of this perturbation at the active site.
+The DynOmics ENM server \cite{Li2017} finds hinge residues that control the two slowest normal modes of a protein, and hence are able to influence its dynamics.
+NMA is suitable for high-throughput, automated approaches as it can be computationally inexpensive.
+However whilst NMA-based methods might be expected to reveal perturbations to vibrations, the assumption of harmonic fluctuations around an energetically-minimum structure means that other contributing motions to allostery such as local unfolding and rigid body movements \cite{Motlagh2014} are not taken into account.
+% \cite{Su2014}? probably not
+% \cite{Balabin2009}? probably not
+
+\subsection{Machine learning methods}
+
+A few methods have used machine learning to predict allostery.
+AlloSite \cite{Huang2013} uses a support vector machine and features from Fpocket \cite{LeGuilloux2009} to re-rank pockets in terms of their allosteric character.
+However the results are often found to be similar to the Fpocket ranking, showing the difficulty of distinguishing pockets that have specific allosteric character from those that are generally suitable for ligand binding.
+% AlloSitePro? Song2017
+A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and associated ligands to assign protein cavities as allosteric, regular or orthosteric.
+
+\subsection{Molecular dynamics methods}
+
+Molecular dynamics (MD) remains the standard computational tool for structural analysis when structures are available.
+A study on the signaling protein NtrC combined MD simulations and NMR data to explore the free energy landscape and investigate at atomic resolution the transition from active to inactive state \cite{Pontiggia2015}.
+% \cite{Qi2012}? Go model, probably not
+Perturbation response scanning (PRS), in which the response of the structure to random perturbations at specific positions is examined, is a popular tool for allosteric prediction.
+% Cite here others cited elsewhere in the paper that use PRS?
+For example, allosteric hotspot residues were predicted using PRS for the chaperone Hsp70 \cite{Penkler2017}.
+Weinkam et al.\ constructed energy landscapes and explored them with MD \cite{Weinkam2012}.
+They were able to study the allosteric mechanisms involved in three proteins.
+The method is available as the AllosMod web server.
+
+\subsection{Evolutionary methods}
+
+Classic work has shown that allosteric communication can be mediated by networks of residues conserved by evolution \cite{Suel2003}.
+One study developed previous work on protein sectors, groups of co-evolving residues physically contiguous in structure, to link sector-connected surface sites to allosteric sites \cite{Reynolds2011}.
+A recent approach found that surface and interior critical residues tend to be conserved \cite{Clarke2016}.
+The recent discovery that most directly co-evolving residues distant in 3D structure are close in related structures or assemblies \cite{Anishchenko2017} brings into question the concept of allosteric and active sites that directly co-evolve.
+As more structural and conservation information is acquired it will be important to discover to what degree allostery in proteins is a result of selection on specific pathways, and to what degree novel allostery can be discovered on proteins in the absence of previous evolutionary pressure.
+% Be clear difference between conservation and co-evolution
+
+\subsection{Other methods}
+
+A recent study \cite{Amor2016} constructs an all-atom graph and calculates for each bond the bond propensity, the strength of coupling to the active site through the graph.
+The method is used to reproduce observed results for three proteins in detail and is also able to predict allosteric sites in a dataset of 20 allosteric proteins.
+ExProSE \cite{Greener2017} takes two structures of the same protein and generates an ensemble of structures using distance constraints.
+By adding extra constraints at a possible allosteric site, a perturbed ensemble is generated.
+By comparing ensembles with and without the allosteric perturbation, allosteric sites can be predicted and the effect of perturbation on structure and dynamics can be explored.
+This work also includes a quantitative comparison of available allosteric site prediction methods.
+
+\subsection{Methods not specific to allostery}
+
+The identification of binding sites on the protein surface is a problem that has long pre-dated the search for pockets that are specifically allosteric.
+These methods are however useful in the structure-based prediction of allostery - the identification of a high-affinity binding site distant from a known active site could present an opportunity for allosteric regulation, for example.
+The FTMap family of web servers \cite{Kozakov2015} predicts ligand-binding hotspots using small organic molecules as probes on the protein surface.
+By using mixed-solvent MD this principle has been extended to the prediction of allosteric sites in particular, with success on some test cases \cite{Ghanakota2016}.
+Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{Huang2006} and Fpocket \cite{LeGuilloux2009} are able to find pockets on a protein large enough to bind small molecules, and these often correspond to allosteric sites \cite{Greener2017}.
+
+\subsection{Allosteric pathway prediction}
+
+Allosteric signals can be propagated by multiple communication pathways \cite{DelSol2009}.
+Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{Dokholyan2016}.
+A machine learning approach to predict residues involved in allosteric communication uses a variety of structural and network features and is able to predict these hotspots with reasonable accuracy \cite{Demerdash2009}.
+A different approach, McPath, uses a Monte Carlo algorithm to define likely allosteric pathways by examining inter-residue interactions in a residue network \cite{Kaya2013}.
+A study that added an allosteric domain to a protein analysed residue contact maps to find loops mechanically-coupled to the active site \cite{Dagliyan2016}.
+An investigation on the PDZ domain using MD found that allosteric changes are non-linear and occur in a non-local fashion, and are similar in many ways to protein folding \cite{Buchenberg2017}.
+
+\section{Experimental methods}
+
+Experimental studies such as crystallography, NMR and site-directed mutagenesis remain the best tools for exploring allostery in a particular protein.
+A synthetic azetidine derivative that kills Mycobacterium tuberculosis (Mtb) through allosteric inhibition of tryptophan synthase (TrpAB), a previously untargeted enzyme, was found by a high-throughput screen \cite{Wellington2017}.
+The inhibition is not easily overcome by changes in metabolic environment due to the modulator binding at the TrpAB \textalpha -\textbeta -subunit interface and affecting multiple steps in the overall reaction of the enzyme.
+A study on the proteasome \cite{Haselbach2017} crystallised the complex in the presence and absence of an allosteric modulator.
+Having the active and inactive structures allowed the authors to propose a detailed mechanism of inactivation, which has implications for future allosteric proteasome inhibitors.
+A study on flavovirus protease \cite{Brecher2017} used a virtual screen to select 29 potential allosteric compounds that were tested experimentally.
+One showed an ability to inhibit the conformational change and also inhibit flavovirus growth.
+Allosteric pathways in ERG proteins were proposed using fluctuation correlation data and validated by mutating residues in the pathways \cite{Ye2017}.
+However, there are limits to the use of mutational studies to validate allosteric mechanisms.
+It has been found that mutational data can give evidence for a deliberately poorly-conceived allosteric mechanism \cite{Tang2017}.
+In the future it is to be hoped that experimental screens specifically for allosteric sites \cite{Martin2012, Jayakar2017, Pellerano2017, Pisco2017, Raman2014} become more widespread, opening the path to conventional large-scale screens for allosteric drugs.
+% http://www.jbc.org/content/292/15/6429.full.pdf+html "Allostery modulates the beat rate of a cardiac pacemaker" NMR used
+% Dror 2013 "Structural basis for modulation of a G-protein-coupled receptor by allosteric drugs" - actually this could go in MD section with a reference to long MD becoming more feasible
+% https://www.nature.com/nsmb/journal/vaop/ncurrent/pdf/nsmb.3440.pdf - An information theoretic framework reveals a tunable allosteric network in group II chaperonins - could go in evolution section
+% Shen2017 genomic screen
+
+\section{Cryptic allosteric sites}
+
+The discovery of cryptic binding pockets - pockets that are only available in some conformations of the protein and may not have an associated experimental structure - has the potential to vastly increase the number of druggable sites on proteins \cite{Boehr2009} and is directly relevant to allosteric prediction.
+A recent study \cite{Lee2016} showed using NMR data that ligands of the LpxC enzyme access a cryptic site that is invisible to crystallography.
+One study used Markov state modelling and MD to predict multiple hidden allosteric sites on \textbeta -lactamase and tested these using thiol labelling experiments \cite{Bowman2015}, later finding modulators for the sites \cite{Hart2017}.
+The general approach CryptoSite uses machine learning to predict cryptic pockets on proteins using sequence and structural features \cite{Cimmermancic2016}.
+However, two problems affect the use of cryptic allosteric pockets over allosteric sites where the pocket is present in most or all conformations.
+Firstly, the shape of the pocket is not known so rational drug design is difficult.
+Secondly, there is potentially an energetic cost associated with the protein adopting the conformation required for the cryptic pocket \cite{Oleinikovas2016}.
+However, the discovery of ligands with inhibition constants in the low picomolar range in the above study \cite{Lee2016} show that these sites are druggable.
+Further computational and experimental studies are required to explore this promising area.
+
+\section{Design of allosteric sites}
+
+The rational design of allosteric sites is a problem closely related to structure-based prediction of allostery.
+Introducing allosteric sites into existing proteins, or creating fusion proteins to add activity switches, has many potential applications including in biotechnology \cite{Makhlynets2015}.
+A recent study added a PDZ domain into the Cas9 protein at a site that did not disrupt enzyme action \cite{Oakes2016}.
+The protein showed modulator-dependent activity in cells, establishing a system for Cas9 activation.
+Another study created fusion proteins that use conformational entropy to respond to temperature or pH as a switch \cite{Choi2015}.
+Taylor et al.\ engineered \textit{E.\ coli} LacI to respond to one of four new inducer molecules using computational design and mutagenesis \cite{Taylor2016}.
+Dagliyan et al.\ designed a protein with a unique topology, uniRapR, whose conformation is controlled by the binding of a small molecule \cite{Dagliyan2013}.
+The switching and control ability of uniRapR was confirmed in silico, in vitro, and in vivo.
+uniRapR was used as an artificial regulatory domain to control activity of kinases as a proof of concept.
+The same group built on this and inserted the light-sensitive LOV2 domain into 3 proteins at non-conserved, surface-exposed loops identified computationally using residue contact analysis as being allosterically coupled to active sites \cite{Dagliyan2016}.
+
+
+\section{Discussion}
+
+It is challenging to compare different methods for allosteric prediction.
+The different inputs and, more commonly, outputs make systematic comparisons difficult.
+One quantitative comparison indicated broadly similar performance between four available methods \cite{Greener2017}.
+One of the Critical Assessment of Genome Interpretation challenges in 2015-16 focused on predicting the influence of mutations on the allosteric regulation of human liver pyruvate kinase \cite{Xu2017}.
+However the uptake was limited to four groups and the predictive ability was marginally better than random.
+In the long run a dedicated community-wide initiative similar to the Critical Assessment of Structure Prediction \cite{Moult2016} would be beneficial to the field of allosteric prediction.
+
+One factor holding allosteric prediction back is the lack of a varied and robust set of benchmarks to test methods against.
+ASBench \cite{Huang2015} is a curated set of allosteric proteins, and has been used for example to benchmark AlloPred \cite{Greener2015}.
+It is a subset of the AlloSteric Database (ASD) \cite{Shen2016}.
+ASD v3.0 contains over 1,400 proteins and also includes allosteric mechanisms, allosteric networks of proteins and `allosteromes' of the allostery involved in protein kinases and GPCRs.
+Improvements in such resources are necessary to prevent the developers of new methods having to assemble their own datasets \cite{Panjkovich2012, Mitternacht2011, Amor2016} and to allow systematic comparisons between methods.
+% Need more studies like Haselbach2017, Ozorowski2017 that get structure with and without modulator and compare
+
+An issue that requires more study in the field of allosteric prediction is the exact relationship between an allosteric modulator and whether it acts as an activator or inhibitor.
+It has been shown that under different conditions the same allosteric modulator can have opposite effects \cite{Motlagh2012}.
+Another viewpoint is the anchor/driver model of allostery, with the concept of a pushing or pulling driver determining which way the ligand acts \cite{Nussinov2014}.
+An approach to study this would be a quantitative structure activity relation-like study where a variety of modulators and conditions are explored on the same protein.
+This would give evidence as to whether small structural differences causing a pushing or pulling effect are enough to reliably switch activator/inhibitor action.
+
+The mechanism of dynamic allostery, where the allosteric effect is transmitted through changes in dynamics and the average structure does not necessarily change, also requires further investigation.
+While experimental studies \cite{Popovych2006, Capdevila2017, Wellington2017} have found evidence for dynamic allostery, Nussinov and Tsai \cite{Nussinov2015} warn that an apparent lack of conformational change can be an artefact of various factors such as crystal packing, crystallisation conditions, disorder to order transitions, incremental activation, synergy between allosteric sites and changes in oligomeric state.
+A recent MD study proposes that allostery in the well-studied PDZ domain is driven by changes in electrostatic effects rather than solely changes in dynamics \cite{Kumawat2017, Liu2017}.
+The role of water in allostery also needs to be further explored as evidence has been found that re-arrangement of water molecules is a possible mechanism of allostery \cite{Buchli2013, Amor2016}.
+
+
+\begin{figure}
+\centering
+
+\fbox{
+\begin{minipage}{40em}
+\begin{enumerate}
+\item As shown in Figure 1B, an allosteric effect can arise from a variety of different mechanisms.
+A general predictor would have to account for these in a unified manner.
+This is particularly challenging when disorder is involved, as approaches based on a defined structure are less applicable.
+Some approaches to studying disorder and allostery have been proposed \cite{Singh2017, Wang2017}.
+\item The conformational changes that cause allostery are often large enough to occur on timescales of microseconds or milliseconds.
+This makes them too computationally expensive to study using MD without the use of accelerated or targeted MD.
+NMA is more computationally feasible but the assumption of a harmonic motion around an energy minimum does not correspond well to two distinct states with differing conformations.
+\item The properties of active site pockets and small molecules that target the active site have been well-studied, for example Lipinski's rule of five \cite{Lipinski2001}.
+Allosteric pockets and modulators may have generally different properties that we are not yet fully aware of, so we do not know exactly what to look for \cite{VanWesten2014, Wang2012}.
+\item The effect of an allosteric modulator is difficult to predict and can range from activation to inhibition, partial or complete.
+This is in comparison to orthosteric drug discovery, where drug action is presumed to be by competitive inhibition at the active site.
+\item The effort of researchers and the protein structural data available is biased towards certain types of protein, such as those relevant in disease.
+For example, the allostery of GPCRs has been studied in detail \cite{Wootten2013}.
+There is a lack of protein structural data for important types of proteins such as membrane proteins and proteins with significant disorder, but these proteins have considerable potential to be allosteric \cite{Motlagh2014}.
+There may be different mechanisms or approaches to prediction that are relevant to less-studied protein families.
+The development of experimental methods such as cryo-electron microscopy should go some way to resolve this discrepancy \cite{Ozorowski2017}.
+\end{enumerate}
+\end{minipage}
+}
+
+Box 1: Challenges faced in the structure-based prediction of protein allostery.
+
+\end{figure}
+
 
 \section{Ensemble generation}
 
