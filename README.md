@@ -11,6 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
+- List of figures/tables/algorithms?
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
 - Check latex log for errors

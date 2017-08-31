@@ -37,6 +37,10 @@
 % Captions over page
 \usepackage{ccaption}
 
+% Page break after sections
+\let\oldsection\section
+\renewcommand\section{\clearpage\oldsection}
+
 % Monospaced code blocks
 \usepackage{listings}
 \usepackage{color}
@@ -56,6 +60,12 @@
 \maketitle
 
 \onehalfspacing
+
+\include{abstract}
+
+\include{acknowledgements}
+
+\tableofcontents
 
 \include{introduction}
 
