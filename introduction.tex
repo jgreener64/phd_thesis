@@ -12,10 +12,14 @@ Allostery in its broadest sense is the functional change at one site on a protei
 The perturbation at the allosteric site can be non-covalent binding of a molecule (e.g.\ small molecule, ions, RNA, DNA), covalent binding (e.g.\ phosphorylation) or light absorption \cite{Nussinov2013}.
 Changes in structure or dynamics lead to effects such as a reduction or increase in catalytic activity, changes in disordered regions or changes in oligomerisation state.
 
+% Add MWC/KNF/Perutz/Hilser2012/Tsai2014 refs back
+% And Csermely for networks
+% Panjkovich2010
+% All protein potentially allosteric Gunasekaran2004
 Since the first discovery of allosteric systems more than 50 years ago there have been various models put forward to describe the phenomenon.
 The dominant proposals for many years were the Monod-Wyman-Changeux (MWC) model, which posited that pre-existing states are subject to an equilibrium shift on modulator binding, and the Koshland-N\'{e}methy-Filmer (KNF) model, which advanced the idea that there was an induced fit of a binding site on interaction with a modulator \cite{Motlagh2014}.
 The structural view of allostery, which aimed to elucidate the allosteric mechanism by finding structural changes on effector binding, began to fill the gaps left by the phenomenological MWC and KNF descriptions.
-The discovery that entropic contributions to allostery can be significant predicted the phenomenon of allostery without conformational change, where the allosteric effect is communicated by a change in protein dynamics rather than protein structure \cite{Motlagh2014}.
+The discovery that entropic contributions to allostery can be significant predicted the phenomenon of allostery without conformational change \cite{Cooper1984}, where the allosteric effect is communicated by a change in protein dynamics rather than protein structure \cite{Motlagh2014}.
 
 More recently these views on allostery have been revisited and reconciled in approaches that focus on the ensemble of conformational states that proteins exist in \cite{Motlagh2014, Cui2008}.
 Figure~\ref{fig:allostery} outlines the current understanding of allostery.
@@ -93,7 +97,7 @@ STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical re
 \end{footnotesize}
 
 \caption{Computational allosteric prediction methods currently available to run locally or as a web server, ordered alphabetically.
-In addition there are various pocket prediction methods that aim to predict binding pockets on proteins, but not specifically allosteric pockets \cite{Huang2006, LeGuilloux2009, Cimmermancic2016}.}
+In addition there are various pocket prediction methods that aim to predict binding pockets on proteins, but not specifically allosteric pockets \cite{Huang2006, LeGuilloux2009, Cimermancic2016}.}
 
 \label{tab:allosteric_methods}
 \end{sidewaystable}
@@ -119,6 +123,7 @@ However whilst NMA-based methods might be expected to reveal perturbations to vi
 % \cite{Balabin2009}? probably not
 
 % Integrate with above
+% Add Taguchi 2016
 % Finish figure and ref
 Several studies have used normal mode analysis (NMA) to model allosteric regulation \cite{Mitternacht2011, Panjkovich2012, Balabin2009, Rodgers2013, Zheng2007}.
 In NMA, the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
@@ -149,7 +154,8 @@ A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and 
 
 Molecular dynamics (MD) remains the standard computational tool for structural analysis when structures are available.
 A study on the signaling protein NtrC combined MD simulations and NMR data to explore the free energy landscape and investigate at atomic resolution the transition from active to inactive state \cite{Pontiggia2015}.
-% \cite{Qi2012}? Go model, probably not
+% Add \cite{Qi2012} here
+% And Laine2010
 Perturbation response scanning (PRS), in which the response of the structure to random perturbations at specific positions is examined, is a popular tool for allosteric prediction.
 % Cite here others cited elsewhere in the paper that use PRS?
 For example, allosteric hotspot residues were predicted using PRS for the chaperone Hsp70 \cite{Penkler2017}.
@@ -160,7 +166,7 @@ The method is available as the AllosMod web server.
 
 \subsubsection{Evolutionary methods}
 
-Classic work has shown that allosteric communication can be mediated by networks of residues conserved by evolution \cite{Suel2003}.
+Classic work has shown that allosteric communication can be mediated by networks of residues conserved by evolution \cite{Lockless1999, Suel2003}.
 One study developed previous work on protein sectors, groups of co-evolving residues physically contiguous in structure, to link sector-connected surface sites to allosteric sites \cite{Reynolds2011}.
 A recent approach found that surface and interior critical residues tend to be conserved \cite{Clarke2016}.
 The recent discovery that most directly co-evolving residues distant in 3D structure are close in related structures or assemblies \cite{Anishchenko2017} brings into question the concept of allosteric and active sites that directly co-evolve.
@@ -189,6 +195,7 @@ Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{
 
 \subsubsection{Allosteric pathway prediction}
 
+% Add Kidd2009
 Allosteric signals can be propagated by multiple communication pathways \cite{DelSol2009}.
 Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{Dokholyan2016}.
 A machine learning approach to predict residues involved in allosteric communication uses a variety of structural and network features and is able to predict these hotspots with reasonable accuracy \cite{Demerdash2009}.
@@ -221,7 +228,7 @@ In the future it is to be hoped that experimental screens specifically for allos
 The discovery of cryptic binding pockets - pockets that are only available in some conformations of the protein and may not have an associated experimental structure - has the potential to vastly increase the number of druggable sites on proteins \cite{Boehr2009} and is directly relevant to allosteric prediction.
 A recent study \cite{Lee2016} showed using NMR data that ligands of the LpxC enzyme access a cryptic site that is invisible to crystallography.
 One study used Markov state modelling and MD to predict multiple hidden allosteric sites on \textbeta -lactamase and tested these using thiol labelling experiments \cite{Bowman2015}, later finding modulators for the sites \cite{Hart2017}.
-The general approach CryptoSite uses machine learning to predict cryptic pockets on proteins using sequence and structural features \cite{Cimmermancic2016}.
+The general approach CryptoSite uses machine learning to predict cryptic pockets on proteins using sequence and structural features \cite{Cimermancic2016}.
 However, two problems affect the use of cryptic allosteric pockets over allosteric sites where the pocket is present in most or all conformations.
 Firstly, the shape of the pocket is not known so rational drug design is difficult.
 Secondly, there is potentially an energetic cost associated with the protein adopting the conformation required for the cryptic pocket \cite{Oleinikovas2016}.
@@ -286,7 +293,7 @@ Allosteric pockets and modulators may have generally different properties that w
 \item The effect of an allosteric modulator is difficult to predict and can range from activation to inhibition, partial or complete.
 This is in comparison to orthosteric drug discovery, where drug action is presumed to be by competitive inhibition at the active site.
 \item The effort of researchers and the protein structural data available is biased towards certain types of protein, such as those relevant in disease.
-For example, the allostery of GPCRs has been studied in detail \cite{Wootten2013}.
+For example, the allostery of GPCRs has been studied in detail \cite{Wootten2013, Conn2009}.
 There is a lack of protein structural data for important types of proteins such as membrane proteins and proteins with significant disorder, but these proteins have considerable potential to be allosteric \cite{Motlagh2014}.
 There may be different mechanisms or approaches to prediction that are relevant to less-studied protein families.
 The development of experimental methods such as cryo-electron microscopy should go some way to resolve this discrepancy \cite{Ozorowski2017}.
@@ -297,7 +304,7 @@ The development of experimental methods such as cryo-electron microscopy should 
 
 Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016}.
 X-ray crystallography provides a static view of the structure of proteins.
-However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007b} are hard to elucidate.
+However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.
 Experimental techniques to explore the dynamics of proteins, such as nuclear magnetic resonance (NMR), are sophisticated and time-consuming.
 Molecular dynamics (MD) is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
 It is effective at modelling motions up to the timescale of nanoseconds.
@@ -317,6 +324,7 @@ tCONCOORD extends CONCOORD and gives better sampling of proteins with large conf
 
 
 \section{Protein kinases}
+% Check Mendeley kinase tag
 
 Protein kinases regulate almost all aspects of cellular physiology, from proliferation and generation of biomass to gene expression and protein production \cite{Manning2002}.
 In addition to medical benefits, regulation of kinase activity in mammalian cells is important in industrial production of biomolecules of high value, for example to prevent apoptosis and maximise yield.
@@ -359,7 +367,7 @@ Figure reproduced from Lamba and Ghosh (2012) \cite{Lamba2012}.}
 
 
 \section{Cyclin-dependent kinase 2}
-% Look at Mendeley tag cdk2
+% Look at Mendeley tag cdk2 (e.g. Hu 2015)
 
 CDK2 is a protein kinase important in regulating cell cycle progression \cite{Peyressatre2015}.
 Its deregulation has been linked to a number of diseases.

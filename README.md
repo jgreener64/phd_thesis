@@ -11,11 +11,12 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Small bibliography text?
 - List of figures/tables/algorithms?
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
 - Check latex log for errors
-- Keep COSB review and intro/conc up to date
+- Keep COSB review and intro/conc/ref updates up to date
 - Remove multicolumn table tags
 - Fpocket capitalisation consistent
 - Caption formatting - small text, margin, bold starting label, margin to figure, bold A/B? See LSR
@@ -36,6 +37,7 @@ pdflatex thesis.tex
 - Add to Spiral
 - Spellcheck
 - Permission to use figures required?
+- References check and update for recent papers
 
 
 ## Plan
