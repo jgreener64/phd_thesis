@@ -11,7 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
-- Small bibliography text?
+- Change Bibliography title to References
 - List of figures/tables/algorithms?
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
