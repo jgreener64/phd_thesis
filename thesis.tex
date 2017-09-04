@@ -5,7 +5,7 @@
 \renewcommand*\rmdefault{ppl}
 
 % Set margins
-\usepackage[margin=30mm]{geometry}
+\usepackage[margin=35mm]{geometry}
 
 % Equations
 \usepackage{mathtools}
@@ -36,6 +36,9 @@
 
 % Captions over page
 \usepackage{ccaption}
+
+% References in table of contents
+\usepackage[nottoc,notlof,notlot,numbib]{tocbibind}
 
 % Page break after sections
 \let\oldsection\section
@@ -86,6 +89,7 @@
 \singlespacing
 
 \begin{small}
+\renewcommand{\bibname}{References}
 \bibliographystyle{unsrt}
 \bibliography{library}
 \end{small}
