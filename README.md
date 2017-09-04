@@ -15,7 +15,6 @@ pdflatex thesis.tex
 - Check section requirements
 - A few more references
 - Declaration of originality and copyright declaration
-- Abbreviations section
 - Contents and list of figures/tables page numbers are one off
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
@@ -30,7 +29,7 @@ pdflatex thesis.tex
 - How to refer to other sections - use labels, check throughout
 - Cyclin A or A2? Cyclin capitalised (also in title)? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
-- Abbreviations: TR-FRET, PPI
+- Abbreviations: check first use of each
 - Italicisation throughout
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
 - Refer to all parts of figures in main text

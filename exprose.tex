@@ -323,7 +323,7 @@ This is consistent with the criterion for determining LIGSITE\textsuperscript{\i
 PARS results are obtained by using the PARS web server \cite{Panjkovich2014}.
 PARS uses LIGSITE\textsuperscript{\it cs}, so the same criterion as LIGSITE\textsuperscript{\it cs} is used to determine allosteric pockets.
 AlloPred is run using the offline version \cite{Greener2015} and default parameters.
-The active site residues are retrieved from the Catalytic Site Atlas (CSA) \cite{Furnham2014}, or from literature inspection when not available in the CSA.
+The active site residues are retrieved from the CSA \cite{Furnham2014}, or from literature inspection when not available in the CSA.
 AlloPred uses Fpocket, so the same criterion as Fpocket is used to determine allosteric pockets.
 STRESS \cite{Clarke2016} is run offline using the source code.
 Since the output of STRESS is pocket residues, a pocket is called as allosteric if there is at least one modulator atom within 3 \AA\ of any atom in the given residues of the pocket.
@@ -359,7 +359,7 @@ An overview of the method is shown in Figure~\ref{fig:exprose_overview}.
 ExProSE is able to (i) generate ensembles of protein structures from two input structures and (ii) predict allosteric pockets on proteins.
 First, it is shown using a dataset of structural pairs that two widely-used methods for generating ensembles cannot span large conformational changes, whereas ExProSE can.
 The ability of ExProSE to produce native-like ensembles, i.e.\ ensembles close to other crystal structures, is exemplified with T4-lysozyme.
-ExProSE ensembles can be perturbed to reveal the location of allosteric sites, as demonstrated on cyclin-dependent kinase 2 (CDK2).
+ExProSE ensembles can be perturbed to reveal the location of allosteric sites, as demonstrated on CDK2.
 The performance of ExProSE in predicting allosteric sites is assessed on a dataset of 58 known allosteric proteins and compared to existing methods.
 Finally, a well-studied example of dynamic allostery and an example of activation by phosphorylation are examined to show that ExProSE can explore changes in dynamics in proteins.
 

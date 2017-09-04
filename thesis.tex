@@ -40,6 +40,9 @@
 % References in table of contents
 \usepackage[nottoc,notlof,notlot,numbib]{tocbibind}
 
+% Bold in table columns
+\usepackage{array}
+
 % Page break after sections
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
@@ -73,6 +76,8 @@
 \listoffigures
 
 \listoftables
+
+\include{abbreviations}
 
 \include{introduction}
 

@@ -112,6 +112,7 @@ The process of NMA is shown in Figure~\ref{fig:nma}.
 Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
 All observed configurations of the system can be generated from a linear combination of its normal modes.
 The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
+% Have equations here?
 NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
 Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning NMA is a computationally efficient way of exploring protein flexibility compared to MD.
 The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
@@ -138,7 +139,7 @@ However whilst NMA-based methods might be expected to reveal perturbations to vi
 \begin{figure}
 \centering
 
-\includegraphics[width=0.9\textwidth]{figures/nma/nma}
+%\includegraphics[width=0.9\textwidth]{figures/nma/nma}
 
 \caption[Steps in normal mode analysis]
 {Steps in NMA.
@@ -217,7 +218,7 @@ An investigation on the PDZ domain using MD found that allosteric changes are no
 \subsection{Experimental methods for allosteric prediction}
 
 Experimental studies such as crystallography, NMR and site-directed mutagenesis remain the best tools for exploring allostery in a particular protein.
-A synthetic azetidine derivative that kills Mycobacterium tuberculosis (Mtb) through allosteric inhibition of tryptophan synthase (TrpAB), a previously untargeted enzyme, was found by a high-throughput screen \cite{Wellington2017}.
+A synthetic azetidine derivative that kills Mycobacterium tuberculosis through allosteric inhibition of tryptophan synthase (TrpAB), a previously untargeted enzyme, was found by a high-throughput screen \cite{Wellington2017}.
 The inhibition is not easily overcome by changes in metabolic environment due to the modulator binding at the TrpAB \textalpha -\textbeta -subunit interface and affecting multiple steps in the overall reaction of the enzyme.
 A study on the proteasome \cite{Haselbach2017} crystallised the complex in the presence and absence of an allosteric modulator.
 Having the active and inactive structures allowed the authors to propose a detailed mechanism of inactivation, which has implications for future allosteric proteasome inhibitors.
@@ -271,7 +272,7 @@ In the long run a dedicated community-wide initiative similar to the Critical As
 
 One factor holding allosteric prediction back is the lack of a varied and robust set of benchmarks to test methods against.
 ASBench \cite{Huang2015} is a curated set of allosteric proteins, and has been used for example to benchmark AlloPred \cite{Greener2015}.
-It is a subset of the AlloSteric Database (ASD) \cite{Shen2016}.
+It is a subset of the AlloSteric Database (ASD, \url{http://mdl.shsmu.edu.cn/ASD}) \cite{Shen2016}.
 ASD v3.0 contains over 1,400 proteins and also includes allosteric mechanisms, allosteric networks of proteins and `allosteromes' of the allostery involved in protein kinases and GPCRs.
 Improvements in such resources are necessary to prevent the developers of new methods having to assemble their own datasets \cite{Panjkovich2012, Mitternacht2011, Amor2016} and to allow systematic comparisons between methods.
 % Need more studies like Haselbach2017, Ozorowski2017 that get structure with and without modulator and compare
@@ -361,7 +362,8 @@ For example, a bivalent inhibitor was designed for a tyrosine kinase that binds 
 Such binding is able to have both high selectivity and high affinity.
 The recent discovery of such sites and the conserved architecture of the eukaryotic protein kinases suggest there are many allosteric sites, particularly for type IV and type V inhibitors, yet to be discovered.
 
-Numerous examples of allosteric kinases are listed in the AlloSteric Database (ASD) \cite{Shen2016}, a resource set up in 2011 that now contains over 1,400 allosteric proteins and over 70,000 allosteric modulators.
+Numerous examples of allosteric kinases are listed in the ASD \cite{Shen2016}, a resource set up in 2011 that now contains over 1,400 allosteric proteins and over 70,000 allosteric modulators.
+% Rep from above
 The allosteric proteins in the ASD are those that have experimental evidence for allostery.
 The increasing number of entries in this database shows that a large number of proteins have allosteric character, and implies that many proteins have allosteric character yet to be discovered.
 
