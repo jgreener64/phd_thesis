@@ -11,8 +11,9 @@ pdflatex thesis.tex
 
 ## Issues
 
+- A few more references
 - Change Bibliography title to References
-- List of figures/tables/algorithms?
+- Contents and list of figures/tables page numbers are one off
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
 - Check latex log for errors

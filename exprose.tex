@@ -64,7 +64,8 @@ The criteria for each interaction are the same as in CONCOORD \cite{DeGroot1997}
 \end{tabular}
 \end{small}
 
-\caption{Interaction types between atom pairs.
+\caption[Interaction types between atom pairs in ExProSE]
+{Interaction types between atom pairs.
 These are the same as in CONCOORD \cite{DeGroot1997}.
 The constraint tolerance values are used to generate lower and upper distance constraints between atoms.}
 
@@ -95,7 +96,8 @@ For example if two atoms have a lower and upper distance constraint of 6.0 \AA\ 
 
 \includegraphics[width=0.6\textwidth]{figures/distance_constraints/distance_constraints}
 
-\caption{The method to calculate the upper and lower distance constraints between two atoms given two input protein structures.
+\caption[Calculation of the upper and lower distance constraints between two atoms given two input protein structures]
+{The method to calculate the upper and lower distance constraints between two atoms given two input protein structures.
 First, the distance between the two atoms in each of the two input structures is calculated ($d_{A}$ and $d_{B}$).
 An upper and lower distance constraint is then calculated for each of these distances by multiplying the constraint tolerance for the interaction in that structure by the tolerance weighting factor (these constraints are shown as blue bars).
 The upper and lower limits of these constraints are combined to get the new distance constraints $B_{U}$ and $B_{L}$ (green bar).}
@@ -367,7 +369,8 @@ Finally, a well-studied example of dynamic allostery and an example of activatio
 
 \includegraphics[width=0.85\textwidth]{figures/exprose_overview/exprose_overview}
 
-\caption{Overview of the ExProSE computational method.
+\caption[Overview of the ExProSE computational method to generate and perturb ensembles of protein structures]
+{Overview of the ExProSE computational method.
 Two structures of a protein (shown in blue and green) are converted to distance constraints.
 These constraints are combined and satisfied by an iterative procedure to generate an ensemble of structures.
 By adding extra constraints to one structure, for example representing perturbation at a pocket, a perturbed ensemble can be generated.
@@ -404,7 +407,8 @@ This value of 60,000 iterations per atom was used for all ExProSE runs.
 
 \includegraphics[width=\textwidth]{figures/spe_convergence/spe_convergence}
 
-\caption{The SPE error score, a measure of how many distance constraints are violated, shown over the course of 5 separate ExProSE runs on CDK2.
+\caption[Convergence of the ExProSE SPE error score for 5 separate runs on CDK2]
+{The SPE error score, a measure of how many distance constraints are violated, shown over the course of 5 separate ExProSE runs on CDK2.
 Initially the random atomic coordinates give a high score.
 As the iterative procedure occurs atoms that violate distance constraints are moved, reducing the SPE error score.}
 
@@ -423,7 +427,8 @@ This is to be expected as structures which have more violations of the distance 
 
 \includegraphics[width=\textwidth]{figures/score_procheck/score_procheck}
 
-\caption{The SPE error score of each structure in an ensemble of CDK2 structures generated using ExProSE is plotted against the PROCHECK overall G-factor of the structure.
+\caption[SPE error score plotted against PROCHECK overall G-factor for an ExProSE ensemble]
+{The SPE error score of each structure in an ensemble of CDK2 structures generated using ExProSE is plotted against the PROCHECK overall G-factor of the structure.
 Note that an ensemble of 300 structures was generated and only the 200 structures with the lowest SPE error score were retained (see Methods section).}
 
 \label{fig:score_procheck}
@@ -485,7 +490,8 @@ The stereochemistry of generated structures can be improved by energy minimisati
 \end{tabular}
 \end{footnotesize}
 
-\caption{Comparison of ensemble generation methods.
+\caption[Ability of ensemble generation methods to sample conformational space]
+{Comparison of ensemble generation methods.
 The columns Apo PDB and Holo PDB refer to the PDB IDs of the apo and holo structures used.
 RMSD is the all-atom RMSD in \AA\ between the apo and holo structures.
 The rows are ordered by increasing RMSD.
@@ -527,7 +533,8 @@ The median of the lowest RMSDs for each method/input combination is also given.}
 \end{footnotesize}
 
 
-\caption{Ability of ExProSE ensembles to reach apo and holo structures.
+\caption[Ability of ExProSE ensembles to sample conformational space]
+{Ability of ExProSE ensembles to reach apo and holo structures.
 The columns Apo PDB, Holo PDB, RMSD and \textit{N} are the same as in Table~\ref{tab:ensemble_dataset}.
 The values on the right are the lowest RMSD in \AA\ of the structures in an ExProSE ensemble to the crystal structure indicated.
 A low value indicates that the ensemble sampled a structure close to the crystal structure.
@@ -572,7 +579,8 @@ In each case the default parameters gave similar or better coverage of the confo
 
 \includegraphics[width=\textwidth]{figures/t4l/t4l}
 
-\caption{Caption on following page.}
+\caption[Structures and principal components analysis of T4-lysozyme ensembles]
+{Caption on following page.}
 
 \label{fig:t4l}
 \end{figure}
@@ -599,7 +607,8 @@ Figure based on Figure~1 from Greener and Sternberg 2017 \cite{Greener2017}.}
 
 \includegraphics[width=0.55\textwidth]{figures/method_params/method_params}
 
-\caption{Caption on following page.}
+\caption[Ensemble generation for T4-lysozyme with different parameters]
+{Caption on following page.}
 
 \label{fig:method_params}
 \end{figure}
@@ -631,7 +640,8 @@ Retaining only the structures up to 20 ns, as in Figure~\ref{fig:t4l_md}C and \r
 
 \includegraphics[width=0.5\textwidth]{figures/t4l_md/t4l_md}
 
-\caption{Caption on following page.}
+\caption[T4-lysozyme ensembles generated using MD and targeted MD]
+{Caption on following page.}
 
 \label{fig:t4l_md}
 \end{figure}
@@ -669,7 +679,8 @@ ExProSE is able to produce models of acceptable quality close to all the crystal
 
 \includegraphics[width=0.6\textwidth]{figures/t4l_rmsd/t4l_rmsd}
 
-\caption{Closest models from each ensemble to T4-lysozyme crystal structures.
+\caption[Closest models from each ensemble to T4-lysozyme crystal structures]
+{Closest models from each ensemble to T4-lysozyme crystal structures.
 (\textbf{A}) The RMSD of the closest model from each generated ensemble to the crystal structures.
 The crystal structures are sorted by the lower of the two RMSD values to the open and closed crystals used as input.
 The crystals used as inputs are omitted from the graph.
@@ -710,7 +721,8 @@ targeted MD & starting closed, targeting open & -0.57 & -0.20 \\
 \end{tabular}
 \end{footnotesize}
 
-\caption{Improvement in stereochemical quality on energy minimisation.
+\caption[Improvement in stereochemical quality of generated structures on energy minimisation]
+{Improvement in stereochemical quality on energy minimisation.
 The structures in each ensemble were analysed with PROCHECK and the median overall G-factor across the ensemble was noted.
 The median of the overall G-factor of each structure after energy minimisation was also recorded.}
 
@@ -752,7 +764,8 @@ No allosteric modulators have been reported experimentally for these sites.
 
 \includegraphics[width=\textwidth]{figures/cdk/cdk}
 
-\caption{CDK2 pockets and projections of ensembles.
+\caption[CDK2 pockets and projections of perturbed ExProSE ensembles]
+{CDK2 pockets and projections of ensembles.
 (\textbf{A}) CDK2 in its holo conformation bound to two ANS molecules in the allosteric site (PDB ID 3PXF).
 CDK2 is shown as a green cartoon with the two bound ANS shown as blue sticks.
 Pocket centres predicted by LIGSITE\textsuperscript{\it cs} are shown as purple spheres.
@@ -823,7 +836,8 @@ Fpocket                         & 31 & 8/31 & -    \\
 \end{tabular}
 \end{footnotesize}
 
-\caption{Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins.
+\caption[Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins - summary]
+{Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins.
 Correct in top 2 is the number of proteins for which the method successfully ranked an allosteric pocket first or second.
 The definition for an allosteric pocket is given in the Methods.
 The number of correct predictions by each method that are unique from the correct predictions of LIGSITE\textsuperscript{\it cs} and Fpocket is also shown.
@@ -907,7 +921,8 @@ STRESS could not run on 4 proteins as they were too small.}
 \end{scriptsize}
 % Remove multicolumn here and sort l/r
 
-\caption{Caption on following page.}
+\caption[Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins - detail]
+{Caption on following page.}
 
 \label{tab:allosteric_proteins}
 \end{table}
@@ -967,7 +982,8 @@ The results also demonstrate that ExProSE can give useful information with only 
 
 \includegraphics[width=0.8\textwidth]{figures/cap/cap}
 
-\caption{Mean square fluctuations across CAP ensembles compared to Apo-CAP.
+\caption[Mean square fluctuations across perturbed CAP ensembles compared to Apo-CAP]
+{Mean square fluctuations across CAP ensembles compared to Apo-CAP.
 The four ensembles are generated separately.
 Apo-CAP has no cAMP.
 The other ensembles have additional constraints (see the Methods) representing cAMP bound to chain A, cAMP bound to chain B, or cAMP bound to both chains A and B.
@@ -1005,7 +1021,8 @@ These results also show that ExProSE can be used to study covalent modifications
 
 \includegraphics[width=0.9\textwidth]{figures/ntrc/ntrc}
 
-\caption{Ensembles of NtrC.
+\caption[Ensembles of NtrC generated with ExProSE]
+{Ensembles of NtrC.
 (A) The mean square fluctuation in the unperturbed ensemble is shown on the inactive structure (PDB ID 1DC7).
 (B) The mean square fluctuation in the ensemble with additional constraints representing phosphorylation is shown in the active structure (PDB ID 1DC8).
 Labels are taken from \cite{Volkman2001}.}
