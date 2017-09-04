@@ -11,8 +11,11 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Papers as appendices?
+- Check section requirements
 - A few more references
-- Change Bibliography title to References
+- Declaration of originality and copyright declaration
+- Abbreviations section
 - Contents and list of figures/tables page numbers are one off
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size

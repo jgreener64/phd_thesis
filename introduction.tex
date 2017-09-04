@@ -107,7 +107,15 @@ In addition there are various pocket prediction methods that aim to predict bind
 
 \subsubsection{Normal mode analysis}
 
-In normal mode analysis (NMA) the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes.
+In normal mode analysis (NMA) the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
+The process of NMA is shown in Figure~\ref{fig:nma}.
+Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
+All observed configurations of the system can be generated from a linear combination of its normal modes.
+The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
+NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
+Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning NMA is a computationally efficient way of exploring protein flexibility compared to MD.
+The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
+However, allostery does involve local effects so higher-frequency modes should also be taken into account \cite{Collier2013}.
 The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
 The binding leverage approach \cite{Mitternacht2011} predicts how ligand binding couples to the intrinsic motions of a protein.
 Sites with high binding leverage are predicted to be allosteric.
@@ -119,28 +127,28 @@ The PARS method \cite{Panjkovich2012, Panjkovich2014} calculates normal modes in
 If the motions are significantly different the site is predicted as allosteric.
 The AlloPred method \cite{Greener2015} calculates the normal modes of a protein, then holds the springs in the region of a potential allosteric site rigid and measures the effect of this perturbation at the active site.
 The DynOmics ENM server \cite{Li2017} finds hinge residues that control the two slowest normal modes of a protein, and hence are able to influence its dynamics.
+Several studies have used NMA to model allosteric regulation in specific sets of proteins \cite{Balabin2009, Rodgers2013, Zheng2007}.
 NMA is suitable for high-throughput, automated approaches as it can be computationally inexpensive.
 However whilst NMA-based methods might be expected to reveal perturbations to vibrations, the assumption of harmonic fluctuations around an energetically-minimum structure means that other contributing motions to allostery such as local unfolding and rigid body movements \cite{Motlagh2014} are not taken into account.
 % \cite{Su2014}? probably not
-% \cite{Balabin2009}? probably not
-
-% Integrate with above
 % Add Taguchi 2016
-% Finish figure and ref
-Several studies have used normal mode analysis (NMA) to model allosteric regulation \cite{Mitternacht2011, Panjkovich2012, Balabin2009, Rodgers2013, Zheng2007}.
-In NMA, the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
-Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
-All observed configurations of the system can be generated from a linear combination of its normal modes.
-The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
-NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
-Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning NMA is a computationally efficient way of exploring protein flexibility compared to MD.
-The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
-However, allostery does involve local effects so higher-frequency modes should also be taken into account \cite{Collier2013}.
-Drawback is assumes harmonic...
-NMA can also be used to generate conformations of proteins, usually by modelling the protein along the relevant vibrations.
-The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
-This gives sampling similar to MD but is more computationally efficient.
-% Rep of above
+% Other bits from Hayward2008
+
+
+\begin{figure}
+\centering
+
+\includegraphics[width=0.9\textwidth]{figures/nma/nma}
+
+\caption[Steps in normal mode analysis]
+{Steps in NMA.
+A protein structure is converted into an elastic network where balls are C\textsuperscript{\textalpha} atoms and springs are between C\textsuperscript{\textalpha} atoms within a certain distance.
+A Hessian matrix of second derivatives is derived from the potential energy function of this elastic network.
+Diagonalising the Hessian matrix yields eigenvectors and eigenvalues that correspond to the displacements for each C\textsuperscript{\textalpha} atom in the mode and the square of the mode frequency respectively.
+See for \cite{Hayward2008} more.}
+
+\label{fig:nma}
+\end{figure}
 
 
 \subsubsection{Machine learning}
@@ -323,6 +331,9 @@ This generates a protein structure in a similar manner to the way a structure is
 The process is repeated to obtain an ensemble of structures.
 tCONCOORD extends CONCOORD and gives better sampling of proteins with large conformational changes by predicting H-bonds in the structure that are liable to break \cite{Seeliger2007}.
 
+NMA can also be used to generate conformations of proteins, usually by modelling the protein along the relevant vibrations.
+The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
+This gives sampling similar to MD but is more computationally efficient.
 
 
 \section{Protein kinases}
