@@ -24,7 +24,6 @@ pdflatex thesis.tex
 - Keep COSB review and intro/conc/ref updates up to date
 - Remove multicolumn table tags
 - Fpocket capitalisation consistent
-- Caption formatting - small text, margin, bold starting label, margin to figure, bold A/B? See LSR
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
 - Images should have consistent white background
 - Consistent C-alpha
