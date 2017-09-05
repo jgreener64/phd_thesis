@@ -178,15 +178,45 @@ Bootstrap was used for page styling.
 The standalone version of the code runs faster and it is recommended that users who intend to use the method extensively or in batch download the code for local use.
 
 
+% define flowchart elements
+\tikzstyle{process} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text width=2cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{input} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=blue!30]
+\tikzstyle{output} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=red!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 \begin{figure}
 \centering
+\singlespacing
 
-\includegraphics[width=0.7\textwidth]{figures/flowchart/flowchart}
+\begin{small}
+\begin{tikzpicture}[node distance=2cm]
+
+\node (pdb) [input] {PDB ID/user file};
+\node (nma) [process, below of=pdb] {Normal mode analysis};
+\node (active) [input, left of=nma, xshift=-2cm] {Active site residues};
+\node (fpocket) [process, right of=nma, xshift=2cm] {Fpocket calculation};
+\node (svm) [process, below of=nma] {Run SVM};
+\node (rerank) [process, below of=svm] {Re-rank allosteric pockets};
+\node (visualisation) [output, right of=rerank, xshift=2cm] {Visualise pockets};
+\node (download) [output, below of=rerank] {Download results};
+
+\draw [arrow] (pdb) -| (fpocket);
+\draw [arrow] (pdb) -- (nma);
+\draw [arrow] (active) -- (nma);
+\draw [arrow] (fpocket) -- (nma);
+\draw [arrow] (fpocket) |- (svm);
+\draw [arrow] (nma) -- (svm);
+\draw [arrow] (svm) -- (rerank);
+\draw [arrow] (rerank) -- (visualisation);
+\draw [arrow] (rerank) -- (download);
+
+\end{tikzpicture}
+\end{small}
 
 \caption[Flowchart showing the stages involved in running a job submitted to the AlloPred web server]
 {Flowchart showing the stages involved in running a job submitted to the AlloPred web server.
-Trapeziums represent inputs or outputs available to the user via the web front end.
-Rectangles represent stages in the calculation pipeline that occur via the web back end.
+Trapeziums represent inputs or outputs available to the user via the web front end (inputs purple, outputs red).
+Rounded rectangles represent stages in the calculation pipeline that occur via the web back end.
 Figure based on Figure~2 from Greener and Sternberg 2015 \cite{Greener2015}.}
 
 \label{fig:flowchart}

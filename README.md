@@ -11,6 +11,8 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Add figure from final MSc report and check text
+- Title page
 - Papers as appendices?
 - Check section requirements
 - A few more references
@@ -66,6 +68,7 @@ pdflatex thesis.tex
 - ExProSE paper: ~7,000 words
 - ESA: ~3,500 words
 - LSR: ~8,000 words
+- Final MSc report
 - September 2015 report
 - Presentations - group meeting and other
 - AlloPred paper submissions to NAR/Bioinformatics
