@@ -11,8 +11,8 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Move flowchart to results
 - Read guidelines in email
-- Add figure from final MSc report and check text
 - Title page
 - Papers as appendices?
 - Check section requirements
@@ -42,7 +42,7 @@ pdflatex thesis.tex
 - Add to Spiral
 - Spellcheck
 - Permission to use figures required?
-- References check and update for recent papers
+- References check, and update for recent papers
 
 
 ## Plan
