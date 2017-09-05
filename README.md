@@ -11,6 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Read guidelines in email
 - Add figure from final MSc report and check text
 - Title page
 - Papers as appendices?
