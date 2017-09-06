@@ -134,19 +134,20 @@ However whilst NMA-based methods might be expected to reveal perturbations to vi
 % \cite{Su2014}? probably not
 % Add Taguchi 2016
 % Other bits from Hayward2008
+% Say equations in AlloPred methods
 
 
 \begin{figure}
 \centering
 
-%\includegraphics[width=0.9\textwidth]{figures/nma/nma}
+\includegraphics[width=\textwidth]{figures/nma/nma}
 
 \caption[Steps in normal mode analysis]
 {Steps in NMA.
 A protein structure is converted into an elastic network where balls are C\textsuperscript{\textalpha} atoms and springs are between C\textsuperscript{\textalpha} atoms within a certain distance.
-A Hessian matrix of second derivatives is derived from the potential energy function of this elastic network.
+A Hessian matrix of second derivatives of the potential energy $V$ in terms of the mass-weighted atomic coordinates $q_{i}$ is derived from the potential energy function of this elastic network.
 Diagonalising the Hessian matrix yields eigenvectors and eigenvalues that correspond to the displacements for each C\textsuperscript{\textalpha} atom in the mode and the square of the mode frequency respectively.
-See for \cite{Hayward2008} more.}
+See \cite{Hayward2008} for more.}
 
 \label{fig:nma}
 \end{figure}
