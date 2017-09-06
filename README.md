@@ -11,13 +11,12 @@ pdflatex thesis.tex
 
 ## Issues
 
-- Middle name initial?
+- Middle name initial? Should the address be CISBIO?
 - Abstract (300 words max)
 - Move flowchart to results
 - Papers as appendices?
 - Check section requirements
 - A few more references
-- Declaration of originality and copyright declaration
 - Contents and list of figures/tables page numbers are one off - this is fixed?
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
