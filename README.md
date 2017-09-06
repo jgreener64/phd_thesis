@@ -11,14 +11,15 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Middle name initial?
+- Abstract (300 words max)
 - Move flowchart to results
-- Read guidelines in email
-- Title page
+- Title page with extra info
 - Papers as appendices?
 - Check section requirements
 - A few more references
 - Declaration of originality and copyright declaration
-- Contents and list of figures/tables page numbers are one off
+- Contents and list of figures/tables page numbers are one off - this is fixed?
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size
 - Check latex log for errors
