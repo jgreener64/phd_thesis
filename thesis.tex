@@ -38,7 +38,7 @@
 \usepackage{ccaption}
 
 % References in table of contents
-\usepackage[nottoc,notlof,notlot,numbib]{tocbibind}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
 
 % Bold in table columns
 \usepackage{array}
@@ -69,14 +69,46 @@
 
 \begin{document}
 
+\onehalfspacing
+
 \begin{titlepage}
 \thispagestyle{plain}
-{\scshape\Large In-silico guided prediction of allosteric sites on proteins: application to cyclin-dependent kinase 2\par}
-\vspace{1.5cm}
-{\huge\bfseries Joe G Greener\par}
-\end{titlepage}
+\centering
+\singlespacing
+\settowidth{\unitlength}{\LARGE xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}
+\rule{\unitlength}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+\rule{\unitlength}{0.4pt}\\[\baselineskip]
+{\scshape\LARGE In-silico guided prediction of allosteric sites on proteins: application to cyclin-dependent kinase 2\par}
+\rule{\unitlength}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule{\unitlength}{1.6pt}\\[\baselineskip]
+\vspace{1.0cm}
+{\scshape\Large \textbf{Joe G Greener}\par}
+\vspace{1.0cm}
+{\large A dissertation submitted for the degree of Doctor of\par}
+{\large Philosophy of Imperial College London\par}
+\vspace{1.0cm}
 
 \onehalfspacing
+\begin{minipage}[t]{7cm}
+\flushleft
+{\large \textit{Supervisor}\par}
+{\large Prof Michael JE Sternberg\par}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{7cm}
+\flushright
+{\large \textit{Co-supervisors}\par}
+{\large Dr David J Mann\par}
+{\large Prof Alan Armstrong\par}
+\end{minipage}
+
+\vspace{1.0cm}
+{\large Structural Bioinformatics Group\par}
+{\large Department of Life Sciences\par}
+{\large Imperial College London\par}
+{\large South Kensington\par}
+{\large London SW7 2AZ\par}
+\end{titlepage}
 
 \include{abstract}
 

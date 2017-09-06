@@ -14,7 +14,6 @@ pdflatex thesis.tex
 - Middle name initial?
 - Abstract (300 words max)
 - Move flowchart to results
-- Title page with extra info
 - Papers as appendices?
 - Check section requirements
 - A few more references
