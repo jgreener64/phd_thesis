@@ -140,7 +140,7 @@ The pseudocode for the SPE algorithm, rephrased from an existing review \cite{Ag
 The distance constraints do not include favourability for a particular chirality, so coordinates produced from SPE are examined and structures with the incorrect chirality are reversed by mirroring all coordinates in the $xy$ plane.
 
 
-\begin{algorithm}[p]
+\begin{algorithm}
 \caption{SPE algorithm}
 \label{algorithm:spe}
 \begin{algorithmic}
@@ -179,7 +179,7 @@ So if the final ensemble had 200 structures, initially 300 are generated and the
 This was found during development to generally produce ensembles of structures with acceptable stereochemical quality.
 
 
-\begin{algorithm}[p]
+\begin{algorithm}
 \caption{Scoring algorithm}
 \label{algorithm:scoring}
 \begin{algorithmic}
@@ -270,12 +270,14 @@ A pocket is considered allosteric for validation purposes if the pocket centre i
 This is similar to previous studies \cite{Panjkovich2012}.
 
 
-\subsection{Apo/holo dataset}
+\subsection{Datasets}
+
+\subsubsection{Apo/holo dataset}
 
 Out of the 25 proteins used in a prior study \cite{Atilgan2010}, the 12 with apo/holo all-atom RMSD greater than 2 \AA\ are selected in order to focus on larger conformational changes.
 
 
-\subsection{Allosteric dataset}
+\subsubsection{Allosteric dataset}
 
 In order to assess the performance of ExProSE as an allosteric site predictor, a dataset of known allosteric proteins was assembled.
 All proteins in the ASD with apo and holo structures available in the PDB were retrieved (150 proteins).

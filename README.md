@@ -11,6 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Consistent figure reproduced from references
 - Middle name initial? Should the address be CISBIO?
 - Abstract (300 words max)
 - Move flowchart to results
@@ -23,10 +24,7 @@ pdflatex thesis.tex
 - Check latex log for errors
 - Keep COSB review and intro/conc/ref updates up to date
 - Remove multicolumn table tags
-- Fpocket capitalisation consistent
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
-- Images should have consistent white background
-- Consistent C-alpha
 - How to refer to other sections - use labels, check throughout
 - Cyclin A or A2? Cyclin capitalised (also in title)? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
@@ -34,7 +32,6 @@ pdflatex thesis.tex
 - Italicisation throughout
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
 - Refer to all parts of figures in main text
-- LaTeX style templates available?
 - Get C-helix inactivation ref from Greg
 - Panjkovich thesis has some stuff about lack of conservation - see also Panjkovich2010
 - OA on GitHub

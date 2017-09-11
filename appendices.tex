@@ -15,7 +15,7 @@ The current released version of the source code is v1.0.0.
 
 \begin{itemize}
 \item Python 2.7 with the NumPy and ProDy packages installed.
-\item fpocket v2.0, which can be downloaded from \url{http://fpocket.sourceforge.net}. Follow the installation instructions to compile the executables.
+\item Fpocket v2.0, which can be downloaded from \url{http://fpocket.sourceforge.net}. Follow the installation instructions to compile the executables.
 \item SVM-light, which can be downloaded from \url{http://svmlight.joachims.org}. Follow the installation instructions to compile the executables.
 \end{itemize}
 
@@ -41,11 +41,11 @@ Follow these step to run AlloPred:
 
 \item Create a one-line file (\verb|act_res.txt|) containing the active site residues of the protein. The format is \verb|10:A,11:B| for residue 10 on chain A and residue 11 on chain B. These can be found using resources such as the Catalytic Site Atlas. An example PDB file and active residue file can be found in the example directory of AlloPred.
 
-\item Run fpocket v2.0 on the PDB file:
+\item Run Fpocket v2.0 on the PDB file:
 \begin{lstlisting}[language=bash]
     fpocket -f in_file.pdb
 \end{lstlisting}
-This assumes \verb|fpocket| is on the path. This produces the directory \verb|in_file_out|. AlloPred is optimised on the default fpocket parameters but you can change these in accordance with the fpocket documentation if you wish.
+This assumes \verb|fpocket| is on the path. This produces the directory \verb|in_file_out|. AlloPred is optimised on the default Fpocket parameters but you can change these in accordance with the Fpocket documentation if you wish.
 
 \item The following command, from the directory containing \verb|in_file.pdb| and \verb|in_file_out|, runs the AlloPred pipeline:
 \begin{lstlisting}[language=bash]
