@@ -26,7 +26,7 @@ More recently these views on allostery have been revisited and reconciled in app
 Figure~\ref{fig:allostery} outlines the current understanding of allostery.
 A perturbation at any site in the structure leads to a shift in the occupancy of states by the population, so allostery is a property of the conformational ensemble.
 The effect at the allosteric site is linked to the active site by small conformational changes that transmit the allosteric effect in a wave-like manner along pathways of amino acids in the protein \cite{DelSol2009}.
-These pathways may be conserved by evolution.
+These pathways may be conserved by evolution \cite{Suel2003}.
 It is also important to consider the effect of allostery on cellular networks and reaction pathways \cite{Nussinov2013}, with allosteric effects propagating via protein-protein interactions.
 
 Allosteric drugs have hardly been explored and hold many potential benefits over orthosteric (non-allosteric) drugs: they are highly specific as they do not bind to active sites that are often conserved in protein families; they can activate as well as inhibit a protein; and they can have a ceiling to their effect \cite{Wenthur2014}.
@@ -35,9 +35,9 @@ Numerous other allosteric modulators are in various stages of human clinical tra
 However, discovery of allosteric drugs presents challenges beyond those encountered in orthosteric drug discovery - see later.
 
 In order to understand and utilise allostery it is necessary to be able to predict allosteric sites, allosteric modulators and residues involved in propagating the allosteric signal.
-This review outlines advances from the last few years in the structure-based prediction of protein allostery, largely focusing on computational approaches.
-Previous reviews have covered similar topics \cite{SchuelerFurman2016, Wagner2016, Guarnera2016, Lu2014}.
-The emerging fields of cryptic allosteric site discovery and allosteric site design are described.
+Here we outline advances from the last few years in the structure-based prediction of protein allostery, largely focusing on computational approaches.
+Review papers have covered similar topics \cite{SchuelerFurman2016, Wagner2016, Guarnera2016, Lu2014}.
+The emerging fields of cryptic allosteric site discovery and allosteric site design are described and some of the issues surrounding allostery are discussed.
 
 % Other stuff from Nussinov
 % https://www.nature.com/articles/ncomms16018.pdf - The self-inhibitory nature of metabolic networks and its alleviation through compartmentalization - mention at network point?
@@ -109,16 +109,16 @@ In addition there are various pocket prediction methods that aim to predict bind
 \subsubsection{Normal mode analysis}
 
 In normal mode analysis (NMA) the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
-The process of NMA is shown in Figure~\ref{fig:nma}.
 Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
 All observed configurations of the system can be generated from a linear combination of its normal modes.
+The process of NMA is shown in Figure~\ref{fig:nma}.
 The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
-% Have equations here?
+The mathematical formulation of this is described in Section~\ref{sec:allopred_methods}.
 NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
-Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning NMA is a computationally efficient way of exploring protein flexibility compared to MD.
+Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning that NMA is a computationally efficient way of exploring protein flexibility compared to molecular dynamics (MD).
 The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
 However, allostery does involve local effects so higher-frequency modes should also be taken into account \cite{Collier2013}.
-The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
+
 The binding leverage approach \cite{Mitternacht2011} predicts how ligand binding couples to the intrinsic motions of a protein.
 Sites with high binding leverage are predicted to be allosteric.
 Binding leverage was developed into the web server SPACER \cite{Goncearenco2013}, and into the general predictor STRESS \cite{Clarke2016} by a different group.
@@ -127,7 +127,6 @@ Binding leverage was developed into the web server SPACER \cite{Goncearenco2013}
 % And turned into a web server \cite{Guarnera2017}...
 The PARS method \cite{Panjkovich2012, Panjkovich2014} calculates normal modes in the presence and absence of a simulated allosteric modulator.
 If the motions are significantly different the site is predicted as allosteric.
-The AlloPred method \cite{Greener2015} calculates the normal modes of a protein, then holds the springs in the region of a potential allosteric site rigid and measures the effect of this perturbation at the active site.
 The DynOmics ENM server \cite{Li2017} finds hinge residues that control the two slowest normal modes of a protein, and hence are able to influence its dynamics.
 Several studies have used NMA to model allosteric regulation in specific sets of proteins \cite{Balabin2009, Rodgers2013, Zheng2007}.
 NMA is suitable for high-throughput, automated approaches as it can be computationally inexpensive.
@@ -135,7 +134,6 @@ However whilst NMA-based methods might be expected to reveal perturbations to vi
 % \cite{Su2014}? probably not
 % Add Taguchi 2016
 % Other bits from Hayward2008
-% Say equations in AlloPred methods
 
 
 \begin{figure}
@@ -147,7 +145,7 @@ However whilst NMA-based methods might be expected to reveal perturbations to vi
 {Steps in NMA.
 A protein structure is converted into an elastic network where balls are C\textsuperscript{\textalpha} atoms and springs are between C\textsuperscript{\textalpha} atoms within a certain distance.
 A Hessian matrix of second derivatives of the potential energy $V$ in terms of the mass-weighted atomic coordinates $q_{i}$ is derived from the potential energy function of this elastic network.
-Diagonalising the Hessian matrix yields eigenvectors and eigenvalues that correspond to the displacements for each C\textsuperscript{\textalpha} atom in the mode and the square of the mode frequency respectively.
+Diagonalising the Hessian matrix yields eigenvectors and eigenvalues that correspond to the displacements for each C\textsuperscript{\textalpha} atom in a mode and the square of the mode frequency respectively.
 See \cite{Hayward2008} for more.}
 
 \label{fig:nma}
@@ -165,7 +163,7 @@ A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and 
 
 \subsubsection{Molecular dynamics}
 
-Molecular dynamics (MD) remains the standard computational tool for structural analysis when structures are available.
+MD remains the standard computational tool for structural analysis when structures are available.
 A study on the signaling protein NtrC combined MD simulations and NMR data to explore the free energy landscape and investigate at atomic resolution the transition from active to inactive state \cite{Pontiggia2015}.
 % Add \cite{Qi2012} here
 % And Laine2010
@@ -191,10 +189,6 @@ As more structural and conservation information is acquired it will be important
 
 A recent study \cite{Amor2016} constructs an all-atom graph and calculates for each bond the bond propensity, the strength of coupling to the active site through the graph.
 The method is used to reproduce observed results for three proteins in detail and is also able to predict allosteric sites in a dataset of 20 allosteric proteins.
-ExProSE \cite{Greener2017} takes two structures of the same protein and generates an ensemble of structures using distance constraints.
-By adding extra constraints at a possible allosteric site, a perturbed ensemble is generated.
-By comparing ensembles with and without the allosteric perturbation, allosteric sites can be predicted and the effect of perturbation on structure and dynamics can be explored.
-This work also includes a quantitative comparison of available allosteric site prediction methods.
 
 
 \subsubsection{Methods not specific to allostery}
@@ -291,7 +285,9 @@ A recent MD study proposes that allostery in the well-studied PDZ domain is driv
 The role of water in allostery also needs to be further explored as evidence has been found that re-arrangement of water molecules is a possible mechanism of allostery \cite{Buchli2013, Amor2016}.
 
 
-Challenges faced in the structure-based prediction of protein allostery:
+\subsection{Challenges in allosteric prediction}
+
+There are a number of challenges faced in the structure-based prediction of protein allostery:
 
 \begin{enumerate}
 \item As shown in Figure 1B, an allosteric effect can arise from a variety of different mechanisms.
@@ -320,7 +316,7 @@ Proteins move on a variety of timescales, encompassing motions from the vibratio
 X-ray crystallography provides a static view of the structure of proteins.
 However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.
 Experimental techniques to explore the dynamics of proteins, such as nuclear magnetic resonance (NMR), are sophisticated and time-consuming.
-Molecular dynamics (MD) is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
+MD is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
 It is effective at modelling motions up to the timescale of nanoseconds.
 However, the computational cost of modelling proteins on the scale of microseconds or milliseconds means MD is not suitable for larger-scale transitions.
 Advanced MD methods such as targeted or accelerated MD can overcome this sampling problem \cite{Maximova2016}, but these methods are not yet routinely applicable due to the parameterisation required for each protein.
