@@ -11,7 +11,6 @@ pdflatex thesis.tex
 
 ## Issues
 
-- Consistent figure reproduced from references
 - Middle name initial? Should the address be CISBIO?
 - Abstract (300 words max)
 - Move flowchart to results

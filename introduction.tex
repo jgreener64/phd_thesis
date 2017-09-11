@@ -55,7 +55,7 @@ The emerging fields of cryptic allosteric site discovery and allosteric site des
 In the presence of the allosteric inhibitor the inactive state is favoured either by the inhibitor binding to the protein when it is in the inactive state (red arrow - conformational selection) or by the inhibitor binding to the active state and causing inactivation (blue arrow - induced fit).
 (B) The variety of motions that can lead to allostery.
 Larger motions or more disorder are shown further down the vertical axis.
-Figure based on Figure~2 from \cite{Motlagh2014}.
+Figure based on Figure~2 from Motlagh et al.\ 2014 \cite{Motlagh2014}.
 (C) A simplified representation of the change in the energy landscape on binding of an allosteric inhibitor.
 The shaded regions show the main occupied conformation in each case.
 On inhibitor binding the relative energies of the active and inactive states are altered.
@@ -312,18 +312,30 @@ The development of experimental methods such as cryo-electron microscopy should 
 \section{Protein structural ensembles}
 \label{sec:introduction_ensembles}
 
-Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016}.
+Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016} - see Figure~\ref{fig:timescales}.
 X-ray crystallography provides a static view of the structure of proteins.
 However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.
 Experimental techniques to explore the dynamics of proteins, such as nuclear magnetic resonance (NMR), are sophisticated and time-consuming.
 MD is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
 It is effective at modelling motions up to the timescale of nanoseconds.
 However, the computational cost of modelling proteins on the scale of microseconds or milliseconds means MD is not suitable for larger-scale transitions.
-Advanced MD methods such as targeted or accelerated MD can overcome this sampling problem \cite{Maximova2016}, but these methods are not yet routinely applicable due to the parameterisation required for each protein.
+Advanced MD methods such as targeted or accelerated MD can overcome this sampling problem \cite{Maximova2016}, but these methods are not yet routinely applicable due to the parameterisation and analysis required for each protein.
+
+
+\begin{figure}
+\centering
+
+%\includegraphics[width=0.9\textwidth]{figures/timescales/timescales}
+
+\caption[Timescales of protein motions]
+{Dynamic processes in proteins and their associated timescales.
+Figure based on Figure~1 from Henzler-Wildman and Kern 2007 \cite{Henzler-Wildman2007}.}
+
+\label{fig:timescales}
+\end{figure}
+
 
 Various non-MD methods have been used to generate ensembles of protein structures from a crystal input structure, and hence explore protein dynamics.
-These ensembles have uses in flexible ligand docking \cite{Totrov2008}, generating poses for protein-protein docking \cite{Mustard2005}, predicting structures on trajectories between two crystal structures \cite{Weiss2009}, and predicting flexible regions in proteins \cite{Ahmed2011}.
-
 CONCOORD \cite{DeGroot1997, DeGroot1999} is a distance geometry method to generate structures from an input structure and consists of a two-step process.
 First, the different types of chemical interactions in the input structure, e.g.\ H-bonding and hydrophobic interactions, are converted to distance constraints with a given tolerance.
 Next, an iterative minimisation procedure is performed to move a set of randomly-placed coordinates such that most distance constraints are satisfied.
@@ -334,6 +346,11 @@ tCONCOORD extends CONCOORD and gives better sampling of proteins with large conf
 NMA can also be used to generate conformations of proteins, usually by modelling the protein along the relevant vibrations.
 The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
 This gives sampling similar to MD but is more computationally efficient.
+
+Ensembles of protein structures have uses in flexible ligand docking \cite{Totrov2008}, generating poses for protein-protein docking \cite{Mustard2005}, predicting structures on trajectories between two crystal structures \cite{Weiss2009}, and predicting flexible regions in proteins \cite{Ahmed2011}.
+They also can be used to explore intrinsically-disordered proteins \cite{Tompa2012, Best2017}.
+As has been discussed in Section~\ref{sec:introduction_allostery}, allostery is a property of the conformational ensemble.
+An ensemble generation method that can be modified to take allostery into account could be used to explore allostery in a protein - see Figure~\ref{fig:allostery}C.
 
 
 \section{Protein kinases}
@@ -376,7 +393,7 @@ The increasing number of entries in this database shows that a large number of p
 \caption[Binding sites of known type IV allosteric inhibitors of protein kinases]
 {Binding sites of known type IV allosteric inhibitors are shown in purple on the cAMP-dependent protein kinase (PKA) structure (PDB ID 1ATP).
 The ATP binding site is shown in yellow.
-Figure reproduced from Lamba and Ghosh (2012) \cite{Lamba2012}.}
+Figure based on Lamba and Ghosh (2012) \cite{Lamba2012}.}
 
 \label{fig:kinase_mods}
 \end{figure}
