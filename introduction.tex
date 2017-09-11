@@ -2,8 +2,7 @@
 \label{cha:introduction}
 
 This chapter introduces the concepts of allostery in proteins, structure-based allosteric prediction, normal mode analysis, the protein structural ensemble, protein kinases and cyclin-dependent kinase 2 (CDK2).
-% Change this to fit flow
-Some of this introduction has been written as a review (cite).
+% Mention COSB review?
 
 
 \section{Allostery in proteins}
@@ -12,17 +11,17 @@ Some of this introduction has been written as a review (cite).
 Allostery in its broadest sense is the functional change at one site on a protein caused by a change at a distant site.
 The perturbation at the allosteric site can be non-covalent binding of a molecule (e.g.\ small molecule, ions, RNA, DNA), covalent binding (e.g.\ phosphorylation) or light absorption \cite{Nussinov2013}.
 Changes in structure or dynamics lead to effects such as a reduction or increase in catalytic activity, changes in disordered regions or changes in oligomerisation state.
+All proteins are potentially allosteric \cite{Gunasekaran2004}.
 
-% Add MWC/KNF/Perutz/Hilser2012/Tsai2014 refs back
-% And Csermely for networks
 % Panjkovich2010
-% All protein potentially allosteric Gunasekaran2004
+% Any more important refs here?
+% Read LSR
 Since the first discovery of allosteric systems more than 50 years ago there have been various models put forward to describe the phenomenon.
-The dominant proposals for many years were the Monod-Wyman-Changeux (MWC) model, which posited that pre-existing states are subject to an equilibrium shift on modulator binding, and the Koshland-N\'{e}methy-Filmer (KNF) model, which advanced the idea that there was an induced fit of a binding site on interaction with a modulator \cite{Motlagh2014}.
-The structural view of allostery, which aimed to elucidate the allosteric mechanism by finding structural changes on effector binding, began to fill the gaps left by the phenomenological MWC and KNF descriptions.
+The dominant proposals for many years were the Monod-Wyman-Changeux (MWC) model, which posited that pre-existing states are subject to an equilibrium shift on modulator binding \cite{Monod1965}, and the Koshland-N\'{e}methy-Filmer (KNF) model, which advanced the idea that there was an induced fit of a binding site on interaction with a modulator \cite{Koshland1966}.
+The structural view of allostery \cite{Perutz1970}, which aimed to elucidate the allosteric mechanism by finding structural changes on effector binding, began to fill the gaps left by the phenomenological MWC and KNF descriptions.
 The discovery that entropic contributions to allostery can be significant predicted the phenomenon of allostery without conformational change \cite{Cooper1984}, where the allosteric effect is communicated by a change in protein dynamics rather than protein structure \cite{Motlagh2014}.
 
-More recently these views on allostery have been revisited and reconciled in approaches that focus on the ensemble of conformational states that proteins exist in \cite{Motlagh2014, Cui2008}.
+More recently these views on allostery have been revisited and reconciled in approaches that focus on the ensemble of conformational states that proteins exist in \cite{Motlagh2014, Hilser2012, Cui2008, Tsai2014}.
 Figure~\ref{fig:allostery} outlines the current understanding of allostery.
 A perturbation at any site in the structure leads to a shift in the occupancy of states by the population, so allostery is a property of the conformational ensemble.
 The effect at the allosteric site is linked to the active site by small conformational changes that transmit the allosteric effect in a wave-like manner along pathways of amino acids in the protein \cite{DelSol2009}.
@@ -325,7 +324,7 @@ Advanced MD methods such as targeted or accelerated MD can overcome this samplin
 \begin{figure}
 \centering
 
-%\includegraphics[width=0.9\textwidth]{figures/timescales/timescales}
+\includegraphics[width=0.7\textwidth]{figures/timescales/timescales}
 
 \caption[Timescales of protein motions]
 {Dynamic processes in proteins and their associated timescales.

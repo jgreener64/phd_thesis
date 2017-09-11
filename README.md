@@ -19,7 +19,7 @@ pdflatex thesis.tex
 - A few more references
 - Contents and list of figures/tables page numbers are one off - this is fixed?
 - Recheck plagiarism stuff
-- Consistent A/B labelling in figures: font, bold and rough size
+- Consistent A/B labelling in figures: font, bold and rough size; also consistent text font/size and general consistency
 - Check latex log for errors
 - Keep COSB review and intro/conc/ref updates up to date
 - Remove multicolumn table tags
