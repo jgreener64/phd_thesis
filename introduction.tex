@@ -121,10 +121,9 @@ Binding leverage was developed into the web server SPACER \cite{Goncearenco2013}
 The PARS method \cite{Panjkovich2012, Panjkovich2014} calculates normal modes in the presence and absence of a simulated allosteric modulator.
 If the motions are significantly different the site is predicted as allosteric.
 The DynOmics ENM server \cite{Li2017} finds hinge residues that control the two slowest normal modes of a protein, and hence are able to influence its dynamics.
-Several studies have used NMA to model allosteric regulation in specific sets of proteins \cite{Balabin2009, Rodgers2013, Zheng2007}.
+Several studies have used NMA to model allosteric regulation in specific sets of proteins \cite{Balabin2009, Rodgers2013, Zheng2007, Su2014}.
 NMA is suitable for high-throughput, automated approaches as it can be computationally inexpensive.
 However whilst NMA-based methods might be expected to reveal perturbations to vibrations, the assumption of harmonic fluctuations around an energetically-minimum structure means that other contributing motions to allostery such as local unfolding and rigid body movements \cite{Motlagh2014} are not taken into account.
-% \cite{Su2014}? probably not
 % Other bits from Hayward2008
 
 
@@ -149,7 +148,7 @@ See \cite{Hayward2008} for more.}
 A few methods have used machine learning to predict allostery.
 AlloSite \cite{Huang2013} uses a support vector machine and features from Fpocket \cite{LeGuilloux2009} to re-rank pockets in terms of their allosteric character.
 However the results are often found to be similar to the Fpocket ranking, showing the difficulty of distinguishing pockets that have specific allosteric character from those that are generally suitable for ligand binding.
-% AlloSitePro? Song2017
+This method has been updated as AlloSitePro to include NMA perturbation \cite{Song2017}.
 A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and associated ligands to assign protein cavities as allosteric, regular or orthosteric.
 
 
@@ -160,7 +159,6 @@ A study on the signaling protein NtrC combined MD simulations and NMR data to ex
 % Add \cite{Qi2012} here
 % And Laine2010
 Perturbation response scanning (PRS), in which the response of the structure to random perturbations at specific positions is examined, is a popular tool for allosteric prediction.
-% Cite here others cited elsewhere in the paper that use PRS?
 For example, allosteric hotspot residues were predicted using PRS for the chaperone Hsp70 \cite{Penkler2017}.
 Weinkam et al.\ constructed energy landscapes and explored them with MD \cite{Weinkam2012}.
 They were able to study the allosteric mechanisms involved in three proteins.
@@ -263,7 +261,6 @@ ASBench \cite{Huang2015} is a curated set of allosteric proteins, and has been u
 It is a subset of the AlloSteric Database (ASD, \url{http://mdl.shsmu.edu.cn/ASD}) \cite{Shen2016}.
 ASD v3.0 contains over 1,400 proteins and also includes allosteric mechanisms, allosteric networks of proteins and `allosteromes' of the allostery involved in protein kinases and GPCRs.
 Improvements in such resources are necessary to prevent the developers of new methods having to assemble their own datasets \cite{Panjkovich2012, Mitternacht2011, Amor2016} and to allow systematic comparisons between methods.
-% Need more studies like Haselbach2017, Ozorowski2017 that get structure with and without modulator and compare
 
 An issue that requires more study in the field of allosteric prediction is the exact relationship between an allosteric modulator and whether it acts as an activator or inhibitor.
 It has been shown that under different conditions the same allosteric modulator can have opposite effects \cite{Motlagh2012}.
@@ -275,6 +272,7 @@ The mechanism of dynamic allostery, where the allosteric effect is transmitted t
 While experimental studies \cite{Popovych2006, Capdevila2017, Wellington2017} have found evidence for dynamic allostery, Nussinov and Tsai \cite{Nussinov2015} warn that an apparent lack of conformational change can be an artefact of various factors such as crystal packing, crystallisation conditions, disorder to order transitions, incremental activation, synergy between allosteric sites and changes in oligomeric state.
 A recent MD study proposes that allostery in the well-studied PDZ domain is driven by changes in electrostatic effects rather than solely changes in dynamics \cite{Kumawat2017, Liu2017}.
 The role of water in allostery also needs to be further explored as evidence has been found that re-arrangement of water molecules is a possible mechanism of allostery \cite{Buchli2013, Amor2016}.
+Studies that combine experimental and computational approaches \cite{Haselbach2017, Ozorowski2017} are well-suited to eploring these issues.
 
 
 \subsection{Challenges in allosteric prediction}
@@ -335,7 +333,8 @@ This generates a protein structure in a similar manner to the way a structure is
 The process is repeated to obtain an ensemble of structures.
 tCONCOORD extends CONCOORD and gives better sampling of proteins with large conformational changes by predicting H-bonds in the structure that are liable to break \cite{Seeliger2007}.
 
-NMA can also be used to generate conformations of proteins, usually by modelling the protein along the relevant vibrations.
+NMA is also well-suited to studying flexibility and conformational change in proteins \cite{Dobbins2008}.
+Conformations of proteins can be generated using NMA, usually by modelling the protein along the relevant vibrations.
 The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
 This gives sampling similar to MD but is more computationally efficient.
 
@@ -411,3 +410,4 @@ It has been found that the fluorophore ANS binds at a site removed from the ATP-
 A screening study against this site revealed compounds that bind with affinity up to the micromolar range \cite{Rastelli2014}.
 Binding of these compounds does not affect ATP binding and appears to inhibit the action of CDK2, indicating a likely allosteric site.
 % Check this
+% Add bit about PDB 9th most here?

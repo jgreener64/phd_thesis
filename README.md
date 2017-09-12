@@ -11,6 +11,8 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Check Mendeley for refs
+- Check pocket size bias discussion
 - Middle name initial? Should the address be CISBIO?
 - Abstract (300 words max)
 - Move flowchart to results
