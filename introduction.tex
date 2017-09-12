@@ -93,6 +93,7 @@ STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical re
 
 \caption[Computational allosteric prediction methods currently available to run locally or as a web server]
 {Computational allosteric prediction methods currently available to run locally or as a web server, ordered alphabetically.
+The work presented in this thesis (AlloPred and ExProSE) is included.
 In addition there are various pocket prediction methods that aim to predict binding pockets on proteins, but not specifically allosteric pockets \cite{Huang2006, LeGuilloux2009, Cimermancic2016}.}
 
 \label{tab:allosteric_methods}
@@ -188,13 +189,13 @@ The identification of binding sites on the protein surface is a problem that has
 These methods are however useful in the structure-based prediction of allostery - the identification of a high-affinity binding site distant from a known active site could present an opportunity for allosteric regulation, for example.
 The FTMap family of web servers \cite{Kozakov2015} predicts ligand-binding hotspots using small organic molecules as probes on the protein surface.
 By using mixed-solvent MD this principle has been extended to the prediction of allosteric sites in particular, with success on some test cases \cite{Ghanakota2016}.
-Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{Huang2006} and Fpocket \cite{LeGuilloux2009} are able to find pockets on a protein large enough to bind small molecules, and these often correspond to allosteric sites \cite{Greener2017}.
+Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{Huang2006} and Fpocket \cite{LeGuilloux2009} are able to find pockets on a protein large enough to bind small molecules, and these often correspond to allosteric sites \cite{Huang2013}.
 
 
 \subsubsection{Allosteric pathway prediction}
 
 Allosteric signals can be propagated by multiple communication pathways \cite{DelSol2009}.
-Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{§olyan2016}.
+Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{Dokholyan2016}.
 A machine learning approach to predict residues involved in allosteric communication uses a variety of structural and network features and is able to predict these hotspots with reasonable accuracy \cite{Demerdash2009}.
 A different approach, McPath, uses a Monte Carlo algorithm to define likely allosteric pathways by examining inter-residue interactions in a residue network \cite{Kaya2013}.
 A study that added an allosteric domain to a protein analysed residue contact maps to find loops mechanically-coupled to the active site \cite{Dagliyan2016}.
@@ -255,15 +256,16 @@ The same group built on this and inserted the light-sensitive LOV2 domain into 3
 
 It is challenging to compare different methods for allosteric prediction.
 The different inputs and, more commonly, outputs make systematic comparisons difficult.
-One quantitative comparison indicated broadly similar performance between four available methods \cite{Greener2017}.
 One of the Critical Assessment of Genome Interpretation challenges in 2015-16 focused on predicting the influence of mutations on the allosteric regulation of human liver pyruvate kinase \cite{Xu2017}.
 However the uptake was limited to four groups and the predictive ability was marginally better than random.
 In the long run a dedicated community-wide initiative similar to the Critical Assessment of Structure Prediction \cite{Moult2016} would be beneficial to the field of allosteric prediction.
 
 One factor holding allosteric prediction back is the lack of a varied and robust set of benchmarks to test methods against.
-ASBench \cite{Huang2015} is a curated set of allosteric proteins, and has been used for example to benchmark AlloPred \cite{Greener2015}.
-It is a subset of the AlloSteric Database (ASD, \url{http://mdl.shsmu.edu.cn/ASD}) \cite{Shen2016}.
-ASD v3.0 contains over 1,400 proteins and also includes allosteric mechanisms, allosteric networks of proteins and `allosteromes' of the allostery involved in protein kinases and GPCRs.
+ASBench \cite{Huang2015} is a curated set of allosteric proteins, and has been used for example to benchmark the method presented in Chapter~\ref{cha:allopred}.
+It is a subset of the AlloSteric Database (ASD, \url{http://mdl.shsmu.edu.cn/ASD}) \cite{Shen2016}, which was set up in 2011.
+ASD v3.0 contains over 1,400 proteins and 70,000 modulators and also includes allosteric mechanisms, allosteric networks of proteins and `allosteromes' of the allostery involved in protein kinases and GPCRs.
+The allosteric proteins in the ASD are those that have experimental evidence for allostery.
+The increasing number of entries in this database shows that a large number of proteins have allosteric character, and implies that many proteins have allosteric character yet to be discovered.
 Improvements in such resources are necessary to prevent the developers of new methods having to assemble their own datasets \cite{Panjkovich2012, Mitternacht2011, Amor2016} and to allow systematic comparisons between methods.
 
 An issue that requires more study in the field of allosteric prediction is the exact relationship between an allosteric modulator and whether it acts as an activator or inhibitor.
@@ -306,12 +308,12 @@ The development of experimental methods such as cryo-electron microscopy should 
 \section{Protein structural ensembles}
 \label{sec:introduction_ensembles}
 
-% Read HW2007
 Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016} - see Figure~\ref{fig:timescales}.
 X-ray crystallography provides a static view of the structure of proteins.
 However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.
 Experimental techniques to explore the dynamics of proteins, such as nuclear magnetic resonance (NMR) \cite{Sormanni2017}, are sophisticated and time-consuming.
 Significant effort has gone into determining the protein structural ensemble when experimental data is available \cite{Bonomi2017}, but ideally there would be computational methods that worked in the absence of this information.
+
 MD is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
 It is effective at modelling motions up to the timescale of nanoseconds.
 However, the computational cost of modelling proteins on the scale of microseconds or milliseconds means MD is not suitable for larger-scale transitions.
@@ -325,6 +327,7 @@ Advanced MD methods such as targeted or accelerated MD can overcome this samplin
 
 \caption[Timescales of protein motions]
 {Dynamic processes in proteins and their associated timescales.
+Also shown is the range of timescales that can be studied with classical MD.
 Figure based on Figure~1 from Henzler-Wildman and Kern 2007 \cite{Henzler-Wildman2007}.}
 
 \label{fig:timescales}
@@ -339,15 +342,16 @@ This generates a protein structure in a similar manner to the way a structure is
 The process is repeated to obtain an ensemble of structures.
 tCONCOORD extends CONCOORD and gives better sampling of proteins with large conformational changes by predicting H-bonds in the structure that are liable to break \cite{Seeliger2007}.
 
-NMA is also well-suited to studying flexibility and conformational change in proteins \cite{Dobbins2008}.
+NMA is also well-suited to studying flexibility and conformational change in proteins \cite{Dobbins2008}, as discussed in Section~\ref{sec:introduction_allostery}.
 Conformations of proteins can be generated using NMA, usually by modelling the protein along the relevant vibrations.
 The NMSim web server \cite{Kruger2012, Ahmed2011} finds flexible and rigid protein regions using the graph theoretical approach FIRST \cite{Jacobs2001}, then generates conformations along low-frequency normal modes.
 This gives sampling similar to MD but is more computationally efficient.
 
 Ensembles of protein structures have uses in flexible ligand docking \cite{Totrov2008}, generating poses for protein-protein docking \cite{Mustard2005}, predicting structures on trajectories between two crystal structures \cite{Weiss2009}, and predicting flexible regions in proteins \cite{Ahmed2011}.
-They also can be used to explore intrinsically-disordered proteins \cite{Tompa2012, Best2017}.
+They can also be used to explore intrinsically-disordered proteins \cite{Tompa2012, Best2017}.
 As has been discussed in Section~\ref{sec:introduction_allostery}, allostery is a property of the conformational ensemble.
 An ensemble generation method that can be modified to take allostery into account could be used to explore allostery in a protein - see Figure~\ref{fig:allostery}C.
+This is the main motivation for developing an ensemble generation method in this work.
 
 
 \section{Protein kinases}
@@ -366,6 +370,7 @@ This inhibitor binds largely to the protein surface, with part sliding into a na
 Despite locating the allosteric binding site, the mechanism for inhibition is not currently known \cite{Vanderpool2009}.
 Study of the tyrosine-protein kinase Abl1 has revealed an inhibitor that binds far from the ATP binding site \cite{Zhang2010, Yang2011}.
 Binding of the modulator leads to changes in structural dynamics at the ATP binding site, preventing the binding of ATP and leading to inhibition.
+
 Other targets for which allosteric modulators have been discovered include the MAP kinases \cite{Comess2011} and CDK2 \cite{Betzi2011}.
 Modulators such as these that bind protein kinases at sites removed from the ATP-binding site are known as type IV inhibitors.
 The binding sites of the above type IV inhibitors, along with others, are shown on the conserved protein kinase structure in Figure~\ref{fig:kinase_mods}.
@@ -375,12 +380,8 @@ Type III inhibitors bind the hydrophobic cleft adjacent to the ATP-binding site 
 A novel class of inhibitors, the type V bisubstrate and bivalent inhibitors, has emerged recently \cite{Lamba2012}.
 For example, a bivalent inhibitor was designed for a tyrosine kinase that binds to the ATP-binding site and to the regulatory domain SH3 simultaneously via a linker \cite{Hill2009}.
 Such binding is able to have both high selectivity and high affinity.
+The protein kinase `allosterome' at the ASD contains 51 allosteric protein kinases, 12 of which have a crystal struture with an allosteric modulator.
 The recent discovery of such sites and the conserved architecture of the eukaryotic protein kinases suggest there are many allosteric sites, particularly for type IV and type V inhibitors, yet to be discovered.
-
-Numerous examples of allosteric kinases are listed in the ASD \cite{Shen2016}, a resource set up in 2011 that now contains over 1,400 allosteric proteins and over 70,000 allosteric modulators.
-% Rep from above
-The allosteric proteins in the ASD are those that have experimental evidence for allostery.
-The increasing number of entries in this database shows that a large number of proteins have allosteric character, and implies that many proteins have allosteric character yet to be discovered.
 
 
 \begin{figure}
@@ -417,3 +418,10 @@ A screening study against this site revealed compounds that bind with affinity u
 Binding of these compounds does not affect ATP binding and appears to inhibit the action of CDK2, indicating a likely allosteric site.
 % Check this
 % Add bit about PDB 9th most here?
+% Move anything else from cdk2 chapter here?
+
+
+\section{Aims}
+\label{sec:introduction_aims}
+
+% We also want to compare methods systematically

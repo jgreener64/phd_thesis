@@ -11,6 +11,8 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Check intro doesn't ref allopred or exprose
+- Aims section at end of intro
 - phdthesis ref formatting
 - Check Mendeley for refs
 - Check pocket size bias discussion
