@@ -106,9 +106,9 @@ Each mode has all parts of the system moving sinusoidally, in phase and with the
 All observed configurations of the system can be generated from a linear combination of its normal modes.
 The process of NMA is shown in Figure~\ref{fig:nma}.
 The normal modes are found by diagonalising the Hessian matrix - the matrix of second derivatives of the potential energy with respect to the mass-weighted atomic coordinates.
-The mathematical formulation of this is described in Section~\ref{sec:allopred_methods}.
 NMA is effective at describing protein dynamics, despite ignoring the complex nature of the protein energy landscape \cite{Bahar2005}.
 Even considering the C\textsuperscript{\textalpha} atoms alone as a network of balls and springs can be sufficient, meaning that NMA is a computationally efficient way of exploring protein flexibility compared to molecular dynamics (MD).
+This simplification is called the elastic network model (ENM) and the mathematical formulation is described in Section~\ref{sec:allopred_methods}.
 The long-range nature of allosteric communication is often well-described by low-frequency modes that involve the motion of many atoms.
 However, allostery does involve local effects so higher-frequency modes should also be taken into account \cite{Collier2013}.
 
@@ -124,7 +124,6 @@ The DynOmics ENM server \cite{Li2017} finds hinge residues that control the two 
 Several studies have used NMA to model allosteric regulation in specific sets of proteins \cite{Balabin2009, Rodgers2013, Zheng2007, Su2014}.
 NMA is suitable for high-throughput, automated approaches as it can be computationally inexpensive.
 However whilst NMA-based methods might be expected to reveal perturbations to vibrations, the assumption of harmonic fluctuations around an energetically-minimum structure means that other contributing motions to allostery such as local unfolding and rigid body movements \cite{Motlagh2014} are not taken into account.
-% Other bits from Hayward2008
 
 
 \begin{figure}
@@ -133,7 +132,7 @@ However whilst NMA-based methods might be expected to reveal perturbations to vi
 \includegraphics[width=\textwidth]{figures/nma/nma}
 
 \caption[Steps in normal mode analysis]
-{Steps in NMA.
+{Steps in NMA using the ENM.
 A protein structure is converted into an elastic network where balls are C\textsuperscript{\textalpha} atoms and springs are between C\textsuperscript{\textalpha} atoms within a certain distance.
 A Hessian matrix of second derivatives of the potential energy $V$ in terms of the mass-weighted atomic coordinates $q_{i}$ is derived from the potential energy function of this elastic network.
 Diagonalising the Hessian matrix yields eigenvectors and eigenvalues that correspond to the displacements for each C\textsuperscript{\textalpha} atom in a mode and the square of the mode frequency respectively.
@@ -156,7 +155,6 @@ A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and 
 
 MD remains the standard computational tool for structural analysis when structures are available.
 A study on the signaling protein NtrC combined MD simulations and NMR data to explore the free energy landscape and investigate at atomic resolution the transition from active to inactive state \cite{Pontiggia2015}.
-% Add \cite{Qi2012} here
 % And Laine2010
 Perturbation response scanning (PRS), in which the response of the structure to random perturbations at specific positions is examined, is a popular tool for allosteric prediction.
 For example, allosteric hotspot residues were predicted using PRS for the chaperone Hsp70 \cite{Penkler2017}.
@@ -179,6 +177,8 @@ As more structural and conservation information is acquired it will be important
 
 A recent study \cite{Amor2016} constructs an all-atom graph and calculates for each bond the bond propensity, the strength of coupling to the active site through the graph.
 The method is used to reproduce observed results for three proteins in detail and is also able to predict allosteric sites in a dataset of 20 allosteric proteins.
+Coarse-grained simulation approaches such as a two-state G\={o} model have also been utilised.
+In one approach an ensemble of structures is generated and the response of the ensemble distribution to an effector is used to predict allostery \cite{Qi2012}.
 
 
 \subsubsection{Methods not specific to allostery}
@@ -192,13 +192,13 @@ Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{
 
 \subsubsection{Allosteric pathway prediction}
 
-% Add Kidd2009
 Allosteric signals can be propagated by multiple communication pathways \cite{DelSol2009}.
 Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{Dokholyan2016}.
 A machine learning approach to predict residues involved in allosteric communication uses a variety of structural and network features and is able to predict these hotspots with reasonable accuracy \cite{Demerdash2009}.
 A different approach, McPath, uses a Monte Carlo algorithm to define likely allosteric pathways by examining inter-residue interactions in a residue network \cite{Kaya2013}.
 A study that added an allosteric domain to a protein analysed residue contact maps to find loops mechanically-coupled to the active site \cite{Dagliyan2016}.
 An investigation on the PDZ domain using MD found that allosteric changes are non-linear and occur in a non-local fashion, and are similar in many ways to protein folding \cite{Buchenberg2017}.
+% DG stuff
 
 
 \subsection{Experimental methods for allosteric prediction}
@@ -225,6 +225,7 @@ In the future it is to be hoped that experimental screens specifically for allos
 The discovery of cryptic binding pockets - pockets that are only available in some conformations of the protein and may not have an associated experimental structure - has the potential to vastly increase the number of druggable sites on proteins \cite{Boehr2009} and is directly relevant to allosteric prediction.
 A recent study \cite{Lee2016} showed using NMR data that ligands of the LpxC enzyme access a cryptic site that is invisible to crystallography.
 One study used Markov state modelling and MD to predict multiple hidden allosteric sites on \textbeta -lactamase and tested these using thiol labelling experiments \cite{Bowman2015}, later finding modulators for the sites \cite{Hart2017}.
+
 The general approach CryptoSite uses machine learning to predict cryptic pockets on proteins using sequence and structural features \cite{Cimermancic2016}.
 However, two problems affect the use of cryptic allosteric pockets over allosteric sites where the pocket is present in most or all conformations.
 Firstly, the shape of the pocket is not known so rational drug design is difficult.
@@ -239,6 +240,7 @@ The rational design of allosteric sites is a problem closely related to structur
 Introducing allosteric sites into existing proteins, or creating fusion proteins to add activity switches, has many potential applications including in biotechnology \cite{Makhlynets2015}.
 A recent study added a PDZ domain into the Cas9 protein at a site that did not disrupt enzyme action \cite{Oakes2016}.
 The protein showed modulator-dependent activity in cells, establishing a system for Cas9 activation.
+
 Another study created fusion proteins that use conformational entropy to respond to temperature or pH as a switch \cite{Choi2015}.
 Taylor et al.\ engineered \textit{E.\ coli} LacI to respond to one of four new inducer molecules using computational design and mutagenesis \cite{Taylor2016}.
 Dagliyan et al.\ designed a protein with a unique topology, uniRapR, whose conformation is controlled by the binding of a small molecule \cite{Dagliyan2013}.
@@ -302,6 +304,7 @@ The development of experimental methods such as cryo-electron microscopy should 
 \section{Protein structural ensembles}
 \label{sec:introduction_ensembles}
 
+% Read HW2007
 Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016} - see Figure~\ref{fig:timescales}.
 X-ray crystallography provides a static view of the structure of proteins.
 However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.

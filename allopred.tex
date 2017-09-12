@@ -45,7 +45,7 @@ It should be noted that these pockets may not correspond directly to the actual 
 \subsection{Normal mode analysis}
 
 In NMA the Hessian matrix - the matrix of second derivatives of the potential energy $V$ with respect to the mass-weighted atomic coordinates - is diagonalised to yield the normal modes \cite{Hayward2008}.
-The potential energy $V$ was described according to the elastic network model \cite{Tirion1996} as a set of harmonic springs of strength $k$ between every pair of C\textsuperscript{\textalpha} atoms no further than distance $R_{c}$ apart:
+The potential energy $V$ was described according to the ENM \cite{Tirion1996} as a set of harmonic springs of strength $k$ between every pair of C\textsuperscript{\textalpha} atoms no further than distance $R_{c}$ apart:
 $$
 V = \sum_{\substack{r_{ij}^{0} < R_{c} \\ i < j}} k (r_{ij} - r_{ij}^{0})^{2}
 $$
@@ -249,7 +249,7 @@ The AlloPred computational procedure, which uses NMA and other features to predi
 AlloPred models how the dynamics of a protein would be altered in the presence of a modulator at a specific pocket.
 As described in Section... if the binding of a modulator causes a change in dynamics at the active site, it can be predicted to have an allosteric effect.
 Pockets on the protein were first predicted using the Fpocket \cite{LeGuilloux2009} algorithm, which locates pockets using Voronoi tessellation and alpha spheres.
-The normal modes of the protein were then calculated using the elastic network model, except the spring constant of any atom pair including a residue in a chosen pocket was set to be a higher value.
+The normal modes of the protein were then calculated using the ENM, except the spring constant of any atom pair including a residue in a chosen pocket was set to be a higher value.
 The effect of this perturbation was measured at the active site.
 Intuitively, the interpretation of this change is that the binding of a small molecule in a pocket is expected to quench the vibrations of the surrounding residues.
 These results were combined with output from Fpocket in a support vector machine (SVM) to predict allosteric pockets on proteins.
