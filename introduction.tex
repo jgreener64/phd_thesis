@@ -2,7 +2,6 @@
 \label{cha:introduction}
 
 This chapter introduces the concepts of allostery in proteins, structure-based allosteric prediction, normal mode analysis, the protein structural ensemble, protein kinases and cyclin-dependent kinase 2 (CDK2).
-% Mention COSB review?
 
 
 \section{Allostery in proteins}
@@ -12,10 +11,8 @@ Allostery in its broadest sense is the functional change at one site on a protei
 The perturbation at the allosteric site can be non-covalent binding of a molecule (e.g.\ small molecule, ions, RNA, DNA), covalent binding (e.g.\ phosphorylation) or light absorption \cite{Nussinov2013}.
 Changes in structure or dynamics lead to effects such as a reduction or increase in catalytic activity, changes in disordered regions or changes in oligomerisation state.
 All proteins are potentially allosteric \cite{Gunasekaran2004}.
+This intrinsic and widespread property of proteins is important in processes such as cellular signalling and disease, yet most allosteric mechanisms remain an enigma and a universal mechanism has not been found \cite{Motlagh2014}.
 
-% Panjkovich2010
-% Any more important refs here?
-% Read LSR
 Since the first discovery of allosteric systems more than 50 years ago there have been various models put forward to describe the phenomenon.
 The dominant proposals for many years were the Monod-Wyman-Changeux (MWC) model, which posited that pre-existing states are subject to an equilibrium shift on modulator binding \cite{Monod1965}, and the Koshland-N\'{e}methy-Filmer (KNF) model, which advanced the idea that there was an induced fit of a binding site on interaction with a modulator \cite{Koshland1966}.
 The structural view of allostery \cite{Perutz1970}, which aimed to elucidate the allosteric mechanism by finding structural changes on effector binding, began to fill the gaps left by the phenomenological MWC and KNF descriptions.
@@ -28,25 +25,24 @@ The effect at the allosteric site is linked to the active site by small conforma
 These pathways may be conserved by evolution \cite{Suel2003}.
 It is also important to consider the effect of allostery on cellular networks and reaction pathways \cite{Nussinov2013}, with allosteric effects propagating via protein-protein interactions.
 
-Allosteric drugs have hardly been explored and hold many potential benefits over orthosteric (non-allosteric) drugs: they are highly specific as they do not bind to active sites that are often conserved in protein families; they can activate as well as inhibit a protein; and they can have a ceiling to their effect \cite{Wenthur2014}.
-Allosteric modulators have been elucidated for targets as diverse as G protein-coupled receptors (GPCRs), protein kinases, the GABA receptor, hepatitis C virus polymerase and RNA.
+Allosteric drugs have hardly been explored and are a major avenue of research for the pharmaceutical industry \cite{Wenthur2014}.
+They hold many potential benefits over orthosteric (non-allosteric) drugs: they do not bind to active sites that are often conserved in protein families, and are hence highly specific; they can activate as well as inhibit a protein; they can have a ceiling to their effect; and they can be used effectively in combination with orthosteric drugs \cite{Wenthur2014}.
+The discovery of positive and negative allosteric modulators of GPCRs has highlighted these advantages \cite{Wootten2013, Conn2009}.
+GPCR modulators include the positive regulator cinacalcet at the Ca\textsuperscript{2+}-sensing receptor and the negative modulator maraviroc of the chemokine CCR5 \cite{Nussinov2013}.
+Allosteric modulators have been elucidated for targets as diverse as the GABA receptor, hepatitis C virus polymerase and RNA.
 Numerous other allosteric modulators are in various stages of human clinical trails.
 However, discovery of allosteric drugs presents challenges beyond those encountered in orthosteric drug discovery - see later.
 
 In order to understand and utilise allostery it is necessary to be able to predict allosteric sites, allosteric modulators and residues involved in propagating the allosteric signal.
-Here we outline advances from the last few years in the structure-based prediction of protein allostery, largely focusing on computational approaches.
+Advances from the last few years in the structure-based prediction of protein allostery are outlined here, largely focusing on computational approaches.
 Review papers have covered similar topics \cite{SchuelerFurman2016, Wagner2016, Guarnera2016, Lu2014}.
 The emerging fields of cryptic allosteric site discovery and allosteric site design are described and some of the issues surrounding allostery are discussed.
-
-% Other stuff from Nussinov
-% https://www.nature.com/articles/ncomms16018.pdf - The self-inhibitory nature of metabolic networks and its alleviation through compartmentalization - mention at network point?
 
 
 \begin{figure}
 \centering
 
 \includegraphics[width=0.9\textwidth]{figures/allostery/allostery}
-% Touch up and ensure symmetry
 
 \caption[The current conception of allostery as a property of the conformational ensemble]
 {The current conception of allostery.
@@ -85,14 +81,12 @@ AlloPred & \cite{Greener2015} & Predicted allosteric pockets & \url{http://www.s
 AlloSigMA & \cite{Guarnera2017} & Allosteric free energies & \url{http://allosigma.bii.a-star.edu.sg/home} & No \\
 AlloSite & \cite{Huang2013} & Predicted allosteric pockets & \url{http://mdl.shsmu.edu.cn/AST} & No \\ % AlloSitePro?
 AllosMod & \cite{Weinkam2012} & Modelled energy landscapes & \url{http://modbase.compbio.ucsf.edu/allosmod} & No \\
-% Bond propensity method & \cite{Amor2016} & Residues coupled to active site & No & No \\
 ENM method & \cite{Li2017} & Residues coupled to normal modes & \url{http://enm.pitt.edu} & Partly as ProDy, MIT licence \\
 ExProSE & \cite{Greener2017} & Ensemble of protein structures,\newline predicted allosteric pockets & No & Yes, MIT licence \\
 MCPath & \cite{Kaya2013} & Allosteric communication pathways & \url{http://safir.prc.boun.edu.tr/clbet_server} & No \\
-% MixMD & \cite{Ghanakota2016} & Fragment-binding allosteric hotspots & No & No \\
 PARS & \cite{Panjkovich2014, Panjkovich2012} & Predicted allosteric pockets & \url{http://bioinf.uab.cat/pars} & No \\
-SPACER & \cite{Goncearenco2013, Mitternacht2011} & Predicted allosteric residues,\newline exploration of allosteric communication & \url{http://allostery.bii.a-star.edu.sg} & No \\ % Or predicted allosteric sites?
-STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical residues & No & Yes \\ % Server was http://stress.molmovdb.org but down
+SPACER & \cite{Goncearenco2013, Mitternacht2011} & Predicted allosteric residues,\newline exploration of allosteric communication & \url{http://allostery.bii.a-star.edu.sg} & No \\
+STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical residues & No & Yes \\
 \hline
 \end{tabular}
 \end{footnotesize}
@@ -131,7 +125,6 @@ Several studies have used NMA to model allosteric regulation in specific sets of
 NMA is suitable for high-throughput, automated approaches as it can be computationally inexpensive.
 However whilst NMA-based methods might be expected to reveal perturbations to vibrations, the assumption of harmonic fluctuations around an energetically-minimum structure means that other contributing motions to allostery such as local unfolding and rigid body movements \cite{Motlagh2014} are not taken into account.
 % \cite{Su2014}? probably not
-% Add Taguchi 2016
 % Other bits from Hayward2008
 
 
@@ -355,6 +348,7 @@ An ensemble generation method that can be modified to take allostery into accoun
 \section{Protein kinases}
 \label{sec:introduction_kinases}
 % Check Mendeley kinase tag
+% Read LSR
 
 Protein kinases regulate almost all aspects of cellular physiology, from proliferation and generation of biomass to gene expression and protein production \cite{Manning2002}.
 In addition to medical benefits, regulation of kinase activity in mammalian cells is important in industrial production of biomolecules of high value, for example to prevent apoptosis and maximise yield.

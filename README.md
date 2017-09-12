@@ -38,6 +38,7 @@ pdflatex thesis.tex
 - Spellcheck
 - Permission to use figures required?
 - References check, and update for recent papers
+- Read viva info: http://www.imperial.ac.uk/study/pg/graduate-school/professional-skills/online-video-resources/passing-your-viva
 
 
 ## Plan
