@@ -169,6 +169,7 @@ Classic work has shown that allosteric communication can be mediated by networks
 One study developed previous work on protein sectors, groups of co-evolving residues physically contiguous in structure, to link sector-connected surface sites to allosteric sites \cite{Reynolds2011}.
 A recent approach found that surface and interior critical residues tend to be conserved \cite{Clarke2016}.
 The recent discovery that most directly co-evolving residues distant in 3D structure are close in related structures or assemblies \cite{Anishchenko2017} brings into question the concept of allosteric and active sites that directly co-evolve.
+Other studies have found structural conservation in allosteric pockets but a lack of sequence conservation \cite{Panjkovich2010, Panjkovich2013}, positing that allostery makes use of pre-existing features.
 As more structural and conservation information is acquired it will be important to discover to what degree allostery in proteins is a result of selection on specific pathways, and to what degree novel allostery can be discovered on proteins in the absence of previous evolutionary pressure.
 % Be clear difference between conservation and co-evolution
 
@@ -193,12 +194,13 @@ Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{
 \subsubsection{Allosteric pathway prediction}
 
 Allosteric signals can be propagated by multiple communication pathways \cite{DelSol2009}.
-Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{Dokholyan2016}.
+Understanding these pathways is necessary in order to predict sites that are able to communicate with the active site \cite{§olyan2016}.
 A machine learning approach to predict residues involved in allosteric communication uses a variety of structural and network features and is able to predict these hotspots with reasonable accuracy \cite{Demerdash2009}.
 A different approach, McPath, uses a Monte Carlo algorithm to define likely allosteric pathways by examining inter-residue interactions in a residue network \cite{Kaya2013}.
 A study that added an allosteric domain to a protein analysed residue contact maps to find loops mechanically-coupled to the active site \cite{Dagliyan2016}.
 An investigation on the PDZ domain using MD found that allosteric changes are non-linear and occur in a non-local fashion, and are similar in many ways to protein folding \cite{Buchenberg2017}.
-% DG stuff
+In multimeric proteins it has been suggested that `global communication networks' of quaternary and tertiary motions transmit allosteric signals, and that considering these motions separately is inadequate \cite{Daily2009}.
+Successful frameworks for predicting allosteric communication should take this into account.
 
 
 \subsection{Experimental methods for allosteric prediction}
@@ -308,7 +310,8 @@ The development of experimental methods such as cryo-electron microscopy should 
 Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016} - see Figure~\ref{fig:timescales}.
 X-ray crystallography provides a static view of the structure of proteins.
 However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.
-Experimental techniques to explore the dynamics of proteins, such as nuclear magnetic resonance (NMR), are sophisticated and time-consuming.
+Experimental techniques to explore the dynamics of proteins, such as nuclear magnetic resonance (NMR) \cite{Sormanni2017}, are sophisticated and time-consuming.
+Significant effort has gone into determining the protein structural ensemble when experimental data is available \cite{Bonomi2017}, but ideally there would be computational methods that worked in the absence of this information.
 MD is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
 It is effective at modelling motions up to the timescale of nanoseconds.
 However, the computational cost of modelling proteins on the scale of microseconds or milliseconds means MD is not suitable for larger-scale transitions.

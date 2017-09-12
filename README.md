@@ -11,10 +11,12 @@ pdflatex thesis.tex
 
 ## Issues
 
+- phdthesis ref formatting
 - Check Mendeley for refs
 - Check pocket size bias discussion
 - Middle name initial? Should the address be CISBIO?
 - Abstract (300 words max)
+- Acknowledgements
 - Move flowchart to results
 - Papers as appendices?
 - Check section requirements
@@ -34,7 +36,6 @@ pdflatex thesis.tex
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
 - Refer to all parts of figures in main text
 - Get C-helix inactivation ref from Greg
-- Panjkovich thesis has some stuff about lack of conservation - see also Panjkovich2010
 - OA on GitHub
 - Add to Spiral
 - Spellcheck
