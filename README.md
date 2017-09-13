@@ -21,9 +21,8 @@ pdflatex thesis.tex
 - Acknowledgements
 - Move flowchart to results
 - Papers as appendices?
-- Check section requirements
 - A few more references
-- Contents and list of figures/tables page numbers are one off - this is fixed?
+- Check page numbering, contents, list of figure etc
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size; also consistent text font/size and general consistency
 - Check latex log for errors
@@ -33,10 +32,9 @@ pdflatex thesis.tex
 - How to refer to other sections - use labels, check throughout
 - Cyclin A or A2? Cyclin capitalised (also in title)? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
-- Abbreviations: check first use of each
+- Abbreviations: check first use of each, e.g. PDB
 - Italicisation throughout
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
-- Consistent PDB ID ref
 - Refer to all parts of figures in main text
 - Get C-helix inactivation ref from Greg
 - OA on GitHub

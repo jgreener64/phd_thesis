@@ -1,7 +1,28 @@
 \chapter{Introduction}
 \label{cha:introduction}
 
-This chapter introduces the concepts of allostery in proteins, structure-based allosteric prediction, normal mode analysis, the protein structural ensemble, protein kinases and cyclin-dependent kinase 2 (CDK2).
+This chapter introduces the thesis along with the concepts of allostery in proteins, structure-based allosteric prediction, normal mode analysis (NMA), the protein structural ensemble, protein kinases and cyclin-dependent kinase 2 (CDK2).
+
+
+\section{Overview of this thesis}
+\label{sec:introduction_overview}
+
+The aim of this thesis is to contribute to the field of allosteric site prediction by developing computational methods and testing them experimentally.
+A summary of the concept of allostery in proteins and the recent emergence of approaches to predict allostery will be given.
+The protein structural ensemble and methods to generate ensembles will be introduced.
+Protein kinases are an important family of proteins that are amenable to allosteric regulation.
+Protein kinases in general, and CDK2 in particular, will be described.
+
+Chapters~\ref{cha:allopred} and \ref{cha:exprose} decribe two independent computational methods to predict allosteric sites on proteins, AlloPred and ExProSE.
+AlloPred uses NMA and machine learning to rank pockets in terms of their allosteric character.
+ExProSE uses distance geometry to generate structural ensembles that can be perturbed to explore dynamics and allostery.
+The implications of each method are discussed in the respective chapters.
+
+Chapter~\ref{cha:cdk2} describes the further testing of a potential allosteric site on CDK2 predicted as allosteric.
+Virtual screening led to experimental assays being carried out on selected compounds.
+Some conclusions are drawn in Chapter~\ref{cha:conclusion}.
+Finally, Chapter~\ref{cha:appendices} contains the appendices.
+The technical documentation for the AlloPred and ExProSE source codes is attached along with the description of a module to read, write and manipulate protein structure files in the Julia programming language.
 
 
 \section{Allostery in proteins}
@@ -102,7 +123,7 @@ In addition there are various pocket prediction methods that aim to predict bind
 
 \subsubsection{Normal mode analysis}
 
-In normal mode analysis (NMA) the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
+In NMA the structural fluctuations of a protein around an equilibrium conformation are decomposed into harmonic orthogonal modes \cite{Hayward2008}.
 Each mode has all parts of the system moving sinusoidally, in phase and with the same frequency.
 All observed configurations of the system can be generated from a linear combination of its normal modes.
 The process of NMA is shown in Figure~\ref{fig:nma}.
@@ -200,6 +221,7 @@ A machine learning approach to predict residues involved in allosteric communica
 A different approach, McPath, uses a Monte Carlo algorithm to define likely allosteric pathways by examining inter-residue interactions in a residue network \cite{Kaya2013}.
 A study that added an allosteric domain to a protein analysed residue contact maps to find loops mechanically-coupled to the active site \cite{Dagliyan2016}.
 An investigation on the PDZ domain using MD found that allosteric changes are non-linear and occur in a non-local fashion, and are similar in many ways to protein folding \cite{Buchenberg2017}.
+This study highlights that the idea of a single set of connected residues transmitting the allosteric signal is not adequate to explain allosteric communication.
 In multimeric proteins it has been suggested that `global communication networks' of quaternary and tertiary motions transmit allosteric signals, and that considering these motions separately is inadequate \cite{Daily2009}.
 Successful frameworks for predicting allosteric communication should take this into account.
 
@@ -364,7 +386,7 @@ This is the main motivation for developing an ensemble generation method in this
 
 Protein kinases regulate almost all aspects of cellular physiology, from proliferation and generation of biomass to gene expression and protein production \cite{Manning2002}.
 In addition to medical benefits, regulation of kinase activity in mammalian cells is important in industrial production of biomolecules of high value, for example to prevent apoptosis and maximise yield.
-In order to modulate kinase activity we need to develop specific regulators of protein kinase function, a process that is complicated by the conserved catalytic architecture of the huge range of protein kinases found in nature \cite{Muller2015}.
+In order to modulate kinase activity we need to develop specific regulators of protein kinase function, a process that is complicated by the conserved catalytic architecture of the huge range of protein kinases found in nature \cite{Muller2015, Norman2012}.
 One way to achieve kinase regulation with enhanced selectivity is through isolation of allosteric regulators, as their target sites are likely to be less structurally conserved across the protein kinase family.
 
 A few notable examples have highlighted this potential \cite{Gavrin2013}.
@@ -422,7 +444,7 @@ Changes in the \textalpha C-helix realign active site residues, and the T-loop m
 
 \caption[Structure of CDK2]
 {The structure of CDK2 crystallised with an ATP-binding site inhibitor and two molecules of the fluorophore ANS at the allosteric site (PDB ID 4EZ7).
-CDK2 is shown as yellow cartoon with the \textalpha C-helix region coloured cyan and the activation loop coloured purple.
+CDK2 is shown as yellow cartoon with the \textalpha C-helix region coloured cyan and the T-loop coloured purple.
 The ATP-binding site inhibitor staurosporine and the ANS molecules are shown as sticks and coloured green and magenta respectively.
 See also Figure~\ref{fig:cdk2_structure}.
 Figure based on Figure~1 from Pisani et al.\ 2016 \cite{Pisani2016}.}

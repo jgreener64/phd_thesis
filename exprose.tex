@@ -15,11 +15,12 @@ ExProSE has important differences to CONCOORD that make it suitable for modellin
 These are primarily the use of two input structures instead of one, a different procedure for achieving convergence, the ability to predict the effect of a modulator and an auto-parameterisation procedure.
 The effect of a potential modulator can be explored by adding new distance constraints arising due to the modulator and generating new structures with these additional constraints. The original ensemble and the ensemble generated with the extra constraints can then be compared to see how the modulator affects the protein.
 
-ExProSE is implemented in Julia, a language that combines readable syntax similar to Python with performance approaching statically-compiled languages like C.
+ExProSE is implemented in Julia, a language that combines readable syntax similar to Python or MATLAB with performance approaching statically-compiled languages like C.
 Work was initially begun in a combination of Python and C++ before switching to Julia.
 Use of Julia allows good computational performance at the limiting steps, but also allows compact and easy-to-use code that others can modify.
 The code, documentation, details of the datasets and instructions for reproducing the data are freely-available under the MIT license as a Julia package at \url{https://github.com/jgreener64/ProteinEnsembles.jl}.
 The code is written in a modular way with associated unit tests and an automated building and testing procedure.
+See Section~\ref{sec:appendices_biojulia} for more on Julia.
 
 
 \subsection{Distance constraint generation}
