@@ -11,6 +11,8 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Intro maybe a bit short? Review of MD limitations? More on allostery basics?
+- Bulk out conclusion
 - Check intro doesn't ref allopred or exprose
 - Aims section at end of intro
 - phdthesis ref formatting

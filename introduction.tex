@@ -424,4 +424,19 @@ Binding of these compounds does not affect ATP binding and appears to inhibit th
 \section{Aims}
 \label{sec:introduction_aims}
 
-% We also want to compare methods systematically
+The primary aim of this work was to develop computational approaches to predict allosteric sites on proteins.
+Two methods were developed in order to achieve this.
+AlloPred uses NMA and machine learning to rank pockets in a protein based on their allosteric character - see Chapter~\ref{cha:allopred}.
+ExProSE uses distance geometry to generate ensembles of protein structures from two input structures - see Chapter~\ref{cha:exprose}.
+Ensembles from ExProSE can be perturbed to predict the effect of allosteric modulators, as well as having other uses due to the size of the conformational space covered.
+These two methods are shown to be competitive and complementary to existing methods and represent the main contribution to knowledge of this work.
+
+Although computational methods can be validated with existing data, ultimately the measure of their success is whether new predictions can be confirmed experimentally.
+A prediction made by ExProSE of a potential allosteric site on CDK2 was explored with bioinformatics methods and potential modulators selected using a virtual screen - see Chapter~\ref{cha:cdk2}.
+Purchased compounds were tested using two experimental assays.
+
+During the process of development and testing of the above approaches the first systematic comparison of allosteric prediction methods was carried out.
+The difficulty of distinguishing allosteric pockets from cavities with generally good binding properties is established and quantified by assessing the ability of generic pocket predictors to predict allosteric pockets.
+The variety of allosteric mechanisms \cite{Motlagh2014} and the problems this poses for generic prediction methods is a common theme of the work.
+The strength and limitations of NMA and MD methods for studying large conformational changes and allosteric mechanisms is discussed.
+Ultimately, we give evidence for the view that allostery is a property of the protein structural ensemble, and only by taking account of this can we move towards a unified scheme for understanding and predicting allostery.
