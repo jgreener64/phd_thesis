@@ -13,8 +13,6 @@ pdflatex thesis.tex
 
 - Intro maybe a bit short? Review of MD limitations? More on allostery basics?
 - Bulk out conclusion
-- Check intro doesn't ref allopred or exprose
-- Aims section at end of intro
 - phdthesis ref formatting
 - Check Mendeley for refs
 - Check pocket size bias discussion
@@ -38,6 +36,7 @@ pdflatex thesis.tex
 - Abbreviations: check first use of each
 - Italicisation throughout
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
+- Consistent PDB ID ref
 - Refer to all parts of figures in main text
 - Get C-helix inactivation ref from Greg
 - OA on GitHub
