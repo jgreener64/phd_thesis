@@ -1,8 +1,9 @@
 \chapter{AlloPred}
 \label{cha:allopred}
 
-This chapter describes the development and validation of a computational approach based on the perturbation of normal modes to predict allosteric sites on proteins.
-The work is further described in \cite{Greener2015} and is available as a web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) that so far has had over 400 submissions from around the world.
+This chapter describes the development and validation of a computational approach, AlloPred, based on the perturbation of normal modes to predict allosteric sites on proteins.
+AlloPred is available as a web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) that so far has had over 400 submissions from around the world.
+The work is further described in Greener and Sternberg 2015 \cite{Greener2015}, on which this chapter is based.
 % Could be latent allosteric sites
 % Measure of how effective NMA features are alone (some in NAR paper)
 
@@ -372,3 +373,7 @@ AlloPred could be further developed by introducing different rules for perturbat
 Structural prediction methods \cite{Kelley2015} could also be utilised to allow prediction of allosteric sites from sequence via a predicted structure, or prediction from the structure of a homologous protein.
 Specific residues within allosteric pockets that have the largest impact on the allosteric effect could also be discovered by changing the amount of perturbation at each residue individually in a pocket.
 This could allow prediction of recently proposed `anchor' and `driver' atoms that contribute to the allosteric effect \cite{Nussinov2014}, aiding the rational design of drugs that bind to the predicted pockets.
+
+The AlloPred procedure is ultimately a computationally-light means of ranking pockets on a protein in terms of their predicted allosteric character.
+It is suitable for use by non-bioinformaticians via the web server, and amenable to high throughput via the source code.
+Such methods will hopefully be developed and utilised more widely as allosteric prediction becomes more powerful.
