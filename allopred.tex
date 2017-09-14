@@ -136,6 +136,8 @@ A Python script utilising the ProDy package \cite{Bakan2011} was used to perform
 \subsection{Machine learning}
 
 Values of $C_{m}$ and $E_{m}$ with $m$ equal to 20, 50, 100, 200 and all modes were chosen as features in a SVM.
+SVM is a non-probabilistic binary linear classifier which maps training examples in a multi-dimensional space and finds categories such that the gap between them is as large as possible \cite{Cortes1995}.
+New examples can be classified based on which side of the gap they fall.
 The features from the Fpocket output used in the SVM were:
 \begin{itemize}
 \item Rank
@@ -248,12 +250,12 @@ Figure based on Figure~2 from Greener and Sternberg 2015 \cite{Greener2015}.}
 
 The AlloPred computational procedure, which uses NMA and other features to predict the allosteric pockets on a protein, was developed.
 AlloPred models how the dynamics of a protein would be altered in the presence of a modulator at a specific pocket.
-As described in Section... if the binding of a modulator causes a change in dynamics at the active site, it can be predicted to have an allosteric effect.
+As described in Section~\ref{sec:allopred_methods} if the binding of a modulator causes a change in dynamics at the active site, it can be predicted to have an allosteric effect.
 Pockets on the protein were first predicted using the Fpocket \cite{LeGuilloux2009} algorithm, which locates pockets using Voronoi tessellation and alpha spheres.
 The normal modes of the protein were then calculated using the ENM, except the spring constant of any atom pair including a residue in a chosen pocket was set to be a higher value.
 The effect of this perturbation was measured at the active site.
 Intuitively, the interpretation of this change is that the binding of a small molecule in a pocket is expected to quench the vibrations of the surrounding residues.
-These results were combined with output from Fpocket in a support vector machine (SVM) to predict allosteric pockets on proteins.
+These results were combined with output from Fpocket in a SVM to predict allosteric pockets on proteins.
 
 
 \subsection{Validation}

@@ -11,8 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
-- Is there anything else I need to introduce?
-- Intro maybe a bit short? Review of MD limitations? More on allostery basics?
+- Intro maybe a bit short? Review of MD limitations? More on allostery basics? More on CONCOORD?
 - Bulk out conclusion
 - phdthesis ref formatting
 - Check Mendeley for refs

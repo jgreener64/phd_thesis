@@ -2,6 +2,7 @@
 \label{cha:introduction}
 
 This chapter introduces the thesis along with the concepts of allostery in proteins, structure-based allosteric prediction, normal mode analysis (NMA), the protein structural ensemble, protein kinases and cyclin-dependent kinase 2 (CDK2).
+Further details on concepts and methods will be described in individual chapters as required.
 
 
 \section{Overview of this thesis}
@@ -167,7 +168,7 @@ See \cite{Hayward2008} for more.}
 \subsubsection{Machine learning}
 
 A few methods have used machine learning to predict allostery.
-AlloSite \cite{Huang2013} uses a support vector machine and features from Fpocket \cite{LeGuilloux2009} to re-rank pockets in terms of their allosteric character.
+AlloSite \cite{Huang2013} uses a support vector machine (SVM) and features from Fpocket \cite{LeGuilloux2009} to re-rank pockets in terms of their allosteric character.
 However the results are often found to be similar to the Fpocket ranking, showing the difficulty of distinguishing pockets that have specific allosteric character from those that are generally suitable for ligand binding.
 This method has been updated as AlloSitePro to include NMA perturbation \cite{Song2017}.
 A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and associated ligands to assign protein cavities as allosteric, regular or orthosteric.
@@ -210,7 +211,11 @@ The identification of binding sites on the protein surface is a problem that has
 These methods are however useful in the structure-based prediction of allostery - the identification of a high-affinity binding site distant from a known active site could present an opportunity for allosteric regulation, for example.
 The FTMap family of web servers \cite{Kozakov2015} predicts ligand-binding hotspots using small organic molecules as probes on the protein surface.
 By using mixed-solvent MD this principle has been extended to the prediction of allosteric sites in particular, with success on some test cases \cite{Ghanakota2016}.
+
 Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{Huang2006} and Fpocket \cite{LeGuilloux2009} are able to find pockets on a protein large enough to bind small molecules, and these often correspond to allosteric sites \cite{Huang2013}.
+These methods will be used throughout this thesis, and their ability to predict allosteric pockets (either alone or when re-ranked by allosteric prediction methods) will be determined.
+Fpocket uses the concepts of Voronoi tessellation and alpha spheres (spheres touching four atoms at an equal distance) to find clusters of spheres of a certain size that correspond to pockets.
+LIGSITE\textsuperscript{\it csc} adds the concept of conservation to the original LIGSITE algorithm \cite{Hendlich1997}, which finds cavities using simple operations on a cubic grid.
 
 
 \subsubsection{Allosteric pathway prediction}
@@ -470,6 +475,7 @@ Binding of these compounds does not affect ATP binding and appears to inhibit th
 % Check this
 % Add bit about PDB 9th most here?
 % Move anything else from cdk2 chapter here?
+% Difficulties of purifying cyclin and ref
 
 
 \section{Aims}
