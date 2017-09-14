@@ -381,15 +381,22 @@ This is the main motivation for developing an ensemble generation method in this
 
 \section{Protein kinases}
 \label{sec:introduction_kinases}
-% Check Mendeley kinase tag
-% Read LSR
 
+Protein kinases modify other proteins by chemically adding phosphate groups to them (phosphorylation).
+This leads to a functional change due to a change in enzyme activity, cellular location or protein-protein interactions.
 Protein kinases regulate almost all aspects of cellular physiology, from proliferation and generation of biomass to gene expression and protein production \cite{Manning2002}.
+The human genome contains around 500 protein kinase genes ($\sim$2\% of all human genes) and up to 30\% of human proteins are modified by kinase activity.
 In addition to medical benefits, regulation of kinase activity in mammalian cells is important in industrial production of biomolecules of high value, for example to prevent apoptosis and maximise yield.
-In order to modulate kinase activity we need to develop specific regulators of protein kinase function, a process that is complicated by the conserved catalytic architecture of the huge range of protein kinases found in nature \cite{Muller2015, Norman2012}.
-One way to achieve kinase regulation with enhanced selectivity is through isolation of allosteric regulators, as their target sites are likely to be less structurally conserved across the protein kinase family.
 
-A few notable examples have highlighted this potential \cite{Gavrin2013}.
+There is a conserved structure across the protein kinase family, particularly at the catalytic core \cite{Endicott2012}.
+The ATP-binding site lies between the N-terminal region (mainly \textbeta -sheet) and the larger C-terminal region (mainly \textalpha -helix).
+In the N-terminal region there is a glycine-rich stretch of residues near a lysine residue, which has been shown to be involved in ATP binding.
+A conserved aspartic acid residue is found in the catalytic region and is important for catalysis.
+In order to modulate kinase activity we need to develop specific regulators of protein kinase function, a process that is complicated by the conserved catalytic architecture \cite{Muller2015, Norman2012}.
+One way to achieve kinase regulation with enhanced selectivity is through isolation of allosteric regulators, as their target sites are likely to be less structurally conserved across the protein kinase family.
+Kinases are known to have large conformational plasticity \cite{Kornev2015, Huse2002} and this supports the prospect of allosteric modulation.
+
+A few notable examples have highlighted this potential \cite{DeSmet2014, Gavrin2013}.
 Serine/threonine-protein kinase Chk1 has been the target of high-throughput screening efforts \cite{Converso2009}, leading to the discovery of an inhibitor that binds 13 \AA\ from the active site.
 This inhibitor binds largely to the protein surface, with part sliding into a narrow hydrophobic cleft, indicating that unexpected sites on proteins may reveal allosteric properties.
 Despite locating the allosteric binding site, the mechanism for inhibition is not currently known \cite{Vanderpool2009}.
@@ -402,6 +409,7 @@ The binding sites of the above type IV inhibitors, along with others, are shown 
 Type I inhibitors are directly-competitive with ATP as they target the active conformation.
 Type II inhibitors bind to the DFG-out conformation and occupy the ATP-binding site and the surrounding hydrophobic region.
 Type III inhibitors bind the hydrophobic cleft adjacent to the ATP-binding site but do not bind the ATP-binding site itself.
+
 A novel class of inhibitors, the type V bisubstrate and bivalent inhibitors, has emerged recently \cite{Lamba2012}.
 For example, a bivalent inhibitor was designed for a tyrosine kinase that binds to the ATP-binding site and to the regulatory domain SH3 simultaneously via a linker \cite{Hill2009}.
 Such binding is able to have both high selectivity and high affinity.
@@ -443,9 +451,9 @@ Changes in the \textalpha C-helix realign active site residues, and the T-loop m
 \includegraphics[width=0.7\textwidth]{figures/cdk2_intro/cdk2_intro}
 
 \caption[Structure of CDK2]
-{The structure of CDK2 crystallised with an ATP-binding site inhibitor and two molecules of the fluorophore ANS at the allosteric site (PDB ID 4EZ7).
+{The structure of CDK2 crystallised with an ATP-binding site inhibitor and two molecules of the fluorophore 8-anilino-1-naphthalene sulfonate (ANS) at the allosteric site (PDB ID 4EZ7).
 CDK2 is shown as yellow cartoon with the \textalpha C-helix region coloured cyan and the T-loop coloured purple.
-The ATP-binding site inhibitor staurosporine and the ANS molecules are shown as sticks and coloured green and magenta respectively.
+The ATP-binding site inhibitor staurosporine and the two ANS molecules are shown as sticks and coloured green and magenta respectively.
 See also Figure~\ref{fig:cdk2_structure}.
 Figure based on Figure~1 from Pisani et al.\ 2016 \cite{Pisani2016}.}
 
