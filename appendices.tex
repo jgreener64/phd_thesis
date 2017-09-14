@@ -180,7 +180,7 @@ runs the auto-parameterisation procedure with the \verb|-t| option specifying th
 
 \subsubsection{Allosteric site prediction}
 
-To predict allosteric sites you should run LIGSITE\textsuperscript{\it cs} on the \emph{second} input structure (the one you give as \verb|--i2|). You then need to run the \verb|cluster-ligsite| script in \verb|bin| to assign the points to pockets:
+To predict allosteric sites you should run LIGSITE\textsuperscript{\it cs} on the second input structure (the one you give as \verb|--i2|). You then need to run the \verb|cluster-ligsite| script in \verb|bin| to assign the points to pockets:
 
 \begin{lstlisting}[language=bash]
     cluster-ligsite pocket_r.pdb pocket_all.pdb pocket_points.pdb

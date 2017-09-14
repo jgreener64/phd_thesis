@@ -11,17 +11,16 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Is there anything else I need to introduce?
 - Intro maybe a bit short? Review of MD limitations? More on allostery basics?
 - Bulk out conclusion
 - phdthesis ref formatting
 - Check Mendeley for refs
 - Check pocket size bias discussion
 - Middle name initial? Should the address be CISBIO?
-- Abstract (300 words max)
 - Acknowledgements
 - Move flowchart to results
 - Papers as appendices?
-- A few more references
 - Check page numbering, contents, list of figure etc
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size; also consistent text font/size and general consistency
@@ -33,7 +32,6 @@ pdflatex thesis.tex
 - Cyclin A or A2? Cyclin capitalised (also in title)? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
 - Abbreviations: check first use of each, e.g. PDB
-- Italicisation throughout
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
 - Refer to all parts of figures in main text
 - Get C-helix inactivation ref from Greg

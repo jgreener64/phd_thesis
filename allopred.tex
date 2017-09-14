@@ -36,7 +36,7 @@ Sometimes multiple allosteric pockets on the same protein represented different 
 The pockets also covered much of the protein surface, which allowed the method to detect allosteric sites that could be found anywhere on the surface.
 On average 41\% of residues in each protein appeared in a pocket.
 
-Fpocket output 2,201 pockets for the 119 proteins (average 18.5 per protein), of which 389 (18\% of pockets, average 3.3 per protein) contained at least one residue identified as binding to an allosteric modulator and were hence labelled as \emph{allosteric pockets}.
+Fpocket output 2,201 pockets for the 119 proteins (average 18.5 per protein), of which 389 (18\% of pockets, average 3.3 per protein) contained at least one residue identified as binding to an allosteric modulator and were hence labelled as allosteric pockets.
 Although being defined as an allosteric pocket in this manner does not necessarily mean that binding to that pocket causes the allosteric effect, the average number of allosteric binding residues in an allosteric pocket was 4.3, indicating the utility of locating such pockets.
 All but 5 proteins in the dataset had at least one allosteric binding residue placed in a pocket.
 We treated pockets without known allosteric binding residues as negative examples during machine learning.
@@ -163,7 +163,7 @@ The features from the Fpocket output used in the SVM were:
 See the Fpocket documentation for more details on each of these measures.
 Distance to the active site, number of residues in the pocket and number of pockets in the protein were also used as features.
 The distance to the active site for each pocket was calculated as the distance between the geometric centre of the active site residues and the geometric centre of the residues in the pocket.
-Each feature (apart from number of pockets) was utilised in two different ways: the feature value normalised across all proteins (\emph{raw}); and the ranking of the feature value within the values for that protein, where the ranks were scaled between 0 and 1 (\emph{ranked}).
+Each feature (apart from number of pockets) was utilised in two different ways: the feature value normalised across all proteins (termed raw); and the ranking of the feature value within the values for that protein, where the ranks were scaled between 0 and 1 (termed ranked).
 
 The 65 features were ranked in Weka explorer \cite{Frank2004} using the ChiSquared attribute evaluator and the Ranker search method.
 This evaluates the worth of a feature by computing the value of the chi-squared statistic with respect to the class.
@@ -262,7 +262,7 @@ The AlloPred SVM was trained on a set of 79 known allosteric proteins (see the M
 The top 7 retained features included 2 normal mode features, indicating the predictive power of normal mode perturbation.
 AlloPred was tested on a test set of 40 known allosteric proteins.
 For each protein AlloPred ranked the pockets and the top ranked pocket was examined.
-For 23 of 40 proteins AlloPred ranked top a pocket containing an allosteric binding residue (an \emph{allosteric pocket}), when 18\% of pockets were allosteric pockets.
+For 23 of 40 proteins AlloPred ranked top a pocket containing an allosteric binding residue (termed an allosteric pocket), when 18\% of pockets were allosteric pockets.
 For 28 of 40 proteins an allosteric pocket was ranked first or second.
 The results were compared to two existing methods for allosteric site prediction.
 The AlloSite server uses the Fpocket algorithm and a machine learning approach \cite{Huang2013}, whereas the PARS server combines changes in protein flexibility and a structural conservation score \cite{Panjkovich2014}.
