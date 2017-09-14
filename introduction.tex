@@ -215,7 +215,7 @@ By using mixed-solvent MD this principle has been extended to the prediction of 
 Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{Huang2006} and Fpocket \cite{LeGuilloux2009} are able to find pockets on a protein large enough to bind small molecules, and these often correspond to allosteric sites \cite{Huang2013}.
 These methods will be used throughout this thesis, and their ability to predict allosteric pockets (either alone or when re-ranked by allosteric prediction methods) will be determined.
 Fpocket uses the concepts of Voronoi tessellation and alpha spheres (spheres touching four atoms at an equal distance) to find clusters of spheres of a certain size that correspond to pockets.
-LIGSITE\textsuperscript{\it csc} adds the concept of conservation to the original LIGSITE algorithm \cite{Hendlich1997}, which finds cavities using simple operations on a cubic grid.
+LIGSITE\textsuperscript{\it csc} adds the concept of conservation of surface residues to the original LIGSITE algorithm \cite{Hendlich1997}, which finds cavities using simple operations on a cubic grid.
 
 
 \subsubsection{Allosteric pathway prediction}
@@ -438,18 +438,23 @@ Figure based on Lamba and Ghosh (2012) \cite{Lamba2012}.}
 
 \section{Cyclin-dependent kinase 2}
 \label{sec:introduction_cdk2}
-% Look at Mendeley tag cdk2 (e.g. Hu 2015, Child 2010)
+% Child 2010? Corsino 2009
 
 CDK2 is a protein kinase important in regulating cell cycle progression \cite{Peyressatre2015}.
 Its deregulation has been linked to a number of diseases.
 CDK2 associates with, and is regulated by, the cyclin proteins.
 The G1 to S phase checkpoint of the cell cycle is largely controlled by the CDK2-cyclin A complex.
-This complex therefore is a major target of drug discovery efforts to arrest or recover control of the cell cycle in dividing cells \cite{Betzi2011}.
-The mechanism of activation of CDK2 by cyclin A has been elucidated \cite{Jeffrey1995}.
-Changes in the \textalpha C-helix realign active site residues, and the T-loop moves which reveals the active site and makes activation phosphorylation easier.
+This complex is therefore a major target of drug discovery efforts to arrest or recover control of the cell cycle in dividing cells \cite{Betzi2011}.
+However, the validity of CDKs as cancer targets is not without its issues: knocking out both CDK2 and CDK4 does not stop the proliferation of adult cells in mice, for example \cite{Barriere2007}.
+
+One analysis indicated that CDK2 was the ninth most common protein in the PDB \cite{Berman2013}, with over 350 structures deposited since the first structure was crystallised in 1993 \cite{DeBondt1993}.
+See Figure~\ref{fig:cdk2_intro} for an overview of the structure of CDK2.
+While the crystallisation of CDK2 is relatively routine, one of the difficulties in studying the CDK2-cyclin A interaction is the difficulty of purifying soluble cyclin A in the absence of the CDK2 binding partner \cite{Grigoroudis2015}.
+The mechanism of activation of CDK2 by cyclin A has been elucidated \cite{Jeffrey1995, Russo1996, Morris2002}.
+Changes in the \textalpha C-helix on cyclin A binding realign active site residues, and the T-loop moves which reveals the active site and makes activation phosphorylation easier.
+Computational studies have indicated a large degree of flexibility in CDK2 \cite{Pisani2016, Gu2007}.
 
 
-% Ref in text
 \begin{figure}
 \centering
 
@@ -467,15 +472,17 @@ Figure based on Figure~1 from Pisani et al.\ 2016 \cite{Pisani2016}.}
 
 
 No CDK2 inhibitors are currently approved for clinical use.
-% Check this is still true
-This is due to the high conservation of the ATP-binding site among protein kinases, making a discovery of a specific CDK2 inhibitor that targets this site challenging.
-It has been found that the fluorophore ANS binds at a site removed from the ATP-binding site \cite{Betzi2011}.
-A screening study against this site revealed compounds that bind with affinity up to the micromolar range \cite{Rastelli2014}.
+Only two inhibitors have been approved by the US Food and Drug Administration targeting the CDK family of proteins - ribociclib and palbociclib, CDK4/6 inhibitors used in the treatment of breast cancer \cite{Hortobagyi2016}.
+This is at least in part due to the high conservation of the ATP-binding site among protein kinases, making a discovery of a specific CDK2 inhibitor that targets this site challenging - see Section~\ref{sec:introduction_kinases}.
+Several compounds are in clinical trials, but most of them target multiple CDKs.
+
+It has been found that the fluorophore ANS binds at a site removed from the ATP-binding site on CDK2 \cite{Betzi2011}.
+A screening study against this site revealed compounds that bind with affinity up to the micromolar range \cite{Rastelli2014}, and a fluorescence-based assay has the potential to facilitate high-throughput screening \cite{Martin2012}.
 Binding of these compounds does not affect ATP binding and appears to inhibit the action of CDK2, indicating a likely allosteric site.
-% Check this
-% Add bit about PDB 9th most here?
+Another study used virtual screening to find compounds that disrupt the interaction between CDK2 and cyclin A3 \cite{Hu2015} and verified them experimentally with anti-proliferation and binding studies.
+Small peptides are also able to break the CDK2-cyclin E1 interface \cite{Chen2014}.
+A large scale screen of compounds against CDK2 found a family of compounds that hinder T-loop dynamics and hence could be used as allosteric modulators \cite{Pellerano2017}.
 % Move anything else from cdk2 chapter here?
-% Difficulties of purifying cyclin and ref
 
 
 \section{Aims}

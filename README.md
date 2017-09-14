@@ -30,7 +30,7 @@ pdflatex thesis.tex
 - How to refer to other sections - use labels, check throughout
 - Cyclin A or A2? Cyclin capitalised (also in title)? Is there a space? See Greg's paper
 - Binding assay or immunoblot assay etc
-- Abbreviations: check first use of each, e.g. PDB
+- Abbreviations: check first use of each, e.g. PDB; CDK ambiguity
 - Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
 - Refer to all parts of figures in main text
 - Get C-helix inactivation ref from Greg
