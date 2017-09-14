@@ -2,11 +2,23 @@
 \thispagestyle{plain}
 \setcounter{page}{3}
 
-% Change
 Allostery is the functional change at one site on a protein caused by a change at a distant site.
-In order for the the benefits of allostery to be taken advantage of, both for basic understanding of proteins and to develop new classes of drugs, the structure-based prediction of allosteric binding sites, modulators and communication pathways is necessary.
-Here we review the recently-emerging field of allosteric prediction, focusing mainly on computational methods.
-We also describe the search for cryptic binding pockets and attempts to design allostery into proteins.
-The development and adoption of such methods is essential or the long-preached potential of allostery will remain elusive.
+Despite being discovered more than 50 years ago allostery has remained a mystery, and there is no unified scheme to understand and predict it.
+In order for the the benefits of allostery to be taken advantage of, both for basic understanding of proteins and to develop new classes of drugs, computational methods to predict allosteric sites on proteins need to be developed and validated.
+This thesis introduces two computational methods to predict allosteric sites on proteins and describes experiments to validate a predicted allosteric site.
+
+The concepts of allostery, allosteric prediction, the protein structural ensemble and protein kinases are introduced.
+AlloPred uses perturbation of normal modes alongside pocket descriptors in a machine learning approach that ranks the pockets on a protein in terms of their allosteric character.
+AlloPred shows comparable and complementary performance to two existing methods.
+The AlloPred web server allows visualisation and analysis of predictions.
+
+ExProSE (Exploration of Protein Structural Ensembles), a distance geometry-based method that generates an ensemble of protein structures from two input structures, is described.
+ExProSE is able to access conformational changes inaccessible to classical molecular dynamics.
+By adding additional constraints to the method, the effect of allosteric modulators can be predicted.
+ExProSE is shown to be effective at allosteric site prediction in a systematic comparison of methods.
+
+A predicted allosteric pocket on cyclin-dependent kinase 2, a medically-important protein kinase involved in cell cycle regulation, is explored experimentally.
+Selected compounds from a virtual screen were tested in two assays, though no conclusive results were obtained.
+The development and adoption of methods such as those presented here is essential or the long-preached potential of allostery will remain elusive.
 
 \end{abstract}
