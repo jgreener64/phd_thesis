@@ -11,7 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
-- CDK2 discussion, ChEMBL
+- CDK2 discussion
 - Intro maybe a bit short? Review of MD limitations? More on allostery basics? More on CONCOORD?
 - Bulk out conclusion
 - phdthesis ref formatting
