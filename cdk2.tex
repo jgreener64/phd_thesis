@@ -92,22 +92,26 @@ The membrane was washed with TBS-T and imaged with chemiluminescence by adding E
 
 Having predicted a new allosteric site on CDK2 using ExProSE, we wished to test experimentally whether it was in fact an allosteric site.
 Section~\ref{sec:exprose_results} and Figure~\ref{fig:cdk} describe how ExProSE predicts the third predicted pocket, henceforth referred to as the pocket of interest, as being allosteric.
-This pocket is not open in the apo CDK2 structure (PDB ID 1HCL) or in the cyclin A-bound structure (PDB ID 1FIN).
-These are shown in Figure~\ref{fig:cdk2_structure}A and Figure~\ref{fig:cdk2_structure}B respectively.
-The pocket is shown in Figure~\ref{fig:cdk2_structure}C-E.
-In the cyclin A-bound structure there is in fact a protrusion instead of a pocket opening, suggesting that a small molecule would not be able to bind the pocket at the same time as cyclin A is bound to CDK2.
+This is also shown in Figure~\ref{fig:cdk2_structure}A.
+See Figure~\ref{fig:cdk2_intro} for the structural elements of CDK2.
+The pocket of interest is close to the region of cyclin binding, as shown in Figure~\ref{fig:cdk2_structure}B with the non-crystallised portion of cyclin A modelled with Phyre2 \cite{Kelley2015}.
 
+This pocket is not open in the apo CDK2 structure (PDB ID 1HCL) or in the cyclin A-bound structure (PDB ID 1FIN).
+In the cyclin A-bound structure there is in fact a protrusion instead of a pocket opening, suggesting that a small molecule would not be able to bind the pocket at the same time as cyclin A is bound to CDK2.
+The pocket is shown in Figure~\ref{fig:cdk2_structure}C in various structures where it is open.
 The pocket is open but small in the structure with two ANS molecules bound in the known allosteric site (PDB ID 3PXF), with a size of 45 \AA$^{3}$ in LIGSITE\textsuperscript{\it cs}.
+The residues that make up the pocket are shown in Figure~\ref{fig:cdk2_structure}D.
 It is a similar shape in the structure with two ANS molecules and the active site inhibitor staurosporine (PDB ID 4EZ7).
 This structure also has the crystallisation artefact ethanediol crystallised at the pocket of interest, implying that binding there is possible.
+
 A structure with ethanediol bound at the ANS site and an active site inhibitor (PDB ID 4EZ3) appears to have the pocket slightly open.
-% This furthers the suggestion that (conf selection and inactive state) the inactive state caused by binding at the ANS site is linked to the presence of the pocket.
+This indicates that occupation of the ANS site and opening of the pocket of interest are linked, suggesting that if the pocket can be bound to then the inactivating motions of the \textalpha C-helix will prevent cyclin binding and inactivate the protein.
 The idea is that by stabilising the pocket of interest the inactive state is favoured and activation by cyclin A cannot occur.
 The hope is that the pocket of interest can accommodate a small molecule ligand, and potentially that it can open further to present more binding interactions.
 
 One risk of targeting this site is that the pocket is small, meaning a limited number of interactions can be made with a ligand.
 The pocket is also only available in some states, meaning that there may be an energetic cost to stabilising it \cite{Oleinikovas2016}.
-Off site binding may also be a problem - the ATP binding site and ANS allosteric site present large pockets on CDK2 known to bind small molecules, and a molecule may bind there rather than at the pocket of interest.
+Off site binding may also be a problem - the ATP-binding site and ANS allosteric site present large pockets on CDK2 known to bind small molecules, and a molecule may bind there rather than at the pocket of interest.
 
 CDK2 was examined with available bioinformatics resources.
 FTMap \cite{Kozakov2015} and the Fragment Hotspot Map \cite{Radoux2016} sample the protein surface with molecular probes to find fragment binding hotspots.
@@ -125,10 +129,6 @@ Residue that are close to the pocket of interest, such as ASP127 in the pocket, 
 PDBFlex finds flexible regions in proteins based on all PDB depositions of the protein \cite{Hrabe2016}.
 For CDK2 it indicates that the only real areas of variation in the structure is around the \textalpha C-helix and the T-loop, which is near the pocket of interest.
 
-% Make sure all parts of this are referenced from main text
-% Add my predicted site to A
-% What about apo (1HCL) or cyclin A-bound (1FIN)?
-% Mention Phyre run in text
 \begin{figure}
 \centering
 
@@ -144,7 +144,7 @@ For CDK2 it indicates that the only real areas of variation in the structure is 
 
 \contcaption{Structure, conformational variability and virtual screening of CDK2.
 See also Figure~\ref{fig:cdk2_intro}.
-(A) The structure of CDK2 (PDB ID 1HCL) with the ATP binding site and the known allosteric site marked.
+(A) The structure of CDK2 (PDB ID 1HCL) with the ATP-binding site, the known allosteric site (ANS site) and the potential allosteric site (the pocket of interest) marked.
 (B) The CDK2-cyclin A complex required for CDK2 activation.
 The crystallised complex (PDB ID 1FIN) is shown with CDK2 in green and the crystallised portion of cyclin A in cyan.
 The whole cyclin A sequence was modelled using Phyre2 \cite{Kelley2015} and aligned to the above complex and the ab initio modelled region (with no structural templates) is shown in magenta.
@@ -153,7 +153,7 @@ Part of this region potentially interacts with CDK2.
 This is pocket 3 from Figure~\ref{fig:cdk}.
 The structures shown are three crystal structures with the PDB IDs given, and two structures with the pocket open generated using ExProSE from the structures indicated.
 (D) Residues displayed around the pocket of interest using SurfStamp (\url{https://yamule.github.io/SurfStamp-public}). % http://process.sakura.ne.jp/surfstamp/viewer/test.cgi?pdbid=3PXF
-The orientation is the same as in C.
+The orientation is the same as in C and the ANS-bound structure (PDB ID 3PXF) is used.
 (E) Example docking poses of screened compounds using AutoDock Vina on the structure with PDB ID 3PXF.
 Shown are the lowest energy poses for compound A (magenta), B (cyan) and C (orange) from Table~\ref{tab:enamine_compounds}.}
 
@@ -191,7 +191,6 @@ This is important in general to take into account the flexibility of binding poc
 Using two different docking algorithms, AutoDock Vina and DOCK, provides two different scores for each structure and goes some way to reducing the inaccuracies of virtual screening.
 Compounds were in general better scored for structures (3) and (4), those with the pocket of interest open.
 This is to be expected as a larger pocket presents more opportunities for interactions with the ligand.
-% Mention cross-docking? Possibly not
 
 
 \subsection{Compound selection}

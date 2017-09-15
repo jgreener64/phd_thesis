@@ -11,6 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
+- CDK2 discussion, ChEMBL
 - Intro maybe a bit short? Review of MD limitations? More on allostery basics? More on CONCOORD?
 - Bulk out conclusion
 - phdthesis ref formatting
@@ -31,7 +32,7 @@ pdflatex thesis.tex
 - Cyclin A or A2? See Greg's paper
 - Binding assay or immunoblot assay etc
 - Abbreviations: check first use of each, e.g. PDB; CDK ambiguity
-- Active site should really be ATP-binding site for CDK2, also consistent name for ANS site
+- Active site should really be ATP-binding site for CDK2, also consistent name for ANS site and pocket of interest
 - Refer to all parts of figures in main text
 - Get C-helix inactivation ref from Greg
 - OA on GitHub
