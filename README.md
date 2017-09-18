@@ -11,7 +11,10 @@ pdflatex thesis.tex
 
 ## Issues
 
+- CDK2 exp concs and names
 - CDK2 discussion
+- Ensemble NMR intro refs
+- Remove multicolumn table tags
 - Intro maybe a bit short? Review of MD limitations? More on allostery basics? More on CONCOORD?
 - Bulk out conclusion
 - phdthesis ref formatting
@@ -19,6 +22,7 @@ pdflatex thesis.tex
 - Check pocket size bias discussion
 - Middle name initial? Should the address be CISBIO?
 - Acknowledgements
+- Consistent name for ANS site and pocket of interest
 - Move flowchart to results
 - Papers as appendices?
 - Check page numbering, contents, list of figure etc
@@ -26,15 +30,12 @@ pdflatex thesis.tex
 - Consistent A/B labelling in figures: font, bold and rough size; also consistent text font/size and general consistency
 - Check latex log for errors
 - Keep COSB review and intro/conc/ref updates up to date
-- Remove multicolumn table tags
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
 - How to refer to other sections - use labels, check throughout
 - Cyclin A or A2? See Greg's paper
 - Binding assay or immunoblot assay etc
 - Abbreviations: check first use of each, e.g. PDB; CDK ambiguity
-- Active site should really be ATP-binding site for CDK2, also consistent name for ANS site and pocket of interest
 - Refer to all parts of figures in main text
-- Get C-helix inactivation ref from Greg
 - OA on GitHub
 - Add to Spiral
 - Spellcheck
