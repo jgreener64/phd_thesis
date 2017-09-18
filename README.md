@@ -11,7 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
-- CDK2 exp concs and names
+- CDK2 exp concs and names: cycA res numbers, Sepharose, WB antobody conc
 - CDK2 discussion
 - Ensemble NMR intro refs
 - Remove multicolumn table tags
@@ -32,7 +32,6 @@ pdflatex thesis.tex
 - Keep COSB review and intro/conc/ref updates up to date
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
 - How to refer to other sections - use labels, check throughout
-- Cyclin A or A2? See Greg's paper
 - Binding assay or immunoblot assay etc
 - Abbreviations: check first use of each, e.g. PDB; CDK ambiguity
 - Refer to all parts of figures in main text

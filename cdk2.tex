@@ -4,7 +4,7 @@
 This chapter describes computational and experimental work to test a potential allosteric site on cyclin-dependent kinase 2 (CDK2), a protein important in cell cycle regulation.
 This allosteric site was predicted by ExProSE in Section~\ref{sec:exprose_results}.
 A virtual screen of small molecules was carried out against the pocket.
-Selected molecules were purchased and tested using two experimental assays to see if they could inhibit the interaction between CDK2 and cyclin A.
+Selected molecules were purchased and tested using two experimental assays to see if they could inhibit the interaction between CDK2 and cyclin A2.
 
 
 \section{Materials and Methods}
@@ -14,7 +14,6 @@ Selected molecules were purchased and tested using two experimental assays to se
 \subsection{Bioinformatics resources}
 
 FTMap \cite{Kozakov2015}, the Fragment Hotspot Map \cite{Radoux2016}, ResiCon \cite{Dziubinski2016} and the DynOmics server \cite{Li2017} were run with default settings using the ANS-bound structure (PDB ID 3PXF) as input.
-% Any others?
 
 
 \subsection{Virtual screening}
@@ -40,17 +39,17 @@ The buffers and media used for experimental work were as follows:
 \end{itemize}
 
 
-\subsection{Purification of cyclin A}
+\subsection{Purification of cyclin A2}
 
-The plasmid for cyclin A with either a His tag or GST tag were transformed into \textit{E.\ coli} Tuner cells.
+The plasmid for cyclin A2 with either a His tag or GST tag were transformed into \textit{E.\ coli} Tuner cells.
 % Residue numbers
 Various conditions for growth were tried.
-The final conditions used for His-tagged cyclin A were growth of cultures at 37$^{\circ}$C until optical density in auto-induction media, then incubation at 18$^{\circ}$C for 40 hours.
+The final conditions used for His-tagged cyclin A2 were growth of cultures at 37$^{\circ}$C until optical density in auto-induction media, then incubation at 18$^{\circ}$C for 40 hours.
 Cells were harvested by centrifugation (10 min at 5,000 rpm).
 Harvested cells were resuspended in lysis buffer with 0.5 mg ml$^{-1}$ lysozyme.
 After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Sepharose beads for 1 hour.
 % Sepharose name?
-After washing the beads, cyclin A was eluted with imidazole and stored at -20$^{\circ}$C in 50\% glycerol.
+After washing the beads, cyclin A2 was eluted with imidazole and stored at -20$^{\circ}$C in 50\% glycerol.
 % Amounts and concentration produced?
 
 
@@ -59,11 +58,11 @@ After washing the beads, cyclin A was eluted with imidazole and stored at -20$^{
 To label CDK2 with Cy5 dye CDK2 (10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with Cy5 NHS ester dye in anhydrous DMF.
 Excess dye was removed by gel filtration.
 
-For the TR-FRET CDK2 titration a 392 well plate was used.
-% 392 well plate?
-Each well contained 1 nM cyclin A-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
+For the TR-FRET CDK2 titration a 392 \textmu L/well plate was used.
+% Check
+Each well contained 1 nM cyclin A2-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
 A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
-The plate was incubated for 1 hour and centrifuged at 800 rpm.
+The plate was incubated for 1 hour and centrifuged at 800 rpm before being read with a plate reader.
 % ... plate reader was used to read the plate.
 20 repeats were taken for each reading.
 
@@ -72,7 +71,7 @@ The plate was incubated for 1 hour and centrifuged at 800 rpm.
 % More specific - immunoblotting assay?
 
 Wild-type CDK2 was previously prepared by other members of the lab.
-His-tagged cyclin A (75 nM) was incubated on Sepharose fast flow beads in buffer X with 12\% DMSO.
+His-tagged cyclin A2 (75 nM) was incubated on Sepharose fast flow beads in buffer X with 12\% DMSO.
 % Sepharose?
 CDK2 was added (8 nM) along with compounds in 5 concentrations: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
 After incubation for 1 hour the beads were washed with buffer X and heated in gel-loading dye at 100$^{\circ}$C for 10 minutes to release bound protein.
@@ -94,10 +93,10 @@ Having predicted a new allosteric site on CDK2 using ExProSE, we wished to test 
 Section~\ref{sec:exprose_results} and Figure~\ref{fig:cdk} describe how ExProSE predicts the third predicted pocket, henceforth referred to as the pocket of interest, as being allosteric.
 This is also shown in Figure~\ref{fig:cdk2_structure}A.
 See Figure~\ref{fig:cdk2_intro} for the structural elements of CDK2.
-The pocket of interest is close to the region of cyclin binding, as shown in Figure~\ref{fig:cdk2_structure}B with the non-crystallised portion of cyclin A modelled with Phyre2 \cite{Kelley2015}.
+The pocket of interest is close to the region of cyclin binding, as shown in Figure~\ref{fig:cdk2_structure}B with the non-crystallised portion of cyclin A2 modelled with Phyre2 \cite{Kelley2015}.
 
-This pocket is not open in the apo CDK2 structure (PDB ID 1HCL) or in the cyclin A-bound structure (PDB ID 1FIN).
-In the cyclin A-bound structure there is in fact a protrusion instead of a pocket opening, suggesting that a small molecule would not be able to bind the pocket at the same time as cyclin A is bound to CDK2.
+This pocket is not open in the apo CDK2 structure (PDB ID 1HCL) or in the cyclin A2-bound structure (PDB ID 1FIN).
+In the cyclin A2-bound structure there is in fact a protrusion instead of a pocket opening, suggesting that a small molecule would not be able to bind the pocket at the same time as cyclin A2 is bound to CDK2.
 The pocket is shown in Figure~\ref{fig:cdk2_structure}C in various structures where it is open.
 The pocket is open but small in the structure with two ANS molecules bound in the known allosteric site (PDB ID 3PXF), with a size of 45 \AA$^{3}$ in LIGSITE\textsuperscript{\it cs}.
 The residues that make up the pocket are shown in Figure~\ref{fig:cdk2_structure}D.
@@ -106,7 +105,7 @@ This structure also has the crystallisation artefact ethanediol crystallised at 
 
 A structure with ethanediol bound at the ANS site and an ATP-binding site inhibitor (PDB ID 4EZ3) appears to have the pocket slightly open.
 This indicates that occupation of the ANS site and opening of the pocket of interest are linked, suggesting that if the pocket can be bound to then the inactivating motions of the \textalpha C-helix will prevent cyclin binding and inactivate the protein.
-The idea is that by stabilising the pocket of interest the inactive state is favoured and activation by cyclin A cannot occur.
+The idea is that by stabilising the pocket of interest the inactive state is favoured and activation by cyclin A2 cannot occur.
 The hope is that the pocket of interest can accommodate a small molecule ligand, and potentially that it can open further to present more binding interactions.
 
 One risk of targeting this site is that the pocket is small, meaning a limited number of interactions can be made with a ligand.
@@ -145,9 +144,9 @@ For CDK2 it indicates that the only real areas of variation in the structure is 
 \contcaption{Structure, conformational variability and virtual screening of CDK2.
 See also Figure~\ref{fig:cdk2_intro}.
 (A) The structure of CDK2 (PDB ID 1HCL) with the ATP-binding site, the known allosteric site (ANS site) and the potential allosteric site (the pocket of interest) marked.
-(B) The CDK2-cyclin A complex required for CDK2 activation.
-The crystallised complex (PDB ID 1FIN) is shown with CDK2 in green and the crystallised portion of cyclin A in cyan.
-The whole cyclin A sequence was modelled using Phyre2 \cite{Kelley2015} and aligned to the above complex and the ab initio modelled region (with no structural templates) is shown in magenta.
+(B) The CDK2-cyclin A2 complex required for CDK2 activation.
+The crystallised complex (PDB ID 1FIN) is shown with CDK2 in green and the crystallised portion of cyclin A2 in cyan.
+The whole cyclin A2 sequence was modelled using Phyre2 \cite{Kelley2015} and aligned to the above complex and the ab initio modelled region (with no structural templates) is shown in magenta.
 Part of this region potentially interacts with CDK2.
 (C) The pocket of interest on CDK2 shown in various structures.
 This is pocket 3 from Figure~\ref{fig:cdk}.
@@ -275,38 +274,38 @@ Images generated using \url{http://cdb.ics.uci.edu/cgibin/Smi2DepictWeb.py}.}
 
 \subsection{Experimental aims}
 
-The main aim of the experimental work was to screen the purchased compounds using the TR-FRET assay and a binding assay to see if the compounds could inhibit the CDK2-cyclin A interaction.
-This required cyclin A to be purified.
+The main aim of the experimental work was to screen the purchased compounds using the TR-FRET assay and a binding assay to see if the compounds could inhibit the CDK2-cyclin A2 interaction.
+This required cyclin A2 to be purified.
 
 
-\subsection{Purification of cyclin A}
+\subsection{Purification of cyclin A2}
 % Describe GST and His tags
 
-% Mention the construct is not all of cyclin A
-% There are x surface-exposed cysteine residues on cyclin A (construct?).
+% Mention the construct is not all of cyclin A2
+% There are x surface-exposed cysteine residues on cyclin A2 (construct?).
 In order to improve the TR-FRET signal (see below) it would be beneficial to have a single surface-exposed cysteine that could be labelled with Cy5 dye.
-Hence, initial purification was attempted for cyclin A-GST K773 (single cysteine mutant).
+Hence, initial purification was attempted for cyclin A2-GST K773 (single cysteine mutant).
 % mutant code
 The GST tag allowed selective separation of the protein during purification.
 The His tag could not be used as this was going to be present on CDK2 to bind the donor fluorophore.
-Purification of cyclin A-GST K773 resulted in low quantities of soluble protein ($<$ 1 mg from 4 L media) and purity was low, as shown in Figure~\ref{fig:purification}A.
+Purification of cyclin A2-GST K773 resulted in low quantities of soluble protein ($<$ 1 mg from 4 L media) and purity was low, as shown in Figure~\ref{fig:purification}A.
 Different purification strategies including varying the media, incubation temperature and incubation times were attempted but did not improve yield.
 
-The difficulty of purifying this cyclin A mutant led us to try purification of the wild-type cyclin A-GST.
+The difficulty of purifying this cyclin A2 mutant led us to try purification of the wild-type cyclin A2-GST.
 % with truncation though
 This purified more readily than the mutant, as shown in Figure~\ref{fig:purification}B.
 However the yield was still low (1 mg from 8 L media).
 This could be because the cysteine mutation destabilises the protein, increasing its tendency to aggregate.
 % Here or discussion?
 Concentration of the protein to higher concentrations using spin filtration led to loss of the protein.
-This, along with the low yield, suggests that cyclin A-GST is unstable and has a tendency to aggregate and become insoluble.
+This, along with the low yield, suggests that cyclin A2-GST is unstable and has a tendency to aggregate and become insoluble.
 
-Due to the difficulty of purifying cyclin A-GST, a change was made to the experimental strategy.
-The donor and acceptor fluorophores for the TR-FRET assay were switched so that the Eu anti-His antibody was targeted at cyclin A and CDK2 was dyed with Cy5 dye - see Figure~\ref{fig:tr_fret}A.
-This required purification of cyclin A-His.
-This purification proved considerably more successful than cyclin A-GST, with 10 mg produced from 4 L media - see Figure~\ref{fig:purification}C.
-This indicates that the large GST tag may disrupt the stability or folding of cyclin A, but the shorter His tag does not have the same effect.
-Purified cyclin A-His was taken forward for the TR-FRET assay.
+Due to the difficulty of purifying cyclin A2-GST, a change was made to the experimental strategy.
+The donor and acceptor fluorophores for the TR-FRET assay were switched so that the Eu anti-His antibody was targeted at cyclin A2 and CDK2 was dyed with Cy5 dye - see Figure~\ref{fig:tr_fret}A.
+This required purification of cyclin A2-His.
+This purification proved considerably more successful than cyclin A2-GST, with 10 mg produced from 4 L media - see Figure~\ref{fig:purification}C.
+This indicates that the large GST tag may disrupt the stability or folding of cyclin A2, but the shorter His tag does not have the same effect.
+Purified cyclin A2-His was taken forward for the TR-FRET assay.
 
 \begin{figure}
 \centering
@@ -314,14 +313,14 @@ Purified cyclin A-His was taken forward for the TR-FRET assay.
 \includegraphics[width=0.6\textwidth]{figures/purification/purification}
 
 % And Western blot?
-\caption[SDS-PAGE results for purification of cyclin A]
-{SDS-PAGE results for purification of cyclin A.
-(A) Purification of cyclin A-GST single cysteine mutant.
+\caption[SDS-PAGE results for purification of cyclin A2]
+{SDS-PAGE results for purification of cyclin A2.
+(A) Purification of cyclin A2-GST single cysteine mutant.
 % Mutant code
 % Gels for other conditions?
 % Pellet gel?
-(B) Purification of cyclin A-GST.
-(C) Purification of cyclin A-His.}
+(B) Purification of cyclin A2-GST.
+(C) Purification of cyclin A2-His.}
 
 \label{fig:purification}
 \end{figure}
@@ -338,14 +337,14 @@ The long emission time of the donor fluorophore means a signal is obtained after
 
 CDK2 prepared previously in the lab was labelled with Cy5 dye.
 % See fig for reaction?
-The TR-FRET assay was tested using a titration of CDK2 with constant cyclin A and donor fluorophore.
+The TR-FRET assay was tested using a titration of CDK2 with constant cyclin A2 and donor fluorophore.
 An increase in signal with increasing CDK2 concentration would be expected.
 Figure~\ref{fig:tr_fret}C shows the result of this titration.
-Whilst there is a higher signal at higher CDK2 concentrations, this trend is also present for the control of cyclin A-GST.
-Cyclin A-GST lacks the His tag required to bind to the donor fluorophore so should not lead to a TR-FRET signal.
+Whilst there is a higher signal at higher CDK2 concentrations, this trend is also present for the control of cyclin A2-GST.
+Cyclin A2-GST lacks the His tag required to bind to the donor fluorophore so should not lead to a TR-FRET signal.
 This indicates that the increased signal with CDK2 concentration is likely due to excess, unbound Cy5 dye in the CDK2 solution.
 Time constraints meant that a further gel filtration could not be carried out to remove this unbound dye.
-The high background signal means the screen would not be effective at finding compounds that inhibit the cyclin A-CDK2 interaction, so the compounds were not put through the TR-FRET screen.
+The high background signal means the screen would not be effective at finding compounds that inhibit the cyclin A2-CDK2 interaction, so the compounds were not put through the TR-FRET screen.
 
 \begin{figure}
 \centering
@@ -367,21 +366,21 @@ Light is shone at the excitation wavelength of the donor fluorophore.
 This emits at the excitation wavelength of the acceptor fluorophore.
 After a delay to allow background emission to recede, emission from the acceptor fluorophore is measured.
 (B) If a modulator prevents the proteins interacting, emission from the donor to the acceptor fluorophore is not possible and there is no signal.
-After difficulty purifying cyclin A-GST, the strategy was switched so cyclin A-His binds the Eu antibody and CDK2 is labelled with the dye.
+After difficulty purifying cyclin A2-GST, the strategy was switched so cyclin A2-His binds the Eu antibody and CDK2 is labelled with the dye.
 % NHS-ester reaction as below?
 % https://www.thermofisher.com/uk/en/home/life-science/protein-biology/protein-biology-learning-center/protein-biology-resource-library/pierce-protein-methods/amine-reactive-crosslinker-chemistry.html
 (C) Results of a CDK2 titration TR-FRET assay.
-The TR-FRET signal is shown for two repeats using cyclin A-His, and for the control cyclin A-GST which did not show the expected behaviour of a flat signal.}
+The TR-FRET signal is shown for two repeats using cyclin A2-His, and for the control cyclin A2-GST which did not show the expected behaviour of a flat signal.}
 
 \end{figure}
 
 
 \subsection{Binding assay}
 
-A binding assay was carried out to test whether the compounds could inhibit the CDK2-cyclin A interaction.
-Cyclin A-His and CDK2 were incubated with beads that selectively bind the His tag.
-After washing the beads to remove unbound protein only cyclin A and proteins bound to it should remain.
-In the absence of a PPI inhibitor a signal for CDK2 would be expected in immunoblotting as CDK2 binds to cyclin A.
+A binding assay was carried out to test whether the compounds could inhibit the CDK2-cyclin A2 interaction.
+Cyclin A2-His and CDK2 were incubated with beads that selectively bind the His tag.
+After washing the beads to remove unbound protein only cyclin A2 and proteins bound to it should remain.
+In the absence of a PPI inhibitor a signal for CDK2 would be expected in immunoblotting as CDK2 binds to cyclin A2.
 This signal would be expected to disappear in the presence of a modulator that prevented the interaction.
 
 The binding assay results can be seen in Figure~\ref{fig:binding_assay} for the 12 compounds it was carried out on.
@@ -403,7 +402,7 @@ As the expected background is high the solubility issues are likely the cause of
 {(A) Binding assay results for the 12 compounds tested.
 The five bands represent increasing compound concentrations from left to right: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
 The strength of the band represents the presence of CDK2.
-The background signal, in the absence of cyclin A, is also shown.
+The background signal, in the absence of cyclin A2, is also shown.
 This shows non-specific binding of CDK2 to the beads and indicates that a signal in the assay would be hard to distinguish from the background.}
 
 \label{fig:binding_assay}
@@ -413,12 +412,11 @@ This shows non-specific binding of CDK2 to the beads and indicates that a signal
 \section{Discussion}
 \label{sec:cdk2_discussion}
 
-% Difficulty of purifying cyclin A, due to flexible structure?, also GST may affect folding, ref to lack of crystal structure for certain region (run Disopred to check disorder?).
-The difficulty of purifying cyclin A is likely due to the propensity of the protein to aggregate.
-As shown in Figure~\ref{fig:cdk2_structure}B the crystal structure of the CDK2-cyclin A complex has only been found for part of the structure.
-% Link difficulty to purify and crystallise
-% Cyclin A alone has not been crystallised??
-The presence of the GST tag made cyclin A purification considerably more difficult than the His tag.
+The difficulty of purifying cyclin A2 is likely due to the propensity of the protein to aggregate, possibly due to the large flexibility and a lack of stability in the absence of the binding partner.
+As shown in Figure~\ref{fig:cdk2_structure}B the crystal structure of the CDK2-cyclin A2 complex has only been found for part of the cyclin A2 structure \cite{Jeffrey1995}.
+In addition the full length of human cyclin A2 has not been crystallised in the absence of CDK2, with only the fragment corresponding to residues 171-432 in bovine cyclin A having a structure \cite{Brown1995}.
+This is likely due to reasons related to the difficulties to purify.
+The presence of the GST tag made cyclin A2 purification considerably more difficult than the His tag.
 This could be due to the large GST segment causing problems with folding leading to aggregation in the fusion protein.
 % Check the paper, was it hard to crystallise?
 
@@ -430,11 +428,11 @@ Other tests that could be carried out include:
 \item X-ray crystallography: hit compounds in other screens could be incubated with CDK2 and an attempt could be made at obtaining a crystal.
 If successful this would indicate where the compound binds on CDK2 and show conformational changes due to binding.
 It would also facilitate further computational studies on the new structure.
-\item Anti-proliferation assay: adding a compound to cancer cells should stop cell proliferation if the compound completely inhibits CDK2-cyclin A interaction.
-This assay does not indicate that the compound is specific to the CDK2-cyclin A interaction however, as any effect that prevents proliferation will appear in the assay.
-\item Kinase assay: cyclin A is required for the activation, and hence kinase activity, of CDK2 \cite{Jeffrey1995}.
-Assays that measure the kinase activity in the presence of the compounds indicate whether they are able to prevent CDK2 activation by cyclin A.
-% Check cyclin A/E differences
+\item Anti-proliferation assay: adding a compound to cancer cells should stop cell proliferation if the compound completely inhibits CDK2-cyclin A2 interaction.
+This assay does not indicate that the compound is specific to the CDK2-cyclin A2 interaction however, as any effect that prevents proliferation will appear in the assay.
+\item Kinase assay: cyclin A2 is required for the activation, and hence kinase activity, of CDK2 \cite{Jeffrey1995}.
+Assays that measure the kinase activity in the presence of the compounds indicate whether they are able to prevent CDK2 activation by cyclin A2.
+% Check cyclin A2/E differences
 \item Mutagenesis: a mutation in the putative binding site of a compound will likely disrupt binding.
 If inhibition occurs for the wild-type CDK2 but not for a mutant with a mutation, this gives evidence that the mutation site is the binding site.
 % Or disrupts communication
@@ -447,8 +445,8 @@ The change in mass on the surface due to complex formation leads to a change in 
 SPR is a commonly-used tool to probe binding and would be suitable for the case of CDK2.
 \item Cyclin E: Another cyclin that binds to CDK2 is cyclin E.
 % , which controls...\cite{}. % Cite cyclin E crystal paper?
-Carrying out the above experiments with cyclin E rather than cyclin A would give an idea of the specificity of allosteric modulation of the interaction of CDK2 with cyclins.
-Knowledge of the different structures of cyclin A and E may also help elucidate the allosteric mechanism.
+Carrying out the above experiments with cyclin E rather than cyclin A2 would give an idea of the specificity of allosteric modulation of the interaction of CDK2 with cyclins.
+Knowledge of the different structures of cyclin A2 and E may also help elucidate the allosteric mechanism.
 \item Bovine cyclin A: Bovine cyclin A purifies readily \cite{} and this would provide an alternative source to the human protein.
 
 \end{itemize}
