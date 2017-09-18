@@ -11,6 +11,8 @@ pdflatex thesis.tex
 
 ## Issues
 
+- Reagents list
+- Address why AlloPred and ExProSE are validated with different methods
 - CDK2 exp concs and names: cycA res numbers, WB antobody conc
 - Ensemble NMR intro refs
 - Remove multicolumn table tags
@@ -27,7 +29,7 @@ pdflatex thesis.tex
 - Check page numbering, contents, list of figure etc
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size; also consistent text font/size and general consistency
-- Check latex log for errors
+- Check latex log for errors - search Warning
 - Keep COSB review and intro/conc/ref updates up to date
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
 - How to refer to other sections - use labels, check throughout

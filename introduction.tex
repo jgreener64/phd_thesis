@@ -88,7 +88,7 @@ The active site and allosteric site are coloured purple and green respectively.}
 \subsection{Computational methods for allosteric prediction}
 
 The last few years have seen the emergence of the first general methods that predict allostery based on protein structure.
-Table~\ref{tab:allosteric_methods} summarises these methods, many of which are available as web servers.
+Table~\ref{tab:prediction_methods} summarises these methods, many of which are available as web servers.
 
 
 \begin{sidewaystable}
@@ -118,7 +118,7 @@ STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical re
 The work presented in this thesis (AlloPred and ExProSE) is included.
 In addition there are various pocket prediction methods that aim to predict binding pockets on proteins, but not specifically allosteric pockets \cite{Huang2006, LeGuilloux2009, Cimermancic2016}.}
 
-\label{tab:allosteric_methods}
+\label{tab:prediction_methods}
 \end{sidewaystable}
 
 
@@ -388,7 +388,7 @@ This is the main motivation for developing an ensemble generation method in this
 \label{sec:introduction_kinases}
 
 Protein kinases modify other proteins by chemically adding phosphate groups to them (phosphorylation).
-This leads to a functional change due to a change in enzyme activity, cellular location or protein-protein interactions.
+This leads to a functional change due to an alteration in enzyme activity, cellular location or protein-protein interactions.
 Protein kinases regulate almost all aspects of cellular physiology, from proliferation and generation of biomass to gene expression and protein production \cite{Manning2002}.
 The human genome contains around 500 protein kinase genes ($\sim$2\% of all human genes) and up to 30\% of human proteins are modified by kinase activity.
 In addition to medical benefits, regulation of kinase activity in mammalian cells is important in industrial production of biomolecules of high value, for example to prevent apoptosis and maximise yield.
@@ -408,8 +408,8 @@ Despite locating the allosteric binding site, the mechanism for inhibition is no
 Study of the tyrosine-protein kinase Abl1 has revealed an inhibitor that binds far from the ATP-binding site \cite{Zhang2010, Yang2011}.
 Binding of the modulator leads to changes in structural dynamics at the ATP-binding site, preventing the binding of ATP and leading to inhibition.
 
-Other targets for which allosteric modulators have been discovered include the MAP kinases \cite{Comess2011} and CDK2 \cite{Betzi2011}.
-Modulators such as these that bind protein kinases at sites removed from the ATP-binding site are known as type IV inhibitors.
+Other targets for which allosteric modulators have been discovered include the MAP kinases \cite{Comess2011} and CDK2 \cite{Betzi2011} - see Section~\ref{sec:introduction_cdk2}.
+Modulators such as these that bind protein kinases at sites separate from the ATP-binding site are known as type IV inhibitors.
 The binding sites of the above type IV inhibitors, along with others, are shown on the conserved protein kinase structure in Figure~\ref{fig:kinase_mods}.
 Type I inhibitors are directly-competitive with ATP as they target the active conformation.
 Type II inhibitors bind to the DFG-out conformation and occupy the ATP-binding site and the surrounding hydrophobic region.
@@ -430,7 +430,7 @@ The recent discovery of such sites and the conserved architecture of the eukaryo
 \caption[Binding sites of known type IV allosteric inhibitors of protein kinases]
 {Binding sites of known type IV allosteric inhibitors are shown in purple on the cAMP-dependent protein kinase (PKA) structure (PDB ID 1ATP).
 The ATP-binding site is shown in yellow.
-Figure based on Lamba and Ghosh (2012) \cite{Lamba2012}.}
+Figure based on Figure~3 from Lamba and Ghosh 2012 \cite{Lamba2012}.}
 
 \label{fig:kinase_mods}
 \end{figure}
@@ -452,7 +452,7 @@ See Figure~\ref{fig:cdk2_intro} for an overview of the structure of CDK2.
 While the crystallisation of CDK2 is relatively routine, one of the difficulties in studying the CDK2-cyclin A2 interaction is the difficulty of purifying soluble cyclin A2 in the absence of the CDK2 binding partner \cite{Grigoroudis2015}.
 The mechanism of activation of CDK2 by cyclin A2 has been elucidated \cite{Jeffrey1995, Russo1996, Morris2002}.
 Changes in the \textalpha C-helix on cyclin A2 binding realign active site residues, and the T-loop moves which reveals the active site and makes activation phosphorylation easier.
-The \textalpha C-helix is essential for proper formation of the active CDK2-cyclin complex and its displacement is implicit in allosteric modulation of various kinases \cite{Palmieri2013}.
+The \textalpha C-helix is an essential part of the CDK2-cyclin interface and its displacement is implicit in allosteric modulation of various kinases \cite{Palmieri2013}.
 Computational studies have indicated a large degree of flexibility in CDK2 \cite{Pisani2016, Gu2007}.
 
 
@@ -472,8 +472,8 @@ Figure based on Figure~1 from Pisani et al.\ 2016 \cite{Pisani2016}.}
 \end{figure}
 
 
-No CDK2 inhibitors are currently approved for clinical use.
 Only two inhibitors have been approved by the US Food and Drug Administration targeting the CDK family of proteins - ribociclib and palbociclib, CDK4/6 inhibitors used in the treatment of breast cancer \cite{Hortobagyi2016}.
+No CDK2 inhibitors are currently approved for clinical use.
 This is at least in part due to the high conservation of the ATP-binding site among protein kinases, making a discovery of a specific CDK2 inhibitor that targets this site challenging - see Section~\ref{sec:introduction_kinases}.
 Several compounds are in clinical trials, but most of them target multiple CDKs.
 
@@ -484,7 +484,7 @@ Another study used virtual screening to find compounds that disrupt the interact
 Small peptides are also able to break the CDK2-cyclin E1 interface \cite{Chen2014}.
 % Describe what A3 and E1 are?
 A large scale screen of compounds against CDK2 found a family of compounds that hinder T-loop dynamics and hence could be used as allosteric modulators \cite{Pellerano2017}.
-% Move anything else from cdk2 chapter here?
+It is hoped that one of these approaches will lead to a viable drug.
 
 
 \section{Aims}
@@ -505,4 +505,4 @@ During the process of development and testing of the above approaches the first 
 The difficulty of distinguishing allosteric pockets from cavities with generally good binding properties is established and quantified by assessing the ability of generic pocket predictors to predict allosteric pockets.
 The variety of allosteric mechanisms \cite{Motlagh2014} and the problems this poses for generic prediction methods is a common theme of the work.
 The strength and limitations of NMA and MD methods for studying large conformational changes and allosteric mechanisms is discussed.
-Ultimately, we give evidence for the view that allostery is a property of the protein structural ensemble, and only by taking account of this can we move towards a unified scheme for understanding and predicting allostery.
+Ultimately, we give evidence for the view that allostery is a property of the protein structural ensemble, and only by taking this into account can we move towards a unified scheme for understanding and predicting allostery.
