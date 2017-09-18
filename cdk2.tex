@@ -47,8 +47,7 @@ Various conditions for growth were tried.
 The final conditions used for His-tagged cyclin A2 were growth of cultures at 37$^{\circ}$C until optical density in auto-induction media, then incubation at 18$^{\circ}$C for 40 hours.
 Cells were harvested by centrifugation (10 min at 5,000 rpm).
 Harvested cells were resuspended in lysis buffer with 0.5 mg ml$^{-1}$ lysozyme.
-After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Sepharose beads for 1 hour.
-% Sepharose name?
+After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Ni Sepharose Fast Flow beads for 1 hour.
 After washing the beads, cyclin A2 was eluted with imidazole and stored at -20$^{\circ}$C in 50\% glycerol.
 % Amounts and concentration produced?
 
@@ -71,8 +70,7 @@ The plate was incubated for 1 hour and centrifuged at 800 rpm before being read 
 % More specific - immunoblotting assay?
 
 Wild-type CDK2 was previously prepared by other members of the lab.
-His-tagged cyclin A2 (75 nM) was incubated on Sepharose fast flow beads in buffer X with 12\% DMSO.
-% Sepharose?
+His-tagged cyclin A2 (75 nM) was incubated on Ni Sepharose Fast Flow beads in buffer X with 12\% DMSO.
 CDK2 was added (8 nM) along with compounds in 5 concentrations: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
 After incubation for 1 hour the beads were washed with buffer X and heated in gel-loading dye at 100$^{\circ}$C for 10 minutes to release bound protein.
 The proteins in the supernatant were separated by SDS-PAGE and transferred to a nitrocellulose membrane by electroblotting in transfer buffer for 1 hour at 100 V.
@@ -412,13 +410,13 @@ This shows non-specific binding of CDK2 to the beads and indicates that a signal
 \section{Discussion}
 \label{sec:cdk2_discussion}
 
-The difficulty of purifying cyclin A2 is likely due to the propensity of the protein to aggregate, possibly due to the large flexibility and a lack of stability in the absence of the binding partner.
+The difficulty of purifying cyclin A2 is likely due to the propensity of the protein to aggregate.
+This is likely due to large flexibility, a lack of stability in the absence of the binding partner and a partially folded state during expression \cite{Grigoroudis2015}.
 As shown in Figure~\ref{fig:cdk2_structure}B the crystal structure of the CDK2-cyclin A2 complex has only been found for part of the cyclin A2 structure \cite{Jeffrey1995}.
 In addition the full length of human cyclin A2 has not been crystallised in the absence of CDK2, with only the fragment corresponding to residues 171-432 in bovine cyclin A having a structure \cite{Brown1995}.
 This is likely due to reasons related to the difficulties to purify.
 The presence of the GST tag made cyclin A2 purification considerably more difficult than the His tag.
 This could be due to the large GST segment causing problems with folding leading to aggregation in the fusion protein.
-% Check the paper, was it hard to crystallise?
 
 Though time constraints meant that no more experiments could be carried out, there are a number of other tests that could be done to probe the allostery at the pocket of interest.
 Primarily this would involve further work on the TR-FRET and binding assays to reduce background signal and allow the compounds to be screened.
@@ -432,22 +430,20 @@ It would also facilitate further computational studies on the new structure.
 This assay does not indicate that the compound is specific to the CDK2-cyclin A2 interaction however, as any effect that prevents proliferation will appear in the assay.
 \item Kinase assay: cyclin A2 is required for the activation, and hence kinase activity, of CDK2 \cite{Jeffrey1995}.
 Assays that measure the kinase activity in the presence of the compounds indicate whether they are able to prevent CDK2 activation by cyclin A2.
-% Check cyclin A2/E differences
 \item Mutagenesis: a mutation in the putative binding site of a compound will likely disrupt binding.
-If inhibition occurs for the wild-type CDK2 but not for a mutant with a mutation, this gives evidence that the mutation site is the binding site.
-% Or disrupts communication
+If inhibition occurs for the wild-type CDK2 but not for a mutant with a mutation, this gives evidence that the mutation site is the binding site or part of a crucial allosteric communication pathway.
 This assumes that the mutation has no other effect on the structure, such as destabilisation.
 However, the effectiveness of mutagenesis studies to explore allostery has been questioned \cite{Tang2017}.
-\item Thermal shift assay: circular dichroism can be used to measure the unfolding of a protein by observing changes in plane-polarised light. % near/far?
+\item Thermal shift assay: circular dichroism can be used to measure the unfolding of a protein by observing changes in plane-polarised light.
 If a compound bound to CDK2 it may change the temperature at which the protein unfolds.
+This assay is comparatively quick and easy but provides limited information.
 \item Surface plasmon resonance (SPR): One binding partner is immobilised on a surface and the other partner is flowed across it.
 The change in mass on the surface due to complex formation leads to a change in the refractive index of the solvent, which can be measured in real time.
 SPR is a commonly-used tool to probe binding and would be suitable for the case of CDK2.
-\item Cyclin E: Another cyclin that binds to CDK2 is cyclin E.
-% , which controls...\cite{}. % Cite cyclin E crystal paper?
-Carrying out the above experiments with cyclin E rather than cyclin A2 would give an idea of the specificity of allosteric modulation of the interaction of CDK2 with cyclins.
-Knowledge of the different structures of cyclin A2 and E may also help elucidate the allosteric mechanism.
-\item Bovine cyclin A: Bovine cyclin A purifies readily \cite{} and this would provide an alternative source to the human protein.
+\item Cyclin E1: Another cyclin that binds to CDK2 is cyclin E1.
+Carrying out the above experiments with cyclin E1 rather than cyclin A2 would give an idea of the specificity of allosteric modulation of the interaction of CDK2 with cyclins.
+Use of the different structures of cyclin A2 and cyclin E1 in complex with CDK2 may also help elucidate the allosteric mechanism \cite{Honda2005}.
+\item Bovine cyclin A: Bovine cyclin A purifies more readily than the human protein \cite{Jeffrey1995} and this would provide an alternative source to the human protein.
 
 \end{itemize}
 

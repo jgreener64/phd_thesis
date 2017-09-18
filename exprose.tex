@@ -737,7 +737,7 @@ The median of the overall G-factor of each structure after energy minimisation w
 \subsection{Ensemble perturbation for CDK2}
 
 Here, we demonstrate that ExProSE ensembles can be perturbed to reveal modulating sites.
-CDK2 is a protein kinase essential for the G1/S phase transition in the cell cycle - see (section ref).
+CDK2 is a protein kinase important in cell cycle progression - see Section~\ref{sec:introduction_cdk2}.
 An ExProSE ensemble was generated using the apo native structure (PDB ID 1HCL) and the holo structure bound to two ANS molecules in an allosteric site (PDB ID 3PXF).
 The ANS-bound structure is inactive, as ANS binding causes a conformational shift in the \textalpha C-helix that prevents cyclin binding \cite{Betzi2011}.
 A further screening study has found potential modulators for the ANS binding site \cite{Rastelli2014}.
@@ -1057,6 +1057,7 @@ This makes the method unsuitable for use on proteins where only one structure, o
 However, many medically-important proteins have multiple structures available, including the examples used in this study.
 In these cases, it makes sense to use the additional structural information.
 There are some methods which can predict holo structures from an apo input structure or vice versa \cite{Seeliger2010, Grove2013, Kidd2009} and these could be used to generate apo/holo pairs.
+The pE-DB database of structural ensembles of IDPs could also provide a source of structural data \cite{Varadi2014}.
 The method also was successful at reproducing the allostery in CAP using only one structure as input.
 For proteins with multiple different conformational states, more than two structures could be used as input to ExProSE to explore further regions of conformational space - the constraint combination procedure can be applied to an arbitrary number of structures.
 

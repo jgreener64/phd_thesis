@@ -11,8 +11,7 @@ pdflatex thesis.tex
 
 ## Issues
 
-- CDK2 exp concs and names: cycA res numbers, Sepharose, WB antobody conc
-- CDK2 discussion
+- CDK2 exp concs and names: cycA res numbers, WB antobody conc
 - Ensemble NMR intro refs
 - Remove multicolumn table tags
 - Intro maybe a bit short? Review of MD limitations? More on allostery basics? More on CONCOORD?
