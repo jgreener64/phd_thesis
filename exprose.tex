@@ -1,7 +1,7 @@
 \chapter{ExProSE}
 \label{cha:exprose}
 
-This chapter describes Exploration of Protein Structural Ensembles (ExProSE), a computational method based on distance geometry that generates an ensemble of protein structures from two input structures.
+This chapter describes ExProSE (Exploration of Protein Structural Ensembles), a computational method based on distance geometry that generates an ensemble of protein structures from two input structures.
 The structures span conformational space and the ensemble generation procedure can be perturbed to predict allosteric sites.
 The first systematic comparison of methods to predict allosteric sites is also described.
 The work is further described in Greener et al.\ 2017 \cite{Greener2017}, on which this chapter is based.
@@ -127,7 +127,7 @@ When the ensemble generated has an $F$ value of at least 0.9, that $W_{B}$ is ch
 For the specific examples T4-lysozyme and CDK2, $W_{B}$ is equal to 0.2 and 0.3 respectively.
 % NtrC?
 It should be noted that the above auto-parameterisation procedure to select $W_{B}$ can be implemented automatically by the ExProSE software and requires no input by the user.
-For CAP only one input structure is used so $W_{B}$ is selected manually as 0.4.
+For catabolite activator protein (CAP) only one input structure is used so $W_{B}$ is selected manually as 0.4.
 This value allows flexibility in the ensemble whilst giving good quality structures.
 
 
@@ -227,7 +227,7 @@ This aligns the ensemble without the use of a reference structure as follows:
 
 The average structure of the ensemble is taken as the centroid of the coordinates across the ensemble following this superimposition.
 
-PCA is carried out on the generated ensemble.
+Principal components analysis (PCA) is carried out on the generated ensemble.
 The coordinates across the ensemble are compared to the average coordinates and a set of orthogonal motions are found that describe the variation in the ensemble.
 The covariance matrix $C_{ij}$ is a matrix where $i$ and $j$ represent the indices of the $3 N_{C}$ atomic coordinates of the $N_{C}$ C\textsuperscript{\textalpha} atoms.
 $C_{ij}$ is calculated as
@@ -235,7 +235,7 @@ $$
 C_{ij} = \langle (x_{i} - \langle x_{i} \rangle) \cdot (x_{j} - \langle x_{j} \rangle) \rangle
 $$
 where the averages in angle brackets are over the ensemble and $x$ represents the atomic coordinates.
-$C$ is then diagonalised to yield the PCs.
+$C$ is then diagonalised to yield the principal components (PCs).
 The mean square fluctuation of each C\textsuperscript{\textalpha} atom in the structure is also calculated, giving a measure of how much the location of each atom varied across the ensemble.
 
 PROCHECK checks the stereochemical quality of protein structures \cite{Laskowski1993}.
@@ -557,8 +557,8 @@ The pairwise RMSDs of the crystals range from 0.64 \AA\ to 4.25 \AA.
 
 An ensemble was generated using ExProSE from the open (PDB ID 169L, chain E) and closed (PDB ID 2LZM) conformations.
 Four random structures from this ensemble are shown compared to the open and closed crystal structures in Figure~\ref{fig:t4l}A.
-Principal components analysis (PCA) can be carried out on an ensemble of structures to find the orthogonal motions that describe the variation in the ensemble.
-Figure~\ref{fig:t4l}B shows the projections of the generated ensemble and the 38 crystal structures used in a prior study \cite{DeGroot1998} onto the first and second principal components (PCs), which account for 70\% and 12\% of the motion respectively.
+PCA can be carried out on an ensemble of structures to find the orthogonal motions that describe the variation in the ensemble.
+Figure~\ref{fig:t4l}B shows the projections of the generated ensemble and the 38 crystal structures used in a prior study \cite{DeGroot1998} onto the first and second PCs, which account for 70\% and 12\% of the motion respectively.
 The dominant first eigenvector corresponds to opening and closing of the structure.
 It can be seen that the method is able to sample conformations corresponding to experimentally-observed structures, as the ensembles largely overlap.
 
@@ -748,15 +748,13 @@ In brief, additional constraints are added representing a modulator bound in the
 Projections of the structures of the unperturbed ensemble and the structures of the ensemble with perturbation at the pocket centre are shown in Figure~\ref{fig:cdk}B, one graph per pocket centre.
 The third PC was chosen for visualisation instead of the second as it represents the inactivating motion of the \textalpha C-helix, whereas the second PC represents a rotation in the region of the protein considered to be functionally less important, the C-lobe.
 
-% This should link to later
-Site 1 in Figure~\ref{fig:cdk}A and \ref{fig:cdk}B is the ANS allosteric pocket.
+Site 1 in Figure~\ref{fig:cdk}A and \ref{fig:cdk}B is the known allosteric pocket.
 Simulating a modulator there shifts the ensemble towards the inactive state, agreeing with previous experimental data \cite{Betzi2011}.
 Site 2 is the ATP-binding site and there is no change in the ensemble by simulating a modulator there.
 This is encouraging as ATP binding does not cause structural changes that lead to cyclin dissociation.
 Site 3 is found in a pocket near the activation segment.
 A shift in the ensemble towards the inactive state is seen on perturbation at this site.
 In fact this site is close to a potential allosteric site suggested in another computational study \cite{Pitt2014}, and is part of the region associated with cyclin binding.
-% Link to intro here
 This indicates that the site could potentially be an allosteric site, though further effort would be required to determine whether it is druggable.
 See Chapter~\ref{cha:cdk2} for further studies on this site.
 Simulating modulators at sites 4 to 8 does not shift the ensemble, suggesting that binding at these sites is unable to cause an allosteric effect.
@@ -882,7 +880,7 @@ STRESS could not run on 4 proteins as they were too small.}
 \multicolumn{1}{r}{Acetyl-CoA carboxylase} & \multicolumn{1}{l}{1W93} & \multicolumn{1}{l}{1W96} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 549   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
 \multicolumn{1}{r}{Hypothetical biotin--[acetyl-CoA-carboxylase] ligase} & \multicolumn{1}{l}{1WQ7} & \multicolumn{1}{l}{2DVE} & \multicolumn{1}{l}{AB} & \multicolumn{1}{l}{AB} & 456   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
 \multicolumn{1}{r}{Putative uncharacterized protein PH0207} & \multicolumn{1}{l}{1X0M} & \multicolumn{1}{l}{3ATH} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 403   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
-\multicolumn{1}{r}{Integrin alpha-L} & \multicolumn{1}{l}{1ZON} & \multicolumn{1}{l}{1RD4} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 181   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  1,  0}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
+\multicolumn{1}{r}{Integrin \textalpha -L} & \multicolumn{1}{l}{1ZON} & \multicolumn{1}{l}{1RD4} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 181   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  1,  0}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
 \multicolumn{1}{r}{Pyruvate dehydrogenase kinase isoform 2} & \multicolumn{1}{l}{2BTZ} & \multicolumn{1}{l}{2BU2} & \multicolumn{1}{l}{2 x A} & \multicolumn{1}{l}{2 x A} & 708   & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
 \multicolumn{1}{r}{Farnesyl pyrophosphate synthase} & \multicolumn{1}{l}{2F7M} & \multicolumn{1}{l}{3N45} & \multicolumn{1}{l}{2 x F} & \multicolumn{1}{l}{2 x F} & 682   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
 \multicolumn{1}{r}{Fructose-1,6-bisphosphatase} & \multicolumn{1}{l}{2FBP} & \multicolumn{1}{l}{1Q9D} & \multicolumn{1}{l}{AB} & \multicolumn{1}{l}{AB} & 630   & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
@@ -901,7 +899,7 @@ STRESS could not run on 4 proteins as they were too small.}
 \multicolumn{1}{r}{Glutamate receptor ionotropic, NMDA 2B} & \multicolumn{1}{l}{3JPW} & \multicolumn{1}{l}{3QEL} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{B} & 349   & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
 \multicolumn{1}{r}{Global nitrogen regulator} & \multicolumn{1}{l}{3LA7} & \multicolumn{1}{l}{3LA3} & \multicolumn{1}{l}{AB} & \multicolumn{1}{l}{AB} & 382   & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
 \multicolumn{1}{r}{Genome polyprotein} & \multicolumn{1}{l}{3MWV} & \multicolumn{1}{l}{4JTZ} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 559   & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
-\multicolumn{1}{r}{Beta-lactamase SHV-1} & \multicolumn{1}{l}{3N4I} & \multicolumn{1}{l}{1VM1} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 265   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
+\multicolumn{1}{r}{\textbeta -lactamase SHV-1} & \multicolumn{1}{l}{3N4I} & \multicolumn{1}{l}{1VM1} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 265   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
 \multicolumn{1}{r}{DNA double-strand break repair Rad50 ATPase} & \multicolumn{1}{l}{3QG5} & \multicolumn{1}{l}{3THO} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 349   & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
 \multicolumn{1}{r}{N-acetylglutamate kinase / N-acetylglutamate synthase} & \multicolumn{1}{l}{3S7Y} & \multicolumn{1}{l}{4KZT} & \multicolumn{1}{l}{AX} & \multicolumn{1}{l}{AX} & 862   & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ 1,  .494,  .475}  \\
 \multicolumn{1}{r}{Leucine transporter} & \multicolumn{1}{l}{3TU0} & \multicolumn{1}{l}{2QEI} & \multicolumn{1}{l}{A} & \multicolumn{1}{l}{A} & 509   & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ 1,  .494,  .475}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  & \cellcolor[rgb]{ .573,  .816,  .314}  \\
