@@ -225,6 +225,12 @@ Features of the package include fast PDB parsing, easy access to structural elem
 The structure of the type heirarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
 Examples of basic use cases for Bio.Structure are shown in Figure~\ref{fig:biojulia_example}.
 
+As part of the development of Bio.Structure information was collected on existing packages with similar functionality.
+These comparisons are shown in Table~\ref{tab:package_comparison}.
+The results of each package running various benchmarks are shown in Figure~\ref{fig:pdb_benchmarks}.
+Bio.Structure is able to read in PDB file 1CRN in 1.4 ms (after just-in-time compilation) on average.
+This is faster than any other package tested.
+
 
 \begin{figure}
 \centering
@@ -256,13 +262,6 @@ Cases shown are importing the module, reading in a PDB file, accessing residues 
 
 \label{fig:biojulia_example}
 \end{figure}
-
-
-As part of the development of Bio.Structure information was collected on existing packages with similar functionality.
-These comparisons are shown in Table~\ref{tab:package_comparison}.
-The results of each package running various benchmarks are shown in Figure~\ref{fig:pdb_benchmarks}.
-Bio.Structure is able to read in PDB file 1CRN in 1.4 ms (after just-in-time compilation) on average.
-This is faster than any other package tested.
 
 
 \begin{sidewaystable}

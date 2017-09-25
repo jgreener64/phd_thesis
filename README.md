@@ -5,7 +5,7 @@ In-silico guided prediction of allosteric sites on proteins: application to cycl
 Joe G Greener
 
 Build instructions:
-```
+```bash
 pdflatex thesis.tex
 bibtex thesis
 pdflatex thesis.tex
@@ -15,6 +15,7 @@ pdflatex thesis.tex
 
 ## TODO
 
+- Acknowledge PRP?
 - Reagents list
 - Address why AlloPred and ExProSE are validated with different methods
 - CDK2 exp concs and names: cycA res numbers, WB antobody conc

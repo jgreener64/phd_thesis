@@ -57,6 +57,10 @@
 \let\oldsection\section
 \renewcommand\section{\clearpage\oldsection}
 
+% Margin resize for certain regions
+\def\changemargin#1{\list{}{\rightmargin-#1\leftmargin-#1}\item[]}
+\let\endchangemargin=\endlist
+
 % Monospaced code blocks
 \usepackage{listings}
 \usepackage{color}
