@@ -125,9 +125,9 @@ $F$ equal to 0.9 indicates an ensemble that effectively covers the conformationa
 Ensembles of 50 structures are generated with $W_{B}$ starting at 1.0 and decreasing in steps of 0.1.
 When the ensemble generated has an $F$ value of at least 0.9, that $W_{B}$ is chosen.
 For the specific examples T4-lysozyme and CDK2, $W_{B}$ is equal to 0.2 and 0.3 respectively.
-% NtrC?
 It should be noted that the above auto-parameterisation procedure to select $W_{B}$ can be implemented automatically by the ExProSE software and requires no input by the user.
 For catabolite activator protein (CAP) only one input structure is used so $W_{B}$ is selected manually as 0.4.
+% NtrC
 This value allows flexibility in the ensemble whilst giving good quality structures.
 
 
@@ -210,7 +210,6 @@ The movements are dampened over time to allow the system to converge to a soluti
 This procedure is carried out separately multiple times to obtain an ensemble.
 The structures are different from an MD ensemble.
 They are not a trajectory where each structure is a snapshot in time; instead, each structure is produced independently from the others.
-% Beware repetition from elsewhere
 
 
 \subsection{Ensemble analysis}
@@ -259,7 +258,6 @@ For CAP a different procedure was used as the location of the bound cAMP molecul
 In this case 120 fake points are added at 1.2 \AA\ gaps in a ball around the location of the C1' atom in cAMP, while the cAMP molecules are themselves omitted from the simulation.
 Selected points have distance constraints of tolerance 0.1 \AA\ with all protein atoms within 7 \AA.
 A similar procedure to CAP is carried out for NtrC, with the oxygen to which the phosphate binds (OD1 on ASP54) taken as the centre.
-% Was the NtrC phosphate omitted?
 
 In the allosteric prediction procedure ensembles are generated with additional constraints (termed `perturbation') at selected pockets in turn, then compared to the original `unperturbed' ensemble.
 Each pocket greater than a size cutoff of 13 \AA\textsuperscript{3} is selected, up to a maximum of 8 pockets per protein.
@@ -351,8 +349,7 @@ The performance-critical step in Julia showed speed around 1.5 times slower than
 \section{Results}
 \label{sec:exprose_results}
 
-The motivation for developing ExProSE was to explore allostery in the framework of the protein structural ensemble.
-% Ref to intro diagram
+The motivation for developing ExProSE was to explore allostery in the framework of the protein structural ensemble - see Figure~\ref{fig:allostery}.
 A method was needed that could use existing structural information to generate ensembles that spanned the large conformational changes relevant in allostery.
 We decided to develop the popular existing method CONCOORD and its extension tCONCOORD.
 CONCOORD converts a protein structure to a series of distance constraints based on chemical interactions (e.g.\ hydrogen bonds) then uses an iterative procedure to move randomly-placed atoms to satisfy the distance constraints.
@@ -386,16 +383,6 @@ Figure based on Graphical Abstract from Greener et al.\ 2017 \cite{Greener2017}.
 
 
 \subsection{Ensemble generation}
-
-%\subsubsection{Adenylate kinase}
-
-%Adenylate kinase is... hinge opening...
-%Importance of parameterisation and how this can be a problem with existing methods/MD.
-%SPE score minimisation over time.
-%Important parameter in ExProSE.
-%Desire to control it.
-%Fig shows ensemble spread with different parameters and set chosen by auto-parameterisation.
-%This method used throughout.
 
 Before describing ExProSE results it is instructive to examine the convergence of the structural generation simulations.
 The SPE error score is a measure of how many distance constraints are violated (see Methods section).
@@ -922,7 +909,6 @@ STRESS could not run on 4 proteins as they were too small.}
 \hline
 \end{tabular}
 \end{scriptsize}
-% Remove multicolumn here and sort l/r
 
 \caption[Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins - detail]
 {Caption on following page.}
@@ -946,7 +932,6 @@ STRESS could not run on 4 proteins as they were too small - this is indicated by
 
 
 \subsection{Dynamic allostery in CAP}
-% is Rodgers 2013 relevant here too?
 
 Catabolite activator protein (CAP) is a transcriptional activator that exists as a homodimer.
 Each subunit has a ligand-binding domain at the N-terminus and a DNA-binding domain at the C-terminus.
@@ -1015,8 +1000,6 @@ This supports the conformational selection hypothesis outlined in \cite{Volkman2
 It also indicates that conformational variability as displayed in ExProSE is linked to the micro/millisecond timescale dynamics of the system.
 This indicates why ExProSE is effective as an allosteric prediction tool as the motions relevant to allostery are often on these timescales, which are usually inaccessible to MD studies.
 These results also show that ExProSE can be used to study covalent modifications (here, phosphorylation) as well as the small molecule non-covalent interactions explored previously.
-% Section ref
-% Is there anything more recent in the literature relevant for NtrC?
 
 
 \begin{figure}
@@ -1081,13 +1064,11 @@ In intial tests of this approach, the known transient allosteric site on TEM-1 \
 Methods for predicting pockets on an ensemble of protein structures, such as MDpocket \cite{Schmidtke2011} or the method in Polyphony \cite{Pitt2014}, could also be run on ensembles generated using ExProSE.
 
 The results from ExProSE have implications for the conformational selection/induced fit debate \cite{Boehr2009}.
-The principle of ExProSE is based on the conformational selection paradigm - an existing ensemble is perturbed by an effector to change the populations, as shown in Figure~intro fig.
-% Is this really true?
-This suggests that cases for which ExProSE is successful adopt a conformational selection mechanism.
+The principle of ExProSE is based on the conformational selection paradigm - an existing ensemble is perturbed by an effector to change the populations, as shown in Figure~\ref{fig:allopred}.
+This suggests that cases for which ExProSE is successful adopt a conformational selection mechanism at least in part.
 The conformational selection present in NtrC was reproduced by the method, for example.
 In general this focus on conformational selection can be seen as a positive because small molecules binding with weaker interactions has been associated with a preference for conformational selection over induced fit \cite{Okazaki2008}, and it is these type of interactions that are important for allosteric modulator discovery.
 It was found in some cases, however, that the additional constraints due to a predicted modulator caused the system to sample structures not present in the unperturbed ensemble.
-% Any examples from figures?
 This can be viewed as an induced fit effect, with the modulator binding allowing the ensemble to access structures which are not available in the absence of the modulator.
 Study of perturbed ensembles using ExProSE could therefore give evidence for conformational selection or induced fit mechanisms in specific proteins.
 

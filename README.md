@@ -20,7 +20,7 @@ pdflatex thesis.tex
 - Address why AlloPred and ExProSE are validated with different methods
 - CDK2 exp concs and names: cycA res numbers, WB antobody conc
 - Ensemble NMR intro refs
-- Remove multicolumn table tags
+- Remove multicolumn table tags and sort l/r alignment
 - Intro maybe a bit short? Review of MD limitations? More on allostery basics? More on CONCOORD?
 - Bulk out conclusion
 - phdthesis ref formatting
