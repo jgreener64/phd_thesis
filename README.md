@@ -15,17 +15,14 @@ pdflatex thesis.tex
 
 ## TODO
 
+- Check figures
+- Move flowchart to results
 - Acknowledge PRP?
 - Reagents list
 - Address why AlloPred and ExProSE are validated with different methods
 - CDK2 exp concs and names: cycA res numbers, WB antobody conc
 - Ensemble NMR intro refs
-- Remove multicolumn table tags and sort l/r alignment
-- Intro maybe a bit short? Review of MD limitations? More on allostery basics? More on CONCOORD?
-- Bulk out conclusion
-- phdthesis ref formatting
 - Check Mendeley for refs
-- Move flowchart to results
 - Check page numbering, contents, list of figure etc
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size; also consistent text font/size and general consistency
@@ -33,7 +30,7 @@ pdflatex thesis.tex
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
 - Binding assay or immunoblot assay etc
 - Refer to all parts of figures in main text
-- OA on GitHub
+- OA on GitHub, check what is in repo, licence
 - Add to Spiral
 - Spellcheck
 - Permission to use figures required?
