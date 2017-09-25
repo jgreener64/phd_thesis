@@ -15,7 +15,6 @@ pdflatex thesis.tex
 
 ## TODO
 
-- Rename some figures
 - Reagents list
 - Address why AlloPred and ExProSE are validated with different methods
 - CDK2 exp concs and names: cycA res numbers, WB antobody conc
@@ -25,16 +24,12 @@ pdflatex thesis.tex
 - Bulk out conclusion
 - phdthesis ref formatting
 - Check Mendeley for refs
-- Check pocket size bias discussion
-- Middle name initial? Should the address be CISBIO?
 - Move flowchart to results
 - Check page numbering, contents, list of figure etc
 - Recheck plagiarism stuff
 - Consistent A/B labelling in figures: font, bold and rough size; also consistent text font/size and general consistency
 - Check latex log for errors - search Warning
-- Keep COSB review and intro/conc/ref updates up to date
 - Consistent table formatting - use top/mid/bottom rule? use booktabs? common footnotesize?
-- How to refer to other sections - use labels, check throughout
 - Binding assay or immunoblot assay etc
 - Refer to all parts of figures in main text
 - OA on GitHub

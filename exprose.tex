@@ -729,13 +729,13 @@ An ExProSE ensemble was generated using the apo native structure (PDB ID 1HCL) a
 The ANS-bound structure is inactive, as ANS binding causes a conformational shift in the \textalpha C-helix that prevents cyclin binding \cite{Betzi2011}.
 A further screening study has found potential modulators for the ANS binding site \cite{Rastelli2014}.
 
-Figure~\ref{fig:cdk}A shows the pockets predicted by LIGSITE\textsuperscript{\it cs} \cite{Huang2006} on CDK2 bound to two ANS molecules.
+Figure~\ref{fig:cdk2_exprose}A shows the pockets predicted by LIGSITE\textsuperscript{\it cs} \cite{Huang2006} on CDK2 bound to two ANS molecules.
 The ensemble perturbation procedure was carried out at each of the 8 pocket centres as described in the Methods.
 In brief, additional constraints are added representing a modulator bound in the selected pocket.
-Projections of the structures of the unperturbed ensemble and the structures of the ensemble with perturbation at the pocket centre are shown in Figure~\ref{fig:cdk}B, one graph per pocket centre.
+Projections of the structures of the unperturbed ensemble and the structures of the ensemble with perturbation at the pocket centre are shown in Figure~\ref{fig:cdk2_exprose}B, one graph per pocket centre.
 The third PC was chosen for visualisation instead of the second as it represents the inactivating motion of the \textalpha C-helix, whereas the second PC represents a rotation in the region of the protein considered to be functionally less important, the C-lobe.
 
-Site 1 in Figure~\ref{fig:cdk}A and \ref{fig:cdk}B is the known allosteric pocket.
+Site 1 in Figure~\ref{fig:cdk2_exprose}A and \ref{fig:cdk2_exprose}B is the known allosteric pocket.
 Simulating a modulator there shifts the ensemble towards the inactive state, agreeing with previous experimental data \cite{Betzi2011}.
 Site 2 is the ATP-binding site and there is no change in the ensemble by simulating a modulator there.
 This is encouraging as ATP binding does not cause structural changes that lead to cyclin dissociation.
@@ -751,7 +751,7 @@ No allosteric modulators have been reported experimentally for these sites.
 \begin{figure}
 \centering
 
-\includegraphics[width=\textwidth]{figures/cdk/cdk}
+\includegraphics[width=\textwidth]{figures/cdk2_exprose/cdk2_exprose}
 
 \caption[CDK2 pockets and projections of perturbed ExProSE ensembles]
 {CDK2 pockets and projections of ensembles.
@@ -766,7 +766,7 @@ The axes are projections onto the first (x-axis) and third (y-axis) PCs of the E
 The blue dots represent the structures in the ensemble with perturbation at pocket centres 1-8 from (A).
 Figure based on Figure~4 from Greener et al.\ 2017 \cite{Greener2017}.}
 
-\label{fig:cdk}
+\label{fig:cdk2_exprose}
 \end{figure}
 
 
@@ -799,7 +799,7 @@ However ExProSE is still valuable as it finds smaller, less obvious allosteric p
 This could be due to the extra structural information used as input.
 For example, ExProSE in 6 cases finds sites not ranked in the top 2 by LIGSITE\textsuperscript{\it cs} and in 8 cases finds sites not ranked in the top 2 by Fpocket.
 ExProSE shows the best complementarity to the pocket prediction methods along with STRESS, which makes fewer correct predictions.
-ExProSE also gives information on how the ensemble may be affected by the modulators, as demonstrated in Figure~\ref{fig:cdk}, allowing inspection of the predicted structural and dynamic changes arising from perturbation.
+ExProSE also gives information on how the ensemble may be affected by the modulators, as demonstrated in Figure~\ref{fig:cdk2_exprose}, allowing inspection of the predicted structural and dynamic changes arising from perturbation.
 
 The performance on each protein by each method is shown in Table~\ref{tab:allosteric_proteins}.
 This is to our knowledge the first systematic comparison of multiple allosteric prediction methods.
@@ -1064,7 +1064,7 @@ In intial tests of this approach, the known transient allosteric site on TEM-1 \
 Methods for predicting pockets on an ensemble of protein structures, such as MDpocket \cite{Schmidtke2011} or the method in Polyphony \cite{Pitt2014}, could also be run on ensembles generated using ExProSE.
 
 The results from ExProSE have implications for the conformational selection/induced fit debate \cite{Boehr2009}.
-The principle of ExProSE is based on the conformational selection paradigm - an existing ensemble is perturbed by an effector to change the populations, as shown in Figure~\ref{fig:allopred}.
+The principle of ExProSE is based on the conformational selection paradigm - an existing ensemble is perturbed by an effector to change the populations, as shown in Figure~\ref{fig:allostery}.
 This suggests that cases for which ExProSE is successful adopt a conformational selection mechanism at least in part.
 The conformational selection present in NtrC was reproduced by the method, for example.
 In general this focus on conformational selection can be seen as a positive because small molecules binding with weaker interactions has been associated with a preference for conformational selection over induced fit \cite{Okazaki2008}, and it is these type of interactions that are important for allosteric modulator discovery.
