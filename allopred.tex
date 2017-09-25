@@ -191,55 +191,10 @@ Due to the low number of allosteric pockets on each protein, only the top predic
 
 \subsection{Web server}
 
-A flowchart outlining the process of running a job is shown in Figure~\ref{fig:flowchart}.
 The web server was implemented using the Django extension to Python and a SQLite database.
 JSmol, a JavaScript implementation of the Jmol package, was used for molecular visualisation.
 Bootstrap was used for page styling.
 The standalone version of the code runs faster and it is recommended that users who intend to use the method extensively or in batch download the code for local use.
-
-
-\tikzstyle{process} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text width=2cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{input} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=blue!30]
-\tikzstyle{output} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=red!30]
-\tikzstyle{arrow} = [thick,->,>=stealth]
-
-\begin{figure}
-\centering
-\singlespacing
-
-\begin{small}
-\begin{tikzpicture}[node distance=2cm]
-
-\node (pdb) [input] {PDB ID/user file};
-\node (nma) [process, below of=pdb] {Normal mode analysis};
-\node (active) [input, left of=nma, xshift=-2cm] {Active site residues};
-\node (fpocket) [process, right of=nma, xshift=2cm] {Fpocket calculation};
-\node (svm) [process, below of=nma] {Run SVM};
-\node (rerank) [process, below of=svm] {Re-rank allosteric pockets};
-\node (visualisation) [output, right of=rerank, xshift=2cm] {Visualise pockets};
-\node (download) [output, below of=rerank] {Download results};
-
-\draw [arrow] (pdb) -| (fpocket);
-\draw [arrow] (pdb) -- (nma);
-\draw [arrow] (active) -- (nma);
-\draw [arrow] (fpocket) -- (nma);
-\draw [arrow] (fpocket) |- (svm);
-\draw [arrow] (nma) -- (svm);
-\draw [arrow] (svm) -- (rerank);
-\draw [arrow] (rerank) -- (visualisation);
-\draw [arrow] (rerank) -- (download);
-
-\end{tikzpicture}
-\end{small}
-
-\caption[Flowchart showing the stages involved in running a job submitted to the AlloPred web server]
-{Flowchart showing the stages involved in running a job submitted to the AlloPred web server.
-Trapeziums represent inputs or outputs available to the user via the web front end (inputs purple, outputs red).
-Rounded rectangles represent stages in the calculation pipeline that occur via the web back end.
-Figure based on Figure~2 from Greener and Sternberg 2015 \cite{Greener2015}.}
-
-\label{fig:flowchart}
-\end{figure}
 
 
 \section{Results}
@@ -299,6 +254,7 @@ Figure based on Figure~3 from Greener and Sternberg 2015 \cite{Greener2015}.}
 \subsection{Web server}
 
 The publicly-available AlloPred web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) allows users to analyse the prediction results via an intuitive interface.
+A flowchart outlining the process of running a job is shown in Figure~\ref{fig:flowchart}.
 Users can either input a PDB ID and chain(s) or upload a PDB file.
 The active site residues of the protein must be given but there is an option to retrieve this data, if it is available, from the CSA \cite{Furnham2014}.
 The CSA has catalytic site data for around 70\% of enzymatic proteins in the PDB.
@@ -313,6 +269,50 @@ The results, including full details of each pocket, can be downloaded for furthe
 The exploratory features on the website and results file containing all the pocket information set AlloPred apart from similar servers by allowing more extensive analysis of the results.
 The calculation time is fast, with a 400 residue protein ($\sim$15 predicted pockets) analysed within 5 minutes.
 The web server also includes a tutorial and a link to the source code to run AlloPred offline.
+
+
+\tikzstyle{process} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text width=2cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{input} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=blue!30]
+\tikzstyle{output} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=red!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{figure}
+\centering
+\singlespacing
+
+\begin{small}
+\begin{tikzpicture}[node distance=2cm]
+
+\node (pdb) [input] {PDB ID/user file};
+\node (nma) [process, below of=pdb] {Normal mode analysis};
+\node (active) [input, left of=nma, xshift=-2cm] {Active site residues};
+\node (fpocket) [process, right of=nma, xshift=2cm] {Fpocket calculation};
+\node (svm) [process, below of=nma] {Run SVM};
+\node (rerank) [process, below of=svm] {Re-rank allosteric pockets};
+\node (visualisation) [output, right of=rerank, xshift=2cm] {Visualise pockets};
+\node (download) [output, below of=rerank] {Download results};
+
+\draw [arrow] (pdb) -| (fpocket);
+\draw [arrow] (pdb) -- (nma);
+\draw [arrow] (active) -- (nma);
+\draw [arrow] (fpocket) -- (nma);
+\draw [arrow] (fpocket) |- (svm);
+\draw [arrow] (nma) -- (svm);
+\draw [arrow] (svm) -- (rerank);
+\draw [arrow] (rerank) -- (visualisation);
+\draw [arrow] (rerank) -- (download);
+
+\end{tikzpicture}
+\end{small}
+
+\caption[Flowchart showing the stages involved in running a job submitted to the AlloPred web server]
+{Flowchart showing the stages involved in running a job submitted to the AlloPred web server.
+Trapeziums represent inputs or outputs available to the user via the web front end (inputs purple, outputs red).
+Rounded rectangles represent stages in the calculation pipeline that occur via the web back end.
+Figure based on Figure~2 from Greener and Sternberg 2015 \cite{Greener2015}.}
+
+\label{fig:flowchart}
+\end{figure}
 
 
 \begin{figure}
