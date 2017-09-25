@@ -4,8 +4,6 @@
 This chapter describes the development and validation of AlloPred, a computational approach based on the perturbation of normal modes to predict allosteric sites on proteins.
 AlloPred is available as a web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) that so far has had over 400 submissions from around the world.
 The work is further described in Greener and Sternberg 2015 \cite{Greener2015}, on which this chapter is based.
-% Could be latent allosteric sites
-% Measure of how effective NMA features are alone (some in NAR paper)
 
 
 \section{Materials and Methods}
@@ -200,7 +198,6 @@ Bootstrap was used for page styling.
 The standalone version of the code runs faster and it is recommended that users who intend to use the method extensively or in batch download the code for local use.
 
 
-% define flowchart elements
 \tikzstyle{process} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text width=2cm, text centered, draw=black, fill=orange!30]
 \tikzstyle{input} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=blue!30]
 \tikzstyle{output} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text width=2cm,, text centered, draw=black, fill=red!30]
@@ -266,6 +263,7 @@ AlloPred was tested on a test set of 40 known allosteric proteins.
 For each protein AlloPred ranked the pockets and the top ranked pocket was examined.
 For 23 of 40 proteins AlloPred ranked top a pocket containing an allosteric binding residue (termed an allosteric pocket), when 18\% of pockets were allosteric pockets.
 For 28 of 40 proteins an allosteric pocket was ranked first or second.
+It is possible that some of the predicted pockets have allosteric character yet to be discovered.
 The results were compared to two existing methods for allosteric site prediction.
 The AlloSite server uses the Fpocket algorithm and a machine learning approach \cite{Huang2013}, whereas the PARS server combines changes in protein flexibility and a structural conservation score \cite{Panjkovich2014}.
 The correct predictions made by each method, and the overlap between the methods, are shown in Figure~\ref{fig:results_venn}.
@@ -347,8 +345,8 @@ Whereas AlloSite solely uses the Fpocket output, our method uses an approach tha
 A combination of methods may give better predictions than either method individually, as indicated by the unique predictions made by both methods during testing.
 In fact the AlloSite predictions were found in every case to correspond to the pocket ranked top by Fpocket.
 This highlights the difficulty in separating the prediction of allosteric sites from the prediction of binding sites in general.
+This will be explored further in Chapter~\ref{cha:exprose}.
 It seems that Fpocket is able to predict good binding sites and AlloPred uses the extra flexibility information to bias this prediction towards sites with allosteric character.
-% Be careful of repetition from introduction
 The complete ranking of pockets provided by AlloPred may also be useful, as pockets ranked second were often found to be allosteric in the test set.
 
 An approach that combines flexibility analysis using normal modes and structural conservation scores \cite{Panjkovich2012} is also similar to the method presented here and  was recently turned into a web server, PARS \cite{Panjkovich2014}.

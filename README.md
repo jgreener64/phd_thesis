@@ -2,7 +2,7 @@
 
 In-silico guided prediction of allosteric sites on proteins: application to cyclin-dependent kinase 2
 
-Joe Greener
+Joe G Greener
 
 Build instructions:
 ```
@@ -15,6 +15,7 @@ pdflatex thesis.tex
 
 ## TODO
 
+- Rename some figures
 - Reagents list
 - Address why AlloPred and ExProSE are validated with different methods
 - CDK2 exp concs and names: cycA res numbers, WB antobody conc

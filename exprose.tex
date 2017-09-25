@@ -326,7 +326,7 @@ The procedure for determining if an Fpocket pocket is allosteric is as follows: 
 This is consistent with the criterion for determining LIGSITE\textsuperscript{\it cs} allosteric pockets defined previously.
 PARS results are obtained by using the PARS web server \cite{Panjkovich2014}.
 PARS uses LIGSITE\textsuperscript{\it cs}, so the same criterion as LIGSITE\textsuperscript{\it cs} is used to determine allosteric pockets.
-AlloPred is run using the offline version \cite{Greener2015} and default parameters.
+AlloPred is run using the offline version and default parameters.
 The active site residues are retrieved from the CSA \cite{Furnham2014}, or from literature inspection when not available in the CSA.
 AlloPred uses Fpocket, so the same criterion as Fpocket is used to determine allosteric pockets.
 STRESS \cite{Clarke2016} is run offline using the source code.
@@ -798,7 +798,7 @@ The ability of ExProSE to predict allosteric pockets on the dataset is compared 
 This was found to give better results for the existing methods than using the apo crystals.
 PARS \cite{Panjkovich2014} uses NMA with and without a predicted modulator to predict changes in flexibility.
 STRESS \cite{Clarke2016} is an implementation of the earlier binding leverage algorithm \cite{Mitternacht2011}, which models how perturbations due to binding couple to the motions of the protein as expressed by low-frequency normal modes.
-AlloPred \cite{Greener2015} uses perturbation of normal modes and pocket features in a machine learning approach to predict allosteric pockets.
+AlloPred \cite{Greener2015} uses perturbation of normal modes and pocket features in a machine learning approach to predict allosteric pockets - see Chapter~\ref{cha:allopred}.
 It should be noted that different criteria are used to define an allosteric pocket for each method, due to the nature of their output - see the Methods.
 For 27 of 58 proteins ExProSE ranked an allosteric pocket first or second, performing better than the other three methods.
 This is shown in Table~\ref{tab:allosteric_methods}.

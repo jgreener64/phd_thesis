@@ -101,7 +101,7 @@ Name & Reference(s) & Output(s) & Web server available & Source code available o
 \hline
 AlloPred & \cite{Greener2015} & Predicted allosteric pockets & \url{http://www.sbg.bio.ic.ac.uk/allopred/home} & Yes, MIT licence \\
 AlloSigMA & \cite{Guarnera2017} & Allosteric free energies & \url{http://allosigma.bii.a-star.edu.sg/home} & No \\
-AlloSite & \cite{Huang2013} & Predicted allosteric pockets & \url{http://mdl.shsmu.edu.cn/AST} & No \\ % AlloSitePro?
+AlloSitePro & \cite{Song2017, Huang2013} & Predicted allosteric pockets & \url{http://mdl.shsmu.edu.cn/AST} & No \\
 AllosMod & \cite{Weinkam2012} & Modelled energy landscapes & \url{http://modbase.compbio.ucsf.edu/allosmod} & No \\
 ENM method & \cite{Li2017} & Residues coupled to normal modes & \url{http://enm.pitt.edu} & Partly as ProDy, MIT licence \\
 ExProSE & \cite{Greener2017} & Ensemble of protein structures,\newline predicted allosteric pockets & No & Yes, MIT licence \\
@@ -115,7 +115,7 @@ STRESS & \cite{Clarke2016} & Predicted surface-critical and interior-critical re
 
 \caption[Computational allosteric prediction methods currently available to run locally or as a web server]
 {Computational allosteric prediction methods currently available to run locally or as a web server, ordered alphabetically.
-The work presented in this thesis (AlloPred and ExProSE) is included.
+The methods presented in this thesis (AlloPred and ExProSE) are included.
 In addition there are various pocket prediction methods that aim to predict binding pockets on proteins, but not specifically allosteric pockets \cite{Huang2006, LeGuilloux2009, Cimermancic2016}.}
 
 \label{tab:prediction_methods}
@@ -139,8 +139,8 @@ The binding leverage approach \cite{Mitternacht2011} predicts how ligand binding
 Sites with high binding leverage are predicted to be allosteric.
 Binding leverage was developed into the web server SPACER \cite{Goncearenco2013}, and into the general predictor STRESS \cite{Clarke2016} by a different group.
 % Mention other Mitternacht methods? Geometry/local closeness
-% This has been further developed \cite{Guarnera2016a}...
-% And turned into a web server \cite{Guarnera2017}...
+% This has been further developed \cite{Guarnera2016a}
+% And turned into a web server \cite{Guarnera2017}
 The PARS method \cite{Panjkovich2012, Panjkovich2014} calculates normal modes in the presence and absence of a simulated allosteric modulator.
 If the motions are significantly different the site is predicted as allosteric.
 The DynOmics ENM server \cite{Li2017} finds hinge residues that control the two slowest normal modes of a protein, and hence are able to influence its dynamics.
@@ -178,7 +178,6 @@ A Random Forest approach \cite{Chen2016} uses descriptors for binding sites and 
 
 MD remains the standard computational tool for structural analysis when structures are available.
 A study on the nitrogen regulatory protein C (NtrC) combined MD simulations and nuclear magnetic resonance (NMR) data to explore the free energy landscape and investigate at atomic resolution the transition from active to inactive state \cite{Pontiggia2015}.
-% And Laine2010
 Perturbation response scanning (PRS), in which the response of the structure to random perturbations at specific positions is examined, is a popular tool for allosteric prediction.
 For example, allosteric hotspot residues were predicted using PRS for the chaperone Hsp70 \cite{Penkler2017}.
 Weinkam et al.\ constructed energy landscapes and explored them with MD \cite{Weinkam2012}.
@@ -194,7 +193,6 @@ A recent approach found that surface and interior critical residues tend to be c
 The recent discovery that most directly co-evolving residues distant in 3D structure are close in related structures or assemblies \cite{Anishchenko2017} brings into question the concept of allosteric and active sites that directly co-evolve.
 Other studies have found structural conservation in allosteric pockets but a lack of sequence conservation \cite{Panjkovich2010, Panjkovich2013}, positing that allostery makes use of pre-existing features.
 As more structural and conservation information is acquired it will be important to discover to what degree allostery in proteins is a result of selection on specific pathways, and to what degree novel allostery can be discovered on proteins in the absence of previous evolutionary pressure.
-% Be clear difference between conservation and co-evolution
 
 
 \subsubsection{Other methods}
@@ -244,10 +242,6 @@ Allosteric pathways in ERG proteins were proposed using fluctuation correlation 
 However, there are limits to the use of mutational studies to validate allosteric mechanisms.
 It has been found that mutational data can give evidence for a deliberately poorly-conceived allosteric mechanism \cite{Tang2017}.
 In the future it is to be hoped that experimental screens specifically for allosteric sites \cite{Martin2012, Jayakar2017, Pellerano2017, Pisco2017, Raman2014} become more widespread, opening the path to conventional large-scale screens for allosteric drugs.
-% http://www.jbc.org/content/292/15/6429.full.pdf+html "Allostery modulates the beat rate of a cardiac pacemaker" NMR used
-% Dror 2013 "Structural basis for modulation of a G-protein-coupled receptor by allosteric drugs" - actually this could go in MD section with a reference to long MD becoming more feasible
-% https://www.nature.com/nsmb/journal/vaop/ncurrent/pdf/nsmb.3440.pdf - An information theoretic framework reveals a tunable allosteric network in group II chaperonins - could go in evolution section
-% Shen2017 genomic screen
 
 
 \subsection{Cryptic allosteric sites}
@@ -335,15 +329,11 @@ The development of experimental methods such as cryo-electron microscopy should 
 \section{Protein structural ensembles}
 \label{sec:introduction_ensembles}
 
-% Expand NMR ensemble stuff
-% FIRST, FRODA etc
-
 Proteins move on a variety of timescales, encompassing motions from the vibration of a single bond to the collective movement of whole domains \cite{Henzler-Wildman2007, Wei2016} - see Figure~\ref{fig:timescales}.
 X-ray crystallography provides a static view of the structure of proteins.
 However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.
 Experimental techniques to explore the dynamics of proteins, such as NMR \cite{Sormanni2017}, are sophisticated and time-consuming.
-Significant effort has gone into determining the protein structural ensemble when experimental data is available \cite{Bonomi2017}, but ideally there would be computational methods that worked in the absence of this information.
-% Contradiction as we use xray data
+Significant effort has gone into determining the protein structural ensemble when constraints such as those from NMR are available \cite{Bonomi2017}, but ideally there would be computational methods that worked in the absence of this information.
 
 MD is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
 It is effective at modelling motions up to the timescale of nanoseconds.
@@ -439,8 +429,6 @@ Figure based on Figure~3 from Lamba and Ghosh 2012 \cite{Lamba2012}.}
 
 \section{Cyclin-dependent kinase 2}
 \label{sec:introduction_cdk2}
-% Child 2010? Corsino 2009
-% Pellerano 2017
 
 CDK2 is a protein kinase important in regulating cell cycle progression \cite{Peyressatre2015}.
 Its deregulation has been linked to a number of diseases.
@@ -454,7 +442,7 @@ See Figure~\ref{fig:cdk2_intro} for an overview of the structure of CDK2.
 While the crystallisation of CDK2 is relatively routine, one of the difficulties in studying the CDK2-cyclin A2 interaction is the difficulty of purifying soluble cyclin A2 in the absence of the CDK2 binding partner \cite{Grigoroudis2015}.
 The mechanism of activation of CDK2 by cyclin A2 has been elucidated \cite{Jeffrey1995, Russo1996, Morris2002}.
 Changes in the \textalpha C-helix on cyclin A2 binding realign active site residues, and the T-loop moves which reveals the active site and makes activation phosphorylation easier.
-The \textalpha C-helix is an essential part of the CDK2-cyclin interface and its displacement is implicit in allosteric modulation of various kinases \cite{Palmieri2013}.
+The \textalpha C-helix is an essential part of the CDK2-cyclin interface and its displacement is implicit in allosteric modulation of various kinases \cite{Palmieri2013, Child2010}.
 Computational studies have indicated a large degree of flexibility in CDK2 \cite{Pisani2016, Gu2007}.
 
 
@@ -484,7 +472,6 @@ A screening study against this site revealed compounds that bind with affinity u
 Binding of these compounds does not affect ATP binding and appears to inhibit the action of CDK2, indicating a likely allosteric site.
 Another study used virtual screening to find compounds that disrupt the interaction between CDK2 and cyclin A3 \cite{Hu2015} and verified them experimentally with anti-proliferation and binding studies.
 Small peptides are also able to break the CDK2-cyclin E1 interface \cite{Chen2014}.
-% Describe what A3 and E1 are?
 A large scale screen of compounds against CDK2 found a family of compounds that hinder T-loop dynamics and hence could be used as allosteric modulators \cite{Pellerano2017}.
 It is hoped that one of these approaches will lead to a viable drug.
 
