@@ -78,7 +78,6 @@ The constraint tolerance values are used to generate lower and upper distance co
 Each atom pair is assigned the first interaction for which it fulfils the criterion.
 If an atom pair is not assigned any of the first 14 specific interactions, it is assigned the generic `All other pairs' interaction type.
 Lower and upper distance constraints $l_{ij}$ and $u_{ij}$ are generated for each atom pair $ij$ based on the interatomic distance $d_{ij}$, the constraint tolerance for the interaction $t_{ij}$ and a tolerance weighting factor $W_{B}$ that is between 0.0 and 1.0:
-
 $$
 l_{ij} = d_{ij} - W_{B} t_{ij}, \quad u_{ij} = d_{ij} + W_{B} t_{ij}
 $$
