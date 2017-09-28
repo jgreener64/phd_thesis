@@ -15,12 +15,15 @@ pdflatex thesis.tex
 
 ## TODO
 
+- Mike's comments:
+  - Final discussion chapter before conclusion? Or bulk out conclusion with more further work. Link wet and dry a bit more
+  - Figures have explicit "originally made by me" - have in statement at start?
 - David's comments
-- Acknowledge PRP?
+- Ensemble NMR intro refs
+- Acknowledge PRP? benevolent.ai
 - Reagents list
 - Address why AlloPred and ExProSE are validated with different methods
 - CDK2 exp concs and names: cycA res numbers, WB antobody conc
-- Ensemble NMR intro refs
 - Check Mendeley for refs
 - Check page numbering, contents, list of figure etc
 - Recheck plagiarism stuff

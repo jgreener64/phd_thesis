@@ -1,18 +1,20 @@
-\chapter{Appendices}
+\chapter*{Appendices}
 \label{cha:appendices}
+\addcontentsline{toc}{chapter}{Appendices}
 
 This chapter includes documentation for the AlloPred source code, documentation for the ExProSE source code and a description of the Bio.Structure module contributed to the BioJulia organisation.
 
 
-\section{AlloPred documentation}
+\section*{AlloPred documentation}
 \label{sec:appendices_allopred}
+\addcontentsline{toc}{section}{AlloPred documentation}
 
 This section contains documentation for the AlloPred source code.
 This documentation can be found along with the source code at \url{https://github.com/jgreener64/allopred}.
 The current released version of the source code is v1.0.0.
 
 
-\subsection{Requirements}
+\subsection*{Requirements}
 
 \begin{itemize}
 \item Python 2.7 with the NumPy and ProDy packages installed.
@@ -21,7 +23,7 @@ The current released version of the source code is v1.0.0.
 \end{itemize}
 
 
-\subsection{Usage}
+\subsection*{Usage}
 
 Follow these steps to set up AlloPred - the shell commands are for bash:
 
@@ -62,7 +64,7 @@ The arguments are the input file prefix and the path to the active site residue 
 \end{enumerate}
 
 
-\subsection{Other files}
+\subsection*{Other files}
 
 \begin{itemize}
 \item \verb|dataset| contains information on the training and testing sets.
@@ -71,15 +73,16 @@ The arguments are the input file prefix and the path to the active site residue 
 \end{itemize}
 
 
-\section{ExProSE documentation}
+\section*{ExProSE documentation}
 \label{sec:appendices_exprose}
+\addcontentsline{toc}{section}{ExProSE documentation}
 
 This section contains documentation for the ExProSE source code.
 This documentation can be found along with the source code at \url{https://github.com/jgreener64/ProteinEnsembles.jl}.
 The current released version of the source code is v0.1.1.
 
 
-\subsection{Summary}
+\subsection*{Summary}
 
 Install using \verb|Pkg.add("ProteinEnsembles")| from within Julia v0.5. Run using
 
@@ -92,12 +95,12 @@ Install using \verb|Pkg.add("ProteinEnsembles")| from within Julia v0.5. Run usi
 where \verb|exprose| is in the \verb|bin| directory.
 
 
-\subsection{Installation}
+\subsection*{Installation}
 
 Julia v0.5 is required and can be downloaded from \url{http://julialang.org/downloads}. Install ProteinEnsembles.jl by running \verb|Pkg.add("ProteinEnsembles")| from the Julia REPL. This will also automatically install a few other required Julia packages. If you want, the tests can be run using \verb|Pkg.test("ProteinEnsembles")|. If you wish to use the auto-parameterisation procedure (see below) you must also have TM-score installed.
 
 
-\subsection{Requirements}
+\subsection*{Requirements}
 
 To use ProteinEnsembles.jl you will need the following:
 \begin{itemize}
@@ -106,7 +109,7 @@ To use ProteinEnsembles.jl you will need the following:
 \end{itemize}
 
 
-\subsection{Usage}
+\subsection*{Usage}
 
 These instructions are tailored towards Mac/Unix. However they could be modified to work on Windows.
 
@@ -166,7 +169,7 @@ Or, to split it up a little into the constituent functions:
 \end{lstlisting}
 
 
-\subsubsection{Selecting parameters}
+\subsubsection*{Selecting parameters}
 
 The auto-parameterisation procedure can select a more suitable tolerance weighting value (see the paper). TM-score must be installed to do this. For example:
 
@@ -178,7 +181,7 @@ The auto-parameterisation procedure can select a more suitable tolerance weighti
 runs the auto-parameterisation procedure with the \verb|-t| option specifying the command to run TM-score. The last line of the output gives a suggested tolerance weighting. This value is also written out to \verb|suggested.tsv|. Use this value in a normal \verb|exprose| run as above.
 
 
-\subsubsection{Allosteric site prediction}
+\subsubsection*{Allosteric site prediction}
 
 To predict allosteric sites you should run LIGSITE\textsuperscript{\it cs} on the second input structure (the one you give as \verb|--i2|). You then need to run the \verb|cluster-ligsite| script in \verb|bin| to assign the points to pockets:
 
@@ -196,7 +199,7 @@ where \verb|pocket_r.pdb| and \verb|pocket_all.pdb| are in the LIGSITE\textsuper
 A tolerance weighting from an auto-parameterisation run can also be used here. View the \verb|predictions.tsv| output file to get the order of allosteric pocket predictions. Note that other pocket prediction software can be used provided you can get the output into the same format as \verb|pocket_points.pdb|, i.e. pocket cavity points with the pocket number in the residue number column.
 
 
-\subsubsection{Output}
+\subsubsection*{Output}
 
 The output directory contains the following:
 \begin{itemize}
@@ -214,8 +217,9 @@ For allosteric site prediction there will be \verb|pdbs_mod_n| and \verb|mod_n| 
 The default plot colours are blue for generated structures, red for input structure 1, green for input structure 2 and orange for perturbed ensemble structures.
 
 
-\section{BioJulia Bio.Structure module}
+\section*{BioJulia Bio.Structure module}
 \label{sec:appendices_biojulia}
+\addcontentsline{toc}{section}{BioJulia Bio.Structure module}
 
 The Julia language \cite{Bezanson2017} is a new programming language that has grown quickly in the field of scientific computing.
 It has syntax similar to MATLAB but execution speeds approaching statically-compiled languages like C, making it suitable for scientific research applications where both usability and execution speed are important.
