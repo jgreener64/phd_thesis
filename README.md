@@ -15,11 +15,11 @@ pdflatex thesis.tex
 
 ## TODO
 
+- MD example in ensemble section, link to allostery MD section
 - Mike's comments:
   - Final discussion chapter before conclusion? Or bulk out conclusion with more further work. Link wet and dry a bit more
   - Figures have explicit "originally made by me" - have in statement at start?
 - David's comments
-- Ensemble NMR intro refs
 - Acknowledge PRP? benevolent.ai
 - Reagents list
 - Address why AlloPred and ExProSE are validated with different methods

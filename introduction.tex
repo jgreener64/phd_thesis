@@ -333,12 +333,14 @@ Proteins move on a variety of timescales, encompassing motions from the vibratio
 X-ray crystallography provides a static view of the structure of proteins.
 However, when only static structures are available the dynamic processes crucial to protein function \cite{Henzler-Wildman2007a} are hard to elucidate.
 Experimental techniques to explore the dynamics of proteins, such as NMR \cite{Sormanni2017}, are sophisticated and time-consuming.
-Significant effort has gone into determining the protein structural ensemble when constraints such as those from NMR are available \cite{Bonomi2017}, but ideally there would be computational methods that worked in the absence of this information.
+Significant effort has gone into determining the protein structural ensemble when constraints such as those from NMR are available but a crystal structure is lacking, for instance due to disorder in the protein \cite{Bonomi2017}.
+But proteins with an ordered structure that can be crystallised still have significant dynamics and in this case it makes sense to use the crystallographic data to explore the dynamics computationally.
 
 MD is a widespread computational method for predicting protein motions and generating ensembles of protein structures.
 It is effective at modelling motions up to the timescale of nanoseconds.
 However, the computational cost of modelling proteins on the scale of microseconds or milliseconds means MD is not suitable for larger-scale transitions.
 Advanced MD methods such as targeted or accelerated MD can overcome this sampling problem \cite{Maximova2016, Ho2009}, but these methods are not yet routinely applicable due to the parameterisation and analysis required for each protein.
+The force fields used in MD simulations are also only approximations of the actual interactomic interactions and this can lead to errors in predicted properties, particularly for highly dynamic systems \cite{Palazzesi2015}.
 
 
 \begin{figure}
