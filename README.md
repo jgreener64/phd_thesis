@@ -17,7 +17,13 @@ pdflatex thesis.tex
 
 ## TODO
 
-- David's comments
+- David's comments:
+  - Purification buffers
+  - Gel filtration details
+  - Mutation code x 2
+  - 2 surface cysteines
+  - Only part of cyclin A2
+- Remaining comments
 - MD example in ensemble section, link to allostery MD section
 - Reagents list
 - Address why AlloPred and ExProSE are validated with different methods

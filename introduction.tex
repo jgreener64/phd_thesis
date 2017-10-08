@@ -381,14 +381,14 @@ This is the main motivation for developing an ensemble generation method in this
 \label{sec:introduction_kinases}
 
 Protein kinases modify other proteins by chemically adding phosphate groups to them (phosphorylation).
-This leads to a functional change due to an alteration in enzyme activity, cellular location or protein-protein interactions.
+This leads to a functional change due to an alteration in enzyme activity, cellular location and/or protein-protein interactions.
 Protein kinases regulate almost all aspects of cellular physiology, from proliferation and generation of biomass to gene expression and protein production \cite{Manning2002}.
 The human genome contains around 500 protein kinase genes ($\sim$2\% of all human genes) and up to 30\% of human proteins are modified by kinase activity.
 In addition to medical benefits, regulation of kinase activity in mammalian cells is important in industrial production of biomolecules of high value, for example to prevent apoptosis and maximise yield.
 
 There is a conserved structure across the protein kinase family, particularly at the catalytic core \cite{Endicott2012}.
 The ATP-binding site lies between the N-terminal region (mainly \textbeta -sheet) and the larger C-terminal region (mainly \textalpha -helix).
-In the N-terminal region there is a glycine-rich stretch of residues near a lysine residue, which has been shown to be involved in ATP binding.
+The N-terminal region contains a glycine-rich sequence of residues close to a lysine, which has been shown to be involved in ATP binding.
 A conserved aspartic acid residue is found in the catalytic region and is important for catalysis.
 In order to modulate kinase activity we need to develop specific regulators of protein kinase function, a process that is complicated by the conserved catalytic architecture \cite{Muller2015, Norman2012}.
 One way to achieve kinase regulation with enhanced selectivity is through isolation of allosteric regulators, as their target sites are likely to be less structurally conserved across the protein kinase family.
@@ -435,9 +435,10 @@ Figure based on Figure~3 from Lamba and Ghosh 2012 \cite{Lamba2012}.}
 CDK2 is a protein kinase important in regulating cell cycle progression \cite{Peyressatre2015}.
 Its deregulation has been linked to a number of diseases.
 CDK2 associates with, and is regulated by, the cyclin proteins.
-The G1 to S phase checkpoint of the cell cycle and progression through the S phase is largely controlled by the CDK2-cyclin A2 complex.
-This complex is therefore a major target of drug discovery efforts to arrest or recover control of the cell cycle in dividing cells \cite{Betzi2011}.
+The G1 to S phase checkpoint of the cell cycle and progression through the S phase are largely controlled by the CDK2-cyclin E1 and CDK2-cyclin A2 complexes respectively.
+The CDK2-cyclin A2 complex is therefore a major target of drug discovery efforts to arrest or recover control of the cell cycle in dividing cells \cite{Betzi2011}.
 However, the validity of CDKs as cancer targets is not without its issues: knocking out both CDK2 and CDK4 does not stop the proliferation of adult cells in mice, for example \cite{Barriere2007}.
+In this case CDK1 is up-regulated to compensate for the absence of CDK2 \cite{Diril2012}.
 
 One analysis indicated that CDK2 was the ninth most common protein in the Protein Data Bank (PDB) \cite{Berman2013}, with over 350 structures deposited since the first structure was crystallised in 1993 \cite{DeBondt1993}.
 See Figure~\ref{fig:cdk2_intro} for an overview of the structure of CDK2.
@@ -466,11 +467,11 @@ Figure based on Figure~1 from Pisani et al.\ 2016 \cite{Pisani2016}.}
 
 Only two inhibitors have been approved by the US Food and Drug Administration targeting the CDK family of proteins - ribociclib and palbociclib, CDK4/6 inhibitors used in the treatment of breast cancer \cite{Hortobagyi2016}.
 No CDK2 inhibitors are currently approved for clinical use.
-This is at least in part due to the high conservation of the ATP-binding site among protein kinases, making a discovery of a specific CDK2 inhibitor that targets this site challenging - see Section~\ref{sec:introduction_kinases}.
+This is at least in part due to the high conservation of the ATP-binding site among protein kinases, making the discovery of a specific CDK2 inhibitor that targets this site challenging - see Section~\ref{sec:introduction_kinases}.
 Several compounds are in clinical trials, but most of them target multiple CDKs.
 
 It has been found that the fluorophore ANS binds at a site removed from the ATP-binding site on CDK2 \cite{Betzi2011}.
-A screening study against this site revealed compounds that bind with affinity up to the micromolar range \cite{Rastelli2014}, and a fluorescence-based assay has the potential to facilitate high-throughput screening \cite{Martin2012}.
+A screening study against this site revealed compounds that bind with affinity down to the micromolar range \cite{Rastelli2014}, and a fluorescence-based assay has the potential to facilitate high-throughput screening \cite{Martin2012}.
 Binding of these compounds does not affect ATP binding and appears to inhibit the action of CDK2, indicating a likely allosteric site.
 Another study used virtual screening to find compounds that disrupt the interaction between CDK2 and cyclin A3 \cite{Hu2015} and verified them experimentally with anti-proliferation and binding studies.
 Small peptides are also able to break the CDK2-cyclin E1 interface \cite{Chen2014}.
