@@ -31,11 +31,11 @@ These structures are energy minimised as described in Section~\ref{sec:exprose_m
 The buffers and media used for experimental work were as follows:
 \begin{itemize}
 \item Auto-induction media: 10 g/L tryptone, 5 g/L yeast extract, 5052, NPS, 1 M MgSO$_{4}$, Ampicillin.
-\item LB broth: 10 g/L tryptone, 5 g/L yeast extract, 10 g/L NaCl.
-\item Lysis buffer: 50 mM HEPES pH ?, 150 mM NaCl, 10 mM MgCl$_{2}$, 2 mM DTT, 1 mM EGTA, Triton.
+\item Lysogeny broth: 10 g/L tryptone, 5 g/L yeast extract, 10 g/L NaCl.
+\item Lysis buffer: 50 mM HEPES pH 7.0, 150 mM NaCl, 10 mM MgCl$_{2}$, 2 mM DTT, 1 mM EGTA, Triton.
+\item Phosphate buffer: 100 mM phosphate pH 8.0.
 \item Tris pH 8 buffer: 100 mM Tris-HCl pH 8.0, 150 mM NaCl, 10 mM MgCl$_{2}$.
 \item TBS-T buffer: 50 mM Tris-HCl pH 7.5, 150 mM NaCl, 0.1\% Tween 20.
-% Tween 20 correct?
 \item Transfer buffer: 20\% methanol, 190 mM glycine, 25 mM Tris.
 \end{itemize}
 
@@ -43,33 +43,27 @@ The buffers and media used for experimental work were as follows:
 \subsection{Purification of cyclin A2}
 
 The plasmid for cyclin A2 with either a His tag or GST tag (source - David J Mann unpublished) was transformed into \textit{E.\ coli} Tuner cells.
-% Residue numbers
-Various conditions for growth were tried, similar to the approach in \cite{Wang2007}.
+Various conditions for growth were tried in auto-induction media and lysogeny broth, similar to the approach in \cite{Wang2007}.
 The final conditions used for His-tagged cyclin A2 were growth of cultures at 37$^{\circ}$C until optical density in auto-induction media, then incubation at 18$^{\circ}$C for 40 hours.
 Cells were harvested by centrifugation (10 min at 5,000 rpm).
 Harvested cells were resuspended in lysis buffer with 0.5 mg ml$^{-1}$ lysozyme.
-After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Ni Sepharose Fast Flow beads for 1 hour.
-After washing the beads, cyclin A2 was eluted with imidazole and stored at -20$^{\circ}$C in 50\% glycerol.
-% Amounts and concentration produced?
+After sonication and centrifugation (30 min at 16,000 rpm) the supernatant was incubated on Ni Sepharose Fast Flow beads in lysis buffer for 1 hour.
+After washing the beads, cyclin A2 was eluted with 500 mM imidazole in lysis buffer, dialysed into lysis buffer and stored at -20$^{\circ}$C in 50\% glycerol.
 
 
 \subsection{TR-FRET assay}
 
 To label CDK2 with Cy5 dye, CDK2 (source - Gregory Craven unpublished, 10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with Cy5 NHS ester dye in anhydrous DMF.
-Excess dye was removed by gel filtration.
+Excess dye was removed by gel filtration in phosphate buffer with the fractions containing CDK2 identified by fluorescent SDS-PAGE.
 
 For the time-resolved F\"{o}rster resonance energy transfer (TR-FRET) CDK2 titration a 392 \textmu L/well plate was used.
-% Check
 Each well contained 1 nM cyclin A2-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
 A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
 The plate was incubated for 1 hour and centrifuged at 800 rpm before being read.
-% ... plate reader was used to read the plate.
 20 repeats were taken for each reading and the values averaged.
 
 
 \subsection{Binding assay}
-% More specific - immunoblotting assay?
-% Check this is actually Tris pH 8 buffer
 
 His-tagged cyclin A2 (75 nM) was incubated on Ni Sepharose Fast Flow beads in Tris pH 8 buffer with 12\% DMSO.
 CDK2 (source - Gregory Craven unpublished) was added (8 nM) along with compounds in 5 concentrations: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
@@ -77,12 +71,8 @@ After incubation for 1 hour the beads were washed with Tris pH 8 buffer and heat
 The proteins in the supernatant were separated by SDS-PAGE and transferred to a nitrocellulose membrane by electroblotting in transfer buffer for 1 hour at 100 V.
 The membrane was incubated for 15 minutes in TBS-T buffer with 1.5\% skimmed milk powder.
 The primary antibody, CDK2 rabbit polyclonal antibody was added and the membrane incubated overnight at 4$^{\circ}$C.
-% conc
-After washing with TBS-T the secondary antibody was added and incubation for 1 hour carried out.
-% conc
-The membrane was washed with TBS-T and imaged with chemiluminescence by adding ECL dye and using a 1 s exposure.
-% Clarify dye
-% Check with other papers that do this
+After washing with TBS-T buffer the secondary antibody was added and incubation for 1 hour carried out.
+The membrane was washed with TBS-T buffer and imaged with chemiluminescence by adding ECL dye and using a 1 s exposure.
 
 
 \section{Results}
@@ -170,9 +160,7 @@ This is because at the hit stage the priority is finding effective scaffolds wit
 Elaboration of the structure with further functional groups generally occurs later and would usually result in the addition of chemical groups, raising the molecular weight.
 
 The LeadsNow subset is clustered using a 90\% Tanimoto cutoff as described at \url{http://zinc.docking.org} to get a representative subset of $\sim$250,000 compounds.
-These compounds are docked using AutoDock Vina \cite{Trott2010} to the pocket of interest in the ANS-bound structure (PDB ID 3PXF).
-% AutoDock Vina... also any more in methods?
-% Sidechains allowed to move?
+These compounds are docked using AutoDock Vina \cite{Trott2010} with standard settings to the pocket of interest in the ANS-bound structure (PDB ID 3PXF).
 Examples of docking poses can be seen in Figure~\ref{fig:cdk2_structure}E.
 The top 2,000 structures by affinity score from this screen were retained for further docking studies.
 This was due to the computational cost of virtual screening - the score from AutoDock Vina on the ANS-bound structure was used to eliminate most compounds and the remaining compounds were taken forward for further studies.
@@ -197,7 +185,6 @@ This is to be expected as a larger pocket presents more opportunities for intera
 Compounds were ranked by the average of the 8 scores from the above docking (4 structures, 2 docking methods).
 In addition to the lead-like properties described previously, compounds were further filtered to remove compounds that would potentially give erroneous assay results.
 Compounds violating various criteria set out by the SwissADME server for assessing medicinal chemistry friendliness \cite{Daina2017}, such as properties of pan-assay interference compounds \cite{Baell2014}, were removed.
-% And Lipinski Ro5? Are any actually violated?
 Compounds marked as not having benign chemical functionality in ZINC12 were also removed.
 Although compounds were clustered by ZINC12 to remove similar compounds, some compounds were relatively similar to each other on visual inspection.
 Compounds were hence removed by similarity in ChemMine \cite{Backman2011}.
@@ -240,9 +227,10 @@ R & ZINC23143433 & Z352550190  & 271.3 & -7.5 & -7.3 & -6.9 & -7.1 & -32.5 & -39
 S & ZINC89858262 & Z1162482939 & 273.3 & -7.2 & -7.3 & -8.3 & -7.4 & -23.9 & -35.1 & -39.6 & -36.2 \\
 T & ZINC69369685 & Z1097406485 & 272.3 & -7.2 & -7.1 & -7.0 & -7.1 & -37.0 & -40.6 & -43.1 & -35.6 \\
 \hline
+\multicolumn{3}{r}{\textbf{Mean values}} & 278.3 & -7.3 & -7.6 & -7.6 & -7.5 & -32.8 & -38.4 & -38.8 & -35.0 \\
+\hline
 \end{tabular}
 \end{footnotesize}
-% Average of scores?
 
 \caption[Selected compounds to screen experimentally against a potential allosteric site on CDK2]
 {Selected compounds to screen experimentally against a potential allosteric site on CDK2.
@@ -252,8 +240,9 @@ The AutoDock Vina best energy and DOCK best grid score are shown for each ligand
 (A) PDB ID 3PXF,
 (B) PDB ID 4EZ7,
 (C) ExProSE pocket open structure from 3PXF,
-(D) ExProSE pocket open structure from 4EZ7.}
-% Or refer to main text for structure information?
+(D) ExProSE pocket open structure from 4EZ7.
+See the main text for more information on these structures.
+The mean values across the 20 compounds are also shown.}
 
 \label{tab:enamine_compounds}
 \end{sidewaystable}
@@ -280,20 +269,17 @@ This required cyclin A2 to be purified.
 
 
 \subsection{Purification of cyclin A2}
-% Describe GST and His tags
 
-% Mention the construct is not all of cyclin A2
-% There are x surface-exposed cysteine residues on cyclin A2 (construct?).
 For optimal TR-FRET signal (see below) it is be beneficial to have a single surface-exposed cysteine labelled with Cy5 dye.
-Hence, initial purification was attempted for cyclin A2-GST single cysteine mutant (K773).
-% mutant code
+Cyclin A2 has two surface-exposed cysteine residues.
+Hence, initial purification was attempted for cyclin A2 residues 169-432 with GST tag and the C327A mutation.
+% The other surface-exposed is C193
 The GST tag allowed selective separation of the protein during purification.
 The His tag could not be used as this was going to be present on CDK2 to bind the donor fluorophore.
-Purification of cyclin A2-GST K773 resulted in low quantities of soluble protein ($<$ 1 mg from 4 L media) and purity was low, as shown in Figure~\ref{fig:purification}A.
+This purification resulted in low quantities of soluble protein ($<$ 1 mg from 4 L media) and purity was low, as shown in Figure~\ref{fig:purification}A.
 Different purification strategies including varying the media, incubation temperature and incubation times were attempted but did not improve yield.
 
-The difficulty of purifying this cyclin A2 mutant led us to try purification of the wild-type cyclin A2-GST.
-% with truncation though
+The difficulty of purifying this cyclin A2 mutant led us to try purification of cyclin A2 residues 169-432 with GST tag and no mutation.
 This purified more readily than the mutant, as shown in Figure~\ref{fig:purification}B.
 However the yield was still low (1 mg from 8 L media).
 This could be because the cysteine mutation destabilises the protein, increasing its tendency to aggregate.
@@ -302,7 +288,7 @@ This, along with the low yield, suggests that cyclin A2-GST is unstable and has 
 
 Due to the difficulty of purifying cyclin A2-GST, a change was made to the experimental strategy.
 The donor and acceptor fluorophores for the TR-FRET assay were switched so that the Eu anti-His antibody was targeted at cyclin A2 and CDK2 was conjugated with Cy5 dye - see later.
-This required purification of cyclin A2-His.
+This required purification of cyclin A2 residues 169-432 with His tag.
 This purification proved considerably more successful than cyclin A2-GST, with 10 mg produced from 4 L media - see Figure~\ref{fig:purification}C.
 This indicates that the large GST tag may disrupt the stability or folding of cyclin A2, but the shorter His tag does not have the same effect.
 Purified cyclin A2-His was taken forward for the TR-FRET assay.
@@ -313,13 +299,9 @@ Purified cyclin A2-His was taken forward for the TR-FRET assay.
 
 \includegraphics[width=0.6\textwidth]{figures/purification/purification}
 
-% And Western blot?
 \caption[SDS-PAGE results for purification of cyclin A2]
 {SDS-PAGE results for purification of cyclin A2.
 (A) Purification of cyclin A2-GST single cysteine mutant.
-% Mutant code
-% Gels for other conditions?
-% Pellet gel?
 (B) Purification of cyclin A2-GST.
 (C) Purification of cyclin A2-His.}
 
@@ -332,7 +314,6 @@ Purified cyclin A2-His was taken forward for the TR-FRET assay.
 This popular assay for drug discovery research is the combination of time-resolved fluorometry with F\"{o}rster resonance energy transfer (FRET) \cite{Comley2006}.
 Figure~\ref{fig:tr_fret}A-B outlines the principles of a TR-FRET assay.
 FRET involves two fluorophores, a donor and an acceptor.
-% Excitation of the donor by an energy source (e.g.\ flash lamp or laser) produces an energy transfer to the acceptor if the two are within a given proximity to each other. The acceptor in turn emits light at its characteristic wavelength.
 A time delay between excitation and detection means measurement occurs after the timescale of background fluorescence.
 The long emission time of the donor fluorophore means a signal is obtained after the time delay.
 
@@ -368,8 +349,6 @@ This emits at the excitation wavelength of the acceptor fluorophore.
 After a delay to allow background emission to recede, emission from the acceptor fluorophore is measured.
 (B) If a modulator prevents the proteins interacting, emission from the donor to the acceptor fluorophore is not possible and there is no signal.
 After difficulty purifying cyclin A2-GST, the strategy was switched so cyclin A2-His binds the Eu antibody and CDK2 is labelled with the dye.
-% NHS-ester reaction as below?
-% https://www.thermofisher.com/uk/en/home/life-science/protein-biology/protein-biology-learning-center/protein-biology-resource-library/pierce-protein-methods/amine-reactive-crosslinker-chemistry.html
 (C) Results of a CDK2 titration TR-FRET assay.
 The TR-FRET signal is shown for two repeats using cyclin A2-His, and for the control cyclin A2-GST which did not show the expected behaviour of a flat signal.}
 
@@ -393,8 +372,6 @@ However, some compounds do appear to remove the CDK2 signal at high concentratio
 Compound D at 200 \textmu M and 1 mM, and compound J at 1 mM, cause the CDK2 signal to decrease.
 At these concentrations Compounds D and J had solubility issues in the assay.
 As the expected background is high the solubility issues are likely the cause of the observed signal rather than genuine PPI inhibition.
-% Assay not very quanititative anyway
-% Fluorescent also tried (gel)
 
 
 \begin{figure}
@@ -418,7 +395,7 @@ This shows non-specific binding of CDK2 to the beads and indicates that a signal
 
 The difficulty of purifying cyclin A2 is likely due to the propensity of the protein to aggregate.
 This is probably due to large flexibility, a lack of stability in the absence of the binding partner and/or a partially folded state during expression \cite{Grigoroudis2015}.
-As shown in Figure~\ref{fig:cdk2_structure}B the crystal structure of the CDK2-cyclin A2 complex has only been found for part of the cyclin A2 structure \cite{Jeffrey1995}.
+This is exemplified by the fact that the crystal structure of the CDK2-cyclin A2 complex has only been found for part of the cyclin A2 structure \cite{Jeffrey1995}, as shown in Figure~\ref{fig:cdk2_structure}B.
 In addition the full length of human cyclin A2 has not been crystallised in the absence of CDK2, with only the fragment corresponding to residues 171-432 in bovine cyclin A having a structure \cite{Brown1995}.
 This is likely due to reasons related to the difficulties in purification.
 The presence of the GST tag made the yield from cyclin A2 purification considerably lower than for the His tag.
