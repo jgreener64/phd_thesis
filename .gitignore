@@ -1,6 +1,4 @@
 resources
-figures
-*.pdf
 *.aux
 *.log
 *.bbl

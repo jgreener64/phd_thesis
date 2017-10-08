@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="results_venn.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="273.88854"
+     inkscape:cy="496.33065"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1242"
+     inkscape:window-height="690"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="opacity:1;fill:#ffb700;fill-opacity:0.50980395;stroke:none;stroke-width:4;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4136"
+       cx="170"
+       cy="432.36221"
+       r="120"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705" />
+    <circle
+       style="opacity:1;fill:#b351ef;fill-opacity:0.51097179;stroke:none;stroke-width:4;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4136-3"
+       cx="330"
+       cy="432.36221"
+       r="120"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705" />
+    <circle
+       style="opacity:1;fill:#65ef51;fill-opacity:0.51097179;stroke:none;stroke-width:4;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4136-3-8"
+       cx="250"
+       cy="582.36218"
+       r="120"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="77.806374"
+       y="291.93741"
+       id="text4168"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170"
+         x="77.806374"
+         y="291.93741"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">AlloPred</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="214.71236"
+       y="739.68408"
+       id="text4168-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2"
+         x="214.71236"
+         y="739.68408"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">PARS</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="215.71429"
+       y="643.79077"
+       id="text4190"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4192"
+         x="215.71429"
+         y="643.79077" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="311.25174"
+       y="291.93741"
+       id="text4168-0-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-2"
+         x="311.25174"
+         y="291.93741"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:30px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">AlloSite</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="241.94087"
+       y="493.54001"
+       id="text4168-0-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-7"
+         x="241.94087"
+         y="493.54001"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">6</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="295.41263"
+       y="524.36218"
+       id="text4168-0-9-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-7-7"
+         x="295.41263"
+         y="524.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="186.92233"
+       y="524.36218"
+       id="text4168-0-9-5-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-7-7-7"
+         x="186.92233"
+         y="524.36218"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">1</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="233.71857"
+       y="428.43408"
+       id="text4168-0-9-5-0"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-7-7-3"
+         x="233.71857"
+         y="428.43408"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">12</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="350.43579"
+       y="416.36221"
+       id="text4168-0-9-5-9"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-7-7-9"
+         x="350.43579"
+         y="416.36221"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">2</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="128.24426"
+       y="416.36221"
+       id="text4168-0-9-5-7"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-7-7-2"
+         x="128.24426"
+         y="416.36221"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">4</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="240.26967"
+       y="627.22894"
+       id="text4168-0-9-5-5"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/Users/jgreener/path4136.png"
+       inkscape:export-xdpi="300.78705"
+       inkscape:export-ydpi="300.78705"><tspan
+         sodipodi:role="line"
+         id="tspan4170-2-7-7-8"
+         x="240.26967"
+         y="627.22894"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:25px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">2</tspan></text>
+  </g>
+</svg>
