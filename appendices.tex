@@ -226,7 +226,7 @@ It has syntax similar to MATLAB but execution speeds approaching statically-comp
 Open source software packages to parse PDB files and manipulate protein structures exist in many programming languages.
 There are a lack of such packages in the Julia language so a new module, Bio.Structure, was contributed to the BioJulia project (\url{http://biojulia.net}).
 Features of the package include fast PDB parsing, easy access to structural elements, iteration over elements, selector functions, downloading of PDB files, writing PDB files and spatial functions such as distances and Ramachandran angles.
-The structure of the type heirarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
+The structure of the type hierarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
 Examples of basic use cases for Bio.Structure are shown in Figure~\ref{fig:biojulia_example}.
 
 As part of the development of Bio.Structure information was collected on existing packages with similar functionality.
@@ -284,7 +284,7 @@ Distance / ms         & 0.11              & 0.011          & 0.39               
 Ramachandran / ms     & 13                & -              & 130                & 180            & 3500                & -              & -             & -                     & -                & -               & -              \\
 Language              & Julia             & Julia          & Python             & Python         & Python              & R              & R             & Perl                  & Ruby             & C++             & C++            \\
 Parses header         & $\times$          & $\times$       & $\checkmark$       & $\checkmark$   & $\times$            & $\checkmark$   & $\checkmark$  & $\times$              & $\checkmark$     & $\checkmark$    & $\times$       \\
-Heirarchichal parsing & $\checkmark$      & $\times$       & $\checkmark$       & $\checkmark$   & $\checkmark$        & $\times$       & $\times$      & $\checkmark$          & $\checkmark$     & $\checkmark$    & $\checkmark$   \\
+Hierarchichal parsing & $\checkmark$      & $\times$       & $\checkmark$       & $\checkmark$   & $\checkmark$        & $\times$       & $\times$      & $\checkmark$          & $\checkmark$     & $\checkmark$    & $\checkmark$   \\
 Supports disorder     & $\checkmark$      & $\times$       & $\checkmark$       & $\times$       & $\times$            & $\times$       & $\times$      & $\times$              & $\times$         & $\times$        & $\checkmark$   \\
 Writes PDB files      & $\checkmark$      & $\checkmark$   & $\checkmark$       & $\checkmark$   & $\checkmark$        & $\checkmark$   & $\checkmark$  & $\checkmark$          & $\times$         & $\checkmark$    & $\checkmark$   \\
 Superimposition       & $\times$          & $\checkmark$   & $\checkmark$       & $\checkmark$   & $\checkmark$        & $\checkmark$   & $\times$      & $\times$              & $\times$         & $\times$        & $\times$       \\

@@ -341,7 +341,7 @@ For tCONCOORD the time is $\sim$10 minutes.
 NMSim is run via the NMSim web server and takes $\sim$5 hours.
 MD and targeted MD use considerably more resources, with a 50 ns run taking $\sim$60 hours on 16 cores (2.3 GHz Intel Xeon CPU E5-2698) or $\sim$20 days on the single processor above.
 
-The ExProSE computation time is significantly improved over initial attempts due to optimisiation of the Julia code.
+The ExProSE computation time is significantly improved over initial attempts due to optimisation of the Julia code.
 Comparison of the performance-critical step (moving the atoms to satisfy the distance constraints) shows it is significantly faster that the same algorithm implemented in simple Python.
 The stochastic nature of the simulation means it is not easily amenable to vectorisation in NumPy.
 The performance-critical step in Julia showed speed around 1.5 times slower than an implementation in C.
@@ -355,7 +355,7 @@ A method was needed that could use existing structural information to generate e
 We decided to develop the popular existing method CONCOORD and its extension tCONCOORD.
 CONCOORD converts a protein structure to a series of distance constraints based on chemical interactions (e.g.\ hydrogen bonds) then uses an iterative procedure to move randomly-placed atoms to satisfy the distance constraints.
 We alter this by using two structures as input, meaning the structures generated can span the conformational space spanned by the input structures.
-There are also other important differences to CONCOOD (see methods) and the method is implemented from scratch.
+There are also other important differences to CONCOORD (see methods) and the method is implemented from scratch.
 An overview of the method is shown in Figure~\ref{fig:exprose_overview}.
 
 ExProSE is able to (i) generate ensembles of protein structures from two input structures and (ii) predict allosteric pockets on proteins.
@@ -787,6 +787,8 @@ This was found to give better results for the existing methods than using the ap
 PARS \cite{Panjkovich2014} uses NMA with and without a predicted modulator to predict changes in flexibility.
 STRESS \cite{Clarke2016} is an implementation of the earlier binding leverage algorithm \cite{Mitternacht2011}, which models how perturbations due to binding couple to the motions of the protein as expressed by low-frequency normal modes.
 AlloPred \cite{Greener2015} uses perturbation of normal modes and pocket features in a machine learning approach to predict allosteric pockets - see Chapter~\ref{cha:allopred}.
+The methods compared differ from those in Section~\ref{sec:allopred_results}.
+This is because STRESS was not released during the work in Chapter~\ref{cha:allopred}, and AlloSite was not used here as it was found to correspond exactly to Fpocket predictions (see Section~\ref{sec:allopred_discussion}).
 It should be noted that different criteria are used to define an allosteric pocket for each method, due to the nature of their output - see the Methods.
 For 27 of 58 proteins ExProSE ranked an allosteric pocket first or second, performing better than the other three methods.
 This is shown in Table~\ref{tab:allosteric_methods}.
@@ -1065,7 +1067,7 @@ For example, transient sites were found on TEM-1 \textbeta -lactamase, which has
 ExProSE has the potential to identify transient pockets and predict their ability as allosteric sites.
 For example, an ensemble could be generated from apo/holo pairs and clustered into a few representative structures.
 LIGSITE\textsuperscript{\it cs} could then be run on these structures to find potential transient pockets, and the perturbation procedure carried out to assess their allosteric character.
-In intial tests of this approach, the known transient allosteric site on TEM-1 \textbeta -lactamase opened up in some representative structures from an ExProSE ensemble.
+In initial tests of this approach, the known transient allosteric site on TEM-1 \textbeta -lactamase opened up in some representative structures from an ExProSE ensemble.
 Methods for predicting pockets on an ensemble of protein structures, such as MDpocket \cite{Schmidtke2011} or the method in Polyphony \cite{Pitt2014}, could also be run on ensembles generated using ExProSE.
 
 The results from ExProSE have implications for the conformational selection/induced fit debate \cite{Boehr2009}.

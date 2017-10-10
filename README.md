@@ -18,12 +18,9 @@ pdflatex thesis.tex
 ## TODO
 
 - Final read
-- Address why AlloPred and ExProSE are validated with different methods
-- Check Mendeley for refs
-- Check page numbering, contents, list of figure etc
-- Recheck plagiarism stuff
+- Check page numbering, contents, list of figures etc
 - Check latex log for errors - search Warning
+- Recheck plagiarism stuff
 - OA on GitHub, check what is in repo, licence
 - Add to Spiral
-- Spellcheck
 - Read viva info: http://www.imperial.ac.uk/study/pg/graduate-school/professional-skills/online-video-resources/passing-your-viva
