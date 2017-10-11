@@ -15,12 +15,11 @@ ExProSE has important differences to CONCOORD that make it suitable for modellin
 These are primarily the use of two input structures instead of one, a different procedure for achieving convergence, the ability to predict the effect of a modulator and an auto-parameterisation procedure.
 The effect of a potential modulator can be explored by adding new distance constraints arising due to the modulator and generating new structures with these additional constraints. The original ensemble and the ensemble generated with the extra constraints can then be compared to see how the modulator affects the protein.
 
-ExProSE is implemented in Julia, a language that combines readable syntax similar to Python or MATLAB with performance approaching statically-compiled languages like C.
+ExProSE is implemented in Julia \cite{Bezanson2017}, a language that combines readable syntax similar to Python or MATLAB with performance approaching statically-compiled languages like C.
 Work was initially begun in a combination of Python and C++ before switching to Julia.
 Use of Julia allows good computational performance at the limiting steps, but also allows compact and easy-to-use code that others can modify.
 The code, documentation, details of the datasets and instructions for reproducing the data are freely-available under the MIT license as a Julia package at \url{https://github.com/jgreener64/ProteinEnsembles.jl}.
 The code is written in a modular way with associated unit tests and an automated building and testing procedure.
-See the appendices for more on Julia.
 
 
 \subsection{Distance constraint generation}
@@ -115,7 +114,7 @@ The probability of retaining an other pair is chosen so that the final number of
 The parameter $W_{B}$ determines how much the structures are allowed to vary from the input structures.
 $W_{B}$ is chosen for each protein in the apo/holo and allosteric datasets by a process of auto-parameterisation.
 $W_{B}$ equal to 0.0 usually results in a narrow range of structures that are midway between the two input structures.
-By contrast, $W_{B}$ equal to 1.0 usually results in structures that cover a wide conformational space beyond the input structures.
+By contrast, $W_{B}$ equal to 1.0 usually results in structures that cover a wide conformational space beyond the input structures and may be of poor stereochemical quality.
 A measure for the conformational spread of the ensemble was developed.
 This measure $F$ is the fraction of structures $S$ in the ensemble for which $TM(S,A) > TM(B,A)$ and $TM(S,B) > TM(A,B)$ where $TM(X,Y)$ is the TM-score between model $X$ and reference $Y$, and $A$ and $B$ are the two input crystal structures.
 The TM-score is a measure of similarity between two protein structures, with a higher score indicating more similar structures.
@@ -257,8 +256,8 @@ Using 120 points was found for CDK2 and CAP to add enough constraints to potenti
 Changing this parameter changes the strength of the perturbations but does not generally change the ranking of pockets by RMSD (see below).
 For CAP a different procedure was used as the location of the bound cAMP molecules is known from the crystal structure.
 In this case 120 fake points are added at 1.2 \AA\ gaps in a ball around the location of the C1' atom in cAMP, while the cAMP molecules are themselves omitted from the simulation.
-Selected points have distance constraints of tolerance 0.1 \AA\ with all protein atoms within 7 \AA.
 A similar procedure to CAP is carried out for NtrC, with the oxygen to which the phosphate binds (OD1 on ASP54) taken as the centre.
+Selected points have distance constraints of tolerance 0.1 \AA\ with all protein atoms within 7 \AA.
 
 In the allosteric prediction procedure ensembles are generated with additional constraints (termed `perturbation') at selected pockets in turn, then compared to the original `unperturbed' ensemble.
 Each pocket greater than a size cutoff of 13 \AA\textsuperscript{3} is selected, up to a maximum of 8 pockets per protein.
@@ -291,6 +290,7 @@ Some apo-holo pairs had TM-score less than 0.5 and these were removed (5 removed
 Proteins with more than 1000 residues in the smallest biological assembly were also removed (9 removed).
 Finally, proteins with missing regions or other problems were removed (4 removed).
 58 proteins with apo and holo structures remained in the dataset.
+Details of this dataset are made available with the source code.
 
 
 \subsection{Method comparison}
@@ -342,7 +342,7 @@ NMSim is run via the NMSim web server and takes $\sim$5 hours.
 MD and targeted MD use considerably more resources, with a 50 ns run taking $\sim$60 hours on 16 cores (2.3 GHz Intel Xeon CPU E5-2698) or $\sim$20 days on the single processor above.
 
 The ExProSE computation time is significantly improved over initial attempts due to optimisation of the Julia code.
-Comparison of the performance-critical step (moving the atoms to satisfy the distance constraints) shows it is significantly faster that the same algorithm implemented in simple Python.
+Comparison of the performance-critical step (moving the atoms to satisfy the distance constraints) shows it is significantly faster that the same algorithm implemented in Python.
 The stochastic nature of the simulation means it is not easily amenable to vectorisation in NumPy.
 The performance-critical step in Julia showed speed around 1.5 times slower than an implementation in C.
 
@@ -355,7 +355,7 @@ A method was needed that could use existing structural information to generate e
 We decided to develop the popular existing method CONCOORD and its extension tCONCOORD.
 CONCOORD converts a protein structure to a series of distance constraints based on chemical interactions (e.g.\ hydrogen bonds) then uses an iterative procedure to move randomly-placed atoms to satisfy the distance constraints.
 We alter this by using two structures as input, meaning the structures generated can span the conformational space spanned by the input structures.
-There are also other important differences to CONCOORD (see methods) and the method is implemented from scratch.
+There are also other important differences to CONCOORD - see Section~\ref{sec:exprose_methods} - and the algorithm is implemented from scratch.
 An overview of the method is shown in Figure~\ref{fig:exprose_overview}.
 
 ExProSE is able to (i) generate ensembles of protein structures from two input structures and (ii) predict allosteric pockets on proteins.
@@ -386,7 +386,7 @@ Figure based on Graphical Abstract from Greener et al.\ 2017 \cite{Greener2017}.
 \subsection{Ensemble generation}
 
 Before describing ExProSE results it is instructive to examine the convergence of the structural generation simulations.
-The SPE error score is a measure of how many distance constraints are violated (see Methods section).
+The SPE error score is a measure of how many distance constraints are violated - see Section~\ref{sec:exprose_methods}.
 Figure~\ref{fig:spe_convergence} shows the SPE error score over the course of the iterative constraint correcting process for 5 independent runs of CDK2 structure generation.
 It can be seen that 60,000 iterations per atom is enough for the structure to improve as much as it can.
 Further iterations beyond this do not have a meaningful effect on the SPE error score.
@@ -421,7 +421,7 @@ This is to be expected as structures which have more violations of the distance 
 
 \caption[SPE error score plotted against PROCHECK overall G-factor for an ExProSE ensemble]
 {The SPE error score of each structure in an ensemble of CDK2 structures generated using ExProSE is plotted against the PROCHECK overall G-factor of the structure.
-Note that an ensemble of 300 structures was generated and only the 200 structures with the lowest SPE error score were retained (see Methods section).}
+Note that an ensemble of 300 structures was generated and only the 200 structures with the lowest SPE error score were retained - see Section~\ref{sec:exprose_methods}.}
 
 \label{fig:score_procheck}
 \end{figure}
@@ -447,8 +447,8 @@ For 11 out of the 12 proteins ExProSE can generate a structure closer to the hol
 For the opposite case, comparing to the apo crystal, ExProSE also generates a closer structure for 11 out of 12 proteins.
 Hence ExProSE is useful for generating ensembles when two or more structures are available.
 
-The median PROCHECK overall G-factor across all generated structures is -0.99 for ExProSE, indicating that PROCHECK produces structures that are generally acceptable.
-The values for NMSim and tCONCOORD are -0.32 and -1.83 respectively, indicating that NMSim produces good quality structures and tCONCOORD produces structures with poor stereochemical quality.
+The median PROCHECK overall G-factor across all generated structures is \mbox{-0.99} for ExProSE, indicating that PROCHECK produces structures that are generally acceptable.
+The values for NMSim and tCONCOORD are \mbox{-0.32} and \mbox{-1.83} respectively, indicating that NMSim produces good quality structures and tCONCOORD produces structures with poor stereochemical quality.
 The stereochemistry of generated structures can be improved by energy minimisation (see below).
 
 
@@ -731,12 +731,12 @@ The ANS-bound structure is inactive, as ANS binding causes a conformational shif
 A further screening study has found potential modulators for the ANS binding site \cite{Rastelli2014}.
 
 Figure~\ref{fig:cdk2_exprose}A shows the pockets predicted by LIGSITE\textsuperscript{\it cs} \cite{Huang2006} on CDK2 bound to two ANS molecules.
-The ensemble perturbation procedure was carried out at each of the 8 pocket centres as described in the Methods.
+The ensemble perturbation procedure was carried out at each of the 8 pocket centres as described in Section~\ref{sec:exprose_methods}.
 In brief, additional constraints are added representing a modulator bound in the selected pocket.
 Projections of the structures of the unperturbed ensemble and the structures of the ensemble with perturbation at the pocket centre are shown in Figure~\ref{fig:cdk2_exprose}B, one graph per pocket centre.
 The third PC was chosen for visualisation instead of the second as it represents the inactivating motion of the \textalpha C-helix, whereas the second PC represents a rotation in the region of the protein considered to be functionally less important, the C-lobe.
 
-Site 1 in Figure~\ref{fig:cdk2_exprose}A and \ref{fig:cdk2_exprose}B is the known allosteric pocket.
+Site 1 in Figure~\ref{fig:cdk2_exprose}A and \ref{fig:cdk2_exprose}B is the known allosteric pocket - see Section~\ref{sec:introduction_cdk2}.
 Simulating a modulator there shifts the ensemble towards the inactive state, agreeing with previous experimental data \cite{Betzi2011}.
 Site 2 is the ATP-binding site and there is no change in the ensemble by simulating a modulator there.
 This is encouraging as ATP binding does not cause structural changes that lead to cyclin dissociation.
@@ -777,7 +777,7 @@ Systematic methods to predict allosteric sites on proteins are necessary to util
 A diverse dataset of 58 apo/holo pairs representing the unbound protein and the protein bound to a known allosteric modulator was assembled from the ASD \cite{Shen2016}.
 This dataset showed a large range in protein size (153 to 955 residues) and included a variety of proteins including transcriptional regulators, transporters and protein kinases.
 
-LIGSITE\textsuperscript{\it cs} was used to predict pockets on the holo crystal structures and ExProSE was used to generate a perturbed ensemble for each pocket centre as described in the Methods.
+LIGSITE\textsuperscript{\it cs} was used to predict pockets on the holo crystal structures and ExProSE was used to generate a perturbed ensemble for each pocket centre as described in Section~\ref{sec:exprose_methods}.
 These perturbed ensembles were used to rank the pockets in terms of predicted allosteric effect.
 In this study a correct prediction for a protein indicates that an allosteric pocket was ranked first or second.
 This criterion was chosen as a measure of success because typically the top few pockets predicted by a method would be examined and studied further.
@@ -788,8 +788,8 @@ PARS \cite{Panjkovich2014} uses NMA with and without a predicted modulator to pr
 STRESS \cite{Clarke2016} is an implementation of the earlier binding leverage algorithm \cite{Mitternacht2011}, which models how perturbations due to binding couple to the motions of the protein as expressed by low-frequency normal modes.
 AlloPred \cite{Greener2015} uses perturbation of normal modes and pocket features in a machine learning approach to predict allosteric pockets - see Chapter~\ref{cha:allopred}.
 The methods compared differ from those in Section~\ref{sec:allopred_results}.
-This is because STRESS was not released during the work in Chapter~\ref{cha:allopred}, and AlloSite was not used here as it was found to correspond exactly to Fpocket predictions (see Section~\ref{sec:allopred_discussion}).
-It should be noted that different criteria are used to define an allosteric pocket for each method, due to the nature of their output - see the Methods.
+This is because STRESS was not released during the work in Chapter~\ref{cha:allopred} so was not used there, and AlloSite was found to correspond exactly to Fpocket predictions so was not used here (see Section~\ref{sec:allopred_discussion}).
+It should be noted that different criteria are used to define an allosteric pocket for each method, due to the nature of their output - see Section~\ref{sec:exprose_methods}.
 For 27 of 58 proteins ExProSE ranked an allosteric pocket first or second, performing better than the other three methods.
 This is shown in Table~\ref{tab:allosteric_methods}.
 Only 7 proteins have an allosteric pocket ranked first or second by all four methods.
@@ -802,11 +802,11 @@ However ExProSE is still valuable as it finds smaller, less obvious allosteric p
 This could be due to the extra structural information used as input.
 For example, ExProSE in 6 cases finds sites not ranked in the top 2 by LIGSITE\textsuperscript{\it cs} and in 8 cases finds sites not ranked in the top 2 by Fpocket.
 ExProSE shows the best complementarity to the pocket prediction methods along with STRESS, which makes fewer correct predictions.
-ExProSE also gives information on how the ensemble may be affected by the modulators, as demonstrated in Figure~\ref{fig:cdk2_exprose}, allowing inspection of the predicted structural and dynamic changes arising from perturbation.
+ExProSE also gives information on how the ensemble may be affected by the modulators, as demonstrated for CDK2 in Figure~\ref{fig:cdk2_exprose}, allowing inspection of the predicted structural and dynamic changes arising from perturbation.
 
 The performance on each protein by each method is shown in Table~\ref{tab:allosteric_proteins}.
 This is to our knowledge the first systematic comparison of multiple allosteric prediction methods.
-49 of 58 proteins had an allosteric pocket ranked first or second by at least one of the 6 methods compared in Table~\ref{tab:allosteric_methods}.
+49 of 58 proteins had an allosteric pocket ranked first or second by at least one of the 6 methods compared.
 This complementarity indicates the potential for a meta approach that combines predictions from multiple methods.
 
 
@@ -832,7 +832,7 @@ Fpocket                         & 31 & 8/31 & -    \\
 \caption[Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins - summary]
 {Performance of allosteric site prediction methods on a dataset of 58 known allosteric proteins.
 Correct in top 2 is the number of proteins for which the method successfully ranked an allosteric pocket first or second.
-The definition for an allosteric pocket is given in the Methods.
+The definition for an allosteric pocket is given in Section~\ref{sec:exprose_methods}.
 The number of correct predictions by each method that are unique from the correct predictions of LIGSITE\textsuperscript{\it cs} and Fpocket is also shown.
 STRESS could not run on 4 proteins as they were too small.}
 
@@ -931,7 +931,7 @@ Apo chains and Holo chains are the chains utilised from the apo and holo structu
 2 x A means chain A is duplicated as part of a biological assembly.
 \textit{N} is the number of residues in common between the apo and holo chains used.
 A green square indicates that the method ranked an allosteric pocket first or second for that protein.
-The definition for an allosteric pocket is given in the Methods.
+The definition for an allosteric pocket is given in Section~\ref{sec:exprose_methods}.
 A red square indicates that the method failed to rank an allosteric pocket first or second.
 STRESS could not run on 4 proteins as they were too small - this is indicated by a yellow square.}
 
@@ -981,7 +981,7 @@ The results also demonstrate that ExProSE can give useful information with only 
 {Mean square fluctuations across CAP ensembles compared to Apo-CAP.
 The four ensembles are generated separately.
 Apo-CAP has no cAMP.
-The other ensembles have additional constraints (see the Methods) representing cAMP bound to chain A, cAMP bound to chain B, or cAMP bound to both chains A and B.
+The other ensembles have additional constraints (see Section~\ref{sec:exprose_methods}) representing cAMP bound to chain A, cAMP bound to chain B, or cAMP bound to both chains A and B.
 The bound cAMP molecules are shown for reference as green sticks.
 Red regions indicate residues with more flexibility compared to Apo-CAP, and blue regions indicate residues with less flexibility compared to Apo-CAP.
 Figure based on Figure~5 from Greener et al.\ 2017 \cite{Greener2017}.}
@@ -994,7 +994,7 @@ Figure based on Figure~5 from Greener et al.\ 2017 \cite{Greener2017}.}
 
 The nitrogen regulatory protein C (NtrC) is a signaling protein.
 Phosphorylation of the receiver domain causes a large structural change \cite{Kern1999} that leads to oligomerisation and promotion of transcription.
-ExProSE was used to explore this system with the distance constraints coming from the inactive and active states (PDB ID 1DC7 and 1DC8 respectively), and extra constraints at the phosphorylation site in the active state (see Methods).
+ExProSE was used to explore this system with the distance constraints coming from the inactive and active states (PDB ID 1DC7 and 1DC8 respectively), and extra constraints at the phosphorylation site in the active state - see Section~\ref{sec:exprose_methods}.
 Figure~\ref{fig:ntrc} shows the mean square fluctuation across the ensemble in the unperturbed ensemble (A, shown on the inactive state) and the ensemble with perturbation at the phosphorylation site (B, shown on the active state).
 Phosphorylation leads to considerably less variation across the ensemble, and the regions which are effected are the regions which show structural differences between the active and inactive state.
 
@@ -1032,6 +1032,7 @@ NMA is computationally-inexpensive and hence suitable for high-throughput, autom
 However the assumption of harmonic fluctuations around an energetically-minimum structure often makes prediction of conformational changes difficult, particularly for transitions with a low degree of collectivity \cite{Yang2007}.
 In addition, the choice of which normal modes to use is non-trivial.
 Larger conformational changes are associated with low-frequency normal modes but higher-frequency modes are also required to take into account local effects.
+
 The focus of NMA on changes in dynamics is also important - whilst NMA-based methods might be expected to reveal perturbations to vibrations in proteins there are a variety of other motions that contribute to allostery, such as local unfolding and rigid body movements \cite{Motlagh2014}.
 By contrast, ExProSE generates native-like protein structures that can span large conformational changes.
 The structure generation process is then perturbed to predict allosteric sites.
@@ -1050,16 +1051,16 @@ The method also was successful at reproducing the allostery in CAP using only on
 For proteins with multiple different conformational states, more than two structures could be used as input to ExProSE to explore further regions of conformational space - the constraint combination procedure can be applied to an arbitrary number of structures.
 
 For many ensemble generation methods, such as MD and tCONCOORD, the choice of parameters has a large effect on the structures produced.
-The parameter in ExProSE with the largest effect is $W_{B}$ (see the Methods), which affects the conformational spread of the ensemble.
+The parameter in ExProSE with the largest effect is $W_{B}$ (see Section~\ref{sec:exprose_methods}), which affects the conformational spread of the ensemble.
 Without any user input, the auto-parameterisation step of ExProSE selects a value that gives an ensemble well-spread over the conformational space between the two input structures.
 Once $W_{B}$ has been selected automatically, an ensemble that spans the correct space is generally produced without any further choice of parameters.
 This makes the method suitable for high-throughput structure generation across multiple proteins as the user does not need to make any parameter choices themselves.
-The auto-parameterisation procedure can be adjusted to obtain the desired level of structural flexibility using the parameter $F$, which is intuitive in terms of the spread of structures over conformational space (see the Methods).
+The auto-parameterisation procedure can be adjusted to obtain the desired level of structural flexibility using the parameter $F$, which is intuitive in terms of the spread of structures over conformational space.
 This provides a way to generate an ensemble with more flexibility if the input structures are similar, as mentioned above.
 
 In this study, LIGSITE\textsuperscript{\it cs} was used to predict pockets for ExProSE.
 However, it is worth noting that any pocket prediction method that outputs pocket points is compatible with ExProSE without modification.
-One of the challenges in allosteric site prediction is discovery of transient pockets - pockets that are only present in some structures of the ensemble.
+One of the challenges in allosteric site prediction is discovery of cryptic or transient pockets - pockets that are only present in some structures of the ensemble.
 These pockets are an appealing target as they have thus far been unavailable to pocket prediction methods on crystal structures - see Section~\ref{sec:introduction_allostery}.
 There are currently no general methods that use transient pockets for allosteric site prediction \cite{Boehr2009}, though recent studies have used Markov state models on MD simulations to predict cryptic allosteric sites on multiple proteins \cite{Bowman2012, Bowman2015}.
 These studies concluded that cryptic allosteric sites are more ubiquitous than previously thought.
@@ -1085,7 +1086,7 @@ The interactions used to generate distance constraints could be further refined;
 Given the ease of automation of the whole pipeline, ExProSE has the potential to be turned into a web server.
 Users could generate an ensemble of protein structures from one or two input structures, or predict allosteric sites from two input structures.
 The ability of the method to generate structures for protein-protein docking or for flexible ligand docking could be explicitly investigated.
-For example, structures generated from unbound protein interacting partners could be generated and docked to see if better binding models are produced.
+For example, structures generated from unbound protein interacting partners could be generated and docked to see if better models for complexes are produced.
 This work is currently ongoing in the lab.
 
 ExProSE builds on existing methods by using more structural information as input.

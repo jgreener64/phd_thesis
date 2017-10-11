@@ -18,6 +18,7 @@ pdflatex thesis.tex
 ## TODO
 
 - Final read
+- Search ?
 - Check page numbering, contents, list of figures etc
 - Check latex log for errors - search Warning
 - Recheck plagiarism stuff
