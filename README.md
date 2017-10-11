@@ -4,7 +4,7 @@ In-silico guided prediction of allosteric sites on proteins: application to cycl
 
 Joe G Greener
 
-Submitted...
+Submitted 11/10/2017
 
 See `thesis.pdf`. Build instructions:
 ```bash
