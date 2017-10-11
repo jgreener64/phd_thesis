@@ -13,24 +13,24 @@ Selected molecules were purchased and tested using two experimental assays to se
 
 \subsection{Bioinformatics resources}
 
-FTMap \cite{Kozakov2015}, the Fragment Hotspot Map \cite{Radoux2016}, ResiCon \cite{Dziubinski2016} and the DynOmics server \cite{Li2017} were run with default settings using the ANS-bound structure (PDB ID 3PXF) as input.
+FTMap \cite{Kozakov2015}, the Fragment Hotspot Map \cite{Radoux2016}, ResiCon \cite{Dziubinski2016} and the DynOmics server \cite{Li2017} were run with default settings using the ANS-bound CDK2 structure (PDB ID 3PXF) as input.
 
 
 \subsection{Virtual screening}
 
-AutoDock Vina and DOCK were run in line with the respective documentation.
-ChemMine clustering of structures used binning clustering at a similarity cutoff of 0.5.
+AutoDock Vina \cite{Trott2010} and DOCK \cite{Allen2015} were run in line with the respective documentation.
+ChemMine \cite{Backman2011} clustering of structures used binning clustering at a similarity cutoff of 0.5.
 The highest ranked by docking scores was retained in each case.
 
 The ExProSE structures selected with an open pocket have the maximum sum of two distances across the opening of the pocket: the distance between atom OH on residue TYR180 and atom NH1 on ARG150, and the distance between atom OG on residue SER188 and atom O on THR165.
-These structures are energy minimised as described in Section~\ref{sec:exprose_methods} to remove any violations of stereochemistry.
+These structures are energy minimised as described in Section~\ref{sec:exprose_methods} to reduce any violations of stereochemistry.
 
 
 \subsection{Reagents and compounds}
 
 The buffers and media used for experimental work were as follows:
 \begin{itemize}
-\item Auto-induction media: 10 g/L tryptone, 5 g/L yeast extract, 5052, NPS, 1 M MgSO$_{4}$, Ampicillin.
+\item Auto-induction media: 10 g/L tryptone, 5 g/L yeast extract, 5052, NPS, 1~M MgSO$_{4}$, Ampicillin.
 \item Lysogeny broth: 10 g/L tryptone, 5 g/L yeast extract, 10 g/L NaCl.
 \item Lysis buffer: 50 mM HEPES pH 7.0, 150 mM NaCl, 10 mM MgCl$_{2}$, 2 mM DTT, 1 mM EGTA, Triton.
 \item Phosphate buffer: 100 mM phosphate pH 8.0.
@@ -81,7 +81,7 @@ The membrane was washed with TBS-T buffer and imaged with chemiluminescence by a
 Having predicted a new allosteric site on CDK2 using ExProSE, we wished to explore this pocket further computationally and test experimentally whether it was in fact an allosteric site.
 Section~\ref{sec:exprose_results} and Figure~\ref{fig:cdk2_exprose} describe how ExProSE predicts the third predicted pocket, henceforth referred to as the pocket of interest, as being allosteric.
 See Figure~\ref{fig:cdk2_intro} for the structural elements of CDK2.
-This pockets are also shown in Figure~\ref{fig:cdk2_structure}A.
+These pockets are also shown in Figure~\ref{fig:cdk2_structure}A.
 The pocket of interest is close to the region of cyclin binding, as shown in Figure~\ref{fig:cdk2_structure}B with the non-crystallised portion of cyclin A2 modelled with Phyre2 \cite{Kelley2015}.
 
 This pocket is not open in the apo CDK2 structure (PDB ID 1HCL) or in the cyclin A2-bound structure (PDB ID 1FIN).
@@ -189,8 +189,8 @@ Compounds marked as not having benign chemical functionality in ZINC12 were also
 Although compounds were clustered by ZINC12 to remove similar compounds, some compounds were relatively similar to each other on visual inspection.
 Compounds were hence removed by similarity in ChemMine \cite{Backman2011}.
 The top 20 ranked compounds remaining that were available from Enamine (\url{http://www.enamine.net}) were purchased and taken forward for experimental testing.
-The structures of the compounds are shown in Figure~\ref{fig:compound_structures}.
 Docking scores and compound IDs are shown in Table~\ref{tab:enamine_compounds}.
+The structures of the compounds are shown in Figure~\ref{fig:compound_structures}.
 A search of these structures in the PDB indicates that none are currently ligands in the PDB.
 None appear in the ChEMBL database of bioactive drug-like small molecules \cite{Gaulton2017}.
 
@@ -301,9 +301,9 @@ Purified cyclin A2-His was taken forward for the TR-FRET assay.
 
 \caption[SDS-PAGE results for purification of cyclin A2]
 {SDS-PAGE results for purification of cyclin A2.
-(A) Purification of cyclin A2-GST single cysteine mutant.
-(B) Purification of cyclin A2-GST.
-(C) Purification of cyclin A2-His.}
+(A) Purification of cyclin A2 residues 169-432 with GST tag and the C327A mutation.
+(B) Purification of cyclin A2 residues 169-432 with GST tag.
+(C) Purification of cyclin A2 residues 169-432 with His tag.}
 
 \label{fig:purification}
 \end{figure}
@@ -312,7 +312,7 @@ Purified cyclin A2-His was taken forward for the TR-FRET assay.
 \subsection{TR-FRET assay}
 
 This popular assay for drug discovery research is the combination of time-resolved fluorometry with F\"{o}rster resonance energy transfer (FRET) \cite{Comley2006}.
-Figure~\ref{fig:tr_fret}A-B outlines the principles of a TR-FRET assay.
+Figure~\ref{fig:tr_fret}A and \ref{fig:tr_fret}B outline the principles of a TR-FRET assay.
 FRET involves two fluorophores, a donor and an acceptor.
 A time delay between excitation and detection means measurement occurs after the timescale of background fluorescence.
 The long emission time of the donor fluorophore means a signal is obtained after the time delay.
@@ -360,7 +360,7 @@ The TR-FRET signal is shown for two repeats using cyclin A2-His, and for the con
 A binding assay was carried out to test whether the compounds could inhibit the CDK2-cyclin A2 interaction.
 Cyclin A2-His and CDK2 were incubated with beads that selectively bind the His tag.
 After washing the beads to remove unbound protein only cyclin A2 and proteins bound to it should remain.
-In the absence of a PPI inhibitor a signal for CDK2 would be expected in immunoblotting as CDK2 binds to cyclin A2.
+In the absence of a binding inhibitor a signal for CDK2 would be expected in immunoblotting as CDK2 binds to cyclin A2.
 This signal would be expected to disappear in the presence of a modulator that prevented the interaction.
 This is only a semi-quantitative assay at best and TR-FRET would be much more informative.
 However, it was carried out due to time constraints and the difficulties with obtaining results from TR-FRET.
@@ -371,7 +371,7 @@ This gave a substantial background signal making a signal from the compounds har
 However, some compounds do appear to remove the CDK2 signal at high concentrations.
 Compound D at 200 \textmu M and 1 mM, and compound J at 1 mM, cause the CDK2 signal to decrease.
 At these concentrations Compounds D and J had solubility issues in the assay.
-As the expected background is high the solubility issues are likely the cause of the observed signal rather than genuine PPI inhibition.
+As the expected background is high the solubility issues are likely the cause of the observed signal rather than genuine binding inhibition.
 
 
 \begin{figure}
@@ -380,7 +380,7 @@ As the expected background is high the solubility issues are likely the cause of
 \includegraphics[width=0.7\textwidth]{figures/binding_assay/binding_assay}
 
 \caption[Results of binding assay with selected compounds]
-{(A) Binding assay results for the 12 compounds tested.
+{Binding assay results for the 12 compounds tested.
 The five bands represent increasing compound concentrations from left to right: 0 M control, 8 \textmu M, 40 \textmu M, 200 \textmu M and 1 mM.
 The strength of the band represents the presence of CDK2.
 The background signal, in the absence of cyclin A2, is also shown.
@@ -414,7 +414,7 @@ However this assay does not indicate that the compound is specific to the CDK2-c
 \item Mutagenesis: a mutation in the putative binding site of a compound will likely disrupt binding.
 If inhibition occurs for the wild-type CDK2 but not for a mutant with a mutation, this gives evidence that the mutation site is the binding site or part of a crucial allosteric communication pathway.
 This assumes that the mutation has no other effect on the structure such as destabilisation.
-However, the effectiveness of mutagenesis studies to explore allostery has been questioned \cite{Tang2017}.
+In addition, the effectiveness of mutagenesis studies to explore allostery has been questioned \cite{Tang2017}.
 \item Cyclin E1: another cyclin that binds to CDK2 is cyclin E1.
 Carrying out the above experiments with cyclin E1 rather than cyclin A2 would give an idea of the specificity of allosteric modulation of the interaction of CDK2 with cyclins.
 Use of the different structures of cyclin A2 and cyclin E1 in complex with CDK2 may also help elucidate the allosteric mechanism \cite{Honda2005}.
@@ -424,7 +424,7 @@ Assays that measure the kinase activity in the presence of the compounds indicat
 \item Surface plasmon resonance (SPR): one binding partner is immobilised on a surface and the other partner is flowed across it.
 The change in mass on the surface due to complex formation leads to a change in the refractive index of the solvent, which can be measured in real time.
 SPR is a commonly-used tool to probe binding and would be suitable for the case of CDK2.
-\item X-ray crystallography: hit compounds in other screens could be incubated with CDK2 and an attempt could be made at obtaining a crystal.
+\item X-ray crystallography: hit compounds could be incubated with CDK2 and an attempt could be made at obtaining a crystal.
 If successful this would indicate where the compound binds on CDK2 and show conformational changes due to binding.
 It would also facilitate further computational studies on the new structure.
 

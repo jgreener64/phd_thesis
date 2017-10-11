@@ -1,7 +1,7 @@
 \chapter*{Appendices}
 \addcontentsline{toc}{chapter}{Appendices}
 
-This chapter includes documentation for the AlloPred source code, documentation for the ExProSE source code and a description of the Bio.Structure module contributed to the BioJulia organisation.
+The appendices include documentation for the AlloPred source code, documentation for the ExProSE source code and a description of the Bio.Structure module contributed to the BioJulia organisation.
 
 
 \section*{AlloPred documentation}
@@ -81,7 +81,7 @@ The current released version of the source code is v0.1.1.
 
 \subsection*{Summary}
 
-Install using \verb|Pkg.add("ProteinEnsembles")| from within Julia v0.5. Run using
+Install using \verb|Pkg.add("ProteinEnsembles")| from within Julia v0.5 or v0.6. Run using
 
 \begin{lstlisting}[language=bash]
     exprose --i1 input_1.pdb --d1 input_1.dssp \
@@ -94,7 +94,7 @@ where \verb|exprose| is in the \verb|bin| directory.
 
 \subsection*{Installation}
 
-Julia v0.5 is required and can be downloaded from \url{http://julialang.org/downloads}. Install ProteinEnsembles.jl by running \verb|Pkg.add("ProteinEnsembles")| from the Julia REPL. This will also automatically install a few other required Julia packages. If you want, the tests can be run using \verb|Pkg.test("ProteinEnsembles")|. If you wish to use the auto-parameterisation procedure (see below) you must also have TM-score installed.
+Julia v0.5 or v0.6 is required and can be downloaded from \url{http://julialang.org/downloads}. Install ProteinEnsembles.jl by running \verb|Pkg.add("ProteinEnsembles")| from the Julia REPL. This will also automatically install a few other required Julia packages. If you want, the tests can be run using \verb|Pkg.test("ProteinEnsembles")|. If you wish to use the auto-parameterisation procedure (see below) you must also have TM-score installed.
 
 
 \subsection*{Requirements}
@@ -113,13 +113,13 @@ These instructions are tailored towards Mac/Unix. However they could be modified
 Although organised as a Julia package, ProteinEnsembles.jl is primarily designed for use from the command line. The \verb|exprose| script in the \verb|bin| directory implements this. For example, to see the command line options run
 
 \begin{lstlisting}[language=bash]
-    ~/.julia/v0.5/ProteinEnsembles/bin/exprose -h
+    ~/.julia/v0.6/ProteinEnsembles/bin/exprose -h
 \end{lstlisting}
 
 For easy access to the \verb|exprose| command you might like to add the following line to your profile:
 
 \begin{lstlisting}[language=bash]
-    export PATH=$PATH:~/.julia/v0.5/ProteinEnsembles/bin
+    export PATH=$PATH:~/.julia/v0.6/ProteinEnsembles/bin
 \end{lstlisting}
 
 Then, if all input files are in your current directory, run the program as follows:
@@ -217,15 +217,18 @@ The default plot colours are blue for generated structures, red for input struct
 \section*{BioJulia Bio.Structure module}
 \addcontentsline{toc}{section}{BioJulia Bio.Structure module}
 
+This section contains information on the Bio.Structure module contributed to the BioJulia organisation.
+
 The Julia language \cite{Bezanson2017} is a new programming language that has grown quickly in the field of scientific computing.
 It has syntax similar to MATLAB but execution speeds approaching statically-compiled languages like C, making it suitable for scientific research applications where both usability and execution speed are important.
+
 Open source software packages to parse PDB files and manipulate protein structures exist in many programming languages.
 There are a lack of such packages in the Julia language so a new module, Bio.Structure, was contributed to the BioJulia project (\url{http://biojulia.net}).
 Features of the package include fast PDB parsing, easy access to structural elements, iteration over elements, selector functions, downloading of PDB files, writing PDB files and spatial functions such as distances and Ramachandran angles.
-The structure of the type hierarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
+The type hierarchy is based on Biopython \cite{Cock2009} and is shown in Figure~\ref{fig:model_structure}.
 Examples of basic use cases for Bio.Structure are shown in Figure~\ref{fig:biojulia_example}.
 
-As part of the development of Bio.Structure information was collected on existing packages with similar functionality.
+As part of the development of Bio.Structure information was collected on existing packages with similar functionality in various programming languages.
 These comparisons are shown in Table~\ref{tab:package_comparison}.
 The results of each package running various benchmarks are shown in Figure~\ref{fig:pdb_benchmarks}.
 Bio.Structure is able to read in PDB file 1CRN in 1.4 ms (after just-in-time compilation) on average.

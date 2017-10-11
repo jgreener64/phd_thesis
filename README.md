@@ -17,11 +17,6 @@ pdflatex thesis.tex
 
 ## TODO
 
-- Final read
-- Search ?
-- Check page numbering, contents, list of figures etc
-- Check latex log for errors - search Warning
-- Recheck plagiarism stuff
 - OA on GitHub, check what is in repo, licence
 - Add to Spiral
 - Read viva info: http://www.imperial.ac.uk/study/pg/graduate-school/professional-skills/online-video-resources/passing-your-viva
