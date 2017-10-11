@@ -3,7 +3,7 @@
 
 This chapter describes the development and validation of AlloPred, a computational approach based on the perturbation of normal modes to predict allosteric sites on proteins.
 AlloPred is available as a web server (\url{http://www.sbg.bio.ic.ac.uk/allopred/home}) that so far has had over 400 submissions from around the world.
-The work is further described in Greener and Sternberg 2015 \cite{Greener2015}, on which this chapter is based.
+The work is published in Greener and Sternberg 2015 \cite{Greener2015}, on which this chapter is based.
 
 
 \section{Materials and Methods}
@@ -103,7 +103,7 @@ The black lines represent the amino acid backbone of the protein.
 Red circles represent amino acids identified as being active site residues; light blue circles represent other amino acids.
 The dark blue arrows $\mathbf{u_{j}}$ represent the motion of C\textsuperscript{\textalpha} atoms in a particular normal mode before perturbation.
 The brown arrows $\mathbf{p_{j}}$ represent the motion after perturbation at a particular pocket.
-The differences $\mathbf{d_{j}}$ represent the vector difference between the motions, $\mathbf{d_{j}} = \mathbf{p_{j}} - \mathbf{u_{j}}$.
+The green arrows $\mathbf{d_{j}}$ represent the vector difference between the motions, $\mathbf{d_{j}} = \mathbf{p_{j}} - \mathbf{u_{j}}$.
 The differences are averaged across the active site, then a weighted average is taken across a number of normal modes to get a single numerical measure of the effect of the perturbation.}
 
 \label{fig:nma_difference}
@@ -179,6 +179,7 @@ The retained features, in descending order of descriptive power, were:
 \item Fpocket rank (raw)
 \end{itemize}
 
+This indicates the utility of our NMA features.
 The SVM-Light package \cite{Joachims1998} was used to run the SVM.
 The Gaussian kernel was selected, containing internal parameters $C$ and $\gamma$.
 The cost factor by which training errors on positive examples outweigh errors on negative examples was set as the ratio of negative to positive examples in the training set (6.19).
@@ -376,4 +377,4 @@ This could allow prediction of recently proposed `anchor' and `driver' atoms tha
 
 The AlloPred procedure is ultimately a computationally-light means of ranking pockets on a protein in terms of their predicted allosteric character.
 It is suitable for use by non-bioinformaticians via the web server, and amenable to high throughput via the source code.
-Such methods will hopefully be developed and utilised more widely as allosteric prediction becomes more powerful.
+Such methods will hopefully be developed, validated and utilised more widely as allosteric prediction becomes more powerful.
