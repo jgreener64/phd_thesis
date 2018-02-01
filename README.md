@@ -28,21 +28,11 @@ pdflatex thesis.tex
   - p. 100 – "A control with no CDK2... each wellbeing a three-fold dilution for a lowest concentration of 50pM". Put the actual concentrations you used.
   - p. 101 – "20 repeats were taken for each reading...". 2 or 20 readings?
   - p. 105 – "The LeadsNow subset is clustered using a 50% Tanimoto cutoff". Describe the Tanimoto cutoff.
-- Reference updates from review:
-  - Wellington2017 13/9/943-950
-  - Tang2017 38/9/1144-1154
-  - Xu2017 38/9/1123-1131
-  - 12 - no volume, number or page range (in press)
-  - 46 - volume 12, number 8, page 1600531
-  - 68 - volume 114, number 29, pages E5825-E5834
-  - 69 - volume 114, number 29, pages 7480-7482
-  - 72 - volume 56, number 34, pages 4478-4488
-  - 77 - volume 547, pages 360-363
-  - Check Guarnera2017
 - New references:
   - Li 2017 elife
   - Marks 2017 Bioinf
   - Yan 2017 JCheminf
+- Check all refs are complete
 - Bio.Structure to BioStructures
 - OA on GitHub, check what is in repo, licence
-- Add to Spiral
+- Add to Spiral, Mendeley
