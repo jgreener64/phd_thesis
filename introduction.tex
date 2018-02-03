@@ -33,7 +33,7 @@ Allostery in its broadest sense is the functional change at one site on a protei
 The perturbation at the allosteric site can be non-covalent binding of a molecule (e.g.\ small molecule, ions, RNA, DNA), covalent binding (e.g.\ phosphorylation) or light absorption \cite{Nussinov2013}.
 Changes in structure or dynamics lead to effects such as a reduction or increase in catalytic activity, changes in disordered regions or changes in oligomerisation state.
 All proteins are potentially allosteric \cite{Gunasekaran2004}.
-This intrinsic and widespread property of proteins is important in processes such as cellular signalling and disease, yet most allosteric mechanisms remain an enigma and a universal mechanism has not been found \cite{Motlagh2014}.
+This intrinsic and widespread property of proteins is important in processes such as cellular signalling and disease, yet most allosteric mechanisms remain an enigma and the foundational principles are not fully understood \cite{Motlagh2014}.
 
 Since the first discovery of allosteric systems more than 50 years ago there have been various models put forward to describe the phenomenon.
 The dominant proposals for many years were the Monod-Wyman-Changeux (MWC) model, which posited that pre-existing states are subject to an equilibrium shift on modulator binding \cite{Monod1965}, and the Koshland-N\'{e}methy-Filmer (KNF) model, which advanced the idea that there was an induced fit of a binding site on interaction with a modulator \cite{Koshland1966}.
@@ -209,7 +209,7 @@ By using mixed-solvent MD this principle has been extended to the prediction of 
 
 Common pocket prediction methods such as LIGSITE\textsuperscript{\it csc} \cite{Huang2006} and Fpocket \cite{LeGuilloux2009} are able to find pockets on a protein large enough to bind small molecules, and these often correspond to allosteric sites \cite{Huang2013}.
 These methods will be used throughout this thesis, and their ability to predict allosteric pockets (either alone or when re-ranked by allosteric prediction methods) will be determined.
-Fpocket uses the concepts of Voronoi tessellation and alpha spheres (spheres touching four atoms at an equal distance) to find clusters of spheres of a certain size that correspond to pockets.
+Fpocket uses the concept of alpha spheres (spheres touching four atoms at an equal distance), related to Voronoi tessellation (the separation of space by lines equidistant to two points), to find clusters of spheres of a certain size that correspond to pockets.
 LIGSITE\textsuperscript{\it csc} adds the concept of conservation of surface residues to the original LIGSITE algorithm \cite{Hendlich1997}, which finds cavities using simple operations on a cubic grid.
 Recently, deep learning has been used to predict binding sites \cite{Jimenez2017}.
 
@@ -453,7 +453,7 @@ Computational studies have indicated a large degree of flexibility in CDK2 \cite
 \includegraphics[width=0.7\textwidth]{figures/cdk2_intro/cdk2_intro}
 
 \caption[Structure of CDK2]
-{The structure of CDK2 crystallised with an ATP-binding site inhibitor and two molecules of the fluorophore 8-anilino-1-naphthalene sulfonate (ANS) at the allosteric site (PDB ID 4EZ7).
+{The structure of CDK2 crystallised with the ATP-binding site inhibitor staurosporine and two molecules of the fluorophore 8-anilino-1-naphthalene sulfonate (ANS) at the allosteric site (PDB ID 4EZ7).
 CDK2 is shown as yellow cartoon with the \textalpha C-helix region coloured cyan and the T-loop coloured purple.
 The ATP-binding site inhibitor staurosporine and the two ANS molecules are shown as sticks and coloured green and magenta respectively.
 See also Figure~\ref{fig:cdk2_structure}.
