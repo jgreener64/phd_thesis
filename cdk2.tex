@@ -53,14 +53,13 @@ After washing the beads, cyclin A2 was eluted with 500 mM imidazole in lysis buf
 
 \subsection{TR-FRET assay}
 
-To label CDK2 with Cy5 dye, CDK2 (source - Gregory Craven unpublished, 10 mg/ml) in 0.1 M NaHCO$_{3}$ was incubated overnight with Cy5 NHS ester dye in anhydrous DMF.
+To label CDK2 with Cy5 dye, CDK2 (source - Gregory Craven unpublished, 10 mg/ml) in phosphate buffer was incubated overnight with Cy5 NHS ester dye in anhydrous DMF.
 Excess dye was removed by gel filtration in phosphate buffer with the fractions containing CDK2 identified by fluorescent SDS-PAGE.
 
-For the time-resolved F\"{o}rster resonance energy transfer (TR-FRET) CDK2 titration a 392 \textmu L/well plate was used.
-Each well contained 1 nM cyclin A2-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
-A control with no CDK2 and 10 CDK2 concentrations were used, with a highest concentration of 1 \textmu M and each well being a three-fold dilution for a lowest concentration of 50 pM.
+For the time-resolved F\"{o}rster resonance energy transfer (TR-FRET) CDK2 titration each well contained 20 \textmu L volume of 1 nM cyclin A2-His, 1 nM Eu-anti-His antibody and CDK2 at various concentrations in 50\% glycerol/50\% phosphate buffer.
+A control with no CDK2 and 10 CDK2 concentrations were used - 1 \textmu M, 300 nM, 100 nM, 30 nM, 10 nM, 3 nM, 1 nM, 300 pM, 100 pM, 50 pM.
 The plate was incubated for 1 hour and centrifuged at 800 rpm before being read.
-20 repeats were taken for each reading and the values averaged.
+20 recordings were made by the plate reader and the values averaged.
 
 
 \subsection{Binding assay}
@@ -159,7 +158,8 @@ These criteria give smaller and less lipophilic molecules than those that would 
 This is because at the hit stage the priority is finding effective scaffolds with high affinity per atom (ligand efficiency).
 Elaboration of the structure with further functional groups generally occurs later and would usually result in the addition of chemical groups, raising the molecular weight.
 
-The LeadsNow subset is clustered using a 90\% Tanimoto cutoff as described at \url{http://zinc.docking.org} to get a representative subset of $\sim$250,000 compounds.
+The LeadsNow subset is clustered as described at \url{http://zinc.docking.org} to get a representative subset of $\sim$250,000 compounds.
+Each molecule has a Tanimoto coefficient, a similarity score that compares chemical fingerprints, of no more than 0.9 with any other molecule.
 These compounds are docked using AutoDock Vina \cite{Trott2010} with standard settings to the pocket of interest in the ANS-bound structure (PDB ID 3PXF).
 Examples of docking poses can be seen in Figure~\ref{fig:cdk2_structure}E.
 The top 2,000 structures by affinity score from this screen were retained for further docking studies.
